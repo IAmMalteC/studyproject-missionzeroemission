@@ -6,17 +6,28 @@
 
 /* Style the links inside the navigation bar */
 .topNav a {
-  float: left;
+
+  float:right ;
   color: #f2f2f2;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
+.topNav{
+  display: inline-block;
+  position: relative;
+  left: 35%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 
 /* Change the color of links on hover */
 .topNav a:hover {
-  background-color: #ddd;
+  background-color: orange;
   color: white;
 }
 
@@ -27,7 +38,41 @@
 }
 table, th ,td {
   border : 1px solid black;
+  padding: 2px;
+
+
+
+}
+tr:nth-child(even) {
+  background-color: gainsboro ;
 }
 .HeadOfTable {
   background: gray;
+  height: 30px;
+  padding: 2px;
+}
+body{
+  margin: 0 auto;
+  min-height: 100%;
+  height: 100%;
+
+}
+.MassnahmeTable {
+
+  position: relative;
+  background: cadetblue;
+
+  margin-right: auto;
+
+
+
+}
+.LogInButton{
+  margin-left: auto;
+  margin-top: auto;
+
+}
+#MaßnahmenErstellen{
+  margin-top: 20px;
+
 }
