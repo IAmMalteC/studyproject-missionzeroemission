@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="loginstyle.css">
 </head>
 <body>
-$END$
+    <div class="zentrierte-tabelle">
+        <table cellspacing="10">
+            <tr>
+                <td>Benutzername: </td>
+                <td><input name="Benutzername" type="text" placeholder="nutzer@maerkische-kiste.de" required autofocus></td>
+            </tr>
+            <tr>
+                <td>Passwort: </td>
+                <td><input name="Passwort" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" required></td>
+            </tr>
+            <tr>
+                <td><a name="PasswortVergessen" href="PasswortVergessen.html" id="passwort">Passwort vergessen?</a></td>
+                <td><input name="Abschicken" type="submit" value="Abschicken" id="rechts"></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
