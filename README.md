@@ -10,9 +10,9 @@ Eingebunden werden sie mit folgenden Schritten:
 1. Save the HTML for the common elements of your site as separate files. For example, your navigation section might be saved as navigation.html or navigation.ssi.
 
 2. Use the following SSI code to include that HTML document's code in each page.
-`<!--#include virtual="navigation.ssi" -->`
+- `<!--#include virtual="navigation.ssi" -->`
 - or
-`<!--#include file="footer_text.html" -->`
+- `<!--#include file="footer_text.html" -->`
 - The include directive accepts two parameters. Virtual assumes that the filename is relative to the document root of the website, whereas file accepts an absolute file path.
 
 3. Add this code on every page that you want to include the file.
