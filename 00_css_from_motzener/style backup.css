@@ -1,0 +1,87 @@
+/*
+Theme Name: Avada Child
+Description: Child theme for Avada theme
+Author: ThemeFusion
+Author URI: https://theme-fusion.com
+Template: Avada
+Version: 1.0.0
+Text Domain:  Avada
+*/
+
+/* === HEADER === */
+.fusion-header .fusion-row img {
+	margin-top: -25px;
+	margin-bottom: 10px;
+}
+
+.fusion-main-menu > ul > li > a {
+	font-size: 18px!important;
+}
+
+/* === BUSINESS-DIRECTORY ===*/
+#wpbdp-search-form-wrapper {
+    display: none!important;
+}
+
+#wpbdp-bar-submit-listing-button{display:none!important;}
+
+.advanced-search-link {
+    display: none!important;
+}
+
+/* === BUTTON === */
+#wpbdp-bar-show-directory-button, #wpbdp-bar-view-listings-button {
+	background: #6699cc!important;
+	border: solid 10px #6699cc!important;
+	margin: 5px!important;
+	color: #fff!important;
+	font-size: 16px;
+}
+
+#wpbdp-bar-show-directory-button:hover, #wpbdp-bar-view-listings-button:hover {
+	background: #003098!important;
+	border: solid 10px #003098!important;
+}
+
+/* === NINJA === */
+.nf-form-content button, .nf-form-content input[type=button], .nf-form-content input[type=submit] {
+	background: #003098!important;
+	color: #fff!important;
+}
+
+.nf-form-content button:hover, .nf-form-content input[type=button]:hover, .nf-form-content input[type=submit]:hover {
+    background: #6699cc!important;
+	color: #fff!important;
+}
+
+.pop-up-imagefilm {display:none;}
+.space {height: 30px;}
+.space2 {height: 70px;}
+
+@media (max-width: 1320px) {
+.space2 {display: none;}
+}
+
+.mitglieder-suchen .nf-field-label {
+    display: none;
+}
+
+.mitglieder-suchen {
+	width: 120%;
+	margin-left:-125px!important;
+}
+
+.btn-container1 img {
+width: 70%;
+margin-left: 80px;
+}
+.nf-form-content button, .nf-form-content input[type=button], .nf-form-content input[type=submit] {background: #f7f7f7!important; color: #000!important;}
+.nf-form-content button:hover, .nf-form-content input[type=button]:hover, .nf-form-content input[type=submit]:hover {background: #6699cc!important;}
+
+
+
+
+.fusion-single-line-meta {display: none!important;}
+.fusion-post-content-container {display: none!important;}
+.fusion-meta-info {display: none!important;}
+.fusion-content-sep.sep-double.sep-solid {display: none;}
