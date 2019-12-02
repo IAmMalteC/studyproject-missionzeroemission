@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<iframe src="header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
 
 <div class="MassnahmenTable" >
   <table id="Table">
@@ -70,11 +71,8 @@
   <button id="MaßnahmenErstellen">Maßnahmen erstellen</button>
 </div>
 
-<footer id="footer" class="footer">
-  <a href="./faq" target="_blank" rel="noopener noreferrer">FAQ</a> |
-  <a href="./impressum" target="_blank" rel="noopener noreferrer">Impressum</a> |
-  <a href="./datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
-</footer>
+<iframe src="footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+
 
 
 </body>
