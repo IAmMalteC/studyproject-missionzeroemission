@@ -10,9 +10,9 @@ Eingebunden werden sie mit folgenden Schritten:
 1. Save the HTML for the common elements of your site as separate files. For example, your navigation section might be saved as navigation.html.
 
 2. Use the following code to include that HTML document's code in each page.
-<div>
+```<div>
   <iframe src="navigation.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>
+</div>```
 
 3. Add this code on every page that you want to include the file.
 ### CSS und JS
