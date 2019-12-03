@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="loginstyle.css">
 </head>
+
 <body>
     <div class="zentriert-vertikal zentriert-horizontal">
         <div>
             <span>Benutzername: </span>
-            <span><input name="benutzername" type="text" placeholder="nutzer@maerkische-kiste.de" required autofocus></span>
+            <span><input name="benutzername" type="text" placeholder="nutzer@maerkische-kiste.de" required
+                    autofocus></span>
         </div>
         <div>
             <span>Passwort: </span>
-            <span><input name="passwort" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required></span>
+            <span><input name="passwort" type="password"
+                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required></span>
         </div>
         <div>
             <span><a name="passwortvergessen" href="passwortvergessen.html" id="passwort">Passwort vergessen?</a></span>
             <span><input name="anmelden" type="submit" value="Anmelden" id="rechts"></span>
         </div>
     </div>
+
+    <!-- Footer -->
+    <div>
+        <iframe src="../module/footer.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
 </body>
+
 </html>

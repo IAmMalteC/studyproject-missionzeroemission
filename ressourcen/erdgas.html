@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>erdgas</title>
+</head>
+
+<body>
+  <!-- Main Header -->
+  <div>
+    <iframe src="../module/header.html"
+      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </div>
+  <!-- Input Navigation Menu -->
+  <div>
+    <iframe src="../module/inputMenuNavi.html"
+      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </div>
+
+  <div>
+    <span>
+      Menge
+    </span>
+    <span>H&auml;ufigjeit</span>
+    <span>
+      &Auml;nderungsdatum
+    </span>
+  </div>
+  <div>
+    <span>
+      Gas
+    </span>
+    <span>m3</span>
+    <span>
+      <select>
+        <option>2 monatlisch</option>
+        <option>Jahrlish</option>
+      </select>
+    </span>
+
+    <span>
+      <input type="date">
+    </span>
+  </div>
+  <div>
+    <span>Jahresabrechnung</span>
+    <span><input type="text"></span>
+    <span> m3 </span>
+    <span><input type="date"></span>
+    <span><button>Jahresabrechnung</button></span>
+  </div>
+  <div>
+    <span>Sparma&szlig;nahmen</span>
+    <span>
+      <select>
+        <option>Dämmung</option>
+        <option>Option 2</option>
+      </select>
+    </span>
+    <span>Inbetriebnahme</span>
+    <span><input type="date"></span>
+  </div>
+
+
+  <!-- Footer -->
+  <div>
+    <iframe src="../module/footer.html"
+      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  </div>
+
+</body>
+
+</html>

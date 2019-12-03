@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wasser</title>
+</head>
+
+<body>
+    <!-- Main Header -->
+    <div>
+        <iframe src="../module/header.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
+    <!-- Input Navigation Menu -->
+    <div>
+        <iframe src="../module/inputMenuNavi.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
+    <div>
+        <span>Menge</span>
+        <span>Häufigkeit</span>
+        <span>Änderungsdatum</span>
+    </div>
+    <div>
+        <span>Trinkwasser</span>
+        <span><input name="menge1" type="text"> L</span>
+        <span>
+            <select name="haeufigkeit1">
+                <option>1-monatlich</option>
+                <option>2-monatlich</option>
+                <option>3-monatlich</option>
+                <option>4-monatlich</option>
+            </select>
+        </span>
+        <span><input name="datum1" type="date" value="2019-03-09"></span>
+    </div>
+    <div>
+        <span>Abwasser</span>
+        <span><input name="menge2" type="text"> L</span>
+        <span>
+            <select name="haeufigkeit2">
+                <option>1-monatlich</option>
+                <option>2-monatlich</option>
+                <option>3-monatlich</option>
+                <option>4-monatlich</option>
+            </select>
+        </span>
+        <span><input name="datum2" type="date" value="2019-03-09"></span>
+    </div>
+    <div>
+        <span>Sparmaßnahme</span>
+        <span>
+            <select name="sparmassnahme">
+                <option>Brauchwasserrückführung</option>
+                <option>Grundwassernutzung</option>
+                <option>Regenwassernutzung</option>
+            </select>
+        </span>
+        <span>Inbetriebnahme</span>
+        <span><input name="inbetriebnahme" type="date" value="2017-04-12"></span>
+    </div>
+    <div>Aktuell / 2014</div>
+    <div>
+        <span></span>
+        <span>Wasser</span>
+        <span></span>
+        <span><input name="abschicken" type="submit" value="Abschicken"></span>
+    </div>
+    <!-- Footer -->
+    <div>
+        <iframe src="../module/footer.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
+</body>
+
+</html>
