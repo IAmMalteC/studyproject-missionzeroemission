@@ -12,7 +12,8 @@ Eingebunden werden sie mit folgenden Schritten:
 2. Use the following code to include that HTML document's code in each page.
 ```<div>
   <iframe src="navigation.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>```
+</div>
+```
 
 3. Add this code on every page that you want to include the file.
 ### CSS und JS
