@@ -1,0 +1,27 @@
+/* Add a black background color to the top navigation */
+table, th ,td {
+  border : 1px solid black;
+  padding: 2px;
+
+}
+tr:nth-child(even) {
+  background-color: gainsboro ;
+}
+.HeadOfTable {
+  background: gray;
+  height: 30px;
+
+}
+
+#Table{
+  margin: 0 auto;
+  padding: 0;
+
+}
+.MassnahmenTable{
+  position: relative;
+  width: auto ;
+  background-color: red;
+
+}
+
