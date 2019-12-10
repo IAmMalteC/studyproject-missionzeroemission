@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <title>Profil</title>
 </head>
+<!--Header-->
+<div>
+    <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+</div>
+
 <body>
     <div>
         <span>Persönliche Informationen</span>
     </div>
     <div>
         <span>Vorname</span>
-        <span><input name="vorname" type="text"></span>
+        <span><input name="firstname" type="text"></span>
         <span>Nachname</span>
-        <span><input name="nachname" type="text"></span>
+        <span><input name="surname" type="text"></span>
         <span>Firma</span>
         <span><input name="firma" type="text"></span>
     </div>
@@ -20,30 +25,34 @@
         <span>Position</span>
         <span><input name="position" type="text"></span>
         <span>Telefonnummer</span>
-        <span><input name="telefonnummer" type="text"></span>
+        <span><input name="telefon" type="text"></span>
         <span>Faxnummer</span>
-        <span><input name="faxnummer" type="text"></span>
+        <span><input name="fax" type="text"></span>
     </div>
     <div>
-        <span><input name="abschicken" type="submit" value="Abschicken"></span>
+        <span><input name="submitProfileInformation" type="submit" value="Abschicken"></span>
     </div>
     <div>
         <span>Accountinformationen</span>
     </div>
     <div>
         <span>Benutzername</span>
-        <span><input name="benutzername" type="text"></span>
+        <span><input name="username" type="text"></span>
         <span>E-Mail-Adresse</span>
-        <span><input name="emailadresse" type="text"></span>
+        <span><input name="email" type="text"></span>
     </div>
     <div>
         <span>Passwort</span>
-        <span><input name="passwort" type="password"></span>
+        <span><input name="password" type="password"></span>
         <span>Passwort wiederholen</span>
-        <span><input name="passwortwiederholen" type="password"></span>
+        <span><input name="passwordrepeat" type="password"></span>
     </div>
     <div>
-        <span><input name="abschicken2" type="submit" value="Abschicken"></span>
+        <span><input name="submitAccountInformation" type="submit" value="Abschicken"></span>
     </div>
 </body>
+<!--Footer-->
+<div>
+    <iframe src="./module/footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+</div>
 </html>
