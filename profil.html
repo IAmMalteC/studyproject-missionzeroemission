@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Profil</title>
 </head>
-<!--Header-->
-<div>
-    <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>
+
 
 <body>
+    <!--Header-->
+    <div>
+        <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
+
+    
     <div>
         <span>Persönliche Informationen</span>
     </div>
@@ -50,9 +53,10 @@
     <div>
         <span><input name="submitAccountInformation" type="submit" value="Abschicken"></span>
     </div>
+
+    <!--Footer-->
+    <div>
+       <iframe src="./module/footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
 </body>
-<!--Footer-->
-<div>
-    <iframe src="./module/footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>
 </html>

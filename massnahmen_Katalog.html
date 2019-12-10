@@ -8,15 +8,16 @@
 </head>
 
 <body>
-  <!-- Main Header -->
+  <!-- Header -->
   <div>
     <iframe src="./module/header.html"
       onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
   </div>
 
   <div class="MassnahmenTable">
+    <!--Diese Tabelle ist noch ein Beispiel und wird später generiert-->
     <table id="Table">
-      <! -- Main Row -->
+      <!-- Main Row -->
         <tr class="HeadOfTable">
           <th>Katagorie</th>
           <th>Jahr</th>
@@ -25,7 +26,7 @@
           <th>Kennzahlen</th>
           <th>Beschreibung</th>
         </tr>
-        <! –– second Row -->
+        <!-- second Row -->
           <tr>
             <th>Strom</th>
             <th>2016</th>
@@ -34,7 +35,7 @@
             <th>350 kWh</th>
             <th>Blah blah</th>
           </tr>
-          <! –– 3rd Row -->
+          <!-- 3rd Row -->
             <tr>
               <th>Katagorie</th>
               <th>Jahr</th>
@@ -43,7 +44,7 @@
               <th>Kennzahlen</th>
               <th>Beschreibung</th>
             </tr>
-            <! –– 4th Row -->
+            <!-- 4th Row -->
               <tr>
                 <th>Katagorie</th>
                 <th>Jahr</th>
@@ -52,7 +53,7 @@
                 <th>Kennzahlen</th>
                 <th>Beschreibung</th>
               </tr>
-              <! –– 5th Row -->
+              <!-- 5th Row -->
                 <tr>
                   <th>Katagorie</th>
                   <th>Jahr</th>
@@ -61,7 +62,7 @@
                   <th>Kennzahlen</th>
                   <th>Beschreibung</th>
                 </tr>
-                <! –– 6th Row -->
+                <!-- 6th Row -->
                   <tr>
                     <th>Katagorie</th>
                     <th>Jahr</th>
@@ -73,7 +74,7 @@
     </table>
   </div>
   <div>
-    <button id="MaßnahmenErstellen">Maßnahmen erstellen</button>
+    <a href="./ressourcen/neueMassnahme.html" rel="noopener noreferrer">Maßnahmen erstellen</a>
   </div>
 
   <!-- Footer -->
