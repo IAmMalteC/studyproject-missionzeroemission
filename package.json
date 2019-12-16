@@ -1,0 +1,8 @@
+{
+  "name": "missionzeroemission",
+  "version": "1.0.0",
+  "dependencies": {
+    "MariaDB": "latest",
+    "express": "latest"
+  }
+}
