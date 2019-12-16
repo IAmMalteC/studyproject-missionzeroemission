@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>heizoel</title>
+  <title>Neue Ma&szlig;nahmen</title>
 </head>
 
 <body>
@@ -18,40 +18,33 @@
       onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
   </div>
   <div>
-    <span>Menge</span>
-    <span>&Auml;nderungsdatum</span>
-  </div>
-  <div>
     <span>
-      Heizoeleinkauf
+      <h2>Ma&szlig;nahme erstellen</h2>
     </span>
-    <span>
-      <input type="text">
-    </span>
-    <span>
-      <input type="date">
-    </span>
-  </div>
-  <div>
-    <span>Rest</span>
-    <span><input type="text"></span>
-    <span><input type="date"></span>
-  </div>
-  <div>
-    <span>Sparma&szlig;nahmen</span>
-    <span>
-      <select>
-        <option>Dämmung</option>
-        <option>Option 2</option>
-      </select>
-    </span>
-    <span>Inbetriebnahme</span>
-    <span><input type="date"></span>
+    <div>
+      <input type="radio" name="action" value="reduction">Reduktion
+      <input type="radio" name="action" value="compensatin">Kompensation
+    </div>
+    <div>
+      <p>Name <input type="text" name="name"></p> 
+    </div>
+    <div>
+      <p>Einsparung <input type="text" name="saving"> in CO<sub>2</sub></p>
+    </div>
+    <div>
+      <p>Beschreibung <input type="text" name="description"></p>
+    </div>
+    <div>
+      <p>Datum der Durchführung <input type="date" name="date"></p>
+    </div>
+    <div>
+      <p>Maßnahme ist öffentlich einsehbar <input type="checkbox" name="public"></p>
+    </div>
   </div>
 
   <!-- Daten hochladen -->
   <div>
-    <span><input name="update" type="submit" value="Abschicken"></span>
+    <span><input name="update" type="submit" value="Erstellen"></span>
   </div>
   
   <!-- Footer -->

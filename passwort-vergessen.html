@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Passwort vergessen?</title>
+</head>
+<body>
+    <!--Header-->
+    <div>
+            <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
+
+    <div>
+        <p>Bitte geben Sie ihren Benutzernamen oder ihre E-Mail-Adresse ein.</p>
+        <p><input name="username" type="text" placeholder="nutzer@maerkische-kiste.de" size="38px" required
+                autofocus></p>
+        <p><input name="resetPassword" type="submit" value="Neues Passwort anfordern"> <a href="./login.html"><input
+                    name="cancel" type="button" value="Abbrechen"></a></p>
+    </div>
+
+     <!-- Footer -->
+    <div>
+        <iframe src="./module/footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    </div>
+   
+</body>
+</html>
