@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>NEMo - Login</title>
 </head>
 
 <body>
@@ -11,22 +11,24 @@
     <div>
         <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
-    <div>
+
+    <form action="" name="login" method="post">
         <div>
-            <span>Benutzername: </span>
-            <span><input name="username" type="text" placeholder="nutzer@maerkische-kiste.de" required
-                    autofocus></span>
+            <div>
+                <label for="Benutzername">Benutzername</label>
+                <input name="Benutzername" type="text" placeholder="Ihre E-Mail-Adresse" required
+                        autofocus>
+            </div>
+            <div>
+                <label for="Passwort">Passwort</label>
+                <input name="Passwort" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+            </div>
+            <div>
+                <a href="./passwort-vergessen.html">Passwort vergessen</a>
+                <input name="Login" type="submit" value="Login">
+            </div>
         </div>
-        <div>
-            <span>Passwort: </span>
-            <span><input name="password" type="password"
-                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required></span>
-        </div>
-        <div>
-            <span><a href="./passwort-vergessen.html">Passwort vergessen?</a></span>
-            <span><input name="login" type="submit" value="Anmelden"></span>
-        </div>
-    </div>
+    </form>
 
     <!-- Footer -->
     <div>
