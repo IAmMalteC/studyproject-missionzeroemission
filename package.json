@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "MariaDB": "latest",
+    "body-parser": "^1.19.0",
     "express": "latest"
   }
 }
