@@ -2,33 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CO2 Schätzung</title>
+    <title>NEMO - CO2 Sch&auml;tzung</title>
 </head>
 <body>
     <!-- Header -->
     <div>
-            <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+        <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
     
     <div>
-        <span>CO<sub>2</sub> Schätzung</span>
+        CO<sub>2</sub> Sch&auml;tzung
     </div>
     <div>
-        <span>Änderungsdatum</span>
+        &Auml;nderungsdatum
     </div>
-    <div>
-        <span><input type="radio" name="selecitonEmission" value="emissionsaving">Einsparung gegenüber Vorjahr</span>
-        <span><input name="emissionsaving" type="text">t CO<sub>2</sub></span>
-        <span><input name="dateEmissionsaving" type="date" value="2019-03-01"></span>
-    </div>
-    <div>
-        <span><input type="radio" name="selecitonEmission" value="totalemission">Gesamtemission</span>
-        <span><input name="totalemission" type="text">t CO<sub>2</sub></span>
-        <span><input name="dateTotalemission" type="date" value="2019-02-10"></span>
-    </div>
-    <div>
-        <span><input name="abschicken" type="submit" value="Abschicken"></span>
-    </div>
+    <form action="" name="co2schaetzungEintragen" method="post">
+        <div>
+            <input type="radio" name="selecitonEmission" value="emissionsaving">Einsparung gegenüber Vorjahr
+            <input name="emissionsaving" type="text">t CO<sub>2</sub>
+            <input name="dateEmissionsaving" type="date" value="2019-03-01">
+        </div>
+        <div>
+            <label for="AuswahlEmission">Gesamtemission</label>
+            <input type="radio" name="AuswahlEmission" value="totalemission">
+            <input name="totalemission" type="text">t CO<sub>2</sub>
+            <input name="dateTotalemission" type="date" value="today">
+        </div>
+        <div>
+            <input name="submit" type="submit" value="Abschicken">
+        </div>
+    </form>
 
     <!-- Footer -->
     <div>
