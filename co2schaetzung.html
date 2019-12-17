@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>NEMO - CO2 Sch&auml;tzung</title>
@@ -11,22 +11,20 @@
     </div>
     
     <div>
-        CO<sub>2</sub> Sch&auml;tzung
-    </div>
-    <div>
-        &Auml;nderungsdatum
+        <h1>CO<sub>2</sub> Sch&auml;tzung</h1>
     </div>
     <form action="" name="co2schaetzungEintragen" method="post">
         <div>
-            <input type="radio" name="selecitonEmission" value="emissionsaving">Einsparung gegenüber Vorjahr
-            <input name="emissionsaving" type="text">t CO<sub>2</sub>
-            <input name="dateEmissionsaving" type="date" value="2019-03-01">
+            <label for="AuswahlEmission">Gesamtemission</label>
+            <input type="radio" name="co2emission" id="AuswahlEmission" value="totalemission" checked>
+            <input name="totalemissionInput" id="totalemission" type="number">t CO<sub>2</sub>
+            <input name="dateTotalemissionInput" id="dateTotalemission" type="date">
         </div>
         <div>
-            <label for="AuswahlEmission">Gesamtemission</label>
-            <input type="radio" name="AuswahlEmission" value="totalemission">
-            <input name="totalemission" type="text">t CO<sub>2</sub>
-            <input name="dateTotalemission" type="date" value="today">
+            <label for="EinsparungEmission">Einsparung gegen&uuml;ber Vorjahr</label>
+            <input type="radio" name="co2emission" id="EinsparungEmission" value="emissionsaving">
+            <input name="emissionsavingInput" od="emissionsaving" type="number">t CO<sub>2</sub>
+            <input name="dateEmissionsavingInput" name="dateEmissionsaving" type="date">
         </div>
         <div>
             <input name="submit" type="submit" value="Abschicken">
