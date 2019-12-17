@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Abfall</title>
@@ -13,7 +13,7 @@
 <div>
     <iframe src="../module/inputMenuNavi.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
 </div>
-
+<form method="post" name="AbfallForm">
 <div>
   <span>Menge</span>
   <span>H&auml;ufigkeit</span>
@@ -21,23 +21,21 @@
 </div>
 <!-- Restmull -->
 <div>
-  <span>Restm&uuml;ll</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
+  <span><label for="RestmuellMenge">Restm&uuml;ll</label></span>
+  <span><input id="RestmuellMenge" name="RestmuellMenge" type="text">L</span>
   <span>
     <select>
       <option>Monatlich</option>
       <option>J&auml;hrlich</option>
     </select>
   </span>
-  <span> <input type="date"> </span>
+  <span><input type="date"></span>
 </div>
 
 <!-- Wertstoff -->
 <div>
-  <span>Wertstoff</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
+  <span><label for="WertstoffMenge">Wertstoff</label></span>
+  <span><input id="WertstoffMenge" name="WertstoffMenge" type="text">L</span>
   <span>
     <select>
       <option>Monatlich</option>
@@ -49,9 +47,8 @@
 
 <!-- Biogut -->
 <div>
-  <span>Biogut</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
+  <span><label for="BiogutMenge">Biogut</label></span>
+  <span><input id="BiogutMenge" name="BiogutMenge" type="text">L</span>
   <span>
     <select>
       <option>Monatlich</option>
@@ -63,9 +60,8 @@
 
 <!--Papier -->
 <div>
-  <span>Papier</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
+  <span><label for="PapierMenge">Papier</label></span>
+  <span><input id="PapierMenge" name="PapierMenge" type="text">L</span>
   <span>
     <select>
       <option>Monatlich</option>
@@ -77,9 +73,8 @@
 
 <!-- Glas -->
 <div>
-  <span>Glas</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
+  <span><label for="GlasMenge">Glas</label></span>
+  <span><input id="GlasMenge" name="GlasMenge" type="text">L</span>
   <span>
     <select>
       <option>Monatlich</option>
@@ -91,9 +86,8 @@
 
 <!-- Sondermüll -->
 <div>
-  <span>Sonderm&uuml;ll</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
+  <span><label for="SondermuellMenge">Sonderm&uuml;ll</label></span>
+  <span><input id="SondermuellMenge" name="SondermuellMenge" type="text">L</span>
   <span>
     <select>
       <option>Monatlich</option>
@@ -105,20 +99,22 @@
 
 <!-- Sparmaßnahmen  -->
 <div>
+  <span><label for="AbfallSparmassnahmeAuswahl">Sparmaßnahme</label></span>
   <span>
-    <select>
+    <select id="AbfallSparmassnahmeAuswahl" name="AbfallSparmassnahmeAuswahl">
       <option>Mehrwegverpackung</option>
       <option>Single-Use Package</option>
     </select>
   </span>
-  <span>inbetriebnahme</span>
-  <span><input type="date"></span>
+  <span><label for="AbfallSparmassnahmeInbetriebnahme">Inbetriebnahme</label></span>
+  <span><input id="AbfallSparmassnahmeInbetriebnahme" name="AbfallSparmassnahmeInbetriebnahme" type="date"></span>
 </div>
 
 <!-- Daten hochladen -->
 <div>
-    <span><input name="update" type="submit" value="Abschicken"></span>
+    <span><input name="AbfallSpeichern" type="submit" value="Speichern"></span>
 </div>
+</form>
 
 <!-- Footer -->
 <div>
