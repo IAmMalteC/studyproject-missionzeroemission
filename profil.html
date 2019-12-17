@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
-    <title>Profil</title>
+    <title>NEMo - Profil</title>
 </head>
 
 
 <body>
     <!--Header-->
     <div>
-        <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+        <iframe src="./module/header.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
 
-    
-    <div>
-        <span>Persönliche Informationen</span>
-    </div>
-    <div>
-        <span>Vorname</span>
-        <span><input name="firstname" type="text"></span>
-        <span>Nachname</span>
-        <span><input name="surname" type="text"></span>
-        <span>Firma</span>
-        <span><input name="firma" type="text"></span>
-    </div>
-    <div>
-        <span>Position</span>
-        <span><input name="position" type="text"></span>
-        <span>Telefonnummer</span>
-        <span><input name="telefon" type="text"></span>
-        <span>Faxnummer</span>
-        <span><input name="fax" type="text"></span>
-    </div>
-    <div>
-        <span><input name="submitProfileInformation" type="submit" value="Abschicken"></span>
-    </div>
-    <div>
-        <span>Accountinformationen</span>
-    </div>
-    <div>
-        <span>Benutzername</span>
-        <span><input name="username" type="text"></span>
-        <span>E-Mail-Adresse</span>
-        <span><input name="email" type="text"></span>
-    </div>
-    <div>
-        <span>Passwort</span>
-        <span><input name="password" type="password"></span>
-        <span>Passwort wiederholen</span>
-        <span><input name="passwordrepeat" type="password"></span>
-    </div>
-    <div>
-        <span><input name="submitAccountInformation" type="submit" value="Abschicken"></span>
-    </div>
-
+    <form action="" name="PersoenlicheInformation" method="POST">
+        <div>
+            <h1>Pers&ouml;nliche Informationen</h1>
+        </div>
+        <div>
+            <label for="Vorname">Vorname</label>
+            <input name="Vorname" type="text">
+            <label for="Nachname">Nachname</label>
+            <input name="Nachname" type="text">
+            <label for="Firmenname">Firmenname</label>
+            <input name="Firmenname" type="text">
+        </div>
+        <div>
+            <label for="Position">Position</label>
+            <input name="Position" type="text">
+            <label for="Telefon">Telefonnummer</label>
+            <input name="Telefon" type="tel" pattern="">
+            <label for="Handy">Handynummer</label>
+            <input name="Handy" type="tel" pattern="([0-9]{*})">
+            <label for="Fax">Faxnummer</label>
+            <input name="Fax" type="tel">
+        </div>
+        <div>
+            <input name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
+        </div>
+    </form>
+    <form action="" name="AccountInformation" method="POST">
+        <div>
+            <h1>Accountinformationen</h1>
+        </div>
+        <div>
+            <label for="Benutzername">Benutzername</label>
+            <input name="Benutzername" type="text">
+            <label for="Email">E-Mail-Adresse</label>
+            <input name="Email" type="email">
+        </div>
+        <div>
+            <!-- noch hinzufügen, dass wenn ein Passwort eingeben wird, dass beide Required sind und ähnlich sind-->
+            <label for="Passwort">Passwort</label>
+            <input name="Passwort" type="password">
+            <label for="PasswortWiederholen">Passwort wiederholen</label>
+            <input name="PasswortWiederholen" type="password">
+        </div>
+        <div>
+            <input name="AccountInformationSpeichern" type="submit" value="Speichern">
+        </div>
+    </form>
+    <!-- Falls gewünscht Activitydiagram hinzufügen, als logdatei so würde das gehen:
+    https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+    -->
     <!--Footer-->
     <div>
-       <iframe src="./module/footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+        <iframe src="./module/footer.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
 </body>
+
 </html>
