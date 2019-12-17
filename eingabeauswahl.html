@@ -12,50 +12,43 @@
         <iframe src="./module/header.html"
             onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
-    <h1>Firmenname</h1>
+    <form action="" name="FirmennameAnzeigen" method="get">
+        <!-- hier steht dann der Firmenname mit der Metode-->
+        <h1>Meine Firma</h1>
+    </form>
     <hr>
-    <div>
+    <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
+        <!--
+        Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
+        Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
+        -->
         <div>
-            <span></span>
-            <span><a href="./ressourcen/strom.html">Strom</a></span>
-            <span></span>
+            <a href="./ressourcen/strom.html">Strom</a>
         </div>
         <div>
-            <span></span>
-            <span><a href="./ressourcen/heizoel.html">Heizöl</a></span>
-            <span></span>
+            <a href="./ressourcen/heizoel.html">Heiz&ouml;l</a>
         </div>
         <div>
-            <span></span>
-            <span><a href="./ressourcen/wasser.html">Wasser</a></span>
-            <span></span>
+            <a href="./ressourcen/wasser.html">Wasser</a>
         </div>
         <div>
-            <span></span>
-            <span><a href="./ressourcen/abfall.html">Abfall</a></span>
-            <span></span>
+            <a href="./ressourcen/abfall.html">Abfall</a>
         </div>
         <div>
-            <span></span>
-            <span><a href="./ressourcen/gas.html">Gas</a></span>
-            <span></span>
+            <a href="./ressourcen/gas.html">Gas</a>
         </div>
         <div>
-            <span></span>
-            <span><a href="./ressourcen/neue-massnahme.html">neue Ma&szlig;nahme</a></span>
-            <span></span>
+            <a href="./ressourcen/neue-massnahme.html">neue Ma&szlig;nahme</a>
         </div>
         <div>
-            <span></span>
-            <span><a href="./co2schaetzung.html">Schätzung CO<sub>2</sub></a></span>
-            <span></span>
+            <a href="./co2schaetzung.html">Sch&auml;tzung CO<sub>2</sub></a>
         </div>
+    </form>
 
-        <!-- Footer -->
-        <div>
-            <iframe src="./module/footer.html"
-                onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-        </div>
+    <!-- Footer -->
+    <div>
+        <iframe src="./module/footer.html"
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
 </body>
 
