@@ -27,10 +27,9 @@
             <div><input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text">L</div>
             <div>
                 <select name="TrinkwasserHaeufigkeit">
-                    <option>1-monatlich</option>
-                    <option>2-monatlich</option>
-                    <option>3-monatlich</option>
-                    <option>4-monatlich</option>
+                    <option>monatlich</option>
+                    <option>zweimonatlich</option>
+                    <option>jährlich</option>
                 </select>
             </div>
             <div><input name="TrinkwasserAenderungsdatum" type="date" value="2019-03-09"></div>
@@ -55,9 +54,9 @@
                     <option>+</option>
                     <option>-</option>
                 </select>
+                <input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text">
             </div>
-            <div><input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text"></div>
-            <div><input name="JahresabrechnungAenderungsdatum" type="date" value="2019-03-09"></div>
+            <div><input name="WasserJahresabrechnungAenderungsdatum" type="date" value="2019-03-09"></div>
         </div>
         <div>
             <div><label for="WasserSparmassnahmeAuswahl">Sparmaßnahme</label></div>
@@ -72,7 +71,7 @@
             <div><input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date" value="2017-04-12"></div>
         </div>
         <!-- Daten hochladen -->
-        <div><input name="WasserSubmit" type="submit" value="Abschicken"></div>
+        <div><input name="WasserSpeichern" type="submit" value="Speichern"></div>
     </form>
 
     <!-- Footer -->

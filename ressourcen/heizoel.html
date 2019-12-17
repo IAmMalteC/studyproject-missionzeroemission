@@ -2,57 +2,64 @@
 <html lang="de">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Heizöl</title>
+    <meta charset="UTF-8">
+    <title>Heizöl</title>
 </head>
 
 <body>
-  <!-- Main Header -->
-  <div>
+<!-- Main Header -->
+<div>
     <iframe src="../module/header.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
-  <!-- Input Navigation Menu -->
-  <div>
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+</div>
+<!-- Input Navigation Menu -->
+<div>
     <iframe src="../module/inputMenuNavi.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
-  <div>
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+</div>
+<form method="post" name="HeizoelForm">
+<div>
     <span>Menge</span>
     <span>&Auml;nderungsdatum</span>
-  </div>
-  <div>
+</div>
+<div>
     <span><label for="HeizoelverbrauchMenge">Heizölverbrauch</label></span>
     <span><input id="HeizoelverbrauchMenge" name="HeizoelverbrauchMenge" type="text">L</span>
     <span><input name="HeizoelAenderungsdatum" type="date"></span>
-  </div>
-  <div>
-    <span>Rest</span>
-    <span><input type="text">L</span>
-    <span><input type="date"></span>
-  </div>
-  <div>
-    <span>Sparma&szlig;nahmen</span>
+</div>
+<div>
+    <span><label for="HeizoelJahresabrechnungMenge">Jahresabrechnung</label></span>
     <span>
-      <select>
-        <option>Dämmung</option>
-        <option>Option 2</option>
-      </select>
+          <select name="HeizoelJahresabrechnungVorzeichen">
+              <option>+</option>
+              <option>-</option>
+          </select>
+      </span>
+    <span><input id="HeizoelJahresabrechnungMenge" name="HeizoelJahresabrechnungMenge" type="text">L</span>
+    <span><input name="HeizoelJahresabrechnungAenderungsdatum" type="date"></span>
+</div>
+<div>
+    <span><label for="HeizoelSparmassnahmeAuswahl">Sparmaßnahme</label></span>
+    <span>
+        <select id="HeizoelSparmassnahmeAuswahl" name="HeizoelSparmassnahmeAuswahl">
+            <option>Dämmung</option>
+            <option>Option 2</option>
+        </select>
     </span>
-    <span>Inbetriebnahme</span>
-    <span><input type="date"></span>
-  </div>
+    <span><label for="HeizoelSparmassnahmeInbetriebnahme">Inbetriebnahme</label></span>
+    <span><input id="HeizoelSparmassnahmeInbetriebnahme" name="HeizoelSparmassnahmeInbetriebnahme" type="date"></span>
+</div>
 
-  <!-- Daten hochladen -->
-  <div>
-    <span><input name="update" type="submit" value="Abschicken"></span>
-  </div>
-  
-  <!-- Footer -->
-  <div>
+<!-- Daten hochladen -->
+<div>
+    <span><input name="HeizoelSpeichern" type="submit" value="Speichern"></span>
+</div>
+</form>
+<!-- Footer -->
+<div>
     <iframe src="../module/footer.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
+            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+</div>
 
 </body>
 

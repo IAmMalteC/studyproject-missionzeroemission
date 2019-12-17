@@ -17,71 +17,58 @@
         <iframe src="../module/inputMenuNavi.html"
             onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
+    <form method="post" name="StromForm">
     <div>
-        <span>Stromanbieter</span>
-        <span>Stromtarif</span>
         <span>Verbrauch</span>
-        <span>Eingabedatum</span>
-        <span>CO2-Faktor</span>
-        <span>Abrechnungszeitraum</span>
+        <span>Häufigkeit</span>
+        <span>Änderungsdatum</span>
     </div>
     <div>
-        <span>Stromtarif</span>
+        <span><label for="StrommixAuswahl">Strommix</label></span>
         <span>
-            <select name="stromanbieter">
-                <option>Vattenfall</option>
-                <option>E.ON</option>
-                <option>RWE</option>
-                <option>Greenpeace</option>
-                <option>Lichtblick</option>
+            <select id="StrommixAuswahl" name="StrommixAuswahl">
+                <option>Standard</option>
+                <option>100% <Ökostrom></Ökostrom></option>
             </select>
         </span>
+        <span><input name="StrommixVerbrauch" type="text">kWh</span>
         <span>
-            <select name="stromtarif">
-                <option>Business</option>
+            <select name="StromHaeufigkeitAuswahl">
+                <option>monatlich</option>
+                <option>zweimonatlich</option>
+                <option>jährlich</option>
             </select>
         </span>
-        <span><input name="verbrauch1" type="text"> kWh</span>
-        <span><input name="datum1" type="date" value="2018-01-01"></span>
-        <span><input name="co2faktor1"></span>
+        <span><input name="StrommixAenderungsdatum" type="date"></span>
+    </div>
+    <div>
+        <span><label>Jahresabrechnung</label></span>
         <span>
-            <input name="zeitraum1" type="date" value="2017-01-01"> -
-            <input name="zeitraum2" type="date" value="2018-01-01">
+            <select name="StromJahresabrechnungVorzeichen">
+            <option>+</option>
+            <option>-</option>
+        </select>
+            <input id="StromJahresabrechnungVerbrauch" name="StromJahresabrechnungVerbrauch" type="text">kWh
         </span>
+        <span><input name="StromJahresabrechnungAenderungsdatum" type="date"></span>
     </div>
     <div>
-        <span>Jahresabrechnung</span>
-        <span><input name="verbrauch2" type="text"> kWh</span>
-        <span><input name="datum2" type="date" value="2019-02-04"></span>
-        <span><button name="jahresabrechnung">Jahresabrechnung</button></span>
-    </div>
-    <div>
-        <span>Photovoltaik</span>
-        <span><input name="verbrauch3" type="text"> kWh</span>
-        <span><input name="datum3" type="date" value="2019-02-04"></span>
-        <span><input name="co2faktor2" type="text"></span>
+        <span><label for="StromSparmassnahmeAuswahl">Sparmaßnahme</label></span>
         <span>
-            <input name="zeitraum3" type="date" value="2017-01-01"> -
-            <input name="zeitraum4" type="date" value="2018-02-01">
-        </span>
-    </div>
-    <div>
-        <span>Sparmaßnahme</span>
-        <span>
-            <select name="sparmassnahme">
+            <select id="StromSparmassnahmeAuswahl" name="StromSparmassnahmeAuswahl">
+                <option>Photovoltaik</option>
                 <option>LED</option>
             </select>
         </span>
-        <span>Inbetriebnahme</span>
-        <span><input name="inbetriebnahme" type="date" value="2016-01-01"></span>
+        <span><label>Inbetriebnahme</label></span>
+        <span><input id="StromSparmassnahmeInbetriebnahme" name="StromSparmassnahmeInbetriebnahme" type="date"></span>
     </div>
-    <div>Aktuell / 2014</div>
 
     <!-- Daten hochladen -->
     <div>
-        <span><input name="update" type="submit" value="Abschicken"></span>
+        <span><input name="StromSpeichern" type="submit" value="Speichern"></span>
     </div>
-
+    </form>
     <!-- Footer -->
     <div>
         <iframe src="../module/footer.html"

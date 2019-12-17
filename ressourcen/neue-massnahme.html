@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
   <meta charset="UTF-8">
-  <title>Neue Ma&szlig;nahmen</title>
+  <title>Maßnahme erstellen</title>
 </head>
 
 <body>
@@ -17,36 +17,42 @@
     <iframe src="../module/inputMenuNavi.html"
       onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
   </div>
-  <div>
-    <span>
-      <h2>Ma&szlig;nahme erstellen</h2>
-    </span>
+  <form method="post" name="MassnahmeErstellenForm">
     <div>
-      <input type="radio" name="action" value="reduction">Reduktion
-      <input type="radio" name="action" value="compensatin">Kompensation
+      <h2>Maßnahme erstellen</h2>
     </div>
     <div>
-      <p>Name <input type="text" name="name"></p> 
+      <input type="radio" id="MassnahmeReduktion" name="MassnahmeArt" value="Reduktion">
+      <label for="MassnahmeReduktion">Reduktion</label>
+      <input type="radio" id="MassnahmeKompensation" name="MassnahmeArt" value="Kompensation">
+      <label for="MassnahmeKompensation">Kompensation</label>
     </div>
     <div>
-      <p>Einsparung <input type="text" name="saving"> in CO<sub>2</sub></p>
+      <span><label for="MassnahmeName">Name</label></span>
+      <span><input id="MassnahmeName" name="MassnahmeName" type="text"></span>
     </div>
     <div>
-      <p>Beschreibung <input type="text" name="description"></p>
+      <span><label for="MassnahmeEinsparung">Einsparung</label></span>
+      <span><input id="MassnahmeEinsparung" name="MassnahmeEinsparung" type="text">t CO<sub>2</sub></span>
     </div>
     <div>
-      <p>Datum der Durchführung <input type="date" name="date"></p>
+      <span><label for="MassnahmeBeschreibung">Beschreibung</label></span>
+      <span><input id="MassnahmeBeschreibung" name="MassnahmeBeschreibung" type="text"></span>
     </div>
     <div>
-      <p>Maßnahme ist öffentlich einsehbar <input type="checkbox" name="public"></p>
+      <span><label for="MassnahmeDatum">Datum der Inbetriebnahme</label></span>
+      <span><input id="MassnahmeDatum" name="MassnahmeDatum" type="date"></span>
     </div>
-  </div>
+    <div>
+      <span><label for="MassnahmeOeffentlich">Maßnahme ist öffentlich einsehbar</label></span>
+      <span><input type="checkbox" id="MassnahmeOeffentlich" name="MassnahmeOeffentlich"></span>
+    </div>
 
   <!-- Daten hochladen -->
   <div>
-    <span><input name="update" type="submit" value="Erstellen"></span>
+    <span><input name="MassnahmeErstellen" type="submit" value="Erstellen"></span>
   </div>
-  
+  </form>
   <!-- Footer -->
   <div>
     <iframe src="../module/footer.html"
