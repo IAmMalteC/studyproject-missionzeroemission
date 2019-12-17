@@ -4,6 +4,7 @@
   "dependencies": {
     "MariaDB": "latest",
     "body-parser": "^1.19.0",
-    "express": "latest"
+    "express": "^4.17.1",
+    "mariadb": "^2.1.4"
   }
 }
