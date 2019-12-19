@@ -24,12 +24,12 @@
   <span><label for="RestmuellMenge">Restm&uuml;ll</label></span>
   <span><input id="RestmuellMenge" name="RestmuellMenge" type="text">L</span>
   <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
+    <select name="RestmuellHaeufigkeit">
+      <option value="Monatlich">Monatlich</option>
+      <option value="Jaehrlich">J&auml;hrlich</option>
     </select>
   </span>
-  <span><input type="date"></span>
+  <span><input name="RestmuellDatum" type="date"></span>
 </div>
 
 <!-- Wertstoff -->
@@ -37,12 +37,12 @@
   <span><label for="WertstoffMenge">Wertstoff</label></span>
   <span><input id="WertstoffMenge" name="WertstoffMenge" type="text">L</span>
   <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
+    <select name="WertstoffHaeufigkeit">
+      <option value="Monatlich">Monatlich</option>
+      <option value="Jaehrlich">J&auml;hrlich</option>
     </select>
   </span>
-  <span> <input type="date"> </span>
+  <span> <input name="WertstoffDatum" type="date"> </span>
 </div>
 
 <!-- Biogut -->
@@ -50,12 +50,12 @@
   <span><label for="BiogutMenge">Biogut</label></span>
   <span><input id="BiogutMenge" name="BiogutMenge" type="text">L</span>
   <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
+    <select name="BiogutHaeufigkeit">
+      <option value="Monatlich">Monatlich</option>
+      <option value="Jaehrlich">J&auml;hrlich</option>
     </select>
   </span>
-  <span> <input type="date"> </span>
+  <span> <input name="BiogutDatum" type="date"> </span>
 </div>
 
 <!--Papier -->
@@ -63,12 +63,12 @@
   <span><label for="PapierMenge">Papier</label></span>
   <span><input id="PapierMenge" name="PapierMenge" type="text">L</span>
   <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
+    <select name="PapierHaeufigkeit">
+      <option value="Monatlich">Monatlich</option>
+      <option value="Jaehrlich">J&auml;hrlich</option>
     </select>
   </span>
-  <span> <input type="date"> </span>
+  <span> <input name="PapierDatum" type="date"> </span>
 </div>
 
 <!-- Glas -->
@@ -76,12 +76,12 @@
   <span><label for="GlasMenge">Glas</label></span>
   <span><input id="GlasMenge" name="GlasMenge" type="text">L</span>
   <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
+    <select name="GlasHaeufigkeit">
+      <option value="Monatlich">Monatlich</option>
+      <option value="Jaehrlich">J&auml;hrlich</option>
     </select>
   </span>
-  <span> <input type="date"> </span>
+  <span> <input name="GlasDatum" type="date"> </span>
 </div>
 
 <!-- Sondermüll -->
@@ -89,21 +89,21 @@
   <span><label for="SondermuellMenge">Sonderm&uuml;ll</label></span>
   <span><input id="SondermuellMenge" name="SondermuellMenge" type="text">L</span>
   <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
+    <select name="SondermuellHaeufigkeit">
+      <option value="Monatlich">Monatlich</option>
+      <option value="Jaehrlich">J&auml;hrlich</option>
     </select>
   </span>
-  <span> <input type="date"> </span>
+  <span> <input name="SondermuellDatum" type="date"> </span>
 </div>
 
 <!-- Sparmaßnahmen  -->
 <div>
-  <span><label for="AbfallSparmassnahmeAuswahl">Sparmaßnahme</label></span>
+  <span><label for="AbfallSparmassnahme">Sparmaßnahme</label></span>
   <span>
-    <select id="AbfallSparmassnahmeAuswahl" name="AbfallSparmassnahmeAuswahl">
-      <option>Mehrwegverpackung</option>
-      <option>Single-Use Package</option>
+    <select id="AbfallSparmassnahme" name="AbfallSparmassnahme">
+      <option value="Mehrweg">Mehrwegverpackung</option>
+      <option value="SingleUse">Single-Use Package</option>
     </select>
   </span>
   <span><label for="AbfallSparmassnahmeInbetriebnahme">Inbetriebnahme</label></span>

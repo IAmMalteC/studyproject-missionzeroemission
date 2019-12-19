@@ -20,32 +20,38 @@
 <form method="post" name="ErdgasForm">
   <div>
     <span>Menge</span>
-    <span>Häufigkeit</span>
-    <span>Änderungsdatum</span>
+    <span>H&auml;ufigkeit</span>
+    <span>&Auml;nderungsdatum</span>
   </div>
   <div>
     <span><label for="GasverbrauchMenge">Gasverbrauch</label></span>
     <span><input id="GasverbrauchMenge" name="GasverbrauchMenge" type="text">m<sup>3</sup></span>
     <span>
-      <select name="GasverbrauchHaeufigkeitAuswahl">
-        <option>monatlich</option>
-        <option>zweimonatlich</option>
-        <option>jährlich</option>
+      <select name="GasverbrauchHaeufigkeit">
+        <option value="Monatlich">monatlich</option>
+        <option value="Zweimonatlich">zweimonatlich</option>
+        <option value="Jaehrlich">j&auml;hrlich</option>
       </select>
     </span>
     <span><input name="GasverbrauchAenderungsdatum" type="date"></span>
   </div>
   <div>
     <span><label for="ErdgasJahresabrechnungMenge">Jahresabrechnung</label></span>
+    <span>
+          <select name="HeizoelJahresabrechnungVorzeichen">
+              <option value="Plus">+</option>
+              <option value="Minus">-</option>
+          </select>
+      </span>
     <span><input id="ErdgasJahresabrechnungMenge" name="ErdgasJahresabrechnungMenge" type="text">m<sup>3</sup></span>
     <span><input name="ErdgasJahresabrechnungAenderungsdatum" type="date"></span>
   </div>
   <div>
-    <span><label for="ErdgasSparmassnahmeAuswahl">Sparmaßnahme</label></span>
+    <span><label for="ErdgasSparmassnahme">Sparma&szlig;nahme</label></span>
     <span>
-      <select id="ErdgasSparmassnahmeAuswahl" name="ErdgasSparmassnahmeAuswahl">
-        <option>Dämmung</option>
-        <option>Option 2</option>
+      <select id="ErdgasSparmassnahme" name="ErdgasSparmassnahme">
+        <option value="Daemmung">D&auml;mmung</option>
+        <option value="Option2">Option 2</option>
       </select>
     </span>
     <span><label for="ErdgasSparmassnahmeInbetriebnahme">Inbetriebnahme</label></span>

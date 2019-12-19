@@ -20,23 +20,23 @@
     <form method="post" name="StromForm">
     <div>
         <span>Verbrauch</span>
-        <span>Häufigkeit</span>
-        <span>Änderungsdatum</span>
+        <span>H&auml;ufigkeit</span>
+        <span>&Auml;nderungsdatum</span>
     </div>
     <div>
         <span><label for="StrommixAuswahl">Strommix</label></span>
         <span>
             <select id="StrommixAuswahl" name="StrommixAuswahl">
-                <option>Standard</option>
-                <option>100% <Ökostrom></Ökostrom></option>
+                <option value="Standard">Standard</option>
+                <option value="Oekostrom">100% &Ouml;kostrom</option>
             </select>
         </span>
         <span><input name="StrommixVerbrauch" type="text">kWh</span>
         <span>
-            <select name="StromHaeufigkeitAuswahl">
-                <option>monatlich</option>
-                <option>zweimonatlich</option>
-                <option>jährlich</option>
+            <select name="StromHaeufigkeit">
+                <option value="Monatlich">monatlich</option>
+                <option value="Zweimonatlich">zweimonatlich</option>
+                <option value="Jaehrlich">j&auml;hrlich</option>
             </select>
         </span>
         <span><input name="StrommixAenderungsdatum" type="date"></span>
@@ -45,19 +45,19 @@
         <span><label>Jahresabrechnung</label></span>
         <span>
             <select name="StromJahresabrechnungVorzeichen">
-            <option>+</option>
-            <option>-</option>
+              <option value="Plus">+</option>
+              <option value="Minus">-</option>
         </select>
             <input id="StromJahresabrechnungVerbrauch" name="StromJahresabrechnungVerbrauch" type="text">kWh
         </span>
         <span><input name="StromJahresabrechnungAenderungsdatum" type="date"></span>
     </div>
     <div>
-        <span><label for="StromSparmassnahmeAuswahl">Sparmaßnahme</label></span>
+        <span><label for="StromSparmassnahme">Sparma&szlig;nahme</label></span>
         <span>
-            <select id="StromSparmassnahmeAuswahl" name="StromSparmassnahmeAuswahl">
-                <option>Photovoltaik</option>
-                <option>LED</option>
+            <select id="StromSparmassnahme" name="StromSparmassnahme">
+                <option value="Photovoltaik">Photovoltaik</option>
+                <option value="LED">LED</option>
             </select>
         </span>
         <span><label>Inbetriebnahme</label></span>
