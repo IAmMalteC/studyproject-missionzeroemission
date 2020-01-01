@@ -15,8 +15,8 @@ body {
     flex-grow: 1;
 }
 .header .logo img{
-    width: 10px;
-    height: 10px;
+    width: 130px;
+    height: 116px;
 }
 .header .topnav{
     order: 5;
