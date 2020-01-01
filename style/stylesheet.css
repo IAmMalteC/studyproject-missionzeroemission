@@ -10,6 +10,24 @@ body {
     flex-flow: row nowrap;
     background-color:yellow;
 }
+.header a:link, a:visited {
+    background-color: #fff;
+    color: #003098;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    left:0;border-bottom-style:solid;
+    border-bottom-color: #fff;
+}
+
+.header a:hover, a:active {
+    background-color: #fff;
+    left:0;border-bottom-style:solid;
+    transition:transform.2s ease-in-out;
+    border-bottom-color: #003098;
+
+}
 .header .logo{
     order: 1;
     flex-grow: 1;
