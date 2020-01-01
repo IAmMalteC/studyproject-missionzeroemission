@@ -7,10 +7,23 @@
 </head>
 <body>
     <!-- Header -->
-    <div>
-        <iframe src="./module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-    </div>
-    
+    <header>
+        <div class="logo" id="nemoLogo">
+            <a href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a>
+        </div>
+        <div class="topnav" id="nemoTopnav">
+            <a href="./index.html" rel="noopener noreferrer">Startseite</a>
+            <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+            <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>                   
+        </div>
+        <div class="header-profile">
+           <img class="topnavImage" id="profilPicture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">      
+            <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
+            <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden-->
+            <a href="./login.html" rel="noopener noreferrer">Log-In</a>
+        </div>
+    </header>
+    <!-- Main-->
     <div>
         <h1>CO<sub>2</sub> Sch&auml;tzung</h1>
     </div>

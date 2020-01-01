@@ -5,49 +5,61 @@ body {
     justify-content: space-around;
 } 
 /* Header */
-.header {
+header {
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
     background-color:yellow;
 }
-.header a:link, a:visited {
+header a:link, header a:visited {
     background-color: #fff;
     color: #466B52;
     padding: 14px 25px;
     text-align: center;
-    text-decoration: none;
-    /* display: inline-block; */
-    left:0;
-    border-bottom-style:solid;
-    border-bottom-color: #fff;
 }
 
-.header a:hover, a:active {
+header a:hover, a:active {
     background-color: #fff;
-    left:0;
-    border-bottom-style:solid;
     transition:transform.2s ease-in-out;
-    border-bottom-color: #466B52;
-
+    border-bottom: 4px solid #466B52;
 }
-.header .logo{
+/*active shows where the user is - navigation */
+.active{
+    background-color: #fff;
+    color: #466B52;
+    padding: 14px 25px;
+    text-align: center;
+    border-top: 4px solid #466B52;
+    border-bottom: 4px solid #466B52;
+}
+header .logo{
     order: 1;
     flex-grow: 1;
 }
-.header .logo img{
+header .logo img{
     width: 130px;
     height: 116px;
+    border:none;
 }
-.header .topnav{
+header .logo a{
+    border: none;
+    background-color: none;
+    padding: 0px;
+}
+header .topnav{
     order: 5;
     flex-grow: 2;
 }
-.header .header-profile{
+header .header-profile{
     order: 10;
     flex-grow: 1;
 }
+header .header-profile img{
+    width: 10%;
+}
 /* footer */
-.footer {
+footer {
     display: flex;
     flex: 0 0 100%;
     flex-flow: row nowrap;
@@ -55,16 +67,24 @@ body {
     background-color: #B2B2B2;
     font: 13px/20px PTSansRegular,Arial,Helvetica,sans-serif;
 }
-.footer a{
-    text-decoration: none;
-    color: #466B52;
-}
-.footer a:hover{
-    text-decoration: none;
-    color: #6A8E5B;
-}
 /* Navigation menu */
 .navigation-ressources {
     display: flex;
     flex-flow: row nowrap;
+}
+/*links global*/
+a{
+    text-decoration: none;
+}
+a:link{
+    color: #466B52;
+}
+a:visited{
+    color: #3D2F2A;
+}
+a:hover{
+    color: #6A8E5B;
+}
+a:active{
+    color: #3D2F2A;
 }
