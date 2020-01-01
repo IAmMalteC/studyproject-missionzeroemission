@@ -1,13 +1,22 @@
-/* To center the grid
+/* To center the grid */
 body {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-} */
+} 
 /* Header */
 .header {
     display: flex;
     flex-flow: row nowrap;
+}
+.header .logo{
+
+}
+.header .topnav{
+
+}
+.header .header-profile{
+
 }
 /* footer */
 .footer {
