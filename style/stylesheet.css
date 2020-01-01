@@ -30,7 +30,6 @@ header a:hover, a:active {
 .active {
     color: #fff                 !important;
     background-color: #466B52   !important;
-    border-bottom: none           !important;
 }
 header .logo{
     order: 1;
