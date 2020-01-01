@@ -1,4 +1,4 @@
-.skeleton {
+body {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
@@ -12,6 +12,11 @@
 .footer {
     display: flex;
     flex-flow: row nowrap;
+    color: #747474;
+    font: 13px/20px PTSansRegular,Arial,Helvetica,sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
 }
 
 .navigation-ressources {
