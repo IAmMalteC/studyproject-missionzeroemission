@@ -13,6 +13,7 @@ body {
     display: flex;
     flex: 0 0 100%;
     flex-flow: row nowrap;
+    justify-content: center;
     background-color: #B2B2B2;
     font: 13px/20px PTSansRegular,Arial,Helvetica,sans-serif;
 }
