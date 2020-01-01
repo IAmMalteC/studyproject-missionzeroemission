@@ -1,14 +1,15 @@
+/* To center the grid
 body {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-}
-
+} */
+/* Header */
 .header {
     display: flex;
     flex-flow: row nowrap;
 }
-
+/* footer */
 .footer {
     display: flex;
     flex: 0 0 100%;
@@ -18,12 +19,14 @@ body {
     font: 13px/20px PTSansRegular,Arial,Helvetica,sans-serif;
 }
 .footer a{
+    text-decoration: none;
     color: #003098;
 }
 .footer a:hover{
+    text-decoration: none;
     color: #6699cc;
 }
-
+/* Navigation menu */
 .navigation-ressources {
     display: flex;
     flex-flow: row nowrap;
