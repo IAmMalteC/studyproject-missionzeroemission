@@ -11,52 +11,48 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">
-            <a href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
-        </div>
-        <div class="topnav">
-            <a class="active" href="./index.html" rel="noopener noreferrer">Startseite</a>
-            <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
-            <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
-        </div>
-        <div class="header-profile">
+        <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a class="active" href="./index.html" rel="noopener noreferrer">Startseite</a>
+        <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
         <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
-            <!-- <img src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">       -->
-            <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
-            <a href="./login.html" rel="noopener noreferrer">Log-In</a>
-        </div>
+        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="./login.html" rel="noopener noreferrer">Log-In</a>
     </header>
     <!-- Main -->
-    <div class="firstpart">
-        <form action="" name="ZielBalkenErstellen" method="get">
-            <img src="./pictures/nemoBalkenOhneSchrift.jpeg" alt="Zeigt wie dicht wir dem Ziel sind">
-            <p>Platzhalter</p>
-        </form>
+    <div class="content">
+        <div class="goal-tracker">
+            <form action="" name="ZielBalkenErstellen" method="get">
+                <img src="./pictures/nemoBalkenOhneSchrift.jpeg" alt="Zeigt wie dicht wir dem Ziel sind">
+                <p>Platzhalter</p>
+            </form>
+        </div>
+        <article>
+            <h1> CO<sub>2</sub> Ersparnis </h1>
+            <form name="DiagrammErstellen" method="GET">
+                <div>
+                    <img src="./pictures/diagrammemissionenbsp.png"
+                        alt="Zeigt die CO2 Emissionen des Unternehmensnetzwerkes" width="30%" height="30%">
+                </div>
+                <p>Das Bild ist nur ein Platzhalter</p>
+                <!--
+                    Branche: 
+                    <select>
+                        <option>Umweltabteilung</option>
+                        <option>Wirtschaftabteilung</option>
+                        <option>Humanressourcen</option>
+                    </select>
+                     
+                        Würde die Anonymität verletzten
+        
+                    <input type="search" name="SucheInput" value="Suche bestimmte Firma">
+                     ggf über CSS BITTE :)
+                    <button type="submit"><img src="./pictures/suche.png" alt="Suchen Logo" width="15" height="15"></button>
+                    -->
+            </form>
+        </article>
     </div>
-    <h1> CO<sub>2</sub> Ersparnis </h1>
-    <article class="firstpart">
-        <form name="DiagrammErstellen" method="GET">
-            <div>
-                <img src="./pictures/diagrammemissionenbsp.png"
-                    alt="Zeigt die CO2 Emissionen des Unternehmensnetzwerkes" width="30%" height="30%">
-            </div>
-            <p>Das Bild ist nur ein Platzhalter</p>
-            <!--
-                Branche: 
-                <select>
-                    <option>Umweltabteilung</option>
-                    <option>Wirtschaftabteilung</option>
-                    <option>Humanressourcen</option>
-                </select>
-                 
-                    Würde die Anonymität verletzten
-    
-                <input type="search" name="SucheInput" value="Suche bestimmte Firma">
-                 ggf über CSS BITTE :)
-                <button type="submit"><img src="./pictures/suche.png" alt="Suchen Logo" width="15" height="15"></button>
-                -->
-        </form>
-    </article>
 
     <!-- Footer -->
     <footer>
