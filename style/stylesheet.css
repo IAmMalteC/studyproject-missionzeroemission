@@ -12,6 +12,9 @@ body {
 .header .logo{
     order: 1;
     flex-grow: 1;
+    width: 50%;
+    height: auto;
+    padding: 5px;
 }
 .header .topnav{
     order: 5;
