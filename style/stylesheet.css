@@ -6,19 +6,22 @@ body {
 } 
 /* Header */
 header {
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    justify-content: space-between;
-    background-color:yellow;
+    justify-content: flex-end;
+    background-color: yellow;
+}
+header div{
+    border:4px solid #ffffff;
 }
 header a:link, header a:visited {
     background-color: #fff;
     color: #466B52;
-    padding: 14px 25px;
+    padding: 8px 10px;
     text-align: center;
 }
-
 header a:hover, a:active {
     background-color: #fff;
     transition:transform.2s ease-in-out;
@@ -37,6 +40,9 @@ header .logo{
     order: 1;
     flex-grow: 1;
 }
+header .logo div{
+    justify-content: left;
+}
 header .logo img{
     width: 130px;
     height: 116px;
@@ -51,12 +57,13 @@ header .topnav{
     order: 5;
     flex-grow: 2;
 }
+header .topnav div{
+    justify-content: center;
+}
 header .header-profile{
     order: 10;
     flex-grow: 1;
-}
-header .header-profile img{
-    width: 10%;
+    margin-left: auto;
 }
 /* footer */
 footer {
