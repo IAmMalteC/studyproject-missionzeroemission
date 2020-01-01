@@ -10,13 +10,16 @@ body {
     flex-flow: row nowrap;
 }
 .header .logo{
-
+    order: 1;
+    flex-grow: 1;
 }
 .header .topnav{
-
+    order: 5;
+    flex-grow: 2;
 }
 .header .header-profile{
-
+    order: 10;
+    flex-grow: 1;
 }
 /* footer */
 .footer {
