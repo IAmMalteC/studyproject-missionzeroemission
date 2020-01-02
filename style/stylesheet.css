@@ -1,9 +1,12 @@
 /*
+Colorscheme
 nemo dark green #466b52
 nemo light green #6a8e5b
 light yellow #d9d787
 darker yellow #d2c055
 orange #b14f19
+
+We are just building for two sreens. Phones and Tables/Desktops(Bigger then 689px)
 */
 /*!!Global parameters!!*/
 * {
@@ -13,26 +16,27 @@ orange #b14f19
     font-family: PTSansRegular,Arial,Helvetica,sans-serif;
 }
 /* To center the grid */
-/* body {
+html, body {
     display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
-}  */
+    flex-direction: column;
+    height: 100%;
+} 
 /* Header */
-header {
+header, .input-navigation {
     display: flex;
     flex-flow: column nowrap;
+    flex-shrink: 0;
     align-items: center;
     text-align: center;
 }
-header a:link, header a:visited {
+header a:link, header a:visited, .input-navigation a:link, .input-navigation a:visited {
     background-color: #fff;
     color: #466B52;
     padding: 5px 10px;
     text-align: center;
     border-bottom: 4px solid #466B52;
 }
-header a:hover, a:active {
+header a:hover, header a:active, .input-navigation a:hover, .input-navigation a:active {
     background-color: #466B52;
     color: #fff;
     transition:transform.2s ease-in-out;
@@ -62,13 +66,15 @@ header #logo img{
 footer {
     display: flex;
     justify-content: center;
+    flex-shrink: 0;
     background-color: #B2B2B2;
     padding: 5px 0px;
 }
 /* Main content */
 .content {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+    flex-grow: 2;
     justify-content: space-around;
 
     align-items: center;
@@ -98,11 +104,17 @@ a:active{
 /* Desktop Styles */
 @media only screen and (min-width: 689px) {
     /*header*/  
-    header {
+    header{
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         justify-content: space-between;
+    }
+    /* Input Navigation */
+    .input-navigation{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
     }
     /*footer*/
     footer {

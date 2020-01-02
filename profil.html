@@ -18,61 +18,62 @@
         <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
         <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
         <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
-        <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
-        <a class="active" href="./login.html" rel="noopener noreferrer">Log-In</a>
+        <a class="active" href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="./login.html" rel="noopener noreferrer">Log-In</a>
     </header>
     <!-- Main -->
-
-    <form action="" name="PersoenlicheInformation" method="POST">
-        <div>
-            <h1>Pers&ouml;nliche Informationen</h1>
-        </div>
-        <div>
-            <label for="Vorname">Vorname</label>
-            <input id="Vorname" name="VornameInput" type="text">
-            <label for="Nachname">Nachname</label>
-            <input id="Nachname" name="NachnameInput" type="text">
-            <label for="Firmenname">Firmenname</label>
-            <input id="Firmenname" name="FirmennameInput" type="text">
-        </div>
-        <div>
-            <label for="Position">Position</label>
-            <input  id="Position"  name="PositionInput" type="text">
-            <label for="Telefon">Telefonnummer</label>
-            <input id="Telefon" name="TelefonInput" type="tel" pattern="">
-            <label for="Handy">Handynummer</label>
-            <input id="Handy" name="HandyInput" type="tel">
-            <label for="Fax">Faxnummer</label>
-            <input id="Fax" name="FaxInput" type="tel">
-        </div>
-        <div>
-            <input name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
-        </div>
-    </form>
-    <form action="/profil.html" name="AccountInformation" method="POST">
-        <div>
-            <h1>Accountinformationen</h1>
-        </div>
-        <div>
-            <label for="Benutzername">Benutzername</label>
-            <input id="Benutzername" name="BenutzernameInput" type="text">
-            <label for="Email">E-Mail-Adresse</label>
-            <input id="Email" name="EmailInput" type="email">
-        </div>
-        <div>
-            <!-- noch hinzufügen, dass wenn ein Passwort eingeben wird, dass beide Required sind und ähnlich sind-->
-            <label for="Passwort">Passwort</label>
-            <input id = "Passwort" name="PasswortInput" type="password">
-            <label for="PasswortWiederholen">Passwort wiederholen</label>
-            <input id ="PasswortWiederholen" name="PasswortWiederholenInput" type="password">
-        </div>
-        <div>
-            <input name="AccountInformationSpeichernInput" type="submit" value="Speichern">
-        </div>
-    </form>
-    <!-- Falls gewünscht Activitydiagram hinzufügen, als logdatei so würde das gehen:
-    https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
-    -->
+        <div class="content">
+        <form action="" name="PersoenlicheInformation" method="POST">
+            <div>
+                <h1>Pers&ouml;nliche Informationen</h1>
+            </div>
+            <div>
+                <label for="Vorname">Vorname</label>
+                <input id="Vorname" name="VornameInput" type="text">
+                <label for="Nachname">Nachname</label>
+                <input id="Nachname" name="NachnameInput" type="text">
+                <label for="Firmenname">Firmenname</label>
+                <input id="Firmenname" name="FirmennameInput" type="text">
+            </div>
+            <div>
+                <label for="Position">Position</label>
+                <input  id="Position"  name="PositionInput" type="text">
+                <label for="Telefon">Telefonnummer</label>
+                <input id="Telefon" name="TelefonInput" type="tel" pattern="">
+                <label for="Handy">Handynummer</label>
+                <input id="Handy" name="HandyInput" type="tel">
+                <label for="Fax">Faxnummer</label>
+                <input id="Fax" name="FaxInput" type="tel">
+            </div>
+            <div>
+                <input name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
+            </div>
+        </form>
+        <form action="/profil.html" name="AccountInformation" method="POST">
+            <div>
+                <h1>Accountinformationen</h1>
+            </div>
+            <div>
+                <label for="Benutzername">Benutzername</label>
+                <input id="Benutzername" name="BenutzernameInput" type="text">
+                <label for="Email">E-Mail-Adresse</label>
+                <input id="Email" name="EmailInput" type="email">
+            </div>
+            <div>
+                <!-- noch hinzufügen, dass wenn ein Passwort eingeben wird, dass beide Required sind und ähnlich sind-->
+                <label for="Passwort">Passwort</label>
+                <input id = "Passwort" name="PasswortInput" type="password">
+                <label for="PasswortWiederholen">Passwort wiederholen</label>
+                <input id ="PasswortWiederholen" name="PasswortWiederholenInput" type="password">
+            </div>
+            <div>
+                <input name="AccountInformationSpeichernInput" type="submit" value="Speichern">
+            </div>
+        </form>
+        <!-- Falls gewünscht Activitydiagram hinzufügen, als logdatei so würde das gehen:
+        https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+        -->
+    </div>
     <!--Footer-->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |

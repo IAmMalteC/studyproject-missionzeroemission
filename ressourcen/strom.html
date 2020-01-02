@@ -11,85 +11,92 @@
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
-        <a href="./index.html" rel="noopener noreferrer">Startseite</a>
-        <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
-        <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a href="../index.html" rel="noopener noreferrer">Startseite</a>
+        <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
         <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
         <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
-        <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
-        <a href="./login.html" rel="noopener noreferrer">Log-In</a>
+        <a href="../profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="../login.html" rel="noopener noreferrer">Log-In</a>
     </header>
     <!-- Input Navigation Menu -->
-    <div>
-        <iframe src="../module/inputMenuNavi.html"
-            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    <div class="input-navigation">
+        <a class="active" href="../ressourcen/strom.html">Strom</a>
+        <a href="../ressourcen/heizoel.html">Heiz&ouml;l</a>
+        <a href="../ressourcen/erdgas.html">Gas</a>
+        <a href="../ressourcen/wasser.html">Wasser</a>
+        <a href="../ressourcen/abfall.html">Abfall</a>
+        <a href="../ressourcen/neue-massnahme.html">Kompensationsma&szlig;nahme</a>
+        <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
-    <div>
-        <span>Stromanbieter</span>
-        <span>Stromtarif</span>
-        <span>Verbrauch</span>
-        <span>Eingabedatum</span>
-        <span>CO2-Faktor</span>
-        <span>Abrechnungszeitraum</span>
-    </div>
-    <div>
-        <span>Stromtarif</span>
-        <span>
-            <select name="stromanbieter">
-                <option>Vattenfall</option>
-                <option>E.ON</option>
-                <option>RWE</option>
-                <option>Greenpeace</option>
-                <option>Lichtblick</option>
-            </select>
-        </span>
-        <span>
-            <select name="stromtarif">
-                <option>Business</option>
-            </select>
-        </span>
-        <span><input name="verbrauch1" type="text"> kWh</span>
-        <span><input name="datum1" type="date" value="2018-01-01"></span>
-        <span><input name="co2faktor1"></span>
-        <span>
-            <input name="zeitraum1" type="date" value="2017-01-01"> -
-            <input name="zeitraum2" type="date" value="2018-01-01">
-        </span>
-    </div>
-    <div>
-        <span>Jahresabrechnung</span>
-        <span><input name="verbrauch2" type="text"> kWh</span>
-        <span><input name="datum2" type="date" value="2019-02-04"></span>
-        <span><button name="jahresabrechnung">Jahresabrechnung</button></span>
-    </div>
-    <div>
-        <span>Photovoltaik</span>
-        <span><input name="verbrauch3" type="text"> kWh</span>
-        <span><input name="datum3" type="date" value="2019-02-04"></span>
-        <span><input name="co2faktor2" type="text"></span>
-        <span>
-            <input name="zeitraum3" type="date" value="2017-01-01"> -
-            <input name="zeitraum4" type="date" value="2018-02-01">
-        </span>
-    </div>
-    <div>
-        <span>Sparmaßnahme</span>
-        <span>
-            <select name="sparmassnahme">
-                <option>LED</option>
-            </select>
-        </span>
-        <span>Inbetriebnahme</span>
-        <span><input name="inbetriebnahme" type="date" value="2016-01-01"></span>
-    </div>
-    <div>Aktuell / 2014</div>
+    <!--Main Content-->
+    <div class="content">
+        <div>
+            <span>Stromanbieter</span>
+            <span>Stromtarif</span>
+            <span>Verbrauch</span>
+            <span>Eingabedatum</span>
+            <span>CO2-Faktor</span>
+            <span>Abrechnungszeitraum</span>
+        </div>
+        <div>
+            <span>Stromtarif</span>
+            <span>
+                <select name="stromanbieter">
+                    <option>Vattenfall</option>
+                    <option>E.ON</option>
+                    <option>RWE</option>
+                    <option>Greenpeace</option>
+                    <option>Lichtblick</option>
+                </select>
+            </span>
+            <span>
+                <select name="stromtarif">
+                    <option>Business</option>
+                </select>
+            </span>
+            <span><input name="verbrauch1" type="text"> kWh</span>
+            <span><input name="datum1" type="date" value="2018-01-01"></span>
+            <span><input name="co2faktor1"></span>
+            <span>
+                <input name="zeitraum1" type="date" value="2017-01-01"> -
+                <input name="zeitraum2" type="date" value="2018-01-01">
+            </span>
+        </div>
+        <div>
+            <span>Jahresabrechnung</span>
+            <span><input name="verbrauch2" type="text"> kWh</span>
+            <span><input name="datum2" type="date" value="2019-02-04"></span>
+            <span><button name="jahresabrechnung">Jahresabrechnung</button></span>
+        </div>
+        <div>
+            <span>Photovoltaik</span>
+            <span><input name="verbrauch3" type="text"> kWh</span>
+            <span><input name="datum3" type="date" value="2019-02-04"></span>
+            <span><input name="co2faktor2" type="text"></span>
+            <span>
+                <input name="zeitraum3" type="date" value="2017-01-01"> -
+                <input name="zeitraum4" type="date" value="2018-02-01">
+            </span>
+        </div>
+        <div>
+            <span>Sparmaßnahme</span>
+            <span>
+                <select name="sparmassnahme">
+                    <option>LED</option>
+                </select>
+            </span>
+            <span>Inbetriebnahme</span>
+            <span><input name="inbetriebnahme" type="date" value="2016-01-01"></span>
+        </div>
+        <div>Aktuell / 2014</div>
 
-    <!-- Daten hochladen -->
-    <div>
-        <span><input name="update" type="submit" value="Abschicken"></span>
+        <!-- Daten hochladen -->
+        <div>
+            <span><input name="update" type="submit" value="Abschicken"></span>
+        </div>
     </div>
-
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |

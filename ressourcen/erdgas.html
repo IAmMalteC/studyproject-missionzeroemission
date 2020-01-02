@@ -4,77 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
     <title>NEMo - Erdgas</title>
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
-        <a href="./index.html" rel="noopener noreferrer">Startseite</a>
-        <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
-        <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a href="../index.html" rel="noopener noreferrer">Startseite</a>
+        <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
         <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
         <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
-        <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
-        <a href="./login.html" rel="noopener noreferrer">Log-In</a>
+        <a href="../profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="../login.html" rel="noopener noreferrer">Log-In</a>
     </header>
     <!-- Input Navigation Menu -->
-    <div>
-        <iframe src="../module/inputMenuNavi.html"
-        onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    <div class="input-navigation">
+        <a href="../ressourcen/strom.html">Strom</a>
+        <a href="../ressourcen/heizoel.html">Heiz&ouml;l</a>
+        <a class="active" href="../ressourcen/erdgas.html">Gas</a>
+        <a href="../ressourcen/wasser.html">Wasser</a>
+        <a href="../ressourcen/abfall.html">Abfall</a>
+        <a href="../ressourcen/neue-massnahme.html">Kompensationsma&szlig;nahme</a>
+        <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
+    <!--Main Content-->
+    <div class="content">
+        <div>
+            <span>
+            Menge
+            </span>
+            <span>H&auml;ufigjeit</span>
+            <span>
+            &Auml;nderungsdatum
+            </span>
+        </div>
+        <div>
+            <span>
+            Gas
+            </span>
+            <span>m3</span>
+            <span>
+            <select>
+                <option>2 monatlisch</option>
+                <option>Jahrlish</option>
+            </select>
+            </span>
 
-    <div>
-        <span>
-        Menge
-        </span>
-        <span>H&auml;ufigjeit</span>
-        <span>
-        &Auml;nderungsdatum
-        </span>
-    </div>
-    <div>
-        <span>
-        Gas
-        </span>
-        <span>m3</span>
-        <span>
-        <select>
-            <option>2 monatlisch</option>
-            <option>Jahrlish</option>
-        </select>
-        </span>
+            <span>
+            <input type="date">
+            </span>
+        </div>
+        <div>
+            <span>Jahresabrechnung</span>
+            <span><input type="text"></span>
+            <span> m3 </span>
+            <span><input type="date"></span>
+            <span><button>Jahresabrechnung</button></span>
+        </div>
+        <div>
+            <span>Sparma&szlig;nahmen</span>
+            <span>
+            <select>
+                <option>Dämmung</option>
+                <option>Option 2</option>
+            </select>
+            </span>
+            <span>Inbetriebnahme</span>
+            <span><input type="date"></span>
+        </div>
 
-        <span>
-        <input type="date">
-        </span>
+        <!-- Daten hochladen -->
+        <div>
+            <span><input name="update" type="submit" value="Abschicken"></span>
+        </div>
     </div>
-    <div>
-        <span>Jahresabrechnung</span>
-        <span><input type="text"></span>
-        <span> m3 </span>
-        <span><input type="date"></span>
-        <span><button>Jahresabrechnung</button></span>
-    </div>
-    <div>
-        <span>Sparma&szlig;nahmen</span>
-        <span>
-        <select>
-            <option>Dämmung</option>
-            <option>Option 2</option>
-        </select>
-        </span>
-        <span>Inbetriebnahme</span>
-        <span><input type="date"></span>
-    </div>
-
-    <!-- Daten hochladen -->
-    <div>
-        <span><input name="update" type="submit" value="Abschicken"></span>
-    </div>
-
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |

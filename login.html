@@ -21,24 +21,25 @@
         <a class="active" href="./login.html" rel="noopener noreferrer">Log-In</aclass="active">
     </header>
     <!-- Main -->
-    <form action="" name="login" method="post">
-        <div>
+    <div class="content">
+        <form action="" name="login" method="post">
             <div>
-                <label for="Benutzername">Benutzername</label>
-                <input name="BenutzernameInput" id="Benutzername" type="text" placeholder="Ihre E-Mail-Adresse" required
-                        autofocus>
+                <div>
+                    <label for="Benutzername">Benutzername</label>
+                    <input name="BenutzernameInput" id="Benutzername" type="text" placeholder="Ihre E-Mail-Adresse" required
+                            autofocus>
+                </div>
+                <div>
+                    <label for="Passwort">Passwort</label>
+                    <input name="PasswortInput" id="Passwort" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+                </div>
+                <div>
+                    <a href="./passwort-vergessen.html">Passwort vergessen</a>
+                    <input name="LoginInput" type="submit" value="Login">
+                </div>
             </div>
-            <div>
-                <label for="Passwort">Passwort</label>
-                <input name="PasswortInput" id="Passwort" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
-            </div>
-            <div>
-                <a href="./passwort-vergessen.html">Passwort vergessen</a>
-                <input name="LoginInput" type="submit" value="Login">
-            </div>
-        </div>
-    </form>
-
+        </form>
+    </div>
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |
