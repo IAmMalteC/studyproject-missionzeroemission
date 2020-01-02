@@ -2,47 +2,47 @@
 <html lang="de">
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEMo - Umsatz</title>
-</head>
+    <title>NEMo - Umsatz</title>
+    </head>
 
-<body>
-  <!-- Main Header -->
-  <div>
-    <iframe src="../module/header.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
-  <!-- Input Navigation Menu -->
-  <div>
-    <iframe src="../module/inputMenuNavi.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
-
-  <form action="" name="UmsatzHinzufuegen" method="post">
+    <body>
+    <!-- Main Header -->
     <div>
-      <label for="Umsatz">Jahresumsatz</label>
-      <input type="number" name="UmsatzInput" id="Umsatz" required> &euro;
+        <iframe src="../module/header.html"
+        onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
+    <!-- Input Navigation Menu -->
     <div>
-      <label for="DatumUmsatz">Umsatz für das Jahr</label>
-      <input type="date" name="DatumUmsatzInput" id="DatumUmsatz" required>
+        <iframe src="../module/inputMenuNavi.html"
+        onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
     </div>
-    
-    <!-- Daten hochladen -->
-    <div>
-      <input name="update" type="submit" value="Abschicken">
-    </div>
-    <p>Diese Daten werden nur zur Berechnung der relativen CO<sub>2</sub> Emissionen verwendet und auf keiner Weise
-      direkt ver&ouml;ffentlicht.</p>
-  </form>
 
-  <!-- Footer -->
-  <div>
-    <iframe src="../module/footer.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
+    <form action="" name="UmsatzHinzufuegen" method="post">
+        <div>
+        <label for="Umsatz">Jahresumsatz</label>
+        <input type="number" name="UmsatzInput" id="Umsatz" required> &euro;
+        </div>
+        <div>
+        <label for="DatumUmsatz">Umsatz für das Jahr</label>
+        <input type="date" name="DatumUmsatzInput" id="DatumUmsatz" required>
+        </div>
+        
+        <!-- Daten hochladen -->
+        <div>
+        <input name="update" type="submit" value="Abschicken">
+        </div>
+        <p>Diese Daten werden nur zur Berechnung der relativen CO<sub>2</sub> Emissionen verwendet und auf keiner Weise
+        direkt ver&ouml;ffentlicht.</p>
+    </form>
 
+    <!-- Footer -->
+    <footer>
+        <a href="./faq" rel="noopener noreferrer">FAQ</a> |
+        <a href="./impressum" rel="noopener noreferrer">Impressum</a> |
+        <a href="./datenschutz" rel="noopener noreferrer">Datenschutz</a>
+    </footer>
 </body>
 
 </html>
