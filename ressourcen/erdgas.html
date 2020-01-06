@@ -2,6 +2,7 @@
 <html lang="de">
 
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
@@ -31,57 +32,58 @@
         <a href="../ressourcen/neue-massnahme.html">Kompensationsma&szlig;nahme</a>
         <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
+
     <!--Main Content-->
+<form method="post" name="ErdgasForm">
     <div class="content">
-        <div>
-            <span>
-            Menge
-            </span>
-            <span>H&auml;ufigjeit</span>
-            <span>
-            &Auml;nderungsdatum
-            </span>
-        </div>
-        <div>
-            <span>
-            Gas
-            </span>
-            <span>m3</span>
-            <span>
-            <select>
-                <option>2 monatlisch</option>
-                <option>Jahrlish</option>
-            </select>
-            </span>
+  <div>
+    <span>Menge</span>
+    <span>H&auml;ufigkeit</span>
+    <span>&Auml;nderungsdatum</span>
+  </div>
+  <div>
+    <span><label for="GasverbrauchMenge">Gasverbrauch</label></span>
+    <span><input id="GasverbrauchMenge" name="GasverbrauchMenge" type="text">m<sup>3</sup></span>
+    <span>
+      <select name="GasverbrauchHaeufigkeit">
+        <option value="GasverbrauchMonatlich">monatlich</option>
+        <option value="GasverbrauchZweimonatlich">zweimonatlich</option>
+        <option value="GasverbrauchJaehrlich">j&auml;hrlich</option>
+      </select>
+    </span>
+    <span><input name="GasverbrauchAenderungsdatum" type="date"></span>
+  </div>
+  <div>
+    <span><label for="ErdgasJahresabrechnungMenge">Jahresabrechnung</label></span>
+    <span>
+          <select name="ErdgasJahresabrechnungVorzeichen">
+              <option value="ErdgasPlus">+</option>
+              <option value="ErdgasMinus">-</option>
+          </select>
+      </span>
+    <span><input id="ErdgasJahresabrechnungMenge" name="ErdgasJahresabrechnungMenge" type="text">m<sup>3</sup></span>
+    <span><input name="ErdgasJahresabrechnungAenderungsdatum" type="date"></span>
+      <span><button name="ButtonJahresabrechnung">Jahresabrechnung</button></span>
+  </div>
+  <div>
+    <span><label for="ErdgasSparmassnahme">Sparma&szlig;nahme</label></span>
+    <span>
+      <select id="ErdgasSparmassnahme" name="ErdgasSparmassnahme">
+        <option value="ErdgasDaemmung">D&auml;mmung</option>
+        <option value="ErdgasOption2">Option 2</option>
+      </select>
+    </span>
+    <span><label for="ErdgasSparmassnahmeInbetriebnahme">Inbetriebnahme</label></span>
+    <span><input id="ErdgasSparmassnahmeInbetriebnahme" name="ErdgasSparmassnahmeInbetriebnahme" type="date"></span>
+  </div>
 
-            <span>
-            <input type="date">
-            </span>
-        </div>
-        <div>
-            <span>Jahresabrechnung</span>
-            <span><input type="text"></span>
-            <span> m3 </span>
-            <span><input type="date"></span>
-            <span><button>Jahresabrechnung</button></span>
-        </div>
-        <div>
-            <span>Sparma&szlig;nahmen</span>
-            <span>
-            <select>
-                <option>Dämmung</option>
-                <option>Option 2</option>
-            </select>
-            </span>
-            <span>Inbetriebnahme</span>
-            <span><input type="date"></span>
-        </div>
+  <!-- Daten hochladen -->
+  <div>
+    <span><input name="ErdgasSpeichern" type="submit" value="Speichern"></span>
+  </div>
+</div>
+</form>
 
-        <!-- Daten hochladen -->
-        <div>
-            <span><input name="update" type="submit" value="Abschicken"></span>
-        </div>
-    </div>
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |
@@ -89,5 +91,4 @@
         <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
     </footer>
 </body>
-
 </html>

@@ -31,67 +31,67 @@
         <a href="../ressourcen/neue-massnahme.html">Kompensationsma&szlig;nahme</a>
         <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
+<<<<<<< HEAD
     <!--Main Content-->
-    <div class="content">
         <form method="post" name="WasserForm">
+        <div class="content">
             <div>
-                <div>Menge</div>
-                <div>Häufigkeit</div>
-                <div>Änderungsdatum</div>
+                <span>Menge</span>
+                <span>H&auml;ufigkeit</span>
+                <span>&Auml;nderungsdatum</span>
             </div>
             <div>
-                <div><label for="TrinkwasserMenge">Trinkwasser</label></div>
-                <div><input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text">L</div>
-                <div>
+                <span><label for="TrinkwasserMenge">Trinkwasser</label></span>
+                <span><input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text">L</span>
+                <span>
                     <select name="TrinkwasserHaeufigkeit">
-                        <option>1-monatlich</option>
-                        <option>2-monatlich</option>
-                        <option>3-monatlich</option>
-                        <option>4-monatlich</option>
+                        <option value="TrinkwasserMonatlich">monatlich</option>
+                        <option value="TrinkwasserZweimonatlich">zweimonatlich</option>
+                        <option value="TrinkwasserJaehrlich">j&auml;hrlich</option>
                     </select>
-                </div>
-                <div><input name="TrinkwasserAenderungsdatum" type="date" value="2019-03-09"></div>
+                </span>
+                <span><input name="TrinkwasserAenderungsdatum" type="date" value="2019-03-09"></span>
             </div>
             <div>
-                <div><label for="AbwasserMenge">Abwasser</label></div>
-                <div><input id="AbwasserMenge" name="AbwasserMenge" type="text">L</div>
-                <div>
+                <span><label for="AbwasserMenge">Abwasser</label></span>
+                <span><input id="AbwasserMenge" name="AbwasserMenge" type="text">L</span>
+                <span>
                     <select name="AbwasserHaeufigkeit">
-                        <option>1-monatlich</option>
-                        <option>2-monatlich</option>
-                        <option>3-monatlich</option>
-                        <option>4-monatlich</option>
+                        <option value="AbwasserMonatlich">monatlich</option>
+                        <option value="AbwasserZweimonatlich">zweimonatlich</option>
+                        <option value="AbwasserJaehrlich">j&auml;hrlich</option>
                     </select>
-                </div>
-                <div><input name="AbwasserAenderungsdatum" type="date" value="2019-03-09"></div>
+                </span>
+                <span><input name="AbwasserAenderungsdatum" type="date" value="2019-03-09"></span>
             </div>
             <div>
-                <div><label for="WasserJahresabrechnung">Jahresabrechnung</label></div>
-                <div>
+                <span><label for="WasserJahresabrechnung">Jahresabrechnung</label></span>
+                <span>
                     <select name="WasserJahresabrechnungVorzeichen">
-                        <option>+</option>
-                        <option>-</option>
+                        <option value="WasserPlus">+</option>
+                        <option value="WasserMinus">-</option>
                     </select>
-                </div>
-                <div><input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text"></div>
-                <div><input name="JahresabrechnungAenderungsdatum" type="date" value="2019-03-09"></div>
+                    <input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text">
+                </span>
+                <span><input name="WasserJahresabrechnungAenderungsdatum" type="date" value="2019-03-09"></span>
             </div>
             <div>
-                <div><label for="WasserSparmassnahmeAuswahl">Sparmaßnahme</label></div>
-                <div>
-                    <select id="WasserSparmassnahmeAuswahl" name="WasserSparmassnahmeAuswahl">
-                        <option>Brauchwasserrückführung</option>
-                        <option>Grundwassernutzung</option>
-                        <option>Regenwassernutzung</option>
+                <span><label for="WasserSparmassnahme">Sparma&szlig;nahme</label></span>
+                <span>
+                    <select id="WasserSparmassnahme" name="WasserSparmassnahme">
+                        <option value="Brauchwasserrueckfuehrung">Brauchwasserr&uuml;ckf&uuml;hrung</option>
+                        <option value="Grundwassernutzung">Grundwassernutzung</option>
+                        <option value="Regenwassernutzung">Regenwassernutzung</option>
                     </select>
-                </div>
-                <div><label for="WasserSparmassnahmeInbetriebnahme">Inbetriebnahme</label></div>
-                <div><input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date" value="2017-04-12"></div>
+                </span>
+                <span><label for="WasserSparmassnahmeInbetriebnahme">Inbetriebnahme</label></span>
+                <span><input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date" value="2017-04-12"></span>
             </div>
             <!-- Daten hochladen -->
-            <div><input name="WasserSubmit" type="submit" value="Abschicken"></div>
+            <div><input name="WasserSpeichern" type="submit" value="Speichern"></div>
+        </div>
         </form>
-    </div>
+
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |
