@@ -22,6 +22,7 @@
         <a href="../login.html" rel="noopener noreferrer">Log-In</a>
     </header>
     <!-- Input Navigation Menu -->
+<<<<<<< HEAD
     <div class="input-navigation">
         <a class="active" href="../ressourcen/strom.html">Strom</a>
         <a href="../ressourcen/heizoel.html">Heiz&ouml;l</a>
@@ -32,72 +33,61 @@
         <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
     <!--Main Content-->
+    <form method="post" name="StromForm">
     <div class="content">
-        <div>
-            <span>Stromanbieter</span>
-            <span>Stromtarif</span>
-            <span>Verbrauch</span>
-            <span>Eingabedatum</span>
-            <span>CO2-Faktor</span>
-            <span>Abrechnungszeitraum</span>
-        </div>
-        <div>
-            <span>Stromtarif</span>
-            <span>
-                <select name="stromanbieter">
-                    <option>Vattenfall</option>
-                    <option>E.ON</option>
-                    <option>RWE</option>
-                    <option>Greenpeace</option>
-                    <option>Lichtblick</option>
-                </select>
-            </span>
-            <span>
-                <select name="stromtarif">
-                    <option>Business</option>
-                </select>
-            </span>
-            <span><input name="verbrauch1" type="text"> kWh</span>
-            <span><input name="datum1" type="date" value="2018-01-01"></span>
-            <span><input name="co2faktor1"></span>
-            <span>
-                <input name="zeitraum1" type="date" value="2017-01-01"> -
-                <input name="zeitraum2" type="date" value="2018-01-01">
-            </span>
-        </div>
-        <div>
-            <span>Jahresabrechnung</span>
-            <span><input name="verbrauch2" type="text"> kWh</span>
-            <span><input name="datum2" type="date" value="2019-02-04"></span>
-            <span><button name="jahresabrechnung">Jahresabrechnung</button></span>
-        </div>
-        <div>
-            <span>Photovoltaik</span>
-            <span><input name="verbrauch3" type="text"> kWh</span>
-            <span><input name="datum3" type="date" value="2019-02-04"></span>
-            <span><input name="co2faktor2" type="text"></span>
-            <span>
-                <input name="zeitraum3" type="date" value="2017-01-01"> -
-                <input name="zeitraum4" type="date" value="2018-02-01">
-            </span>
-        </div>
-        <div>
-            <span>Sparmaßnahme</span>
-            <span>
-                <select name="sparmassnahme">
-                    <option>LED</option>
-                </select>
-            </span>
-            <span>Inbetriebnahme</span>
-            <span><input name="inbetriebnahme" type="date" value="2016-01-01"></span>
-        </div>
-        <div>Aktuell / 2014</div>
-
-        <!-- Daten hochladen -->
-        <div>
-            <span><input name="update" type="submit" value="Abschicken"></span>
-        </div>
+    <div>
+        <span>Verbrauch</span>
+        <span>H&auml;ufigkeit</span>
+        <span>&Auml;nderungsdatum</span>
     </div>
+    <div>
+        <span><label for="StrommixAuswahl">Strommix</label></span>
+        <span>
+            <select id="StrommixAuswahl" name="StrommixAuswahl">
+                <option value="Standard">Standard</option>
+                <option value="Oekostrom">100% &Ouml;kostrom</option>
+            </select>
+        </span>
+        <span><input name="StrommixVerbrauch" type="text">kWh</span>
+        <span>
+            <select name="StromHaeufigkeit">
+                <option value="StromMonatlich">monatlich</option>
+                <option value="StromZweimonatlich">zweimonatlich</option>
+                <option value="StromJaehrlich">j&auml;hrlich</option>
+            </select>
+        </span>
+        <span><input name="StrommixAenderungsdatum" type="date"></span>
+    </div>
+    <div>
+        <span><label>Jahresabrechnung</label></span>
+        <span>
+            <select name="StromJahresabrechnungVorzeichen">
+              <option value="StromPlus">+</option>
+              <option value="StromMinus">-</option>
+        </select>
+            <input id="StromJahresabrechnungVerbrauch" name="StromJahresabrechnungVerbrauch" type="text">kWh
+        </span>
+        <span><input name="StromJahresabrechnungAenderungsdatum" type="date"></span>
+    </div>
+    <div>
+        <span><label for="StromSparmassnahme">Sparma&szlig;nahme</label></span>
+        <span>
+            <select id="StromSparmassnahme" name="StromSparmassnahme">
+                <option value="Photovoltaik">Photovoltaik</option>
+                <option value="LED">LED</option>
+            </select>
+        </span>
+        <span><label>Inbetriebnahme</label></span>
+        <span><input id="StromSparmassnahmeInbetriebnahme" name="StromSparmassnahmeInbetriebnahme" type="date"></span>
+    </div>
+
+    <!-- Daten hochladen -->
+    <div>
+        <span><input name="StromSpeichern" type="submit" value="Speichern"></span>
+    </div>
+    </div>
+    </form>
+
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |

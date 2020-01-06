@@ -2,6 +2,7 @@
 <html lang="de">
 
 <head>
+<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
@@ -32,37 +33,45 @@
         <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
     <!--Main Content-->
+  <form method="post" name="MassnahmeErstellenForm">
     <div class="content">
-        <div>
-            <span>
-            <h2>Ma&szlig;nahme erstellen</h2>
-            </span>
-            <div>
-            <input type="radio" name="action" value="reduction">Reduktion
-            <input type="radio" name="action" value="compensatin">Kompensation
-            </div>
-            <div>
-            <p>Name <input type="text" name="name"></p> 
-            </div>
-            <div>
-            <p>Einsparung <input type="text" name="saving"> in CO<sub>2</sub></p>
-            </div>
-            <div>
-            <p>Beschreibung <input type="text" name="description"></p>
-            </div>
-            <div>
-            <p>Datum der Durchführung <input type="date" name="date"></p>
-            </div>
-            <div>
-            <p>Maßnahme ist öffentlich einsehbar <input type="checkbox" name="public"></p>
-            </div>
-        </div>
-
-        <!-- Daten hochladen -->
-        <div>
-            <span><input name="update" type="submit" value="Erstellen"></span>
-        </div>
+    <div>
+      <h2>Ma&szlignahme erstellen</h2>
     </div>
+    <div>
+      <input type="radio" id="MassnahmeReduktion" name="MassnahmeArt" value="Reduktion">
+      <label for="MassnahmeReduktion">Reduktion</label>
+      <input type="radio" id="MassnahmeKompensation" name="MassnahmeArt" value="Kompensation">
+      <label for="MassnahmeKompensation">Kompensation</label>
+    </div>
+    <div>
+      <span><label for="MassnahmeName">Name</label></span>
+      <span><input id="MassnahmeName" name="MassnahmeName" type="text"></span>
+    </div>
+    <div>
+      <span><label for="MassnahmeEinsparung">Einsparung</label></span>
+      <span><input id="MassnahmeEinsparung" name="MassnahmeEinsparung" type="text">t CO<sub>2</sub></span>
+    </div>
+    <div>
+      <span><label for="MassnahmeBeschreibung">Beschreibung</label></span>
+      <span><input id="MassnahmeBeschreibung" name="MassnahmeBeschreibung" type="text"></span>
+    </div>
+    <div>
+      <span><label for="MassnahmeDatum">Datum der Inbetriebnahme</label></span>
+      <span><input id="MassnahmeDatum" name="MassnahmeDatum" type="date"></span>
+    </div>
+    <div>
+      <span><label for="MassnahmeOeffentlich">Ma&szlig;nahme ist &ouml;ffentlich einsehbar</label></span>
+      <span><input type="checkbox" id="MassnahmeOeffentlich" name="MassnahmeOeffentlich"></span>
+    </div>
+
+  <!-- Daten hochladen -->
+  <div>
+    <span><input name="MassnahmeErstellen" type="submit" value="Erstellen"></span>
+  </div>
+  </div>
+  </form>
+
     <!-- Footer -->
     <footer>
         <a href="./faq" rel="noopener noreferrer">FAQ</a> |
