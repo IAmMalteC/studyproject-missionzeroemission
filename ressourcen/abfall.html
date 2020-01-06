@@ -2,128 +2,146 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Abfall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+    <title>NEMo - Abfall</title>
 </head>
 <body>
-<!-- Main Header -->
-<div>
-    <iframe src="../module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>
-<!-- Input Navigation Menu -->
-<div>
-    <iframe src="../module/inputMenuNavi.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>
+    <!-- Header -->
+    <header>
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a href="../index.html" rel="noopener noreferrer">Startseite</a>
+        <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
+        <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
+        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        <a href="../profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="../login.html" rel="noopener noreferrer">Log-In</a>
+    </header>
+    <!-- Input Navigation Menu -->
+    <div class="input-navigation">
+        <a href="../ressourcen/strom.html">Strom</a>
+        <a href="../ressourcen/heizoel.html">Heiz&ouml;l</a>
+        <a href="../ressourcen/erdgas.html">Gas</a>
+        <a href="../ressourcen/wasser.html">Wasser</a>
+        <a class="active" href="../ressourcen/abfall.html">Abfall</a>
+        <a href="../ressourcen/neue-massnahme.html">Kompensationsma&szlig;nahme</a>
+        <a href="../ressourcen/umsatz.html">Umsatz</a>
+    </div>
+    <!--Main Content-->
+    <div class="content">
+        <div>
+        <span>Menge</span>
+        <span>H&auml;ufigkeit</span>
+        <span>&Auml;nderungsdatum </span>
+        </div>
+        <!-- Restmull -->
+        <div>
+        <span>Restm&uuml;ll</span>
+        <span> <input type="text" name="RestmuellInput" > </span>
+        <span>l</span>
+        <span>
+            <select>
+            <option>Monatlich</option>
+            <option>J&auml;hrlich</option>
+            </select>
+        </span>
+        <span> <input type="date" name="RestmeullDate"> </span>
+        </div>
 
-<div>
-  <span>Menge</span>
-  <span>H&auml;ufigkeit</span>
-  <span>&Auml;nderungsdatum </span>
-</div>
-<!-- Restmull -->
-<div>
-  <span>Restm&uuml;ll</span>
-  <span> <input type="text" name="RestmuellInput" > </span>
-  <span>l</span>
-  <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
-    </select>
-  </span>
-  <span> <input type="date" name="RestmeullDate"> </span>
-</div>
+        <!-- Wertstoff -->
+        <div>
+        <span>Wertstoff</span>
+        <span> <input type="text" name="WertstoffInput"> </span>
+        <span>l</span>
+        <span>
+            <select>
+            <option>Monatlich</option>
+            <option>J&auml;hrlich</option>
+            </select>
+        </span>
+        <span> <input type="date" name="WertstoffDate"> </span>
+        </div>
 
-<!-- Wertstoff -->
-<div>
-  <span>Wertstoff</span>
-  <span> <input type="text" name="WertstoffInput"> </span>
-  <span>l</span>
-  <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
-    </select>
-  </span>
-  <span> <input type="date" name="WertstoffDate"> </span>
-</div>
+        <!-- Biogut -->
+        <div>
+        <span>Biogut</span>
+        <span> <input type="text" name="BiogutInput" > </span>
+        <span>l</span>
+        <span>
+            <select>
+            <option>Monatlich</option>
+            <option>J&auml;hrlich</option>
+            </select>
+        </span>
+        <span> <input type="date"> </span>
+        </div>
 
-<!-- Biogut -->
-<div>
-  <span>Biogut</span>
-  <span> <input type="text" name="BiogutInput" > </span>
-  <span>l</span>
-  <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
-    </select>
-  </span>
-  <span> <input type="date"> </span>
-</div>
+        <!--Papier -->
+        <div>
+        <span>Papier</span>
+        <span> <input type="text" > </span>
+        <span>l</span>
+        <span>
+            <select>
+            <option>Monatlich</option>
+            <option>J&auml;hrlich</option>
+            </select>
+        </span>
+        <span> <input type="date"> </span>
+        </div>
 
-<!--Papier -->
-<div>
-  <span>Papier</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
-  <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
-    </select>
-  </span>
-  <span> <input type="date"> </span>
-</div>
+        <!-- Glas -->
+        <div>
+        <span>Glas</span>
+        <span> <input type="text" > </span>
+        <span>l</span>
+        <span>
+            <select>
+            <option>Monatlich</option>
+            <option>J&auml;hrlich</option>
+            </select>
+        </span>
+        <span> <input type="date"> </span>
+        </div>
 
-<!-- Glas -->
-<div>
-  <span>Glas</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
-  <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
-    </select>
-  </span>
-  <span> <input type="date"> </span>
-</div>
+        <!-- Sondermüll -->
+        <div>
+        <span>Sonderm&uuml;ll</span>
+        <span> <input type="text" > </span>
+        <span>l</span>
+        <span>
+            <select>
+            <option>Monatlich</option>
+            <option>J&auml;hrlich</option>
+            </select>
+        </span>
+        <span> <input type="date"> </span>
+        </div>
 
-<!-- Sondermüll -->
-<div>
-  <span>Sonderm&uuml;ll</span>
-  <span> <input type="text" > </span>
-  <span>l</span>
-  <span>
-    <select>
-      <option>Monatlich</option>
-      <option>J&auml;hrlich</option>
-    </select>
-  </span>
-  <span> <input type="date"> </span>
-</div>
+        <!-- Sparmaßnahmen  -->
+        <div>
+        <span>
+            <select>
+                <option>Mehrwegverpackung</option>
+                <option>Single-Use Package</option>
+            </select>
+        </span>
+        <span>inbetriebnahme</span>
+        <span><input type="date"></span>
+        </div>
 
-<!-- Sparmaßnahmen  -->
-<div>
-  <span>
-    <select>
-      <option>Mehrwegverpackung</option>
-      <option>Single-Use Package</option>
-    </select>
-  </span>
-  <span>inbetriebnahme</span>
-  <span><input type="date"></span>
-</div>
-
-<!-- Daten hochladen -->
-<div>
-    <span><input name="update" type="submit" value="Abschicken"></span>
-</div>
-
-<!-- Footer -->
-<div>
-  <iframe src="../module/footer.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-</div>
-
+        <!-- Daten hochladen -->
+        <div>
+            <span><input name="update" type="submit" value="Abschicken"></span>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <a href="./faq" rel="noopener noreferrer">FAQ</a> |
+        <a href="https://www.motzener-strasse.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> |
+        <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </footer>
 </body>
 </html>

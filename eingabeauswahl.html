@@ -3,57 +3,69 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
     <title>NEMo - Firmen&uuml;bersicht</title>
 </head>
 
 <body>
-    <!-- Main Header -->
-    <div>
-        <iframe src="./module/header.html"
-            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    <!-- Header -->
+    <header>
+        <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a href="./index.html" rel="noopener noreferrer">Startseite</a>
+        <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a class="active" href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
+        <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
+        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="./login.html" rel="noopener noreferrer">Log-In</a>
+    </header>
+    <!-- Main-->
+    <div class="content">
+        <form action="" name="FirmennameAnzeigen" method="get">
+            <!-- hier steht dann der Firmenname mit der Metode-->
+            <h1>Meine Firma</h1>
+        </form>
+        <hr>
+        <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
+            <!--
+            Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
+            Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
+            -->
+            <div>
+                <a href="./ressourcen/strom.html">Strom</a>
+            </div>
+            <div>
+                <a href="./ressourcen/heizoel.html">Heiz&ouml;l</a>
+            </div>
+            <div>
+                <a href="./ressourcen/gas.html">Gas</a>
+            </div>
+            <div>
+                <a href="./ressourcen/wasser.html">Wasser</a>
+            </div>
+            <div>
+                <a href="./ressourcen/abfall.html">Abfall</a>
+            </div>
+            <div>
+                <a href="./ressourcen/neue-massnahme.html">neue Ma&szlig;nahme</a>
+            </div>
+            <!-- Die folgenden zwei haben keinen Balken-->
+            <div>
+                <a href="./ressourcen/umsatz.html">umsatz eintragen</a>
+            </div>
+            <div>
+                <a href="./co2schaetzung.html">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
+            </div>
+        </form>
     </div>
-    <form action="" name="FirmennameAnzeigen" method="get">
-        <!-- hier steht dann der Firmenname mit der Metode-->
-        <h1>Meine Firma</h1>
-    </form>
-    <hr>
-    <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
-        <!--
-        Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
-        Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
-        -->
-        <div>
-            <a href="./ressourcen/strom.html">Strom</a>
-        </div>
-        <div>
-            <a href="./ressourcen/heizoel.html">Heiz&ouml;l</a>
-        </div>
-        <div>
-            <a href="./ressourcen/gas.html">Gas</a>
-        </div>
-        <div>
-            <a href="./ressourcen/wasser.html">Wasser</a>
-        </div>
-        <div>
-            <a href="./ressourcen/abfall.html">Abfall</a>
-        </div>
-        <div>
-            <a href="./ressourcen/neue-massnahme.html">neue Ma&szlig;nahme</a>
-        </div>
-        <!-- Die folgenden zwei haben keinen Balken-->
-        <div>
-            <a href="./ressourcen/umsatz.html">umsatz eintragen</a>
-        </div>
-        <div>
-            <a href="./co2schaetzung.html">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
-        </div>
-    </form>
-
     <!-- Footer -->
-    <div>
-        <iframe src="./module/footer.html"
-            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-    </div>
+    <footer>
+        <a href="./faq" rel="noopener noreferrer">FAQ</a> |
+        <a href="https://www.motzener-strasse.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> |
+        <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </footer>
 </body>
 
 </html>

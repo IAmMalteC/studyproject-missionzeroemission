@@ -1,0 +1,134 @@
+/*
+Colorscheme
+nemo dark green #466b52
+nemo light green #6a8e5b
+light yellow #d9d787
+darker yellow #d2c055
+orange #b14f19
+
+We are just building for two sreens. Phones and Tables/Desktops(Bigger then 689px)
+*/
+/*!!Global parameters!!*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: PTSansRegular,Arial,Helvetica,sans-serif;
+}
+/* To center the grid */
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+} 
+/* Header */
+header, .input-navigation {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-shrink: 0;
+    align-items: center;
+    text-align: center;
+}
+header a:link, header a:visited, .input-navigation a:link, .input-navigation a:visited {
+    background-color: #fff;
+    color: #466B52;
+    padding: 5px 10px;
+    text-align: center;
+    border-bottom: 4px solid #466B52;
+}
+header a:hover, header a:active, .input-navigation a:hover, .input-navigation a:active {
+    background-color: #466B52;
+    color: #fff;
+    transition:transform.2s ease-in-out;
+    border-bottom: 4px solid #466B52;
+}
+/*active shows where the user is - navigation */
+.active {
+    color: #fff                 !important;
+    background-color: #466B52   !important;
+}
+header #logo {
+    border: none;
+    background-color: none     !important;
+    border-bottom: none;
+    padding: 0;
+}
+header #logo:hover{
+    background-color: #fff;
+    border-bottom: none;
+}
+header #logo img{
+    width: 130px;
+    height: 116px;
+    border:none;
+}
+/* footer */
+footer {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: #B2B2B2;
+    padding: 5px 0px;
+}
+/* Main content */
+.content {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 2;
+    justify-content: space-around;
+
+    align-items: center;
+    padding: 15px;
+}
+.content .goal-tracker {
+    display: none;
+}
+
+/*links*/
+a{
+    text-decoration: none;
+}
+a:link{
+    color: #466B52;
+}
+a:visited{
+    color: #6a8e5b;
+}
+a:hover{
+    color: #6A8E5B;
+}
+a:active{
+    color: #6a8e5b;
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 689px) {
+    /*header*/  
+    header{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    /* Input Navigation */
+    .input-navigation{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+    }
+    /*footer*/
+    footer {
+        padding: 15px 0px;
+    }
+    /*content*/
+    /*ja natürlich ist das so noch nicht richtig*/
+    content {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-content: center;
+    }
+    .content .goal-tracker {
+        display: block;
+    }
+}

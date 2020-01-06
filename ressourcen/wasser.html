@@ -3,83 +3,101 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Wasser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+    <title>NEMo - Wasser</title>
 </head>
 
 <body>
-    <!-- Main Header -->
-    <div>
-        <iframe src="../module/header.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-    </div>
+    <!-- Header -->
+    <header>
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a href="../index.html" rel="noopener noreferrer">Startseite</a>
+        <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
+        <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
+        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        <a href="../profil.html" rel="noopener noreferrer">Mein Profil</a>
+        <a href="../login.html" rel="noopener noreferrer">Log-In</a>
+    </header>
     <!-- Input Navigation Menu -->
-    <div>
-        <iframe src="../module/inputMenuNavi.html"
-            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+    <div class="input-navigation">
+        <a href="../ressourcen/strom.html">Strom</a>
+        <a href="../ressourcen/heizoel.html">Heiz&ouml;l</a>
+        <a href="../ressourcen/erdgas.html">Gas</a>
+        <a class="active" href="../ressourcen/wasser.html">Wasser</a>
+        <a href="../ressourcen/abfall.html">Abfall</a>
+        <a href="../ressourcen/neue-massnahme.html">Kompensationsma&szlig;nahme</a>
+        <a href="../ressourcen/umsatz.html">Umsatz</a>
     </div>
-    <form method="post" name="WasserForm">
-        <div>
-            <div>Menge</div>
-            <div>Häufigkeit</div>
-            <div>Änderungsdatum</div>
-        </div>
-        <div>
-            <div><label for="TrinkwasserMenge">Trinkwasser</label></div>
-            <div><input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text">L</div>
+    <!--Main Content-->
+    <div class="content">
+        <form method="post" name="WasserForm">
             <div>
-                <select name="TrinkwasserHaeufigkeit">
-                    <option>1-monatlich</option>
-                    <option>2-monatlich</option>
-                    <option>3-monatlich</option>
-                    <option>4-monatlich</option>
-                </select>
+                <div>Menge</div>
+                <div>Häufigkeit</div>
+                <div>Änderungsdatum</div>
             </div>
-            <div><input name="TrinkwasserAenderungsdatum" type="date" value="2019-03-09"></div>
-        </div>
-        <div>
-            <div><label for="AbwasserMenge">Abwasser</label></div>
-            <div><input id="AbwasserMenge" name="AbwasserMenge" type="text">L</div>
             <div>
-                <select name="AbwasserHaeufigkeit">
-                    <option>1-monatlich</option>
-                    <option>2-monatlich</option>
-                    <option>3-monatlich</option>
-                    <option>4-monatlich</option>
-                </select>
+                <div><label for="TrinkwasserMenge">Trinkwasser</label></div>
+                <div><input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text">L</div>
+                <div>
+                    <select name="TrinkwasserHaeufigkeit">
+                        <option>1-monatlich</option>
+                        <option>2-monatlich</option>
+                        <option>3-monatlich</option>
+                        <option>4-monatlich</option>
+                    </select>
+                </div>
+                <div><input name="TrinkwasserAenderungsdatum" type="date" value="2019-03-09"></div>
             </div>
-            <div><input name="AbwasserAenderungsdatum" type="date" value="2019-03-09"></div>
-        </div>
-        <div>
-            <div><label for="WasserJahresabrechnung">Jahresabrechnung</label></div>
             <div>
-                <select name="WasserJahresabrechnungVorzeichen">
-                    <option>+</option>
-                    <option>-</option>
-                </select>
+                <div><label for="AbwasserMenge">Abwasser</label></div>
+                <div><input id="AbwasserMenge" name="AbwasserMenge" type="text">L</div>
+                <div>
+                    <select name="AbwasserHaeufigkeit">
+                        <option>1-monatlich</option>
+                        <option>2-monatlich</option>
+                        <option>3-monatlich</option>
+                        <option>4-monatlich</option>
+                    </select>
+                </div>
+                <div><input name="AbwasserAenderungsdatum" type="date" value="2019-03-09"></div>
             </div>
-            <div><input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text"></div>
-            <div><input name="JahresabrechnungAenderungsdatum" type="date" value="2019-03-09"></div>
-        </div>
-        <div>
-            <div><label for="WasserSparmassnahmeAuswahl">Sparmaßnahme</label></div>
             <div>
-                <select id="WasserSparmassnahmeAuswahl" name="WasserSparmassnahmeAuswahl">
-                    <option>Brauchwasserrückführung</option>
-                    <option>Grundwassernutzung</option>
-                    <option>Regenwassernutzung</option>
-                </select>
+                <div><label for="WasserJahresabrechnung">Jahresabrechnung</label></div>
+                <div>
+                    <select name="WasserJahresabrechnungVorzeichen">
+                        <option>+</option>
+                        <option>-</option>
+                    </select>
+                </div>
+                <div><input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text"></div>
+                <div><input name="JahresabrechnungAenderungsdatum" type="date" value="2019-03-09"></div>
             </div>
-            <div><label for="WasserSparmassnahmeInbetriebnahme">Inbetriebnahme</label></div>
-            <div><input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date" value="2017-04-12"></div>
-        </div>
-        <!-- Daten hochladen -->
-        <div><input name="WasserSubmit" type="submit" value="Abschicken"></div>
-    </form>
-
+            <div>
+                <div><label for="WasserSparmassnahmeAuswahl">Sparmaßnahme</label></div>
+                <div>
+                    <select id="WasserSparmassnahmeAuswahl" name="WasserSparmassnahmeAuswahl">
+                        <option>Brauchwasserrückführung</option>
+                        <option>Grundwassernutzung</option>
+                        <option>Regenwassernutzung</option>
+                    </select>
+                </div>
+                <div><label for="WasserSparmassnahmeInbetriebnahme">Inbetriebnahme</label></div>
+                <div><input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date" value="2017-04-12"></div>
+            </div>
+            <!-- Daten hochladen -->
+            <div><input name="WasserSubmit" type="submit" value="Abschicken"></div>
+        </form>
+    </div>
     <!-- Footer -->
-    <div>
-        <iframe src="../module/footer.html"
-            onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-    </div>
+    <footer>
+        <a href="./faq" rel="noopener noreferrer">FAQ</a> |
+        <a href="https://www.motzener-strasse.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> |
+        <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </footer>
 </body>
 
 </html>

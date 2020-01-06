@@ -2,69 +2,80 @@
 <html lang="de">
 
 <head>
-  <meta charset="UTF-8">
-  <title>NEMo - Ma&szlig;nahmen Katalog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+    <title>NEMo - Ma&szlig;nahmen Katalog</title>
 </head>
 
 <body>
-  <!-- Header -->
-  <div>
-    <iframe src="./module/header.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
+    <!-- Header -->
+    <header>
+            <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
+            <a href="./index.html" rel="noopener noreferrer">Startseite</a>
+            <a class="active" href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+            <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
+            <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
+            <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+            <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
+            <a href="./login.html" rel="noopener noreferrer">Log-In</a>
+        </header>
+    <!-- Main -->
+    <div class="content">
+        <div>
+            <!-- Hier wird die Tabelle angezeigt :
+            https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+            Sie ist Filterbar nach Unternehmen
+            -->    
+            <p>Ich bin nur ein ungen&uuml;gendes Beispiel</p>
+            <p>Hier w&auml;re dann ein Filter f&uuml;r verschiedene Unternehmen</p>
+            <table>
+            <!-- Main Row -->
+            <thead>
+                <tr>
+                <th>Katagorie</th>
+                <th>Jahr</th>
+                <th>Name</th>
+                <th>Unternehmen</th>
+                <th>Kennzahlen</th>
+                <th>Beschreibung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- second Row -->
+            <tr>
+                <th>Strom</th>
+                <th>2016</th>
+                <th>PV Installiert</th>
+                <th>M&auml;rkische Kiste</th>
+                <th>350 kWh</th>
+                <th>Blah blah</th>
+            </tr>
+            <!-- 3rd Row -->
+            <tr>
+                <th>Katagorie</th>
+                <th>Jahr</th>
+                <th>Name</th>
+                <th>Unternehmen</th>
+                <th>Kennzahlen</th>
+                <th>Beschreibung</th>
+            </tr>
+            </tbody>
+            </table>
+        </div>
 
-  <div>
-    <!-- Hier wird die Tabelle angezeigt :
-    https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
-    Sie ist Filterbar nach Unternehmen
-    -->    
-    <p>Ich bin nur ein ungen&uuml;gendes Beispiel</p>
-    <p>Hier w&auml;re dann ein Filter f&uuml;r verschiedene Unternehmen</p>
-    <table>
-      <!-- Main Row -->
-      <thead>
-        <tr>
-          <th>Katagorie</th>
-          <th>Jahr</th>
-          <th>Name</th>
-          <th>Unternehmen</th>
-          <th>Kennzahlen</th>
-          <th>Beschreibung</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- second Row -->
-      <tr>
-        <th>Strom</th>
-        <th>2016</th>
-        <th>PV Installiert</th>
-        <th>M&auml;rkische Kiste</th>
-        <th>350 kWh</th>
-        <th>Blah blah</th>
-      </tr>
-      <!-- 3rd Row -->
-      <tr>
-        <th>Katagorie</th>
-        <th>Jahr</th>
-        <th>Name</th>
-        <th>Unternehmen</th>
-        <th>Kennzahlen</th>
-        <th>Beschreibung</th>
-      </tr>
-      </tbody>
-    </table>
-  </div>
 
-
-  <div>
-    <a href="./ressourcen/neueMassnahme.html" rel="noopener noreferrer">Maßnahmen erstellen</a>
-  </div>
-
-  <!-- Footer -->
-  <div>
-    <iframe src="./module/footer.html"
-      onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
-  </div>
+        <div>
+            <a href="./ressourcen/neueMassnahme.html" rel="noopener noreferrer">Maßnahmen erstellen</a>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <a href="./faq" rel="noopener noreferrer">FAQ</a> |
+        <a href="https://www.motzener-strasse.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> |
+        <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </footer>
 
 </body>
 
