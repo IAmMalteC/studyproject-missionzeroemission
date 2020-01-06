@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 function getConnection() {
   return mariadb.createConnection({
     host: "141.45.92.87",
-    user: "root",
+    user: "phpmyadmin",
     password: "r2qUh75W",
-    database: "nemodb"
+    database: "NemoDB"
   });
 }
 
@@ -21,7 +21,7 @@ app.post('profil.html', (req , res) => {
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
 
-  const queryString = "INSERT INTO NemoDB.Profil_TB VALUES (default,?,?,?,?,?,?,?,?,?)";
+  const queryString = "INSERT INTO NemoDB.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {} );
   if (err) {
     Console.log ("Failed to update user data..." + err);
