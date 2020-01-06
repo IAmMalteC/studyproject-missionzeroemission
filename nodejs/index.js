@@ -7,14 +7,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-function getConnection() {
-  return mariadb.createConnection({
-    host: "141.45.92.87",
-    user: "phpmyadmin",
-    password: "r2qUh75W",
-    database: "NemoDB"
-  });
-}
 
 app.post('profil.html', (req , res) => {
   console.log("First name: " + req.body.VornameInput);
@@ -31,6 +23,16 @@ app.post('profil.html', (req , res) => {
   console.log("Inserted new user");
   res.end()
 });
+
+function getConnection() {
+  return mariadb.createConnection({
+    host: "141.45.92.87",
+    user: "root",
+    password: "r2qUh75W",
+    database: "NemoDB"
+  });
+}
+
 
 app.listen(3306);
 
