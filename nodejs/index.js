@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.post('profil.html', (req , res) => {
+  console.log("Tryint to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
@@ -34,7 +35,7 @@ function getConnection() {
 }
 
 
-app.listen(3306);
+app.listen(8080);
 
 //app.post("/profil.html" , function (req , res) {
 //  console.log(req.body);
