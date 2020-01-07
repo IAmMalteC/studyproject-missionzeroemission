@@ -2,11 +2,19 @@
 const express = require('express');
 const app = express();
 const mariadb = require('mariadb');
+const morgan = require ('morgan')
 const bodyParser = require('body-parser');
+
+app.use(morgan('combined'))
 //body Parser is a middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+app.get("/", (req, res) => {
+  console.log("Responding to root route")
+  res.send("helloooo...")
+})
 
 app.post('profil.html', (req , res) => {
   console.log("Tryint to log in..")
