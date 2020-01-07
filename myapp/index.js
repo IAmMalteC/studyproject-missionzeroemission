@@ -1,23 +1,30 @@
-
+//these are the dependence
 const express = require('express');
 const app = express();
 const mariadb = require('mariadb');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
+const path = require('path')
 
+//shows whast happening on the server and post it on the terminal
 app.use(morgan('combined'))
+
 //body Parser is a middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(path.resolve(__dirname, 'public')));
 
-app.get("/", (req, res) => {
-  console.log("Responding to root route")
-  res.send("helloooo...")
+app.get("/" , function(req , res , next){
+  res.render('profil');
 })
+//app.get("/", (req, res) => {
+//  console.log("Responding to root route")
+//  res.send("helloooo...")
+//})1
 
 app.post('profil.html', (req , res) => {
-  console.log("Tryint to log in..")
+  console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
@@ -29,6 +36,7 @@ app.post('profil.html', (req , res) => {
     res.sendStatus(500);
     return
   }
+  res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
   res.end()
 });
@@ -37,8 +45,7 @@ function getConnection() {
   return mariadb.createConnection({
     host: "localhost",
     user: "root",
-    password: "Refresh123",
-    database: "nemodb"
+    password: ""
   });
 }
 
