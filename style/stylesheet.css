@@ -77,6 +77,11 @@ footer {
     flex-grow: 2;
     align-items: flex-start;
     padding: 15px;
+
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /* text-align: center; */
 }
 .content .goal-tracker {
     display: none;
@@ -113,6 +118,16 @@ input[type=text], input[type=password], input[type=email], input[type=tel] {
     transition:transform.2s ease-in-out;
     border: 4px solid #466B52;
     border-radius: 25px;
+}
+/*erbt vom .button im html verwenden mit class="button button-cancel"*/
+.button-cancel {
+    color: red          !important;
+    border: 4px solid red;
+}
+.button-cancel:hover {
+    background-color: red;
+    color: white        !important;
+    border: 4px solid red;
 }
 /*links*/
 a{
