@@ -73,17 +73,30 @@ footer {
 /* Main content */
 .content {
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     flex-grow: 2;
-    justify-content: space-around;
-
-    align-items: center;
+    align-items: flex-start;
     padding: 15px;
 }
 .content .goal-tracker {
     display: none;
 }
-
+/* buttons */
+.button {
+    background-color: #fff;
+    color: #466B52;
+    padding: 5px 10px;
+    text-align: center;
+    border: 4px solid #466B52;
+    border-radius: 25px;
+}
+.button:hover {
+    background-color: #466B52;
+    color: #fff;
+    transition:transform.2s ease-in-out;
+    border: 4px solid #466B52;
+    border-radius: 25px;
+}
 /*links*/
 a{
     text-decoration: none;
@@ -108,7 +121,7 @@ a:active{
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     /* Input Navigation */
     .input-navigation{
@@ -122,11 +135,10 @@ a:active{
     }
     /*content*/
     /*ja natürlich ist das so noch nicht richtig*/
-    content {
+    .content {
         display: flex;
         flex-flow: row nowrap;
-        justify-content: space-evenly;
-        align-content: center;
+        justify-content: space-around;
     }
     .content .goal-tracker {
         display: block;
