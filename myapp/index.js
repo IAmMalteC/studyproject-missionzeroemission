@@ -6,8 +6,11 @@ const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
 
-//shows whast happening on the server and post it on the terminal
-app.use(morgan('combined'))
+//shows what is happening on the server and post it on the terminal(Logger)
+app.use(morgan('short'))
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 //body Parser is a middleware
 app.use(bodyParser.json());
