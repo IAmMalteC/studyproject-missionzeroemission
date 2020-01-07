@@ -15,6 +15,10 @@ We are just building for two sreens. Phones and Tables/Desktops(Bigger then 689p
     box-sizing: border-box;
     font-family: PTSansRegular,Arial,Helvetica,sans-serif;
 }
+/* text styling */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
 /* To center the grid */
 html, body {
     display: flex;
@@ -81,10 +85,17 @@ footer {
     width: auto;
     margin-left: auto;
     margin-right: auto;
-    /* text-align: center; */
 }
 .content .goal-tracker {
     display: none;
+}
+/* centers images */
+.img-center {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 /*input fields*/
 input[type=text], input[type=password], input[type=email], input[type=tel] {
