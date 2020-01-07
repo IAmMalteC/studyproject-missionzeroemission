@@ -5,19 +5,17 @@ const mariadb = require('mariadb');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 
-//its shows on the terminal how long does a request takes to load...
 app.use(morgan('combined'))
-
 //body Parser is a middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//show a respone on the server page(just so i can see that the server is running...)
+
 app.get("/", (req, res) => {
   console.log("Responding to root route")
   res.send("helloooo...")
 })
-//post request 
+
 app.post('profil.html', (req , res) => {
   console.log("Tryint to log in..")
   console.log("First name: " + req.body.VornameInput);
@@ -35,20 +33,14 @@ app.post('profil.html', (req , res) => {
   res.end()
 });
 
-
-
 function getConnection() {
   return mariadb.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "Refresh123",
     database: "nemodb"
   });
 }
-
-getConnection.query("SELECT * FROM nemodb" , (err , rows, fields) =>{
-  console.log("Data is fetched....")
-})
 
 
 app.listen(3003, ()=>{

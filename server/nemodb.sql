@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nemodb`
+-- Database: `NemoDB`
 --
-CREATE DATABASE IF NOT EXISTS `nemodb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `nemodb`;
+CREATE DATABASE IF NOT EXISTS `NemoDB` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `NemoDB`;
 
 -- --------------------------------------------------------
 
