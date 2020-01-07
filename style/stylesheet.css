@@ -91,7 +91,7 @@ input[type=text], input[type=password], input[type=email], input[type=tel] {
     box-sizing: border-box;
   }
 /* buttons */
-.button {
+.button, input[type=submit]{
     display: block;
     width: 100%;
     margin: 5px auto;
@@ -107,7 +107,7 @@ input[type=text], input[type=password], input[type=email], input[type=tel] {
 .button:visited {
     color: #466B52;
 }
-.button:hover {
+.button:hover, input[type=submit]:hover {
     background-color: #466B52;
     color: #fff;
     transition:transform.2s ease-in-out;
