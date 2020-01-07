@@ -81,14 +81,31 @@ footer {
 .content .goal-tracker {
     display: none;
 }
+/*input fields*/
+input[type=text], input[type=password], input[type=email], input[type=tel] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
 /* buttons */
 .button {
+    display: block;
+    width: 100%;
+    margin: 5px auto;
     background-color: #fff;
     color: #466B52;
     padding: 5px 10px;
     text-align: center;
     border: 4px solid #466B52;
     border-radius: 25px;
+    cursor: pointer;
+}
+/* Dadurch werden schon geklickte links in der gleichen Farbe angezeigt, wie noch nicht geklickte */
+.button:visited {
+    color: #466B52;
 }
 .button:hover {
     background-color: #466B52;
@@ -105,13 +122,13 @@ a:link{
     color: #466B52;
 }
 a:visited{
-    color: #6a8e5b;
+    color: #d2c055;
 }
 a:hover{
-    color: #6A8E5B;
+    color: #d2c055;
 }
 a:active{
-    color: #6a8e5b;
+    color: #d2c055;
 }
 
 /* Desktop Styles */
