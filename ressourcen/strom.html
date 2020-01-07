@@ -12,12 +12,13 @@
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png"
+                alt="NEMo Logo"></a>
         <a href="../index.html" rel="noopener noreferrer">Startseite</a>
         <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
         <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
         <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
-pus        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
         <a href="../profil.html" rel="noopener noreferrer">Mein Profil</a>
         <a href="../login.html" rel="noopener noreferrer">Log-In</a>
     </header>
@@ -34,56 +35,54 @@ pus        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-b
     <!--Main Content-->
     <div class="content">
         <form method="post" name="StromForm">
-        <div>
-            <span>Verbrauch</span>
-            <span>H&auml;ufigkeit</span>
-            <span>&Auml;nderungsdatum</span>
-        </div>
-        <div>
-            <span><label for="StrommixAuswahl">Strommix</label></span>
-            <span>
-                <select id="StrommixAuswahl" name="StrommixAuswahl">
-                    <option value="Standard">Standard</option>
-                    <option value="Oekostrom">100% &Ouml;kostrom</option>
-                </select>
-            </span>
-            <span><input name="StrommixVerbrauch" type="text">kWh</span>
-            <span>
-                <select name="StromHaeufigkeit">
-                    <option value="StromMonatlich">monatlich</option>
-                    <option value="StromZweimonatlich">zweimonatlich</option>
-                    <option value="StromJaehrlich">j&auml;hrlich</option>
-                </select>
-            </span>
-            <span><input name="StrommixAenderungsdatum" type="date"></span>
-        </div>
-        <div>
-            <span><label>Jahresabrechnung</label></span>
-            <span>
-                <select name="StromJahresabrechnungVorzeichen">
-                <option value="StromPlus">+</option>
-                <option value="StromMinus">-</option>
-            </select>
-                <input id="StromJahresabrechnungVerbrauch" name="StromJahresabrechnungVerbrauch" type="text">kWh
-            </span>
-            <span><input name="StromJahresabrechnungAenderungsdatum" type="date"></span>
-        </div>
-        <div>
-            <span><label for="StromSparmassnahme">Sparma&szlig;nahme</label></span>
-            <span>
-                <select id="StromSparmassnahme" name="StromSparmassnahme">
-                    <option value="Photovoltaik">Photovoltaik</option>
-                    <option value="LED">LED</option>
-                </select>
-            </span>
-            <span><label>Inbetriebnahme</label></span>
-            <span><input id="StromSparmassnahmeInbetriebnahme" name="StromSparmassnahmeInbetriebnahme" type="date"></span>
-        </div>
+            <div class="child-ressourcen">
+                <div><label for="StrommixAuswahl">Strommix</label></div>
+                <div>
+                    <select id="StrommixAuswahl" name="StrommixAuswahl">
+                        <option value="Standard">Standard</option>
+                        <option value="Oekostrom">100% &Ouml;kostrom</option>
+                    </select>
+                <input name="StrommixVerbrauch" type="text"> kWh</div>
+                <div>
+                    <label for="StromHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="StromHaeufigkeit">
+                        <option value="StromMonatlich">monatlich</option>
+                        <option value="StromZweimonatlich">zweimonatlich</option>
+                        <option value="StromJaehrlich">j&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="StrommixAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="StrommixAenderungsdatum" type="date"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><label for="StromJahresabrechnung">Jahresabrechnung</label></div>
+                <div>
+                    <label for="StromJahresabrechnungVorzeichen">Vorzeichen</label>
+                    <select name="StromJahresabrechnungVorzeichen">
+                        <option value="StromPlus">+</option>
+                        <option value="StromMinus">-</option>
+                    </select>
+                    <input id="StromJahresabrechnung" name="StromJahresabrechnung" type="text"> kWh
+                </div>
+                <div><label for="StromJahresabrechnungAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="StromJahresabrechnungAenderungsdatum" type="date"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><label for="StromSparmassnahme">Sparma&szlig;nahme</label>
+                    <select id="StromSparmassnahme" name="StromSparmassnahme">
+                        <!-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED -->
+                        <option value="Photovoltaik">Photovoltaik</option>
+                        <option value="LED">LED</option>
+                    </select>
+                </div>
+                <div><label>Inbetriebnahme</label>
+                    <input id="StromSparmassnahmeInbetriebnahme" name="StromSparmassnahmeInbetriebnahme" type="date"></div>
+            </div>
 
-        <!-- Daten hochladen -->
-        <div>
-            <span><input name="StromSpeichern" type="submit" value="Speichern"></span>
-        </div>
+            <!-- Daten hochladen -->
+            <div>
+                <div><input name="StromSpeichern" type="submit" value="Speichern"></div>
+            </div>
         </form>
     </div>
 

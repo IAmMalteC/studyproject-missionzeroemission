@@ -76,7 +76,6 @@ footer {
 }
 /* Main content */
 .content {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
     flex-grow: 2;
@@ -96,7 +95,7 @@ footer {
     margin-bottom: 25px;
     border-bottom: 4px solid #466B52;
 }
-.child-ressourcen input[type=text], .child-ressourcen input[type=password], .child-ressourcen input[type=email], .child-ressourcen input[type=tel], .child-ressourcen input[type=date] {
+.child-ressourcen input[type=text], .child-ressourcen input[type=password], .child-ressourcen input[type=email], .child-ressourcen input[type=tel],.child-ressourcen input[type=number], .child-ressourcen input[type=date] {
     width: 115px;
     padding: 12px 2px;
     margin: 4px auto;
@@ -116,7 +115,7 @@ footer {
     
 }
 /*input fields*/
-input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date] {
+input[type=text], input[type=password], input[type=email], input[type=tel],input[type=number], input[type=date] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
