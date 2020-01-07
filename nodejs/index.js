@@ -27,15 +27,17 @@ app.post('profil.html', (req , res) => {
 
 function getConnection() {
   return mariadb.createConnection({
-    host: "141.45.92.87",
+    host: "localhost",
     user: "root",
-    password: "r2qUh75W",
-    database: "NemoDB"
+    password: "Refresh123",
+    database: "nemodb"
   });
 }
 
 
-app.listen(8080);
+app.listen(3003, ()=>{
+  console.log("server is up and listening on port 3003...")
+})
 
 //app.post("/profil.html" , function (req , res) {
 //  console.log(req.body);
