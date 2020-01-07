@@ -52,7 +52,7 @@
         </form>
         <form action="/profil.html" name="AccountInformation" method="POST">
             <div>
-                <h1>Accountinformationen</h1>
+                <h1>Accountinformation</h1>
             </div>
             <div>
                 <label for="Benutzername">Benutzername</label>
@@ -65,7 +65,7 @@
                 <label for="Passwort">Passwort</label>
                 <input id = "Passwort" name="PasswortInput" type="password">
                 <label for="PasswortWiederholen">Passwort wiederholen</label>
-                <input id ="PasswortWiederholen" name="PasswortWiederholenInput" type="password">
+                <input id ="PasswortWiederholen" required name="PasswortWiederholenInput" type="password">
             </div>
             <div>
                 <input class="button" name="AccountInformationSpeichernInput" type="submit" value="Speichern">
@@ -81,6 +81,23 @@
         <a href="https://www.motzener-strasse.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> |
         <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
     </footer>
+
+    <!-- Password Validation -- ggf auslagern! -->
+    <script>
+        var password = document.getElementById("Passwort")
+        , confirm_password = document.getElementById("PasswortWiederholen");
+    
+        function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+        }
+    
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
 </body>
 
 </html>
