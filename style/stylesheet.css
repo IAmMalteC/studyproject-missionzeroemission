@@ -106,6 +106,15 @@ footer {
     margin: 4px auto;
     border: 1px solid #ccc;
 }
+.neue-massnahme{
+    flex: 0 1 0;
+}
+/* .neue-massnahme input[type=text], .neue-massnahme input[type=password], .neue-massnahme input[type=email], .neue-massnahme input[type=tel], .neue-massnahme input[type=number], .neue-massnahme input[type=date] {
+    width: 115px;
+    padding: 12px 2px;
+    margin: 4px auto;
+    border: 1px solid #ccc;
+} */
 /* centers images */
 .img-center {
     display: block;
@@ -115,13 +124,13 @@ footer {
     
 }
 /*input fields*/
-input[type=text], input[type=password], input[type=email], input[type=tel],input[type=number], input[type=date] {
+textarea, input[type=text], input[type=password], input[type=email], input[type=tel],input[type=number], input[type=date] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-  }
+}
 /* buttons */
 .button, input[type=submit]{
     display: block;

@@ -12,7 +12,8 @@
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png"
+                alt="NEMo Logo"></a>
         <a href="../index.html" rel="noopener noreferrer">Startseite</a>
         <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
         <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
@@ -33,42 +34,45 @@
     </div>
     <!--Main Content-->
     <div class="content">
-    <form method="post" name="MassnahmeErstellenForm">
-        <div>
-            <h2>Ma&szlignahme erstellen</h2>
-        </div>
-        <div>
-            <input type="radio" id="MassnahmeReduktion" name="MassnahmeArt" value="Reduktion">
-            <label for="MassnahmeReduktion">Reduktion</label>
-            <input type="radio" id="MassnahmeKompensation" name="MassnahmeArt" value="Kompensation">
-            <label for="MassnahmeKompensation">Kompensation</label>
-        </div>
-        <div>
-            <span><label for="MassnahmeName">Name</label></span>
-            <span><input id="MassnahmeName" name="MassnahmeName" type="text"></span>
-        </div>
-        <div>
-            <span><label for="MassnahmeEinsparung">Einsparung</label></span>
-            <span><input id="MassnahmeEinsparung" name="MassnahmeEinsparung" type="text">t CO<sub>2</sub></span>
-        </div>
-        <div>
-            <span><label for="MassnahmeBeschreibung">Beschreibung</label></span>
-            <span><input id="MassnahmeBeschreibung" name="MassnahmeBeschreibung" type="text"></span>
-        </div>
-        <div>
-            <span><label for="MassnahmeDatum">Datum der Inbetriebnahme</label></span>
-            <span><input id="MassnahmeDatum" name="MassnahmeDatum" type="date"></span>
-        </div>
-        <div>
-            <span><label for="MassnahmeOeffentlich">Ma&szlig;nahme ist &ouml;ffentlich einsehbar</label></span>
-            <span><input type="checkbox" id="MassnahmeOeffentlich" name="MassnahmeOeffentlich"></span>
-        </div>
+        <!-- if the form id is changed, please change the value for form in the textarea ~line58 -->
+        <form method="post" name="MassnahmeErstellenForm" id="MassnahmeErstellenForm">
+            <div>
+                <h2>Ma&szlignahme erstellen</h2>
+            </div>
+            <div>
+                <!--Should change from Reduktion to Kompensation SCRIPT NEEDED-->
+                <input type="radio" id="MassnahmeReduktion" name="MassnahmeArt" value="Reduktion">
+                <label for="MassnahmeReduktion">Reduktion</label>
+                <input type="radio" id="MassnahmeKompensation" name="MassnahmeArt" value="Kompensation">
+                <label for="MassnahmeKompensation">Kompensation</label>
+            </div>
+            <div>
+                <label for="MassnahmeName">Name</label>
+                <input id="MassnahmeName" name="MassnahmeName" type="text">
+            </div>
+            <div>
+                <label for="MassnahmeEinsparung">Einsparung in t CO<sub>2</sub></label>
+                <input id="MassnahmeEinsparung" name="MassnahmeEinsparung" type="text">
+            </div>
+            <div>
+                <label for="MassnahmeBeschreibung">Beschreibung</label>
+                <textarea name="MassnahmeBeschreibung" id="MassnahmeBeschreibung" rows="6"
+                    form="MassnahmeErstellenForm"></textarea>
+            </div>
+            <div>
+                <label for="MassnahmeDatum">Datum der Inbetriebnahme</label>
+                <input id="MassnahmeDatum" name="MassnahmeDatum" type="date">
+            </div>
+            <div>
+                <label for="MassnahmeOeffentlich">Ma&szlig;nahme ist &ouml;ffentlich einsehbar</label>
+                <input type="checkbox" id="MassnahmeOeffentlich" name="MassnahmeOeffentlich">
+            </div>
 
-        <!-- Daten hochladen -->
-        <div>
-            <span><input name="MassnahmeErstellen" type="submit" value="Erstellen"></span>
-        </div>
-    </form>
+            <!-- Daten hochladen -->
+            <div>
+                <input name="MassnahmeErstellen" type="submit" value="Erstellen">
+            </div>
+        </form>
     </div>
 
     <!-- Footer -->

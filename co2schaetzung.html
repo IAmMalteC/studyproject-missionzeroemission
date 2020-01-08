@@ -25,17 +25,19 @@
             <h1>CO<sub>2</sub> Sch&auml;tzung</h1>
         </div>
         <form action="" name="co2schaetzungEintragen" method="post">
-            <div>
-                <label for="AuswahlEmission">Gesamtemission</label>
-                <input type="radio" name="co2emission" id="AuswahlEmission" value="totalemission" checked>
-                <input name="totalemissionInput" id="totalemission" type="number">t CO<sub>2</sub>
-                <input name="dateTotalemissionInput" id="dateTotalemission" type="date">
+            <div class="child-ressourcen">
+                <div><label for="AuswahlEmission">Gesamtemission</label>
+                <input type="radio" name="co2emission" id="AuswahlEmission" value="totalemission" checked></div>
+                <input name="totalemissionInput" id="totalemission" type="number"> t CO<sub>2</sub>
+                <div><label for="dateTotalemissionInput">&Auml;nderungsdatum</label>
+                <input name="dateTotalemissionInput" id="dateTotalemission" type="date"></div>
             </div>
-            <div>
-                <label for="EinsparungEmission">Einsparung gegen&uuml;ber Vorjahr</label>
-                <input type="radio" name="co2emission" id="EinsparungEmission" value="emissionsaving">
-                <input name="emissionsavingInput" od="emissionsaving" type="number">t CO<sub>2</sub>
-                <input name="dateEmissionsavingInput" name="dateEmissionsaving" type="date">
+            <div class="child-ressourcen">
+                <div><label for="EinsparungEmission">Einsparung gegen&uuml;ber Vorjahr</label>
+                <input type="radio" name="co2emission" id="EinsparungEmission" value="emissionsaving"></div>
+                <input name="emissionsavingInput" od="emissionsaving" type="number"> t CO<sub>2</sub>
+                <div><label for="dateEmissionsavingInput">&Auml;nderungsdatum</label>
+                <input name="dateEmissionsavingInput" name="dateEmissionsaving" type="date"></div>
             </div>
             <div>
                 <input name="submit" type="submit" value="Abschicken">
