@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
     <title>NEMO - CO2 Sch&auml;tzung</title>
 </head>
+
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png"
+                alt="NEMo Logo"></a>
         <a href="./index.html" rel="noopener noreferrer">Startseite</a>
         <a href="./massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
         <a href="./eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
@@ -26,18 +29,29 @@
         </div>
         <form action="" name="co2schaetzungEintragen" method="post">
             <div class="child-ressourcen">
-                <div><label for="AuswahlEmission">Gesamtemission</label>
-                <input type="radio" name="co2emission" id="AuswahlEmission" value="totalemission" checked></div>
-                <input name="totalemissionInput" id="totalemission" type="number"> t CO<sub>2</sub>
-                <div><label for="dateTotalemissionInput">&Auml;nderungsdatum</label>
-                <input name="dateTotalemissionInput" id="dateTotalemission" type="date"></div>
+                <div>
+                    <input type="radio" name="co2emission" id="AuswahlEmission" value="totalemission" checked>
+                    <label for="AuswahlEmission">Gesamtemission</label>
+                </div>
+                <div><input name="totalemissionInput" id="totalemission" type="number"> t CO<sub>2</sub>
+                </div>
+                <div>
+                    <label for="dateTotalemissionInput">&Auml;nderungsdatum</label>
+                    <input name="dateTotalemissionInput" id="dateTotalemission" type="date">
+                </div>
             </div>
             <div class="child-ressourcen">
-                <div><label for="EinsparungEmission">Einsparung gegen&uuml;ber Vorjahr</label>
-                <input type="radio" name="co2emission" id="EinsparungEmission" value="emissionsaving"></div>
-                <input name="emissionsavingInput" od="emissionsaving" type="number"> t CO<sub>2</sub>
-                <div><label for="dateEmissionsavingInput">&Auml;nderungsdatum</label>
-                <input name="dateEmissionsavingInput" name="dateEmissionsaving" type="date"></div>
+                <div>
+                    <input type="radio" name="co2emission" id="EinsparungEmission" value="emissionsaving">
+                    <label for="EinsparungEmission">Einsparung gegen&uuml;ber Vorjahr</label>
+                </div>
+                <div>
+                    <input name="emissionsavingInput" od="emissionsaving" type="number"> t CO<sub>2</sub>
+                </div>
+                <div>
+                    <label for="dateEmissionsavingInput">&Auml;nderungsdatum</label>
+                    <input name="dateEmissionsavingInput" name="dateEmissionsaving" type="date">
+                </div>
             </div>
             <div>
                 <input name="submit" type="submit" value="Abschicken">
@@ -51,4 +65,5 @@
         <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
     </footer>
 </body>
+
 </html>
