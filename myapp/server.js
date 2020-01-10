@@ -94,7 +94,7 @@ app.get('./ressourcen/umsatz', function(req, res) {
 });
 //CO2Schaetzung
 app.get('./ressourcen/co2schaetzung', function(req, res) {
-  res.render('/ressourcen/co2schaetzung');
+  res.render('./ressourcen/co2schaetzung');
 });
 //app.get("/", (req, res) => {
 //  console.log("Responding to root route")
