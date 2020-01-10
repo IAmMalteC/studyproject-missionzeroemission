@@ -20,65 +20,68 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routing
 //It is messy and a crappy solution, but it works for now, until a new link is added, then it has to be implented here as well. Solution would be to understand express routing
+router.get('/', function(req, res) {
+  res.render('index', {page:'Startseite', menuId:'index'})
+}),
 //index
-app.get('/', function(req, res) {
-  res.render('index');
-});
-app.get('/index', function(req, res) {
-  res.render('index');
+// app.get('/', function(req, res) {
+//   res.render('index');
+// });
+router.get('/index', function(req, res) {
+  res.render('index', {page:'Startseite', menuId:'index'});
 });
 //Maßnahmenkatalog
-app.get('/massnahmen-katalog', function(req, res) {
-  res.render('massnahmen-katalog');
+router.get('/massnahmen-katalog', function(req, res) {
+  res.render('massnahmen-katalog', {page:'Ma&szlig;nahmen-Katalog', menuId:'massnahmen-katalog'});
 });
 //Eingabenauswahl
-app.get('/eingabeauswahl', function(req, res) {
-  res.render('eingabeauswahl');
+router.get('/eingabeauswahl', function(req, res) {
+  res.render('eingabeauswahl', {page:'Eingabeauswahl', menuId:'eingabeauswahl'});
 });
 //profil
-app.get("/profil" , function(req , res , next){
-  res.render('profil');
+router.get("/profil" , function(req , res , next){
+  res.render('profil', {page:'Profil', menuId:'profil'});
 });
 //Login
-app.get('/login', function(req, res) {
-  res.render('login');
+router.get('/login', function(req, res) {
+  res.render('login', {page:'Login', menuId:'login'});
 });
 //Passwort-Vergessen
-app.get('/passwort-vergessen', function(req, res) {
-  res.render('passwort-vergessen');
+router.get('/passwort-vergessen', function(req, res) {
+  res.render('passwort-vergessen', {page:'Passwort vergessen', menuId:'passwort-vergessen'});
 });
 //RESSOURCEN
 //Strom
-app.get('/ressourcen/strom', function(req, res) {
-  res.render('./ressourcen/strom');
+router.get('/ressourcen/strom', function(req, res) {
+  res.render('./ressourcen/strom', {page:'Strom', menuId:'strom'});
 });
 //Heizung
-app.get('/ressourcen/heizung', function(req, res) {
-  res.render('./ressourcen/heizung');
+router.get('/ressourcen/heizung', function(req, res) {
+  res.render('./ressourcen/heizung', {page:'Heizung', menuId:'heizung'});
 });
 //Erdgas
-app.get('/ressourcen/erdgas', function(req, res) {
-  res.render('./ressourcen/erdgas');
+router.get('/ressourcen/erdgas', function(req, res) {
+  res.render('./ressourcen/erdgas', {page:'Gas', menuId:'erdgas'});
 });
 //Wasser
-app.get('/ressourcen/wasser', function(req, res) {
-  res.render('./ressourcen/wasser');
+router.get('/ressourcen/wasser', function(req, res) {
+  res.render('./ressourcen/wasser', {page:'Wasser', menuId:'wasser'});
 });
 //Abfall
-app.get('/ressourcen/abfall', function(req, res) {
-  res.render('./ressourcen/abfall');
+router.get('/ressourcen/abfall', function(req, res) {
+  res.render('./ressourcen/abfall', {page:'Abfall', menuId:'abfall'});
 });
 //Neue-Massnahme
-app.get('/ressourcen/neue-massnahme', function(req, res) {
-  res.render('./ressourcen/neue-massnahme');
+router.get('/ressourcen/neue-massnahme', function(req, res) {
+  res.render('./ressourcen/neue-massnahme', {page:'Neue Ma&szlig;nahme', menuId:'neue-massnahme'});
 });
 //Umsatz
-app.get('/ressourcen/umsatz', function(req, res) {
-  res.render('./ressourcen/umsatz');
+router.get('/ressourcen/umsatz', function(req, res) {
+  res.render('./ressourcen/umsatz', {page:'Umsatz', menuId:'umsatz'});
 });
 //CO2Schaetzung
-app.get('/ressourcen/co2schaetzung', function(req, res) {
-  res.render('./ressourcen/co2schaetzung');
+router.get('/ressourcen/co2schaetzung', function(req, res) {
+  res.render('./ressourcen/co2schaetzung', {page:'CO2 Sch&auml;tzung', menuId:'co2schaetzung'});
 });
 //app.get("/", (req, res) => {
 //  console.log("Responding to root route")
