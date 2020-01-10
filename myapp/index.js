@@ -2,12 +2,12 @@
 const express = require('express');
 const app = express();
 const mariadb = require('mariadb/callback');
-const morgan = require ('morgan')
+const morgan = require ('morgan');
 const bodyParser = require('body-parser');
-const path = require('path')
+const path = require('path');
 
 //shows what is happening on the server and post it on the terminal(Logger)
-app.use(morgan('short'))
+app.use(morgan('short'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'EJS');
@@ -34,7 +34,7 @@ app.get("/" , function(req , res , next){
 //   })
 
 app.post('/', (req , res) => {
-  console.log("Trying to log in..")
+  console.log("Trying to log in..");
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
   console.log("First name: " + req.body.VornameInput);
@@ -54,7 +54,7 @@ app.post('/', (req , res) => {
 
 function getConnection() {
   return mariadb.createConnection({
-    host: "localhost",
+    host: "127.0.0.1",
     user: "root",
     password: "",
     database:"nemodb"
