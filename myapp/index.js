@@ -10,7 +10,7 @@ const path = require('path');
 app.use(morgan('short'));
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'EJS');
+app.set('view engine', 'ejs');
 
 //body Parser is a middleware
 app.use(bodyParser.json());
