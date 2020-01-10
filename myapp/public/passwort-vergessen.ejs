@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
-    <title>NEMo - Login</title>
+    <title>NEMo - Passwort vergessen?</title>
 </head>
-
 <body>
-    <!-- Header -->
+    <!--Header-->
     <header>
         <a id="logo" href="./index.html" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
         <a href="./index.html" rel="noopener noreferrer">Startseite</a>
@@ -19,32 +18,25 @@
         <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
         <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
         <a href="./profil.html" rel="noopener noreferrer">Mein Profil</a>
-        <a class="active" href="./login.html" rel="noopener noreferrer">Log-In</a>
+        <a href="./login.html" rel="noopener noreferrer">Log-In</a>
     </header>
     <!-- Main -->
     <div class="content">
-        <form action="" name="login" method="post">
+        <form action="" name="ResetPasswort" method="post">
             <div>
-                <label for="Benutzername">Benutzername</label>
-                <input name="BenutzernameInput" id="Benutzername" type="text" placeholder="E-Mail Adresse" required
-                        autofocus>
+                <p>Bitte geben Sie ihren Benutzernamen oder ihre E-Mail-Adresse ein.</p>
+                <input name="BenutzernameInput" id="Benutzername" type="text" required autofocus>
+                <input name="ResetPasswortInput" id="ResetPasswort" type="submit" value="Neues Passwort anfordern"> 
             </div>
             <div>
-                <label for="Passwort">Passwort</label>
-                <input name="PasswortInput" id="Passwort" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
-            </div>
-            <div>
-                <input name="LoginInput" type="submit" value="Login">
-                <a class="button" href="./passwort-vergessen.html">Passwort vergessen</a>
+                <a class="button button-cancel" href="./login.html">Abbrechen</a>
             </div>
         </form>
     </div>
-    <!-- Footer -->
-    <footer>
-        <a href="./faq" rel="noopener noreferrer">FAQ</a> |
-        <a href="https://www.motzener-strasse.de/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> |
-        <a href="https://www.motzener-strasse.de/datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+     <!-- Footer -->
+     <footer>
+        <%- include('./partials/footer'); -%>
     </footer>
+   
 </body>
-
 </html>
