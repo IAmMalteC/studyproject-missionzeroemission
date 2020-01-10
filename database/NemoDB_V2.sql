@@ -89,7 +89,7 @@ CREATE TABLE `ressourcen-emission_tb` (
   `ressourcen-emission_id` int(16) NOT NULL,
   `ressourcen-emission_menge` int(16) NOT NULL,
   `ressourcen-emission_einheit` enum(16) NOT NULL,
-  `ressourcen-emission_standartwert` bool NOT NULL
+  `ressourcen-emission_standartwert` boolean NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -138,7 +138,7 @@ CREATE TABLE `res_strom-regulaer_tb` (
                        `res_strom-regulaer_emission` int(11) NOT NULL,
                        `res_strom-regulaer_menge` int(11) NOT NULL,
                        `res_strom-regulaer_einheit` enum(3) NOT NULL,
-                       `res_strom-regulaer_abrechnungsintervall` bool NOT NULL,
+                       `res_strom-regulaer_abrechnungsintervall` boolean NOT NULL,
                        `res-strom-regulaer_vergleichswert` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -154,7 +154,7 @@ CREATE TABLE `res_strom-photovoltaic_tb` (
                          `res_strom-photovoltaic_emission` int(11) NOT NULL,
                          `res_strom-photovoltaic_menge` int(11) NOT NULL,
                          `res_strom-photovoltaic_einheit` enum(3) NOT NULL,
-                         `res_strom-photovoltaic_abrechnungsintervall` bool NOT NULL,
+                         `res_strom-photovoltaic_abrechnungsintervall` boolean NOT NULL,
                          `res-strom-photovoltaic_vergleichswert` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -168,7 +168,7 @@ CREATE TABLE `res_gas_tb` (
                              `res_gas_name` varchar(64) NOT NULL,
                              `res_gas_id` int(16) NOT NULL,
                              `res_gas_emission` int(11) NOT NULL,
-                             `res_gas_abrechnungsintervall` bool NOT NULL,
+                             `res_gas_abrechnungsintervall` boolean NOT NULL,
                              `res-gas_vergleichswert` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -182,7 +182,7 @@ CREATE TABLE `res_heizoel_tb` (
                               `res_heizoel_name` varchar(64) NOT NULL,
                               `res_heizoel_id` int(16) NOT NULL,
                               `res_heizoel_emission` int(11) NOT NULL,
-                              `res_heizoel_abrechnungsintervall` bool NOT NULL,
+                              `res_heizoel_abrechnungsintervall` boolean NOT NULL,
                               `res-heizoel_vergleichswert` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
