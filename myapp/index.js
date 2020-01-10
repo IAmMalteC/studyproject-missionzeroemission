@@ -1,7 +1,7 @@
-//these are the dependence
+//these are the dependence(Import)
 const express = require('express');
 const app = express();
-const mariadb = require('mariadb');
+const mariadb = require('mariadb/callback');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
@@ -10,12 +10,13 @@ const path = require('path')
 app.use(morgan('short'))
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'EJS');
 
 //body Parser is a middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//access HTML files 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.get("/" , function(req , res , next){
@@ -25,17 +26,24 @@ app.get("/" , function(req , res , next){
 //  console.log("Responding to root route")
 //  res.send("helloooo...")
 //})1
+// getConnection().connect((err) => {
+//   if (err) {
+//     console.log ("Failed to update user data..." + err);
+//   }
+//   console.log("Database connected")
+//   })
 
-app.post('profil.html', (req , res) => {
+app.post('/', (req , res) => {
   console.log("Trying to log in..")
-  console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
+  console.log("First name: " + req.body.VornameInput);
+  
 
   const queryString = "INSERT INTO NemoDB.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {} );
   if (err) {
-    Console.log ("Failed to update user data..." + err);
+    console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return
   }
