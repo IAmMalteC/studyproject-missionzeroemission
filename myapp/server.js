@@ -9,7 +9,7 @@ const path = require('path')
 //shows what is happening on the server and post it on the terminal(Logger)
 app.use(morgan('short'))
 
-app.set('views', path.join(__dirnamee, 'public')); //changed from 'views' to 'public'
+app.set('views', path.join(__dirname, 'public')); //changed from 'views' to 'public'
 app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
 
 //body Parser is a middleware
