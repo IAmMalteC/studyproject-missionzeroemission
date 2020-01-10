@@ -128,13 +128,13 @@ function getConnection() {
   });
 }
 
-getConnection().createConnection((err) => {
-  if(err) {
-    console.log("Failed" + err);
-  }
-  else
-  console.log("Database connected");
-});
+// getConnection().createConnection((err) => {
+//   if(err) {
+//     console.log("Failed" + err);
+//   }
+//   else
+//   console.log("Database connected");
+// });
 
 app.listen(3003, ()=>{
   console.log("server is up and listening on port 3003...")
