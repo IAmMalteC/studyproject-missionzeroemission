@@ -29,7 +29,7 @@ app.get('/index', function(req, res) {
 });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function(req, res) {
-  res.render('massnahmen-katalog', {page:'Ma&szlig;nahmen-Katalog', menuId:'massnahmen-katalog'});
+  res.render('massnahmen-katalog', {page:'Maßnahmen-Katalog', menuId:'massnahmen-katalog'});
 });
 //Eingabenauswahl
 app.get('/eingabeauswahl', function(req, res) {
@@ -70,7 +70,7 @@ app.get('/ressourcen/abfall', function(req, res) {
 });
 //Neue-Massnahme
 app.get('/ressourcen/neue-massnahme', function(req, res) {
-  res.render('./ressourcen/neue-massnahme', {page:'Neue Ma&szlig;nahme', menuId:'neue-massnahme'});
+  res.render('./ressourcen/neue-massnahme', {page:'Neue Maßnahme', menuId:'neue-massnahme'});
 });
 //Umsatz
 app.get('/ressourcen/umsatz', function(req, res) {
@@ -78,7 +78,7 @@ app.get('/ressourcen/umsatz', function(req, res) {
 });
 //CO2Schaetzung
 app.get('/ressourcen/co2schaetzung', function(req, res) {
-  res.render('./ressourcen/co2schaetzung', {page:'CO2 Sch&auml;tzung', menuId:'co2schaetzung'});
+  res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
 
 app.post('/', (req , res) => {
