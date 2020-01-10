@@ -331,3 +331,4 @@ local.properties
 .scala_dependencies
 .worksheet
 
+myapp/nemodb.sql
