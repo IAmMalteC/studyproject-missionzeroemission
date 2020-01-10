@@ -40,13 +40,13 @@ app.post('/', (req , res) => {
   console.log("First name: " + req.body.VornameInput);
   
 
-  const queryString = "INSERT INTO NemoDB.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {} );
-  if (err) {
+  const queryString = "INSERT INTO nemodb.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
+  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err){
     console.log ("Failed to update user data..." + err);
-    res.sendStatus(500);
-    return
-  }
+  res.sendStatus(500);
+  return
+  }});
+  
   res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
   res.end()
@@ -56,7 +56,8 @@ function getConnection() {
   return mariadb.createConnection({
     host: "localhost",
     user: "root",
-    password: ""
+    password: "",
+    database:"nemodb"
   });
 }
 
