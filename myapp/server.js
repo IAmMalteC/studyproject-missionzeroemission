@@ -16,7 +16,7 @@ app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.resolve(__dirname, 'views')));
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 //index
 app.get('/', function(req, res) {
