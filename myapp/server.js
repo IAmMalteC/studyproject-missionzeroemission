@@ -19,75 +19,67 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routing
-app.get('/', function(req, res) {
-    res.render('index');
-  });
-app.get('/'+element, function(req, res) {
-    res.render(element);
-});
-app.get('/ressourcen/'+element, function(req, res) {
-  res.render('./ressourcen/'+element);
-});
+//It is messy and a crappy solution, but it works for now, until a new link is added, then it has to be implented here as well. Solution would be to understand express routing
 //index
-// app.get('/', function(req, res) {
-//   res.render('index');
-// });
-// app.get('/index', function(req, res) {
-//   res.render('index');
-// });
-// //Maßnahmenkatalog
-// app.get('/massnahmen-katalog', function(req, res) {
-//   res.render('massnahmen-katalog');
-// });
-// //Eingabenauswahl
-// app.get('/eingabeauswahl', function(req, res) {
-//   res.render('eingabeauswahl');
-// });
-// //profil
-// app.get("/profil" , function(req , res , next){
-//   res.render('profil');
-// });
-// //Login
-// app.get('/login', function(req, res) {
-//   res.render('login');
-// });
-// //Passwort-Vergessen
-// app.get('/passwort-vergessen', function(req, res) {
-//   res.render('passwort-vergessen');
-// });
-// //RESSOURCEN
-// //Strom
-// app.get('/ressourcen/strom', function(req, res) {
-//   res.render('./ressourcen/strom');
-// });
-// //Heizung
-// app.get('/ressourcen/heizung', function(req, res) {
-//   res.render('./ressourcen/heizung');
-// });
-// //Erdgas
-// app.get('/ressourcen/erdgas', function(req, res) {
-//   res.render('./ressourcen/erdgas');
-// });
-// //Wasser
-// app.get('/ressourcen/wasser', function(req, res) {
-//   res.render('./ressourcen/wasser');
-// });
-// //Abfall
-// app.get('/ressourcen/abfall', function(req, res) {
-//   res.render('./ressourcen/abfall');
-// });
-// //Neue-Massnahme
-// app.get('/ressourcen/neue-massnahme', function(req, res) {
-//   res.render('./ressourcen/neue-massnahme');
-// });
-// //Umsatz
-// app.get('/ressourcen/umsatz', function(req, res) {
-//   res.render('./ressourcen/umsatz');
-// });
-// //CO2Schaetzung
-// app.get('/ressourcen/co2schaetzung', function(req, res) {
-//   res.render('./ressourcen/co2schaetzung');
-// });
+app.get('/', function(req, res) {
+  res.render('index');
+});
+app.get('/index', function(req, res) {
+  res.render('index');
+});
+//Maßnahmenkatalog
+app.get('/massnahmen-katalog', function(req, res) {
+  res.render('massnahmen-katalog');
+});
+//Eingabenauswahl
+app.get('/eingabeauswahl', function(req, res) {
+  res.render('eingabeauswahl');
+});
+//profil
+app.get("/profil" , function(req , res , next){
+  res.render('profil');
+});
+//Login
+app.get('/login', function(req, res) {
+  res.render('login');
+});
+//Passwort-Vergessen
+app.get('/passwort-vergessen', function(req, res) {
+  res.render('passwort-vergessen');
+});
+//RESSOURCEN
+//Strom
+app.get('/ressourcen/strom', function(req, res) {
+  res.render('./ressourcen/strom');
+});
+//Heizung
+app.get('/ressourcen/heizung', function(req, res) {
+  res.render('./ressourcen/heizung');
+});
+//Erdgas
+app.get('/ressourcen/erdgas', function(req, res) {
+  res.render('./ressourcen/erdgas');
+});
+//Wasser
+app.get('/ressourcen/wasser', function(req, res) {
+  res.render('./ressourcen/wasser');
+});
+//Abfall
+app.get('/ressourcen/abfall', function(req, res) {
+  res.render('./ressourcen/abfall');
+});
+//Neue-Massnahme
+app.get('/ressourcen/neue-massnahme', function(req, res) {
+  res.render('./ressourcen/neue-massnahme');
+});
+//Umsatz
+app.get('/ressourcen/umsatz', function(req, res) {
+  res.render('./ressourcen/umsatz');
+});
+//CO2Schaetzung
+app.get('/ressourcen/co2schaetzung', function(req, res) {
+  res.render('./ressourcen/co2schaetzung');
+});
 //app.get("/", (req, res) => {
 //  console.log("Responding to root route")
 //  res.send("helloooo...")
