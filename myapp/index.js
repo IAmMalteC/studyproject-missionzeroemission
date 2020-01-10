@@ -26,31 +26,7 @@ app.get("/" , function(req , res , next){
 //  console.log("Responding to root route")
 //  res.send("helloooo...")
 //})1
-// getConnection().connect((err) => {
-//   if (err) {
-//     console.log ("Failed to update user data..." + err);
-//   }
-//   console.log("Database connected")
-//   })
 
-app.post('/', (req , res) => {
-  console.log("Trying to log in..");
-  const Vorname = req.body.VornameInput;
-  const Nachname = req.body.NachnameInput;
-  console.log("First name: " + req.body.VornameInput);
-  
-
-  const queryString = "INSERT INTO nemodb.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err){
-    console.log ("Failed to update user data..." + err);
-  res.sendStatus(500);
-  return
-  }});
-  
-  res.send('Data received:\n' + JSON.stringify(req.body));
-  console.log("Inserted new user");
-  res.end()
-});
 
 function getConnection() {
   return mariadb.createConnection({
@@ -65,6 +41,35 @@ function getConnection() {
 app.listen(3003, ()=>{
   console.log("server is up and listening on port 3003...")
 })
+
+app.post('/', (req , res) => {
+  console.log("Trying to log in..");
+  const Vorname = req.body.VornameInput;
+  const Nachname = req.body.NachnameInput;
+  //console.log("First name: " + req.body.VornameInput);
+  
+
+  const queryString = "INSERT INTO nemodb.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
+  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err){
+    console.log ("Failed to update user data..." + err);
+  res.sendStatus(500);
+  return
+  }});
+  
+  res.send('Data received:\n' + JSON.stringify(req.body));
+  console.log("Inserted new user");
+  res.end()
+});
+
+getConnection().connect((err) => {
+  if (err) {
+    console.log ("Failed to update user data..." + err);
+  }
+  else
+  console.log("Database connected")
+  })
+
+
 
 //app.post("/profil.html" , function (req , res) {
 //  console.log(req.body);
