@@ -12,7 +12,8 @@
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <a id="logo" href="../index.html" rel="noopener noreferrer"><img src="../pictures/logoNemo.png"
+                alt="NEMo Logo"></a>
         <a href="../index.html" rel="noopener noreferrer">Startseite</a>
         <a href="../massnahmen-katalog.html" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
         <a href="../eingabeauswahl.html" rel="noopener noreferrer">Firmenübersicht</a>
@@ -34,21 +35,21 @@
     <!--Main Content-->
     <div class="content">
         <form action="" name="UmsatzHinzufuegen" method="post">
-            <div>
-            <label for="Umsatz">Jahresumsatz</label>
-            <input type="number" name="UmsatzInput" id="Umsatz" required> &euro;
+            <div class="child-ressourcen">
+                <label for="Umsatz">Jahresumsatz</label>
+                <input type="number" name="UmsatzInput" id="Umsatz"> &euro;
             </div>
-            <div>
-            <label for="DatumUmsatz">Umsatz für das Jahr</label>
-            <input type="date" name="DatumUmsatzInput" id="DatumUmsatz" required>
+            <div class="child-ressourcen">
+                <label for="DatumUmsatz">Datum</label>
+                <input type="date" name="DatumUmsatzInput" id="DatumUmsatz">
             </div>
-            
+
             <!-- Daten hochladen -->
             <div>
-            <input name="UmsatzSpeichern" type="submit" value="Abschicken">
+                <input name="UmsatzSpeichern" type="submit" value="Abschicken">
             </div>
-            <p>Diese Daten werden nur zur Berechnung der relativen CO<sub>2</sub> Emissionen verwendet und auf keiner Weise
-            direkt ver&ouml;ffentlicht.</p>
+            <p id="umsatz-text">Diese Daten werden nur zur Berechnung der relativen CO<sub>2</sub> Emissionen verwendet und auf keiner
+                Weise direkt ver&ouml;ffentlicht.</p>
         </form>
     </div>
     <!-- Footer -->
