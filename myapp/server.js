@@ -107,7 +107,7 @@ app.post('/', (req , res) => {
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
 
-  const queryString = "INSERT INTO NemoDB.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
+  const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
     Console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
@@ -121,20 +121,28 @@ app.post('/', (req , res) => {
 
 function getConnection() {
   return mariadb.createConnection({
-    host: "localhost",
-    user: "root",
-    password: ""
+    host: "141.45.92.87",
+    user: "phpmyadmin",
+    password: "Q2Jf6kY4aQuM",
+    database: "DoriDB"
   });
 }
 
+getConnection().connect((err) => {
+  if(err) {
+    console.log("Failed" + err);
+  }
+  else
+  console.log("Database connected");
+});
 
 app.listen(3003, ()=>{
   console.log("server is up and listening on port 3003...")
-})
+});
 
 //app.post("/profil" , function (req , res) {
 //  console.log(req.body);
-//  let sql = "INSERT INTO Profil_TB(profil_name, profil_vorname, profil_firma, profil_position, profil_fax, profil_tel, profil_email, profil_benutzername, profil_passwort) VALUES (null ,'" + req.body.NachnameInput + "' , '"+req.body.VornameInput+"' , '"+req.body.FirmennameInput+"', '"+req.body.PositionInput+"' ,'"+req.body.FaxInput+"' , '"+req.body.TelefonInput+"' , '"+req.body.EmailInput+"' , '"+ req.body.BenutzernameInput +"' , '"+req.body.PasswortInput+"')";
+//  let sql = "INSERT INTO nutzer_tb(profil_name, profil_vorname, profil_firma, profil_position, profil_fax, profil_tel, profil_email, profil_benutzername, profil_passwort) VALUES (null ,'" + req.body.NachnameInput + "' , '"+req.body.VornameInput+"' , '"+req.body.FirmennameInput+"', '"+req.body.PositionInput+"' ,'"+req.body.FaxInput+"' , '"+req.body.TelefonInput+"' , '"+req.body.EmailInput+"' , '"+ req.body.BenutzernameInput +"' , '"+req.body.PasswortInput+"')";
 //  connection.query(sql , function (err) {
 //    if (err) throw err;
 //    res.send("Data Is added to the database...")
