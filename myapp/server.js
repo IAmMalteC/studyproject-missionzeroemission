@@ -16,11 +16,11 @@ app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname, 'views')));
 
 //index
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('/index');
 });
 
 //profil
