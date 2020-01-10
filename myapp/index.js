@@ -50,13 +50,14 @@ app.post('/', (req , res) => {
   
 
   const queryString = "INSERT INTO nemodb.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err){
+  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {
+    if (err){
     console.log ("Failed to update user data..." + err);
   res.sendStatus(500);
   return
   }});
   
-  res.send('Data received:\n' + JSON.stringify(req.body));
+  res.send('Data received: \n : ' + JSON.stringify(req.body, undefined, 2));
   console.log("Inserted new user");
   res.end()
 });
