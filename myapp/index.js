@@ -33,19 +33,19 @@ app.get("/" , function(req , res , next){
 //  res.send("helloooo...")
 //})1
 
-app.post('profil.html', (req , res) => {
+app.post('/', (req , res) => {
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
 
   const queryString = "INSERT INTO NemoDB.Profil_TB (Profil_Name, Profil_Vorname) VALUES (default,?,?,?,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {} );
-  if (err) {
+  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
     Console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return
-  }
+  }} );
+  
   res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
   res.end()
