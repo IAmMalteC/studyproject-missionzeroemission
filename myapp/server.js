@@ -50,16 +50,16 @@ app.get('/passwort-vergessen', function(req, res) {
 app.get('/ressourcen/strom', function(req, res) {
   res.render('./ressourcen/strom');
 });
-app.get('../ressourcen/strom', function(req, res) {
-  res.render('/ressourcen/strom');
-});
+// app.get('../ressourcen/strom', function(req, res) {
+//   res.render('/ressourcen/strom');
+// });
 //Heizung
 app.get('/ressourcen/heizung', function(req, res) {
-  res.render('/ressourcen/heizung');
+  res.render('./ressourcen/heizung');
 });
-app.get('../ressourcen/heizung', function(req, res) {
-  res.render('/ressourcen/heizung');
-});
+// app.get('../ressourcen/heizung', function(req, res) {
+//   res.render('/ressourcen/heizung');
+// });
 //Erdgas
 app.get('/ressourcen/erdgas', function(req, res) {
   res.render('/ressourcen/erdgas');
