@@ -80,10 +80,6 @@ app.get('/ressourcen/umsatz', function(req, res) {
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Sch&auml;tzung', menuId:'co2schaetzung'});
 });
-//app.get("/", (req, res) => {
-//  console.log("Responding to root route")
-//  res.send("helloooo...")
-//})1
 
 app.post('/', (req , res) => {
   console.log("Trying to log in..")

@@ -2,24 +2,26 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/head'); -%>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
-    <title>NEMo - Home</title>
+    <!-- <title>NEMo - Home</title> -->
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="./index" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
+        <%- include('./partials/header'); -%>
+        <!-- <a id="logo" href="./index" rel="noopener noreferrer"><img src="./pictures/logoNemo.png" alt="NEMo Logo"></a >
         <a class="active" href="/" rel="noopener noreferrer">Startseite</a>
         <a href="./massnahmen-katalog" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
         <a href="./eingabeauswahl" rel="noopener noreferrer">Firmenübersicht</a>
-        <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
-        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        -- login muss noch mittels eines Scripts zu Logout umgewandelt werden --
+        --<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">--
         <a href="./profil" rel="noopener noreferrer">Mein Profil</a>
-        <a href="./login" rel="noopener noreferrer">Log-In</a>
+        <a href="./login" rel="noopener noreferrer">Log-In</a> -->
     </header>
     <!-- Main -->
     <div class="content index">
@@ -59,6 +61,7 @@
     <footer>
         <%- include('./partials/footer'); -%>
     </footer>
+    <script src="./javascripts/menu.js"></script>
 </body>
 
 </html>
