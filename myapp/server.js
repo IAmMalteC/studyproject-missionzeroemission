@@ -1,7 +1,7 @@
 //these are the dependence
 const express = require('express');
 const app = express();
-const mariadb = require('mariadb');
+const mariadb = require('mariadb/callback');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
@@ -110,13 +110,13 @@ function getConnection() {
   });
 }
 
-// getConnection().createConnection((err) => {
-//   if(err) {
-//     console.log("Failed" + err);
-//   }
-//   else
-//   console.log("Database connected");
-// });
+getConnection().connect((err) => {
+  if(err) {
+    console.log("Failed" + err);
+  }
+  else
+  console.log("Database connected");
+});
 
 app.listen(3003, ()=>{
   console.log("server is up and listening on port 3003...")
