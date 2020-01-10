@@ -48,7 +48,7 @@ app.get('/passwort-vergessen', function(req, res) {
 //RESSOURCEN
 //Strom
 app.get('/ressourcen/strom', function(req, res) {
-  res.render('/ressourcen/strom');
+  res.render('./ressourcen/strom');
 });
 app.get('../ressourcen/strom', function(req, res) {
   res.render('/ressourcen/strom');
