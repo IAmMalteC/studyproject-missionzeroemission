@@ -12,26 +12,10 @@
 <body>
     <!-- Header -->
     <header>
-        <a id="logo" href="../index" rel="noopener noreferrer"><img src="../pictures/logoNemo.png"
-                alt="NEMo Logo"></a>
-        <a href="../index" rel="noopener noreferrer">Startseite</a>
-        <a href="../massnahmen-katalog" rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
-        <a href="../eingabeauswahl" rel="noopener noreferrer">Firmenübersicht</a>
-        <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
-        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
-        <a href="../profil" rel="noopener noreferrer">Mein Profil</a>
-        <a href="../login" rel="noopener noreferrer">Log-In</a>
+        <%- include('./partials/header'); -%>
     </header>
     <!-- Input Navigation Menu -->
-    <div class="input-navigation">
-        <a href="../ressourcen/strom">Strom</a>
-        <a href="../ressourcen/heizung">Heizung</a>
-        <a href="../ressourcen/erdgas">Gas</a>
-        <a class="active" href="../ressourcen/wasser">Wasser</a>
-        <a href="../ressourcen/abfall">Abfall</a>
-        <a href="../ressourcen/neue-massnahme">Kompensationsma&szlig;nahme</a>
-        <a href="../ressourcen/umsatz">Umsatz</a>
-    </div>
+    <%-include('./partials/ressourcennav'); -%>
     <!--Main Content-->
     <div class="content">
         <form method="post" name="WasserForm">
