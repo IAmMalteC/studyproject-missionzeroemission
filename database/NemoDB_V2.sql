@@ -43,7 +43,7 @@ CREATE TABLE `branche_tb` (
 
 DROP TABLE IF EXISTS `emission-einheit_tb`;
 CREATE TABLE `emission-einheit_tb` (
-                                       `emission-einheit_id` int(16) NOT NULL,
+                                       `emission-einheit_id` int(11) NOT NULL,
                                        `emission-einheit_name` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -57,22 +57,18 @@ DROP TABLE IF EXISTS `firma_tb`;
 CREATE TABLE `firma_tb` (
                             `firma_id` int(11) NOT NULL,
                             `firma_name` varchar(64) NOT NULL,
-                            `firma_nutzer` int(8) NOT NULL,
                             `firma_branche` int(8) NOT NULL,
-                            `firma_ressourcen` int(8) NOT NULL,
-                            `firma_emissionen` int(8) NOT NULL,
-                            `firma_einsparungen` float NOT NULL,
-                            `firma_massnahmen` int(8) NOT NULL,
-                            `firma_umsatz` int(11) NOT NULL,
-                            `firma_basisemission` int(11) NOT NULL
+                            `firma_emissionen` int(8) NOT NULL COMMENT 'Emissionen in t CO2',
+                            `firma_einsparungen` float NOT NULL COMMENT 'Dient der Einsparungs-Timeline',
+                            `firma_basisemission` int(11) NOT NULL,
+                            `firma_basisjahr` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Daten für Tabelle `firma_tb`
 --
 
-INSERT INTO `firma_tb` (`firma_id`, `firma_name`, `firma_nutzer`, `firma_branche`, `firma_ressourcen`, `firma_emissionen`, `firma_einsparungen`, `firma_massnahmen`, `firma_umsatz`, `firma_basisemission`) VALUES
-(0, 'Testfirma', 0, 0, 0, 0, 0, 0, 0, 0);
+
 
 -- --------------------------------------------------------
 
@@ -82,7 +78,7 @@ INSERT INTO `firma_tb` (`firma_id`, `firma_name`, `firma_nutzer`, `firma_branche
 
 DROP TABLE IF EXISTS `massnahmen_tb`;
 CREATE TABLE `massnahmen_tb` (
-                                 `massnahmen_id` int(16) NOT NULL,
+                                 `massnahmen_id` int(11) NOT NULL,
                                  `massnahmen_name` varchar(64) NOT NULL,
                                  `massnahmen_beschreibung` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,6 +94,7 @@ CREATE TABLE `nutzer_tb` (
                              `nutzer_id` int(11) NOT NULL,
                              `nutzer_name` varchar(64) NOT NULL,
                              `nutzer_vorname` varchar(64) NOT NULL,
+                             `nutzer_firma` int(8) NOT NULL,
                              `nutzer_nachname` varchar(64) NOT NULL,
                              `nutzer_email` text NOT NULL,
                              `nutzer_telefon` int(11) NOT NULL,
@@ -112,7 +109,7 @@ CREATE TABLE `nutzer_tb` (
 
 DROP TABLE IF EXISTS `ressourcen-einheit_tb`;
 CREATE TABLE `ressourcen-einheit_tb` (
-                                         `ressourcen-einehit_id` int(16) NOT NULL,
+                                         `ressourcen-einehit_id` int(11) NOT NULL,
                                          `ressourcen-einheit_name` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -137,8 +134,8 @@ CREATE TABLE `ressourcen_tb` (
 
 DROP TABLE IF EXISTS `res_gas_tb`;
 CREATE TABLE `res_gas_tb` (
+                              `res_gas_id` int(11) NOT NULL,
                               `res_gas_name` varchar(64) NOT NULL,
-                              `res_gas_id` int(16) NOT NULL,
                               `res_gas_emission` int(11) NOT NULL,
                               `res_gas_abrechnungsintervall` tinyint(1) NOT NULL,
                               `res-gas_vergleichswert` int(11) NOT NULL
@@ -152,13 +149,53 @@ CREATE TABLE `res_gas_tb` (
 
 DROP TABLE IF EXISTS `res_heizoel_tb`;
 CREATE TABLE `res_heizoel_tb` (
+                                  `res_heizoel_id` int(11) NOT NULL,
                                   `res_heizoel_name` varchar(64) NOT NULL,
-                                  `res_heizoel_id` int(16) NOT NULL,
                                   `res_heizoel_emission` int(11) NOT NULL,
                                   `res_heizoel_abrechnungsintervall` tinyint(1) NOT NULL,
                                   `res-heizoel_vergleichswert` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `mn_firma-ressourcen_tb`
+--
+
+DROP TABLE IF EXISTS `mn_firma-ressourcen_tb`;
+CREATE TABLE `mn_firma-ressourcen_tb` (
+                                  `mn_firma-ressourcen_id` int(11) NOT NULL,
+                                  `mn_firma-ressourcen_firma` int(8) NOT NULL,
+                                  `mn_firma-ressourcen_ressource` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `mn_firma-massnahmen_tb`
+--
+
+DROP TABLE IF EXISTS `mn_firma-massnahmen_tb`;
+CREATE TABLE `mn_firma-massnahmen_tb` (
+                                          `mn_firma-massnahmen_id` int(11) NOT NULL,
+                                          `mn_firma-massnahmen_firma` int(8) NOT NULL,
+                                          `mn_firma-massnahmen_massnahme` int(8) NOT NULL,
+                                          `mn_firma-massnahmen_anfangsdatum` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `mn_firma-umsatz_tb`
+--
+
+DROP TABLE IF EXISTS `mn_firma-umsatz_tb`;
+CREATE TABLE `mn_firma-umsatz_tb` (
+                                          `mn_firma-umsatz_id` int(11) NOT NULL,
+                                          `mn_firma-umsatz_firma` int(8) NOT NULL,
+                                          `mn_firma-umsatz_umsatz` int(8) NOT NULL,
+                                          `mn_firma-umsatz_jahr` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Indizes der exportierten Tabellen
 --
@@ -183,8 +220,7 @@ ALTER TABLE `firma_tb`
     ADD KEY `firma_ressourcen` (`firma_ressourcen`),
     ADD KEY `firma_emissionen` (`firma_emissionen`),
     ADD KEY `firma_massnahmen` (`firma_massnahmen`),
-    ADD KEY `firma_branche` (`firma_branche`) USING BTREE,
-    ADD KEY `firma_nutzer` (`firma_nutzer`) USING BTREE;
+    ADD KEY `firma_branche` (`firma_branche`) USING BTREE;
 
 --
 -- Indizes für die Tabelle `massnahmen_tb`
@@ -196,7 +232,8 @@ ALTER TABLE `massnahmen_tb`
 -- Indizes für die Tabelle `nutzer_tb`
 --
 ALTER TABLE `nutzer_tb`
-    ADD PRIMARY KEY (`nutzer_id`);
+    ADD PRIMARY KEY (`nutzer_id`),
+    ADD KEY `nutzer_firma` (`nutzer_firma`);
 
 --
 -- Indizes für die Tabelle `ressourcen-einheit_tb`
@@ -221,6 +258,14 @@ ALTER TABLE `res_gas_tb`
 --
 ALTER TABLE `res_heizoel_tb`
     ADD PRIMARY KEY (`res_heizoel_id`);
+
+--
+-- Indizes für die Tabelle `nutzer_tb`
+--
+ALTER TABLE `mn_firma-ressourcen_tb`
+    ADD PRIMARY KEY (`mn_firma-ressourcen_id`),
+    ADD KEY `mn_firma-ressourcen_firma` (`mn_firma-ressourcen_firma`),
+    ADD KEY `mn_firma-ressourcen_ressource` (`mn_firma-ressourcen_ressource`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
