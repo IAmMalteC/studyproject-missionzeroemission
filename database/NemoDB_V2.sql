@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `umsatz_tb`;
 CREATE TABLE `umsatz_tb`
 (
     `umsatz_id`                    int(11)     NOT NULL,
-    `umsatz_firma`  int(8) NOT NULL,
+    `umsatz_firma`  int(11) NOT NULL,
     `umsatz_jahr`                  date NOT NULL,
     `umsatz-beschreibung` text
 ) ENGINE = InnoDB
@@ -78,8 +78,8 @@ CREATE TABLE `firma_tb`
 (
     `firma_id`            int(11)     NOT NULL,
     `firma_name`          varchar(64) NOT NULL,
-    `firma_branche`       int(8)      NOT NULL,
-    `firma_emissionen`    int(8)      NOT NULL COMMENT 'Emissionen in t CO2',
+    `firma_branche`       int(11)      NOT NULL,
+    `firma_emissionen`    int(11)      NOT NULL COMMENT 'Emissionen in t CO2',
     `firma_einsparungen`  float       NOT NULL COMMENT 'Dient der Einsparungs-Timeline',
     `firma_basisemission` int(11)     NOT NULL,
     `firma_basisjahr`     date        NOT NULL
@@ -120,7 +120,7 @@ CREATE TABLE `res-kategorie_tb`
     `res-kategorie_name`         varchar(64) NOT NULL,
     `res-kategorie_beschreibung` text        NOT NULL,
     `res-kategorie_vergleichswert`         int(11) NOT NULL,
-    `res-kategorie_einheit`         int(8) NOT NULL
+    `res-kategorie_einheit`         int(11) NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -136,7 +136,7 @@ CREATE TABLE `nutzer_tb`
     `nutzer_id`       int(11)     NOT NULL,
     `nutzer_name`     varchar(64) NOT NULL,
     `nutzer_vorname`  varchar(64) NOT NULL,
-    `nutzer_firma`    int(8)      NOT NULL,
+    `nutzer_firma`    int(11)      NOT NULL,
     `nutzer_nachname` varchar(64) NOT NULL,
     `nutzer_email`    text        NOT NULL,
     `nutzer_telefon`  int(11)     NOT NULL,
@@ -169,10 +169,10 @@ DROP TABLE IF EXISTS `ressourcen_tb`;
 CREATE TABLE `ressourcen_tb`
 (
     `ressourcen_id`          int(11)     NOT NULL,
-    `ressourcen_kategorie`          int(8)     NOT NULL,
+    `ressourcen_kategorie`          int(11)     NOT NULL,
     `ressourcen_name`        varchar(64) NOT NULL,
     `ressourcen_co2emission` int(11)     NOT NULL,
-    `ressourcen-co2emission_einheit` int(8) NOT NULL
+    `ressourcen-co2emission_einheit` int(11) NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -186,8 +186,8 @@ DROP TABLE IF EXISTS `login-track_tb`;
 CREATE TABLE `login-track_tb`
 (
     `login-track_id`   int(11)    NOT NULL,
-    `login-track_firma` int(8) NOT NULL,
-    `login-track_nutzer` int(8) NOT NULL,
+    `login-track_firma` int(11) NOT NULL,
+    `login-track_nutzer` int(11) NOT NULL,
     `login-track_date` datetime NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -206,7 +206,7 @@ CREATE TABLE `res_gas_tb`
     `res_gas_abrechnungsintervall` tinyint(1)  NOT NULL COMMENT 'hier muss tinyint zu bool ',
     `res_gas_abrintervall_anfang`   date NOT NULL,
     `res_gas_abrintervall_ende`     date NOT NULL,
-    `res_gas_vergleichswert`       int(8)     NOT NULL
+    `res_gas_vergleichswert`       int(11)     NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -225,7 +225,7 @@ CREATE TABLE `res_heizoel_tb`
     `res_heizoel_abrechnungsintervall` tinyint(1)  NOT NULL,
     `res_heizoel_abrintervall_anfang` date NOT NULL,
     `res_heizoel_abrintervall_ende` date NOT NULL,
-    `res-heizoel_vergleichswert`       int(8)     NOT NULL
+    `res-heizoel_vergleichswert`       int(11)     NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -244,7 +244,7 @@ CREATE TABLE `res_strom-regulaer_tb`
     `res_strom-regulaer_abrechnungsintervall` tinyint(1)  NOT NULL,
     `res_strom-regulaer_abrintervall_anfang` date NOT NULL,
     `res_strom-regulaer_abrintervall_ende` date NOT NULL,
-    `res_strom-regulaer_vergleichswert`       int(8)     NOT NULL
+    `res_strom-regulaer_vergleichswert`       int(11)     NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -263,7 +263,7 @@ CREATE TABLE `res_strom-photov_tb`
     `res_strom-photov_abrechnungsintervall` tinyint(1)  NOT NULL,
     `res_strom-photov_abrintervall_anfang` date NOT NULL,
     `res_strom-photov_abrintervall_ende` date NOT NULL,
-    `res_strom-photov_vergleichswert`       int(8)     NOT NULL
+    `res_strom-photov_vergleichswert`       int(11)     NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -277,8 +277,8 @@ DROP TABLE IF EXISTS `mn_firma-ressourcen_tb`;
 CREATE TABLE `mn_firma-ressourcen_tb`
 (
     `mn_firma-ressourcen_id`        int(11) NOT NULL,
-    `mn_firma-ressourcen_firma`     int(8)  NOT NULL,
-    `mn_firma-ressourcen_ressource` int(8)  NOT NULL
+    `mn_firma-ressourcen_firma`     int(11)  NOT NULL,
+    `mn_firma-ressourcen_ressource` int(11)  NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -292,8 +292,8 @@ DROP TABLE IF EXISTS `mn_firma-massnahmen_tb`;
 CREATE TABLE `mn_firma-massnahmen_tb`
 (
     `mn_firma-massnahmen_id`           int(11) NOT NULL,
-    `mn_firma-massnahmen_firma`        int(8)  NOT NULL,
-    `mn_firma-massnahmen_massnahme`    int(8)  NOT NULL,
+    `mn_firma-massnahmen_firma`        int(11)  NOT NULL,
+    `mn_firma-massnahmen_massnahme`    int(11)  NOT NULL,
     `mn_firma-massnahmen_anfangsdatum` date    NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -308,8 +308,8 @@ DROP TABLE IF EXISTS `mn_firma-umsatz_tb`;
 CREATE TABLE `mn_firma-umsatz_tb`
 (
     `mn_firma-umsatz_id`     int(11) NOT NULL,
-    `mn_firma-umsatz_firma`  int(8)  NOT NULL,
-    `mn_firma-umsatz_umsatz` int(8)  NOT NULL,
+    `mn_firma-umsatz_firma`  int(11)  NOT NULL,
+    `mn_firma-umsatz_umsatz` int(11)  NOT NULL,
     `mn_firma-umsatz_jahr`   date    NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
@@ -324,8 +324,8 @@ DROP TABLE IF EXISTS `mn_firma-emissionen_tb`;
 CREATE TABLE `mn_firma-emissionen_tb`
 (
     `mn_firma-emissionen_id`         int(11) NOT NULL,
-    `mn_firma-emissionen_firma`      int(8)  NOT NULL,
-    `mn_firma-emissionen_emissionen` int(8)  NOT NULL COMMENT 'hier müssen die berechneten Emissionen in t CO2 rein',
+    `mn_firma-emissionen_firma`      int(11)  NOT NULL,
+    `mn_firma-emissionen_emissionen` int(11)  NOT NULL COMMENT 'hier müssen die berechneten Emissionen in t CO2 rein',
     `mn_firma-massnahmen_jahr`       date    NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
