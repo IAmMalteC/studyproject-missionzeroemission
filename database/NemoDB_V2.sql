@@ -40,6 +40,22 @@ CREATE TABLE `branche_tb`
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `umsatz_tb`
+--
+
+DROP TABLE IF EXISTS `umsatz_tb`;
+CREATE TABLE `umsatz_tb`
+(
+    `umsatz_id`                    int(11)     NOT NULL,
+    `umsatz_firma`  int(8) NOT NULL,
+    `umsatz_jahr`                  date NOT NULL,
+    `umsatz-beschreibung` text
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `emission-einheit_tb`
 --
 
@@ -337,6 +353,14 @@ ALTER TABLE `firma_tb`
     ADD PRIMARY KEY (`firma_id`),
     ADD KEY `firma_emissionen` (`firma_emissionen`),
     ADD KEY `firma_branche` (`firma_branche`) USING BTREE;
+
+--
+-- Indizes für die Tabelle `firma_tb`
+--
+ALTER TABLE `umsatz_tb`
+    ADD PRIMARY KEY (`umsatz_id`),
+    ADD KEY `umsatz_firma` (`umsatz_firma`),
+    ADD KEY `umsatz_jahr` (`umsatz_jahr`) USING BTREE;
 
 --
 -- Indizes für die Tabelle `massnahmen_tb`
