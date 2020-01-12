@@ -187,7 +187,7 @@ CREATE TABLE `res_gas_tb`
     `res_gas_id`                   int(11)     NOT NULL,
     `res_gas_name`                 varchar(64) NOT NULL,
     `res_gas_emission`             int(11)     NOT NULL,
-    `res_gas_abrechnungsintervall` tinyint(1)  NOT NULL COMMENT ='hier muss tinyint zu bool ',
+    `res_gas_abrechnungsintervall` tinyint(1)  NOT NULL COMMENT 'hier muss tinyint zu bool ',
     `res_gas_abrintervall_anfang`   date NOT NULL,
     `res_gas_abrintervall_ende`     date NOT NULL,
     `res_gas_vergleichswert`       int(8)     NOT NULL
@@ -335,9 +335,7 @@ ALTER TABLE `emission-einheit_tb`
 --
 ALTER TABLE `firma_tb`
     ADD PRIMARY KEY (`firma_id`),
-    ADD KEY `firma_ressourcen` (`firma_ressourcen`),
     ADD KEY `firma_emissionen` (`firma_emissionen`),
-    ADD KEY `firma_massnahmen` (`firma_massnahmen`),
     ADD KEY `firma_branche` (`firma_branche`) USING BTREE;
 
 --
