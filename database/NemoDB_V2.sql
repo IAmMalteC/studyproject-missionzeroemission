@@ -102,7 +102,9 @@ CREATE TABLE `res-kategorie_tb`
 (
     `res-kategorie_id`        int(11)     NOT NULL,
     `res-kategorie_name`         varchar(64) NOT NULL,
-    `res-kategorie_beschreibung` text        NOT NULL
+    `res-kategorie_beschreibung` text        NOT NULL,
+    `res-kategorie_vergleichswert`         int(11) NOT NULL,
+    `res-kategorie_einheit`         int(8) NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -151,8 +153,10 @@ DROP TABLE IF EXISTS `ressourcen_tb`;
 CREATE TABLE `ressourcen_tb`
 (
     `ressourcen_id`          int(11)     NOT NULL,
+    `ressourcen_kategorie`          int(8)     NOT NULL,
     `ressourcen_name`        varchar(64) NOT NULL,
-    `ressourcen_co2emission` int(11)     NOT NULL
+    `ressourcen_co2emission` int(11)     NOT NULL,
+    `ressourcen-co2emission_einheit` int(8) NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -184,7 +188,9 @@ CREATE TABLE `res_gas_tb`
     `res_gas_name`                 varchar(64) NOT NULL,
     `res_gas_emission`             int(11)     NOT NULL,
     `res_gas_abrechnungsintervall` tinyint(1)  NOT NULL COMMENT ='hier muss tinyint zu bool ',
-    `res-gas_vergleichswert`       int(11)     NOT NULL
+    `res_gas_abrintervall_anfang`   date NOT NULL,
+    `res_gas_abrintervall_ende`     date NOT NULL,
+    `res_gas_vergleichswert`       int(8)     NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -201,7 +207,47 @@ CREATE TABLE `res_heizoel_tb`
     `res_heizoel_name`                 varchar(64) NOT NULL,
     `res_heizoel_emission`             int(11)     NOT NULL,
     `res_heizoel_abrechnungsintervall` tinyint(1)  NOT NULL,
-    `res-heizoel_vergleichswert`       int(11)     NOT NULL
+    `res_heizoel_abrintervall_anfang` date NOT NULL,
+    `res_heizoel_abrintervall_ende` date NOT NULL,
+    `res-heizoel_vergleichswert`       int(8)     NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `res_strom-regulaer_tb`
+--
+
+DROP TABLE IF EXISTS `res_strom-regulaer_tb`;
+CREATE TABLE `res_strom-regulaer_tb`
+(
+    `res_strom-regulaer_id`                   int(11)     NOT NULL,
+    `res_strom-regulaer_name`                 varchar(64) NOT NULL,
+    `res_strom-regulaer_emission`             int(11)     NOT NULL,
+    `res_strom-regulaer_abrechnungsintervall` tinyint(1)  NOT NULL,
+    `res_strom-regulaer_abrintervall_anfang` date NOT NULL,
+    `res_strom-regulaer_abrintervall_ende` date NOT NULL,
+    `res_strom-regulaer_vergleichswert`       int(8)     NOT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `res_strom-regulaer_tb`
+--
+
+DROP TABLE IF EXISTS `res_strom-photov_tb`;
+CREATE TABLE `res_strom-photov_tb`
+(
+    `res_strom-photov_id`                   int(11)     NOT NULL,
+    `res_strom-photov_name`                 varchar(64) NOT NULL,
+    `res_strom-photov_emission`             int(11)     NOT NULL,
+    `res_strom-photov_abrechnungsintervall` tinyint(1)  NOT NULL,
+    `res_strom-photov_abrintervall_anfang` date NOT NULL,
+    `res_strom-photov_abrintervall_ende` date NOT NULL,
+    `res_strom-photov_vergleichswert`       int(8)     NOT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
@@ -317,7 +363,8 @@ ALTER TABLE `ressourcen-einheit_tb`
 -- Indizes für die Tabelle `ressourcen_tb`
 --
 ALTER TABLE `ressourcen_tb`
-    ADD PRIMARY KEY (`ressourcen_id`);
+    ADD PRIMARY KEY (`ressourcen_id`),
+    ADD KEY `ressourcen-co2emission_einheit` (`ressourcen-co2emission_einheit`);
 
 --
 -- Indizes für die Tabelle `login-track_tb`
@@ -331,13 +378,36 @@ ALTER TABLE `login-track_tb`
 -- Indizes für die Tabelle `res_gas_tb`
 --
 ALTER TABLE `res_gas_tb`
-    ADD PRIMARY KEY (`res_gas_id`);
+    ADD PRIMARY KEY (`res_gas_id`),
+    ADD KEY `res_gas_vergleichswert` (`res_gas_vergleichswert`);
+
+
+--
+-- Indizes für die Tabelle `res_strom-regulaer_tb`
+--
+ALTER TABLE `res_strom-regulaer_tb`
+    ADD PRIMARY KEY (`res_strom-regulaer_id`),
+    ADD KEY `res_strom-regulaer_vergleichswert` (`res_strom-regulaer_vergleichswert`);
+
+--
+-- Indizes für die Tabelle `res_strom-photov_tb`
+--
+ALTER TABLE `res_strom-photov_tb`
+    ADD PRIMARY KEY (`res_strom-photov_id`),
+    ADD KEY `res_strom-photov_vergleichswert` (`res_strom-photov_vergleichswert`);
 
 --
 -- Indizes für die Tabelle `res_heizoel_tb`
 --
 ALTER TABLE `res_heizoel_tb`
     ADD PRIMARY KEY (`res_heizoel_id`);
+
+--
+-- Indizes für die Tabelle `res-kategorie_tb`
+--
+ALTER TABLE `res-kategorie_tb`
+    ADD PRIMARY KEY (`res-kategorie_id`),
+    ADD KEY `res-kategorie_einheit` (`res-kategorie_einheit`);
 
 --
 -- Indizes für die Tabelle `nutzer_tb`
