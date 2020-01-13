@@ -111,10 +111,26 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
 });
 
 app.post('/', function (req, res) {
-  res.send('POST request to the homepage')
-})
+ 
+  console.log("Trying to log in..")
+  const Vorname = req.body.VornameInput;
+  const Nachname = req.body.NachnameInput;
+  
 
-app.get('http://141.45.92.87:3003/index', (req , res) => {
+  const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) VALUES (NULL,?,?,?,?,?,?,?,?)";
+  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
+    Console.log ("Failed to update user data..." + err);
+    res.sendStatus(500);
+    return 
+  }} );
+  
+  res.send('Data received:\n' + JSON.stringify(req.body));
+  console.log("Inserted new user");
+  res.send('POST request to the homepage')
+  res.end()
+});
+
+app.get('', (req , res) => {
   console.log("Trying to log in..")
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
