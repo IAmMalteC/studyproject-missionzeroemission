@@ -90,7 +90,7 @@ app.post('/' , function(req , res){
   const Telephone = req.body.TelefonInput;
   
 
-  var queryString = "INSERT INTO nutzer_tb SET (NULL,?,?,?,?,?)";
+  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?)";
   getConnection().query(queryString, [null,Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
