@@ -88,7 +88,7 @@ app.post('/' , function(req , res){
 
   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
-    Console.log ("Failed to update user data..." + err);
+    console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return
   }} );
