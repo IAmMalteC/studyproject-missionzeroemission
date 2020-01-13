@@ -90,8 +90,8 @@ app.post('/' , function(req , res){
   const Telephone = req.body.telephoneInput;
   
 
-  const queryString = "INSERT INTO DoriDB.nutzer_tb VALUES (default,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] , (err, result , fields) => {if (err) {
+  const queryString = "INSERT INTO DoriDB.nutzer_tb VALUES (NULL,?,?,?,?,?)";
+  getConnection().post(queryString, [null,Vorname , Nachname , Firma , Email , Telephone] , (err, result , fields) => {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return
