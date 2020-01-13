@@ -110,6 +110,9 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
 
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage')
+})
 
 app.post('http://141.45.92.87:3003/index', (req , res) => {
   console.log("Trying to log in..")
