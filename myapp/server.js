@@ -87,7 +87,7 @@ app.post('/' , function(req , res){
   const Nachname = req.body.NachnameInput;
   const Firma = req.body.FirmennameInput;
   const email = req.body.emailInput;
-  const telephone = req.body.telephoneInput
+  const telephone = req.body.telephoneInput;
   
 
   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?,?,?)";
