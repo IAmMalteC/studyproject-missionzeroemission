@@ -111,11 +111,12 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
 });
 
 app.post('141.45.92.87:3003/profil', (req , res) => {
+  const db = req.getConnection()
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
-  const db = req.getConnection()
+  
 
   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_name, nutzer_vorname) SET (default,?,?,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
