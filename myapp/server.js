@@ -1,7 +1,7 @@
 //these are the dependence
 const express = require('express');
 const app = express();
-const mariadb = require('mariadb/callback');
+const mariadb = require('mariadb');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
@@ -90,8 +90,8 @@ app.post('/' , function(req , res){
   const Telephone = req.body.telephoneInput;
   
 
-  const queryString = "INSERT INTO DoriDB.nutzer_tb VALUES (NULL,?,?,?,?,?)";
-  getConnection().commit(queryString, [null,Vorname , Nachname , Firma , Email , Telephone] , (err, result , fields) => {if (err) {
+  var queryString = "INSERT INTO nutzer_tb () VALUES (NULL,?,?,?,?,?)";
+  getConnection().query(queryString, [null,Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return
