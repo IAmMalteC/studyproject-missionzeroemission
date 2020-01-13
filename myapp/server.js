@@ -130,23 +130,23 @@ app.post('/', function (req, res) {
   res.end()
 });
 
-app.get('', (req , res) => {
-  console.log("Trying to log in..")
-  const Vorname = req.body.VornameInput;
-  const Nachname = req.body.NachnameInput;
+// app.get('', (req , res) => {
+//   console.log("Trying to log in..")
+//   const Vorname = req.body.VornameInput;
+//   const Nachname = req.body.NachnameInput;
   
 
-  const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) VALUES (NULL,?,?,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
-    Console.log ("Failed to update user data..." + err);
-    res.sendStatus(500);
-    return 
-  }} );
+//   const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) VALUES (NULL,?,?,?,?,?,?,?,?)";
+//   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
+//     Console.log ("Failed to update user data..." + err);
+//     res.sendStatus(500);
+//     return 
+//   }} );
   
-  res.send('Data received:\n' + JSON.stringify(req.body));
-  console.log("Inserted new user");
-  res.end()
-});
+//   res.send('Data received:\n' + JSON.stringify(req.body));
+//   console.log("Inserted new user");
+//   res.end()
+// });
 
 
 
