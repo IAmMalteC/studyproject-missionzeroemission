@@ -110,7 +110,6 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
 
-app.
 
 app.post('141.45.92.87:3003/profil', (req , res) => {
   const db = req.getConnection()
