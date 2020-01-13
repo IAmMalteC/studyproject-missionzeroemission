@@ -42,7 +42,7 @@ app.listen(3003, ()=>{
 
 app.use(function(req,res,next){
 
-  req.getConnection()
+  req.getcon= getConnection()
 
   next();
 
