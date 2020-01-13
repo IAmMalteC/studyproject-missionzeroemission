@@ -111,7 +111,7 @@ app.get('/', (req , res) => {
     return
   }} );
   
-  res.send('Data received:\n' + JSON.stringify(req.body));
+  res.send('Data received:\n' + JSON.stringify(req.Vorname , req.Nachname));
   console.log("Inserted new user");
   res.end()
 });
