@@ -109,8 +109,10 @@ app.get('/ressourcen/umsatz', function(req, res) {
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
-console.log("hi i am here")
-app.post('141.45.92.87:3003/profil', (req , res) => {
+
+app.
+
+app.post('PersoenlicheInformation', (req , res) => {
   const db = req.getConnection()
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
