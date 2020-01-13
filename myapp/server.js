@@ -117,7 +117,7 @@ app.post('/', function (req, res) {
   const Nachname = req.body.NachnameInput;
   
 
-  const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) VALUES (NULL,?,?,?,?,?,?,?,?)";
+  const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) VALUES (NULL,?,?,sdss,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
     Console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
@@ -126,7 +126,7 @@ app.post('/', function (req, res) {
   
   res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
-  res.send('POST request to the homepage')
+  
   res.end()
 });
 
