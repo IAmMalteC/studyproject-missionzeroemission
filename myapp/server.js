@@ -109,7 +109,7 @@ app.get('/ressourcen/umsatz', function(req, res) {
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
-
+console.log("hi i am here")
 app.post('141.45.92.87:3003/profil', (req , res) => {
   const db = req.getConnection()
   console.log("Trying to log in..")
@@ -118,11 +118,11 @@ app.post('141.45.92.87:3003/profil', (req , res) => {
   const Nachname = req.body.NachnameInput;
   
 
-  const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) SET (NULL,?,?,?,?,?,?,?,?)";
+  const queryString = "INSERT INTO nutzer_tb (nutzer_name, nutzer_vorname) VALUES (NULL,?,?,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
     Console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
-    return result
+    return 
   }} );
   
   res.send('Data received:\n' + JSON.stringify(req.body));
