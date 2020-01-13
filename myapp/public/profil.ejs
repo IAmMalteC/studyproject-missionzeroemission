@@ -14,7 +14,7 @@
     </header>
     <!-- Main -->
     <div class="content">
-        <form action="141.45.92.87:3003/profil" name="PersoenlicheInformation" method="POST">
+        <form action="141.45.92.87:3003/profil" id="PersoenlicheInformation" method="POST">
             <div>
                 <h1>Pers&ouml;nliche Informationen</h1>
             </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div>
-                <input name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
+                <input form="PersoenlicheInformation" name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
             </div>
         </form>
         <form action="/profil" name="AccountInformation" method="POST">
