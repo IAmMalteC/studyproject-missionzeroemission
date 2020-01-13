@@ -120,16 +120,5 @@ app.listen(3003, ()=>{
   console.log("server is up and listening on port 3003...")
 });
 
-//app.post("/profil" , function (req , res) {
-//  console.log(req.body);
-//  let sql = "INSERT INTO nutzer_tb(profil_name, profil_vorname, profil_firma, profil_position, profil_fax, profil_tel, profil_email, profil_benutzername, profil_passwort) VALUES (null ,'" + req.body.NachnameInput + "' , '"+req.body.VornameInput+"' , '"+req.body.FirmennameInput+"', '"+req.body.PositionInput+"' ,'"+req.body.FaxInput+"' , '"+req.body.TelefonInput+"' , '"+req.body.EmailInput+"' , '"+ req.body.BenutzernameInput +"' , '"+req.body.PasswortInput+"')";
-//  connection.query(sql , function (err) {
-//    if (err) throw err;
-//    res.send("Data Is added to the database...")
-//  })
-//});
-//app.timeout = 0;
-//app.listen("3306");
 
-// comment being the name of the database
 
