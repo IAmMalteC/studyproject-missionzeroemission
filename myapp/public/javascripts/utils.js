@@ -11,20 +11,7 @@ window.chartColors = {
 };
 
 (function(global) {
-    var MONTHS = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ];
+    var YEARS = ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'];
 
     var COLORS = [
         '#4dc9f6',

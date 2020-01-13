@@ -96,14 +96,14 @@
                                 display: true,
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Month'
+                                    labelString: 'Year'
                                 }
                             }],
                             yAxes: [{
                                 display: true,
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Value'
+                                    labelString: 'CO<sub>2</sub>-Emissionen in %'
                                 }
                             }]
                         }
@@ -148,8 +148,8 @@
 
                 document.getElementById('addData').addEventListener('click', function() {
                     if (config.data.datasets.length > 0) {
-                        var month = YEARS[config.data.labels.length % YEARS.length];
-                        config.data.labels.push(month);
+                        var year = YEARS[config.data.labels.length % YEARS.length];'2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'
+                        config.data.labels.push(year);
 
                         config.data.datasets.forEach(function(dataset) {
                             dataset.data.push(randomScalingFactor());
