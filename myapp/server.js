@@ -111,10 +111,8 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
 });
 
 
-app.post('141.45.92.87:3003/profil', (req , res) => {
-  const db = req.getConnection()
+app.post('http://141.45.92.87:3003/profil', (req , res) => {
   console.log("Trying to log in..")
-  console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
   
