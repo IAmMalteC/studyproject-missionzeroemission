@@ -40,6 +40,13 @@ app.listen(3003, ()=>{
   console.log("server is up and listening on port 3003...")
 });
 
+app.use(function(req,res,next){
+
+  req.getConnection() = getConnection();
+
+  next();
+
+});
 //Routing
 //It is messy and a crappy solution, but it works for now, until a new link is added, then it has to be implented here as well. Solution would be to understand express routing
 //index
@@ -108,6 +115,7 @@ app.post('141.45.92.87:3003/profil', (req , res) => {
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
+  const db = req.getConnection()
 
   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
