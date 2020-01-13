@@ -87,11 +87,11 @@ app.post('141.45.92.87:3003/profil', (req , res) => {
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
 
-  const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
+  const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?,?,?)";
   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
     Console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
-    return
+    return result
   }} );
   
   res.send('Data received:\n' + JSON.stringify(req.body));
