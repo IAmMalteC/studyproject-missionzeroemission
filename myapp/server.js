@@ -87,7 +87,7 @@ app.post('/' , function(req , res){
   const Nachname = req.body.NachnameInput;
   const Firma = req.body.FirmennameInput;
   const Email = req.body.emailInput;
-  const Telephone = req.body.TelephoneInput;
+  const Telephone = req.body.TelefonInput;
   
 
   var queryString = "INSERT INTO nutzer_tb SET (NULL,?,?,?,?,?)";
