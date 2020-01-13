@@ -80,8 +80,25 @@ app.get('/ressourcen/umsatz', function(req, res) {
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
+app.post('/' , function(req , res){
+  console.log("Trying to log in..")
+  console.log("First name: " + req.body.VornameInput);
+  const Vorname = req.body.VornameInput;
+  const Nachname = req.body.NachnameInput;
 
-app.post('/', (req , res) => {
+  const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
+  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
+    Console.log ("Failed to update user data..." + err);
+    res.sendStatus(500);
+    return
+  }} );
+  
+  res.send('Data received:\n' + JSON.stringify(req.body));
+  console.log("Inserted new user");
+  res.end()
+})
+
+app.get('/', (req , res) => {
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
