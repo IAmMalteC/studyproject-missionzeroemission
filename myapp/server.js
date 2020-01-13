@@ -86,12 +86,12 @@ app.post('/' , function(req , res){
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
   const Firma = req.body.FirmennameInput;
-  const email = req.body.emailInput;
-  const telephone = req.body.telephoneInput;
+  const Email = req.body.emailInput;
+  const Telephone = req.body.telephoneInput;
   
 
-  const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
+  const queryString = "INSERT INTO DoriDB.nutzer_tb VALUES (default,?,?,?,?,?)";
+  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] , (err, result , fields) => {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return
@@ -102,23 +102,23 @@ app.post('/' , function(req , res){
   res.end()
 })
 
-app.get('/', (req , res) => {
-  console.log("Trying to log in..")
-  console.log("First name: " + req.body.VornameInput);
-  const Vorname = req.body.VornameInput;
-  const Nachname = req.body.NachnameInput;
+// app.get('/', (req , res) => {
+//   console.log("Trying to log in..")
+//   console.log("First name: " + req.body.VornameInput);
+//   const Vorname = req.body.VornameInput;
+//   const Nachname = req.body.NachnameInput;
 
-  const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
-  getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
-    console.log ("Failed to update user data..." + err);
-    res.sendStatus(500);
-    return
-  }} );
+//   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
+//   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
+//     console.log ("Failed to update user data..." + err);
+//     res.sendStatus(500);
+//     return
+//   }} );
   
-  res.send('Data received:\n' + JSON.stringify(req.Vorname , req.Nachname));
-  console.log("Inserted new user");
-  res.end()
-});
+//   res.send('Data received:\n' + JSON.stringify(req.Vorname , req.Nachname));
+//   console.log("Inserted new user");
+//   res.end()
+// });
 
 function getConnection() {
   return mariadb.createConnection({
