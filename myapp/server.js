@@ -114,7 +114,7 @@ app.post('/', function (req, res) {
   res.send('POST request to the homepage')
 })
 
-app.post('http://141.45.92.87:3003/index', (req , res) => {
+app.get('http://141.45.92.87:3003/index', (req , res) => {
   console.log("Trying to log in..")
   const Vorname = req.body.VornameInput;
   const Nachname = req.body.NachnameInput;
