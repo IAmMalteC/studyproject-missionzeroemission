@@ -129,7 +129,7 @@ function getConnection() {
   });
 }
 
-getConnection().((err) => {
+getConnection().connect((err) => {
   if(err) {
     console.log("Failed" + err);
   }
