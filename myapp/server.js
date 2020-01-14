@@ -1,7 +1,7 @@
 //these are the dependence
 const express = require('express');
 const app = express();
-const mariadb = require('mariadb/callback');
+const mariadb = require('mariadb');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
@@ -103,7 +103,7 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
   
 });
 
-app.post('/' , function(req , res){
+app.post('/' , function(req , res) {
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
