@@ -103,10 +103,10 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
 app.post('http://141.45.92.87:3003/ressourcen/umsatz' , function(req , res){
     console.log("Entering sales data..")
     const JahresUmsatz = req.body.UmsatzInput;
-    const Datum = req.body.DatumUmsatzInput;
+    const Datum = req.body.ZeitraumJahr;
 
     var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
-    getConnection().query(umsatzQuery, [JahresUmsatz , Datum], function(err, result) {if (err) {
+    getConnection().query(umsatzQuery, [JahresUmsatz , ZeitraumJahr], function(err, result) {if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
       return
