@@ -100,7 +100,7 @@ app.get('/ressourcen/umsatz', function(req, res) {
 //CO2Schaetzung
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
-  res.end();
+  
 });
 
 app.post('/' , function(req , res){
@@ -113,14 +113,14 @@ app.post('/' , function(req , res){
   const Telephone = req.body.TelefonInput;
   
   var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
-  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) {if (err) {
+  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function(err, result) {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return 
   }} );
   console.log("Inserted new user");
   res.end()
-})
+});
 
 app.post("/" , function(req , res){
     console.log("Entering sales data..")
@@ -136,7 +136,7 @@ app.post("/" , function(req , res){
 
     console.log("Inserted new umsatz Data");
     res.end()
-  })
+  });
 
 
 
