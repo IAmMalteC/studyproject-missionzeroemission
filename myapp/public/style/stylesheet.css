@@ -218,12 +218,6 @@ td:first-child {
 td:last-child {
     padding-bottom: .5em;
 }
-td:before {
-    content: attr(data-th)": ";
-    font-weight: bold;
-    width: auto;
-    display: inline-block;
-}
 /*links*/
 a{
     text-decoration: none;
