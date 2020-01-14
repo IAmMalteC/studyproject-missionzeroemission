@@ -103,6 +103,22 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   res.end()
 })
 
+app.post('http://141.45.92.87:3003/ressourcen/umsatz' , function(req , res){
+    console.log("Entering sales data..")
+    const JahresUmsatz = req.body.UmsatzInput;
+    const Datum = req.body.DatumUmsatzInput;
+
+    var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
+    getConnection().query(umsatzQuery, [JahresUmsatz , Datum], function(err, result) {if (err) {
+      console.log("Failed to Insert into the database..." + err);
+      res.sendStatus(500);
+      return
+    }});
+
+    console.log("Inserted new umsatz Data");
+    res.end()
+  })
+
 // app.get('/', (req , res) => {
 //   console.log("Trying to log in..")
 //   console.log("First name: " + req.body.VornameInput);
