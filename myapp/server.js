@@ -37,13 +37,10 @@ app.get('/massnahmen-katalog', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     }else{
-      return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
+      return res.render('massnahmen-katalog', { massnahmen: result });// page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog',
     }
 
   });
-  // //Where is the else part?
-  // console.log("Got Massnahmen_tb Data");
-  // res.end()
 });
 // app.get('????',function(req,res) {
 //   var dbClient = new db.Client(dbConnection);
