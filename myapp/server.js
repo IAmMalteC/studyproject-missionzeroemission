@@ -82,7 +82,7 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.end();
 });
 
-app.get('http://141.45.92.87:3003/profil' , function(req , res){
+app.post('/' , function(req , res){
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
@@ -101,7 +101,7 @@ app.get('http://141.45.92.87:3003/profil' , function(req , res){
   res.end()
 })
 
-app.post('http://141.45.92.87:3003/ressourcen/umsatz' , function(req , res){
+app.post("/" , function(req , res){
     console.log("Entering sales data..")
     const JahresUmsatz = req.body.UmsatzInput;
     const Datum = req.body.ZeitraumJahr;
