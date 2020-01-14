@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('../partials/header'); -%>
+    </header>
+    <!-- Input Navigation Menu -->
+    <%- include('../partials/ressourcennav'); -%>
+    <!--Main Content-->
+    <div class="content">
+        <form method="post" name="AbfallForm">
+            <!-- Restmull -->
+            <div class="child-ressourcen">
+                <div><label for="RestmuellMenge">Restm&uuml;ll</label>
+                    <input id="RestmuellMenge" name="RestmuellMenge" type="text"> L</div>
+                <div>
+                    <label for="RestmuellHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="RestmuellHaeufigkeit">
+                        <option value="RestmuellMonatlich">Monatlich</option>
+                        <option value="RestmuellJaehrlich">J&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="RestmuellDatum">&Auml;nderungsdatum</label>
+                    <input name="RestmuellDatum" type="date"></div>
+            </div>
+
+            <!-- Wertstoff -->
+            <div class="child-ressourcen">
+                <div><label for="WertstoffMenge">Wertstoff</label>
+                    <input id="WertstoffMenge" name="WertstoffMenge" type="text"> L</div>
+                <div>
+                    <label for="WertstoffHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="WertstoffHaeufigkeit">
+                        <option value="WertstoffMonatlich">Monatlich</option>
+                        <option value="WertstoffJaehrlich">J&auml;hrlich</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="WertstoffDatum">&Auml;nderungsdatum</label>
+                    <input name="WertstoffDatum" type="date"> </div>
+            </div>
+
+            <!-- Biogut -->
+            <div class="child-ressourcen">
+                <div><label for="BiogutMenge">Biogut</label>
+                    <input id="BiogutMenge" name="BiogutMenge" type="text"> L</div>
+                <div>
+                    <label for="BiogutHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="BiogutHaeufigkeit">
+                        <option value="BiogutMonatlich">Monatlich</option>
+                        <option value="BiogutJaehrlich">J&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="BiogutDatum">&Auml;nderungsdatum</label>
+                    <input name="BiogutDatum" type="date"> </div>
+            </div>
+
+            <!--Papier -->
+            <div class="child-ressourcen">
+                <div><label for="PapierMenge">Papier</label>
+                    <input id="PapierMenge" name="PapierMenge" type="text"> L</div>
+                <div>
+                    <label for="PapierHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="PapierHaeufigkeit">
+                        <option value="PapierMonatlich">Monatlich</option>
+                        <option value="PapierJaehrlich">J&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="PapierDatum">&Auml;nderungsdatum</label>
+                    <input name="PapierDatum" type="date"> </div>
+            </div>
+
+            <!-- Glas -->
+            <div class="child-ressourcen">
+                <div><label for="GlasMenge">Glas</label>
+                    <input id="GlasMenge" name="GlasMenge" type="text"> L</div>
+                <div>
+                    <label for="GlasHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="GlasHaeufigkeit">
+                        <option value="GlasMonatlich">Monatlich</option>
+                        <option value="GlasJaehrlich">J&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="GlasDatum">&Auml;nderungsdatum</label>
+                    <input name="GlasDatum" type="date"> </div>
+            </div>
+
+            <!-- Sondermüll -->
+            <div class="child-ressourcen">
+                <div><label for="SondermuellMenge">Sonderm&uuml;ll</label>
+                    <input id="SondermuellMenge" name="SondermuellMenge" type="text"> L</div>
+                <div>
+                    <label for="SondermuellHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="SondermuellHaeufigkeit">
+                        <option value="SondermuellMonatlich">Monatlich</option>
+                        <option value="SondermuellJaehrlich">J&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="SondermuellDatum">&Auml;nderungsdatum</label>
+                    <input name="SondermuellDatum" type="date"> </div>
+            </div>
+
+            <!-- Sparmaßnahmen -->
+            <!--<div class="child-ressourcen">
+                <div><label for="AbfallSparmassnahme">Sparmaßnahme</label>
+                    <select id="AbfallSparmassnahme" name="AbfallSparmassnahme">
+                        !-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
+                        <option value="Mehrweg">Mehrwegverpackung</option>
+                        <option value="SingleUse">Single-Use Package</option>
+                    </select>
+                </div>
+                <div><label for="AbfallSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
+                    <input id="AbfallSparmassnahmeInbetriebnahme" name="AbfallSparmassnahmeInbetriebnahme"
+                        type="date"></div>
+            </div> -->
+
+            <!-- Daten hochladen -->
+            <div>
+                <div><input name="AbfallSpeichern" type="submit" value="Speichern"></div>
+            </div>
+        </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Abfallsparma&szlig;nahmen erstellen</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('./partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('./partials/header'); -%>
+    </header>
+    <!-- Main -->
+    <div class="content">
+        <div>
+            <!-- Hier wird die Tabelle angezeigt :
+            https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+            Sie ist Filterbar nach Unternehmen
+            -->    
+            <p>Ich bin nur ein ungen&uuml;gendes Beispiel</p>
+            <p>Hier w&auml;re dann ein Filter f&uuml;r verschiedene Unternehmen</p>
+            <table>
+            <!-- Main Row -->
+            <thead>
+                <tr>
+                <th>Katagorie</th>
+                <th>Jahr</th>
+                <th>Name</th>
+                <th>Unternehmen</th>
+                <th>Kennzahlen</th>
+                <th>Beschreibung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- second Row -->
+            <tr>
+                <th>Strom</th>
+                <th>2016</th>
+                <th>PV Installiert</th>
+                <th>M&auml;rkische Kiste</th>
+                <th>350 kWh</th>
+                <th>Blah blah</th>
+            </tr>
+            <!-- 3rd Row -->
+            <tr>
+                <th>Katagorie</th>
+                <th>Jahr</th>
+                <th>Name</th>
+                <th>Unternehmen</th>
+                <th>Kennzahlen</th>
+                <th>Beschreibung</th>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+
+
+        <div>
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Ma&szlig;nahmen erstellen</a>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <%- include('./partials/footer'); -%>
+    </footer>
+    <%- include('./partials/script'); -%>
+</body>
+</html>

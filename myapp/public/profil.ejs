@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('./partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <%- include('./partials/header'); -%>
+    </header>
+    <!-- Main -->
+    <div class="content">
+        <form action="" name="PersoenlicheInformation" method="POST">
+            <div>
+                <h1>Pers&ouml;nliche Informationen</h1>
+            </div>
+            <div>
+                <div>
+                    <label for="Vorname">Vorname</label>
+                    <input id="Vorname" name="VornameInput" type="text">
+                </div>
+                <div>
+                    <label for="Nachname">Nachname</label>
+                    <input id="Nachname" name="NachnameInput" type="text">
+                </div>
+                <div>
+                    <label for="Firmenname">Firmenname</label>
+                    <input id="Firmenname" name="FirmennameInput" type="text">
+                </div>
+                <!-- <div>
+                    <label for="Position">Position</label>
+                    <input id="Position" name="PositionInput" type="text">
+                </div> -->
+                <div>
+                    <label for="email">Email</label>
+                    <input id="email" name="emailInput" type="tel">
+                </div>
+                <div>
+                    <label for="Telefon">Telefonnummer</label>
+                    <input id="Telefon" name="TelefonInput" type="tel" pattern="">
+                </div>
+                
+               
+            </div>
+            <div>
+                <input name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
+            </div>
+        </form>
+        <form action="/profil" name="AccountInformation" method="POST">
+            <div>
+                <h1>Accountinformation</h1>
+            </div>
+            <div>
+                <div>
+                    <label for="Benutzername">Benutzername</label>
+                    <input id="Benutzername" name="BenutzernameInput" type="text">
+                </div>
+                <div>
+                    <label for="Email">E-Mail-Adresse</label>
+                    <input id="Email" name="EmailInput" type="email">
+                </div>
+                <!-- noch hinzufügen, dass wenn ein Passwort eingeben wird, dass beide Required sind und ähnlich sind-->
+                <div>
+                    <label for="Passwort">Passwort</label>
+                    <input id="Passwort" name="PasswortInput" type="password">
+                </div>
+                <div>
+                    <label for="PasswortWiederholen">Passwort wiederholen</label>
+                    <input id="PasswortWiederholen" required name="PasswortWiederholenInput" type="password">
+                </div>
+            </div>
+            <div>
+                <input name="AccountInformationSpeichernInput" type="submit" value="Speichern">
+            </div>
+        </form>
+        <!-- Falls gewünscht Activitydiagram hinzufügen, als logdatei so würde das gehen:
+        https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+        -->
+    </div>
+    <!--Footer-->
+    <footer>
+        <%- include('./partials/footer'); -%>
+    </footer>
+    <%- include('./partials/script'); -%>
+    <!-- Password Validation -- ggf auslagern! -->
+    <script>
+        var password = document.getElementById("Passwort")
+            , confirm_password = document.getElementById("PasswortWiederholen");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+</body>
+
+</html>

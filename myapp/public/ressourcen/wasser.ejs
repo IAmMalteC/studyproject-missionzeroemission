@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('../partials/header'); -%>
+    </header>
+    <!-- Input Navigation Menu -->
+    <%- include('../partials/ressourcennav'); -%>
+    <!--Main Content-->
+    <div class="content">
+        <form method="post" name="WasserForm">
+            <div class="child-ressourcen">
+                <div><label for="TrinkwasserMenge">Trinkwasser</label>
+                    <input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text"> L</div>
+                <div>
+                    <label for="TrinkwasserHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="TrinkwasserHaeufigkeit">
+                        <option value="TrinkwasserMonatlich">monatlich</option>
+                        <option value="TrinkwasserZweimonatlich">zweimonatlich</option>
+                        <option value="TrinkwasserJaehrlich">j&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="TrinkwasserAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="TrinkwasserAenderungsdatum" type="date"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><label for="AbwasserMenge">Abwasser</label>
+                    <input id="AbwasserMenge" name="AbwasserMenge" type="text"> L</div>
+                <div>
+                    <label for="AbwasserHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="AbwasserHaeufigkeit">
+                        <option value="AbwasserMonatlich">monatlich</option>
+                        <option value="AbwasserZweimonatlich">zweimonatlich</option>
+                        <option value="AbwasserJaehrlich">j&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="AbwasserAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="AbwasserAenderungsdatum" type="date"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><label for="WasserJahresabrechnung">Jahresabrechnung</label></div>
+                <div>
+                    <label for="WasserJahresabrechnungVorzeichen">Vorzeichen</label>
+                    <select id="WasserJahresabrechnungVorzeichen" name="WasserJahresabrechnungVorzeichen">
+                        <option value="WasserPlus">+</option>
+                        <option value="WasserMinus">-</option>
+                    </select>
+                    <input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text">
+                </div>
+                <div><label for="WasserJahresabrechnungAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="WasserJahresabrechnungAenderungsdatum" type="date"></div>
+            </div>
+            <!-- <div class="child-ressourcen">
+                <div><label for="WasserSparmassnahme">Sparma&szlig;nahme</label>
+                    <select id="WasserSparmassnahme" name="WasserSparmassnahme">
+                        -- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
+                        <option value="Brauchwasserrueckfuehrung">Brauchwasserr&uuml;ckf&uuml;hrung</option>
+                        <option value="Grundwassernutzung">Grundwassernutzung</option>
+                        <option value="Regenwassernutzung">Regenwassernutzung</option>
+                    </select>
+                </div>
+                <label for="WasserSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
+                <input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date">
+            </div> -->
+            <!-- Daten hochladen -->
+            <div>
+                <input name="WasserSpeichern" type="submit" value="Speichern">
+            </div>
+        </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Wassersparma&szlig;nahmen erstellen</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>

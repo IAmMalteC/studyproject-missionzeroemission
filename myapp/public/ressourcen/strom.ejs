@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('../partials/header'); -%>
+    </header>
+    <!-- Input Navigation Menu -->
+    <%- include('../partials/ressourcennav'); -%>
+
+    <!--Main Content-->
+<div class="content">
+    <form method="post" name="StromForm">
+        <div class="child-ressourcen">
+            <div>
+                <label for="StromAblesung">Ablesung</label>
+                <select id="StromAblesung" name="StromAblesung">
+                    <option value="StromMonatlich">monatlich</option>
+                    <option value="StromJaehrlich">j&auml;hrlich</option>
+                </select>
+            </div>
+            <div>
+                <label for="Stromverbrauch">Stromverbrauch</label>
+                <input id="Stromverbrauch" name="Stromverbrauch" type="text"> kWh
+            </div>
+            <div>
+                <label for="StromCO2Emissionen">CO<sub>2</sub>-Emissionen</label>
+                <input id="StromCO2Emissionen" name="StromCO2Emissionen" type="text"> g/kWh
+            </div>
+            <div>
+                <label for="StromZeitraumMonat">Abrechnungszeitraum</label>
+                <select id="StromZeitraumMonat" name="StromZeitraumMonat">
+                    <%- include('./partials/dropdownmonth'); -%>
+                </select>
+                <select id="StromZeitraumJahr" name="StromZeitraumJahr">
+                    <%- include('./partials/dropdownyear'); -%>
+                </select>            
+            </div>
+        </div>
+        <!-- <div class="child-ressourcen">
+            <div><label for="StromSparmassnahme">Sparma&szlig;nahme</label>
+                <select id="StromSparmassnahme" name="StromSparmassnahme">
+                    -- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
+                    <option value="Photovoltaik">Photovoltaik</option>
+                    <option value="LED">LED</option>
+                </select>
+            </div>
+            <div><label>Inbetriebnahme</label>
+                <input id="StromSparmassnahmeInbetriebnahme" name="StromSparmassnahmeInbetriebnahme" type="date"></div>
+        </div> -->
+
+        <!-- Daten hochladen -->
+        <div>
+            <div><input name="StromSpeichern" type="submit" value="Speichern"></div>
+        </div>
+    </form>
+    <!-- Maßnahmespeichern -->
+    <div child="child-ressourcen">
+        <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Stromsparma&szlig;nahmen erstellen</a>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('../partials/header'); -%>
+    </header>
+    <!-- Input Navigation Menu -->
+    <%- include('../partials/ressourcennav'); -%>
+    <!--Main Content-->
+    <div class="content">
+        <form method="post" name="HeizoelForm">
+            <div class="child-ressourcen">
+                <div><input type="checkbox" name="HeizungCheckbox" value="Heizoel"> Heiz&ouml;l</div>
+                <div><label for="HeizoelverbrauchMenge">Heiz&ouml;lverbrauch</label>
+                    <input id="HeizoelverbrauchMenge" name="HeizoelverbrauchMenge" type="text"> L</div>
+                <div><label for="Heizoelzeitraum">Zeitraum</label>
+                    <input id="Heizoelzeitraum" name="HeizoelAnfangsdatum" type="date">
+                    <input type="date" name="HeizoelEnddatum"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><input type="checkbox" name="HeizungCheckbox" value="Holzpellets"> Holzpelletheizung</div>
+                <div><label for="HolzpelletverbrauchMenge">Holzpelletverbrauch</label>
+                    <input id="HolzpelletverbrauchMenge" name="HolzpelletverbrauchMenge" type="text"> kg</div>
+                <div><label for="Holzpelletzeitraum">Zeitraum</label>
+                    <input id="Holzpelletzeitraum" name="HolzpelletAnfangsdatum" type="date">
+                    <input name="HolzpelletEnddatum" type="date"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><input type="checkbox" name="HeizungCheckbox" value="Fernwaerme"> Fernw&auml;rme</div>
+                <div><label for="FernwaermeverbrauchMenge">Fernw&auml;rmeverbrauch</label>
+                    <input id="FernwaermeverbrauchMenge" name="HolzpelletverbrauchMenge" type="text"> kWh</div>
+                <div><label for="Fernwaermezeitraum">Zeitraum</label>
+                    <input id="Fernwaermezeitraum" name="FernwaermeAnfangsdatum" type="date">
+                    <input name="FernwaermeEnddatum" type="date"></div>
+            </div>
+
+            <!-- <div class="child-ressourcen">
+                <div><label for="HeizoelSparmassnahme">Sparma&szlig;nahme</label>
+                    <select id="HeizoelSparmassnahme" name="HeizoelSparmassnahme">
+                        -- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
+                        <option value="HeizoelDaemmung">D&auml;mmung</option>
+                        <option value="HeizoelOption2">Option 2</option>
+                    </select>
+                </div>
+                <div><label for="HeizoelSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
+                    <input id="HeizoelSparmassnahmeInbetriebnahme" name="HeizoelSparmassnahmeInbetriebnahme"
+                        type="date"></div>
+            </div> -->
+
+            <!-- Daten hochladen -->
+            <div>
+                <input name="HeizoelSpeichern" type="submit" value="Speichern">
+            </div>
+        </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Heizsparma&szlig;nahmen erstellen</a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>

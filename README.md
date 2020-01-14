@@ -7,12 +7,12 @@ A tool to visaulize the emissions of the "Unternehmensnetzwerk Motzenerstraße"
 Text Elemente wie Footer und header können eingebunden werden, sodass sie nicht auf jeder einzelnen Seite bearbeitet werden muss. Ein bisschen wie bei Objekten.
 
 Eingebunden werden sie mit folgenden Schritten:
-1. Save the HTML for the common elements of your site as separate files. For example, your navigation section might be saved as navigation.html.
+1. Save the HTML for the common elements of your site as separate files. For example, your navigation section might be saved as navigation.
 
 2. Use the following code to include that HTML document's code in each page.
 ```
 <div>
-  <iframe src="navigation.html" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
+  <iframe src="navigation" onload="this.before((this.contentDocument.body||this.contentDocument).children[0]);this.remove()"></iframe>
 </div>
 ```
 

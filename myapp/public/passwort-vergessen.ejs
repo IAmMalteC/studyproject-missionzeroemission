@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('./partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <%- include('./partials/header'); -%>
+    </header>
+    <!-- Main -->
+    <div class="content">
+        <form action="" name="ResetPasswort" method="post">
+            <div>
+                <p>Bitte geben Sie ihren Benutzernamen oder ihre E-Mail-Adresse ein.</p>
+                <input name="BenutzernameInput" id="Benutzername" type="text" required autofocus>
+                <input name="ResetPasswortInput" id="ResetPasswort" type="submit" value="Neues Passwort anfordern"> 
+            </div>
+            <div>
+                <a class="button button-cancel" href="./login">Abbrechen</a>
+            </div>
+        </form>
+    </div>
+     <!-- Footer -->
+     <footer>
+        <%- include('./partials/footer'); -%>
+    </footer>
+    <%- include('./partials/script'); -%>
+</body>
+</html>

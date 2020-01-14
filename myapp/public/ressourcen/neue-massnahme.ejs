@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('../partials/header'); -%>
+    </header>
+    <!-- Input Navigation Menu -->
+    <%- include('../partials/ressourcennav'); -%>
+    <!--Main Content-->
+    <div class="content">
+        <!-- if the form id is changed, please change the value for form in the textarea ~line58 -->
+        <form method="post" name="MassnahmeErstellenForm" id="MassnahmeErstellenForm">
+            <div>
+                <h2>Ma&szlignahme erstellen</h2>
+            </div>
+            <div>
+                <!--Should change from Reduktion to Kompensation SCRIPT NEEDED-->
+                <input type="radio" id="MassnahmeReduktion" name="MassnahmeArt" value="Reduktion">
+                <label for="MassnahmeReduktion">Reduktion</label>
+                <input type="radio" id="MassnahmeKompensation" name="MassnahmeArt" value="Kompensation">
+                <label for="MassnahmeKompensation">Kompensation</label>
+            </div>
+            <div>
+                <label for="MassnahmeName">Name</label>
+                <input id="MassnahmeName" name="MassnahmeName" type="text">
+            </div>
+            <div>
+                <label for="MassnahmeEinsparung">Einsparung in t CO<sub>2</sub></label>
+                <input id="MassnahmeEinsparung" name="MassnahmeEinsparung" type="text">
+            </div>
+            <div>
+                <label for="MassnahmeBeschreibung">Beschreibung</label>
+                <textarea name="MassnahmeBeschreibung" id="MassnahmeBeschreibung" rows="6"
+                    form="MassnahmeErstellenForm"></textarea>
+            </div>
+            <div>
+                <label for="MassnahmeDatum">Datum der Inbetriebnahme</label>
+                <input id="MassnahmeDatum" name="MassnahmeDatum" type="date">
+            </div>
+            <div>
+                <label for="MassnahmeOeffentlich">Ma&szlig;nahme ist &ouml;ffentlich einsehbar</label>
+                <input type="checkbox" id="MassnahmeOeffentlich" name="MassnahmeOeffentlich">
+            </div>
+
+            <!-- Daten hochladen -->
+            <div>
+                <input name="MassnahmeErstellen" type="submit" value="Erstellen">
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>

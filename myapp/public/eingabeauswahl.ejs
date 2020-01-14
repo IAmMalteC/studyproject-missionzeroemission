@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('./partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('./partials/header'); -%>
+    </header>
+    <!-- Main-->
+    <div class="content">
+        <form action="" name="FirmennameAnzeigen" method="get">
+            <!-- hier steht dann der Firmenname mit der Metode-->
+            <h1>Meine Firma</h1>
+        </form>
+        <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
+            <!--
+            Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
+            Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
+            -->
+            <div>
+                <a class="button" href="./ressourcen/strom">Strom</a>
+            </div>
+            <div>
+                <a class="button" href="./ressourcen/heizung">Heizung</a>
+            </div>
+            <div>
+                <a class="button" href="./ressourcen/erdgas">Gas</a>
+            </div>
+            <div>
+                <a class="button" href="./ressourcen/wasser">Wasser</a>
+            </div>
+            <div>
+                <a class="button" href="./ressourcen/abfall">Abfall</a>
+            </div>
+            <div>
+                <a class="button" href="./ressourcen/neue-massnahme">Kompensationsma&szlig;nahme</a>
+            </div>
+            <!-- Die folgenden zwei haben keinen Balken-->
+            <div>
+                <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
+            </div>
+            <div>
+                <a class="button" href="./ressourcen/co2schaetzung">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
+            </div>
+        </form>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <%- include('./partials/footer'); -%>
+    </footer>
+    <%- include('./partials/script'); -%>
+</body>
+
+</html>

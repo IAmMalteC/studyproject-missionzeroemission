@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('../partials/header'); -%>
+    </header>
+    <!-- Input Navigation Menu -->
+    <%- include('../partials/ressourcennav'); -%>
+    <!--Main Content-->
+    <div class="content">
+        <form method="post" name="ErdgasForm">
+            <div class="child-ressourcen">
+                <div><label for="GasverbrauchMenge">Gasverbrauch</label>
+                    <input id="GasverbrauchMenge" name="GasverbrauchMenge" type="text"> m<sup>3</sup></div>
+                <div>
+                    <label for="GasverbrauchHaeufigkeit">H&auml;uigkeit</label>
+                    <select name="GasverbrauchHaeufigkeit">
+                        <option value="GasverbrauchMonatlich">monatlich</option>
+                        <option value="GasverbrauchZweimonatlich">zweimonatlich</option>
+                        <option value="GasverbrauchJaehrlich">j&auml;hrlich</option>
+                    </select>
+                </div>
+                <div><label for="GasverbrauchAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="GasverbrauchAenderungsdatum" type="date"></div>
+            </div>
+            <div class="child-ressourcen">
+                <div><label for="ErdgasJahresabrechnungMenge">Jahresabrechnung</label></div>
+                <div><label for="ErdgasJahresabrechnungVorzeichen">Vorzeichen</label>
+                    <select name="ErdgasJahresabrechnungVorzeichen">
+                        <option value="ErdgasPlus">+</option>
+                        <option value="ErdgasMinus">-</option>
+                    </select>
+                    <input id="ErdgasJahresabrechnungMenge" name="ErdgasJahresabrechnungMenge" type="text">
+                    m<sup>3</sup></div>
+                <div>
+                    <label for="ErdgasJahresabrechnungAenderungsdatum">&Auml;nderungsdatum</label>
+                    <input name="ErdgasJahresabrechnungAenderungsdatum" type="date"></div>
+            </div>
+            <!-- <div class="child-ressourcen">
+                <div><label for="ErdgasSparmassnahme">Sparma&szlig;nahme</label>
+                    <select id="ErdgasSparmassnahme" name="ErdgasSparmassnahme">
+                        !-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
+                        <option value="ErdgasDaemmung">D&auml;mmung</option>
+                        <option value="ErdgasOption2">Option 2</option>
+                    </select>
+                </div>
+                <div><label for="ErdgasSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
+                    <input id="ErdgasSparmassnahmeInbetriebnahme" name="ErdgasSparmassnahmeInbetriebnahme" type="date">
+                </div>
+            </div> -->
+
+            <!-- Daten hochladen -->
+            <div>
+                <div><input name="ErdgasSpeichern" type="submit" value="Speichern"></div>
+            </div>
+        </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Gassparma&szlig;nahmen erstellen</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>
