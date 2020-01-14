@@ -33,7 +33,7 @@ app.get('/massnahmen-katalog', function (req, res) {
 
   getConnection().query(queryString, function(err, result) {
     if (err) {
-      console.log("Failed to update user data..." + err);
+      console.log("Failed to get massnahmen_tb data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     }else{
@@ -41,9 +41,9 @@ app.get('/massnahmen-katalog', function (req, res) {
     }
 
   });
-  //Where is the else part?
-  console.log("Got Massnahmen_tb Data");
-  res.end()
+  // //Where is the else part?
+  // console.log("Got Massnahmen_tb Data");
+  // res.end()
 });
 // app.get('????',function(req,res) {
 //   var dbClient = new db.Client(dbConnection);
