@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
   });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
-  var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM massnahmen_tb RIGHT JOIN ressourcen_tb ON massnahmen_tb.massnahmen_res_kategorie = ressourcen_tb.ressourcen_kategorie RIGHT JOIN res_kategorie_tb ON ressourcen_tb.ressourcen_kategorie = res_kategorie_tb.res_kategorie_id RIGHT JOIN mn_firma_massnahmen_tb ON massnahmen_tb.massnahmen_id = mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme RIGHT JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id ORDER BY ressourcen_tb.ressourcen_kategorie";// RIGHT JOIN ON massnahmen_tb.massnahmen_res_kategorie=ressourcen_tb.ressourcen"; // JOIN von maßnahme und firma
+  var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb RIGHT JOIN ressourcen_tb ON massnahmen_tb.massnahmen_res_kategorie = ressourcen_tb.ressourcen_kategorie RIGHT JOIN res_kategorie_tb ON ressourcen_tb.ressourcen_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY ressourcen_tb.ressourcen_kategorie";// RIGHT JOIN ON massnahmen_tb.massnahmen_res_kategorie=ressourcen_tb.ressourcen"; // JOIN von maßnahme und firma
 
   getConnection().query(queryString, function (err, result) {
     if (err) {
@@ -38,6 +38,21 @@ app.get('/massnahmen-katalog', function (req, res) {
       return res.status(204).send();
     } else {
       return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
+    }
+
+  });
+});
+//Maßnahmenübersicht --> Für die Firma
+app.get('/massnahmen-katalog', function (req, res) {
+  var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM massnahmen_tb RIGHT JOIN ressourcen_tb ON massnahmen_tb.massnahmen_res_kategorie = ressourcen_tb.ressourcen_kategorie RIGHT JOIN res_kategorie_tb ON ressourcen_tb.ressourcen_kategorie = res_kategorie_tb.res_kategorie_id RIGHT JOIN mn_firma_massnahmen_tb ON massnahmen_tb.massnahmen_id = mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme RIGHT JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id ORDER BY ressourcen_tb.ressourcen_kategorie";// RIGHT JOIN ON massnahmen_tb.massnahmen_res_kategorie=ressourcen_tb.ressourcen"; // JOIN von maßnahme und firma
+
+  getConnection().query(queryString, function (err, result) {
+    if (err) {
+      console.log("Failed to get massnahmen_tb data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      return res.render('massnahmen-uebersicht', { page: 'Maßnahmen Übersicht', menuId: 'massnahmen-uebersicht', massnahmen: result });
     }
 
   });
