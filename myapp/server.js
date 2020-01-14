@@ -89,7 +89,6 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   const Email = req.body.emailInput;
   const Telephone = req.body.TelefonInput;
   
-
   var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
   getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) {if (err) {
     console.log ("Failed to update user data..." + err);
@@ -101,14 +100,14 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   res.end()
 })
 
-app.post('http://141.45.92.87:3003/ressourcen/umsatz' , function(req, res){
+app.post('http://141.45.92.87:3003/ressourcen/umsatz' , function(req , res){
     console.log("Entering sales data..")
     const JahresUmsatz = req.body.UmsatzInput;
     const Datum = req.body.DatumUmsatzInput;
 
     var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
-    getConnection().query(umsatzQuery, [JahresUmsatz,Datum], function(err, result) {if (err) {
-      console.log("Failed to Insert into the database..." + err );
+    getConnection().query(umsatzQuery, [JahresUmsatz , Datum], function(err, result) {if (err) {
+      console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
       return
     }});
