@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const mariadb = require('mariadb/callback');
-const morgan = require ('morgan')
+const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
 
@@ -21,23 +21,31 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is messy and a crappy solution, but it works for now, until a new link is added, then it has to be implented here as well. Solution would be to understand express routing
 //index
-app.get('/', function(req, res) {
-  res.render('index', {page:'Startseite', menuId:'index'})
+app.get('/', function (req, res) {
+  res.render('index', { page: 'Startseite', menuId: 'index' })
 }),
-app.get('/index', function(req, res) {
-  res.render('index', {page:'Startseite', menuId:'index'});
-});
+  app.get('/index', function (req, res) {
+    res.render('index', { page: 'Startseite', menuId: 'index' });
+  });
 //Maßnahmenkatalog
-app.get('/massnahmen-katalog', function(req, res) {
+app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT * FROM massnahmen_tb FULL OUTER JOIN ON massnahmen_tb.massnahmen_res_kategorie=ressourcen_tb.ressourcen"; // JOIN von maßnahme und firma
 
-  getConnection().query(queryString ,function (err, result) 
-  {if (err) {
-    console.log ("Failed to update user data..." + err);
-    res.sendStatus(500);
-    return res.status(204).send();
-  }} );
-  return res.render('massnahmen-katalog', {page:'Maßnahmenkatalog', menuId:'massnahmen-katalog', massnahmen: result});
+  getConnection().query(queryString, function (err, result) {
+    if (err) {
+      console.log("Failed to update user data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    }
+  });
+  var kategorie = req.query.ressourcen_kategorie; //TODO should be changed to ressourcen categorie later
+  var name = req.query.massnahmen_name;
+  var beschreibung = req.query.massnahmen_beschreibung;
+  var unternehmen = req.query.mn_firma_massnahmen_firma; //TODO join with firma
+  var datum = req.query.mn_firma_massnahmen_anfangsdatum;
+
+  var result = [kategorie, name, beschreibung, unternehmen, datum];
+  return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
   //Where is the else part?
   console.log("Got Massnahmentb Data");
   res.end()
@@ -61,56 +69,56 @@ app.get('/massnahmen-katalog', function(req, res) {
 //   });
 // });
 //Eingabenauswahl
-app.get('/eingabeauswahl', function(req, res) {
-  res.render('eingabeauswahl', {page:'Eingabeauswahl', menuId:'eingabeauswahl'});
+app.get('/eingabeauswahl', function (req, res) {
+  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl' });
 });
 //profil
-app.get("/profil" , function(req , res , next){
-  res.render('profil', {page:'Profil', menuId:'profil'});
+app.get("/profil", function (req, res, next) {
+  res.render('profil', { page: 'Profil', menuId: 'profil' });
 });
 //Login
-app.get('/login', function(req, res) {
-  res.render('login', {page:'Login', menuId:'login'});
+app.get('/login', function (req, res) {
+  res.render('login', { page: 'Login', menuId: 'login' });
 });
 //Passwort-Vergessen
-app.get('/passwort-vergessen', function(req, res) {
-  res.render('passwort-vergessen', {page:'Passwort vergessen', menuId:'passwort-vergessen'});
+app.get('/passwort-vergessen', function (req, res) {
+  res.render('passwort-vergessen', { page: 'Passwort vergessen', menuId: 'passwort-vergessen' });
 });
 //RESSOURCEN
 //Strom
-app.get('/ressourcen/strom', function(req, res) {
-  res.render('./ressourcen/strom', {page:'Strom', menuId:'strom'});
+app.get('/ressourcen/strom', function (req, res) {
+  res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
 });
 //Heizung
-app.get('/ressourcen/heizung', function(req, res) {
-  res.render('./ressourcen/heizung', {page:'Heizung', menuId:'heizung'});
+app.get('/ressourcen/heizung', function (req, res) {
+  res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
 });
 //Erdgas
-app.get('/ressourcen/erdgas', function(req, res) {
-  res.render('./ressourcen/erdgas', {page:'Gas', menuId:'erdgas'});
+app.get('/ressourcen/erdgas', function (req, res) {
+  res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
 });
 //Wasser
-app.get('/ressourcen/wasser', function(req, res) {
-  res.render('./ressourcen/wasser', {page:'Wasser', menuId:'wasser'});
+app.get('/ressourcen/wasser', function (req, res) {
+  res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
 });
 //Abfall
-app.get('/ressourcen/abfall', function(req, res) {
-  res.render('./ressourcen/abfall', {page:'Abfall', menuId:'abfall'});
+app.get('/ressourcen/abfall', function (req, res) {
+  res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
 });
 //Neue-Massnahme
-app.get('/ressourcen/neue-massnahme', function(req, res) {
-  res.render('./ressourcen/neue-massnahme', {page:'Neue Maßnahme', menuId:'neue-massnahme'});
+app.get('/ressourcen/neue-massnahme', function (req, res) {
+  res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
 });
 //Umsatz
-app.get('/ressourcen/umsatz', function(req, res) {
-  res.render('./ressourcen/umsatz', {page:'Umsatz', menuId:'umsatz'});
+app.get('/ressourcen/umsatz', function (req, res) {
+  res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
 });
 //CO2Schaetzung
-app.get('/ressourcen/co2schaetzung', function(req, res) {
-  res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
+app.get('/ressourcen/co2schaetzung', function (req, res) {
+  res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
 });
 // Input Data from Profil to DB
-app.post('http://141.45.92.87:3003/profil' , function(req , res){
+app.post('http://141.45.92.87:3003/profil', function (req, res) {
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
@@ -118,18 +126,20 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   const Firma = req.body.FirmennameInput;
   const Email = req.body.emailInput;
   const Telephone = req.body.TelefonInput;
-  
+
 
   var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
-  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) {if (err) {
-    console.log ("Failed to update user data..." + err);
-    res.sendStatus(500);
-    return res.status(204).send();
-  }} );
-  
+  getConnection().query(queryString, [Vorname, Nachname, Firma, Email, Telephone], function (err, result) {
+    if (err) {
+      console.log("Failed to update user data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    }
+  });
+
   //res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
-  
+
   res.end()
 });
 
@@ -145,7 +155,7 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
 //     res.sendStatus(500);
 //     return
 //   }} );
-  
+
 //   res.send('Data received:\n' + JSON.stringify(req.Vorname , req.Nachname));
 //   console.log("Inserted new user");
 //   res.end()
@@ -161,14 +171,14 @@ function getConnection() {
 }
 
 getConnection().connect((err) => {
-  if(err) {
+  if (err) {
     console.log("Failed" + err);
   }
   else
-  console.log("Database connected");
+    console.log("Database connected");
 });
 
-app.listen(3003, ()=>{
+app.listen(3003, () => {
   console.log("server is up and listening on port 3003...")
 });
 
