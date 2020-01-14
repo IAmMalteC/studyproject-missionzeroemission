@@ -45,11 +45,11 @@
                     <label for="ZeitraumMonat">Abrechnungszeitraum</label>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumMonat" name="ZeitraumMonat">
-                    <%- include('../partials/dropdownmonth'); -%>
+                        <%- include('../partials/dropdownmonth'); -%>
                     </select>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumJahr" name="ZeitraumJahr">
-                    <%- include('../partials/<!-- DONT CHANGE THE ID -->'); -%>
+                        <%- include('../partials/dropdownyear'); -%>
                     </select>
                 </div>
             </div>
@@ -82,8 +82,6 @@
         <%- include('../partials/footer'); -%>
     </footer>
     <%- include('../partials/script'); -%>
-    <!-- skript für die Datumsauswahl -->
-    <script src="../javascripts/changeMonthOrYearView.js"></script>
 </body>
 
 </html>
