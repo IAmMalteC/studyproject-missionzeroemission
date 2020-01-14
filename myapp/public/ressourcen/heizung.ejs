@@ -18,28 +18,59 @@
     <div class="content">
         <form method="post" name="HeizoelForm">
             <div class="child-ressourcen">
+                <label for="Ablesung">Ablesung</label>
+                <select id="Ablesung" name="Ablesung">
+                    <option value="monatlich">monatlich</option>
+                    <option value="jaehrlich">j&auml;hrlich</option>
+                </select>
+            </div>
+            <div class="child-ressourcen">
                 <div><input type="checkbox" name="HeizungCheckbox" value="Heizoel"> Heiz&ouml;l</div>
                 <div><label for="HeizoelverbrauchMenge">Heiz&ouml;lverbrauch</label>
                     <input id="HeizoelverbrauchMenge" name="HeizoelverbrauchMenge" type="text"> L</div>
-                <div><label for="Heizoelzeitraum">Zeitraum</label>
-                    <input id="Heizoelzeitraum" name="HeizoelAnfangsdatum" type="date">
-                    <input type="date" name="HeizoelEnddatum"></div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
             </div>
             <div class="child-ressourcen">
                 <div><input type="checkbox" name="HeizungCheckbox" value="Holzpellets"> Holzpelletheizung</div>
                 <div><label for="HolzpelletverbrauchMenge">Holzpelletverbrauch</label>
                     <input id="HolzpelletverbrauchMenge" name="HolzpelletverbrauchMenge" type="text"> kg</div>
-                <div><label for="Holzpelletzeitraum">Zeitraum</label>
-                    <input id="Holzpelletzeitraum" name="HolzpelletAnfangsdatum" type="date">
-                    <input name="HolzpelletEnddatum" type="date"></div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
             </div>
             <div class="child-ressourcen">
                 <div><input type="checkbox" name="HeizungCheckbox" value="Fernwaerme"> Fernw&auml;rme</div>
                 <div><label for="FernwaermeverbrauchMenge">Fernw&auml;rmeverbrauch</label>
                     <input id="FernwaermeverbrauchMenge" name="HolzpelletverbrauchMenge" type="text"> kWh</div>
-                <div><label for="Fernwaermezeitraum">Zeitraum</label>
-                    <input id="Fernwaermezeitraum" name="FernwaermeAnfangsdatum" type="date">
-                    <input name="FernwaermeEnddatum" type="date"></div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                </div>
             </div>
 
             <!-- <div class="child-ressourcen">

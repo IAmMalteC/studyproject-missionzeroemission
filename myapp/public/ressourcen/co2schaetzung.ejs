@@ -19,6 +19,13 @@
         </div>
         <form action="" name="co2schaetzungEintragen" method="post">
             <div class="child-ressourcen">
+                <label for="Ablesung">Ablesung</label>
+                    <select id="Ablesung" name="Ablesung">
+                        <option value="monatlich">monatlich</option>
+                        <option value="jaehrlich">j&auml;hrlich</option>
+                    </select>
+            </div>
+            <div class="child-ressourcen">
                 <div>
                     <input type="radio" name="co2emission" id="AuswahlEmission" value="totalemission" checked>
                     <label for="AuswahlEmission">Gesamtemission</label>
@@ -26,8 +33,15 @@
                 <div><input name="totalemissionInput" id="totalemission" type="number"> t CO<sub>2</sub>
                 </div>
                 <div>
-                    <label for="dateTotalemissionInput">&Auml;nderungsdatum</label>
-                    <input name="dateTotalemissionInput" id="dateTotalemission" type="date">
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
                 </div>
             </div>
             <div class="child-ressourcen">
@@ -39,8 +53,15 @@
                     <input name="emissionsavingInput" od="emissionsaving" type="number"> t CO<sub>2</sub>
                 </div>
                 <div>
-                    <label for="dateEmissionsavingInput">&Auml;nderungsdatum</label>
-                    <input name="dateEmissionsavingInput" name="dateEmissionsaving" type="date">
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
                 </div>
             </div>
             <div>

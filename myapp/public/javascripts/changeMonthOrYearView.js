@@ -6,7 +6,7 @@ function showMonthOrYear() {
   if (zeitraum == "jaehrlich") {
     document.getElementById("ZeitraumMonat").style.display = "none";
   }
-  if (zeitraum == "monatlich") {
+  else {
     document.getElementById("ZeitraumMonat").style.display = "inline";
   }
 }

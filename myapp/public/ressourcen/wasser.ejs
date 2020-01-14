@@ -18,6 +18,13 @@
     <div class="content">
         <form method="post" name="WasserForm">
             <div class="child-ressourcen">
+                <label for="Ablesung">Ablesung</label>
+                <select id="Ablesung" name="Ablesung">
+                    <option value="monatlich">monatlich</option>
+                    <option value="jaehrlich">j&auml;hrlich</option>
+                </select>
+            </div>
+            <div class="child-ressourcen">
                 <div><label for="TrinkwasserMenge">Trinkwasser</label>
                     <input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text"> L</div>
                 <div>
@@ -28,8 +35,17 @@
                         <option value="TrinkwasserJaehrlich">j&auml;hrlich</option>
                     </select>
                 </div>
-                <div><label for="TrinkwasserAenderungsdatum">&Auml;nderungsdatum</label>
-                    <input name="TrinkwasserAenderungsdatum" type="date"></div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
             </div>
             <div class="child-ressourcen">
                 <div><label for="AbwasserMenge">Abwasser</label>
@@ -42,8 +58,17 @@
                         <option value="AbwasserJaehrlich">j&auml;hrlich</option>
                     </select>
                 </div>
-                <div><label for="AbwasserAenderungsdatum">&Auml;nderungsdatum</label>
-                    <input name="AbwasserAenderungsdatum" type="date"></div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
             </div>
             <div class="child-ressourcen">
                 <div><label for="WasserJahresabrechnung">Jahresabrechnung</label></div>
@@ -55,8 +80,17 @@
                     </select>
                     <input id="WasserJahresabrechnung" name="WasserJahresabrechnung" type="text">
                 </div>
-                <div><label for="WasserJahresabrechnungAenderungsdatum">&Auml;nderungsdatum</label>
-                    <input name="WasserJahresabrechnungAenderungsdatum" type="date"></div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
             </div>
             <!-- <div class="child-ressourcen">
                 <div><label for="WasserSparmassnahme">Sparma&szlig;nahme</label>
@@ -77,7 +111,8 @@
         </form>
         <!-- Maßnahmespeichern -->
         <div child="child-ressourcen">
-            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Wassersparma&szlig;nahmen erstellen</a>
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Wassersparma&szlig;nahmen
+                erstellen</a>
         </div>
     </div>
 

@@ -18,18 +18,27 @@
     <div class="content">
         <form method="post" name="ErdgasForm">
             <div class="child-ressourcen">
+                <label for="Ablesung">Ablesung</label>
+                <select id="Ablesung" name="Ablesung">
+                    <option value="monatlich">monatlich</option>
+                    <option value="zweimonatlich">zweimonatlich</option>
+                    <option value="jaehrlich">j&auml;hrlich</option>
+                </select>
+            </div>
+            <div class="child-ressourcen">
                 <div><label for="GasverbrauchMenge">Gasverbrauch</label>
                     <input id="GasverbrauchMenge" name="GasverbrauchMenge" type="text"> m<sup>3</sup></div>
                 <div>
-                    <label for="GasverbrauchHaeufigkeit">H&auml;uigkeit</label>
-                    <select name="GasverbrauchHaeufigkeit">
-                        <option value="GasverbrauchMonatlich">monatlich</option>
-                        <option value="GasverbrauchZweimonatlich">zweimonatlich</option>
-                        <option value="GasverbrauchJaehrlich">j&auml;hrlich</option>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
                     </select>
                 </div>
-                <div><label for="GasverbrauchAenderungsdatum">&Auml;nderungsdatum</label>
-                    <input name="GasverbrauchAenderungsdatum" type="date"></div>
             </div>
             <div class="child-ressourcen">
                 <div><label for="ErdgasJahresabrechnungMenge">Jahresabrechnung</label></div>
@@ -41,8 +50,16 @@
                     <input id="ErdgasJahresabrechnungMenge" name="ErdgasJahresabrechnungMenge" type="text">
                     m<sup>3</sup></div>
                 <div>
-                    <label for="ErdgasJahresabrechnungAenderungsdatum">&Auml;nderungsdatum</label>
-                    <input name="ErdgasJahresabrechnungAenderungsdatum" type="date"></div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumMonat" name="ZeitraumMonat">
+                    <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select id="ZeitraumJahr" name="ZeitraumJahr">
+                    <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
             </div>
             <!-- <div class="child-ressourcen">
                 <div><label for="ErdgasSparmassnahme">Sparma&szlig;nahme</label>
@@ -64,7 +81,8 @@
         </form>
         <!-- Maßnahmespeichern -->
         <div child="child-ressourcen">
-            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Gassparma&szlig;nahmen erstellen</a>
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Gassparma&szlig;nahmen
+                erstellen</a>
         </div>
     </div>
 
