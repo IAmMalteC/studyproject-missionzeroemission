@@ -30,7 +30,6 @@ app.get('/', function (req, res) {
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
-  //var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb JOIN ressourcen_tb ON massnahmen_tb.massnahmen_res_kategorie = ressourcen_tb.ressourcen_kategorie JOIN res_kategorie_tb ON ressourcen_tb.ressourcen_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
 
   getConnection().query(queryString, function (err, result) {
     if (err) {
@@ -45,7 +44,7 @@ app.get('/massnahmen-katalog', function (req, res) {
 });
 //Maßnahmenübersicht --> Für die Firma
 app.get('/massnahmen-uebersicht', function (req, res) {
-  var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM massnahmen_tb LEFT JOIN ressourcen_tb ON massnahmen_tb.massnahmen_res_kategorie = ressourcen_tb.ressourcen_kategorie INNER JOIN res_kategorie_tb ON ressourcen_tb.ressourcen_kategorie = res_kategorie_tb.res_kategorie_id INNER JOIN mn_firma_massnahmen_tb ON massnahmen_tb.massnahmen_id = mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id ORDER BY ressourcen_tb.ressourcen_kategorie";
+  var queryString = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id ORDER BY firma_tb.firma_name ";
 
   getConnection().query(queryString, function (err, result) {
     if (err) {
