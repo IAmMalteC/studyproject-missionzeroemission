@@ -22,8 +22,10 @@
                 <input type="number" name="UmsatzInput" id="Umsatz"> &euro;
             </div>
             <div class="child-ressourcen">
-                <label for="DatumUmsatz">Datum</label>
-                <input type="date" name="DatumUmsatzInput" id="DatumUmsatz">
+                <label for="DatumUmsatz">Jahr</label>
+                <select id="DatumUmsatz" name="DatumUmsatz">
+                    <%- include('./partials/dropdownyear'); -%>
+                </select>   
             </div>
 
             <!-- Daten hochladen -->
