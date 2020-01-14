@@ -79,7 +79,9 @@ app.get('/ressourcen/umsatz', function(req, res) {
 //CO2Schaetzung
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
+  res.end();
 });
+
 app.post('http://141.45.92.87:3003/profil' , function(req , res){
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
