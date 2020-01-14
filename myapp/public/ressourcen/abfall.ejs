@@ -108,11 +108,11 @@
                     <input name="SondermuellDatum" type="date"> </div>
             </div>
 
-            <!-- Sparmaßnahmen  -->
-            <div class="child-ressourcen">
+            <!-- Sparmaßnahmen -->
+            <!--<div class="child-ressourcen">
                 <div><label for="AbfallSparmassnahme">Sparmaßnahme</label>
                     <select id="AbfallSparmassnahme" name="AbfallSparmassnahme">
-                        <!-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED -->
+                        !-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
                         <option value="Mehrweg">Mehrwegverpackung</option>
                         <option value="SingleUse">Single-Use Package</option>
                     </select>
@@ -120,13 +120,17 @@
                 <div><label for="AbfallSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
                     <input id="AbfallSparmassnahmeInbetriebnahme" name="AbfallSparmassnahmeInbetriebnahme"
                         type="date"></div>
-            </div>
+            </div> -->
 
             <!-- Daten hochladen -->
             <div>
                 <div><input name="AbfallSpeichern" type="submit" value="Speichern"></div>
             </div>
         </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Abfallsparma&szlig;nahmen erstellen</a>
+        </div>
     </div>
 
     <!-- Footer -->

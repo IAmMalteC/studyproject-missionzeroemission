@@ -58,10 +58,10 @@
                 <div><label for="WasserJahresabrechnungAenderungsdatum">&Auml;nderungsdatum</label>
                     <input name="WasserJahresabrechnungAenderungsdatum" type="date"></div>
             </div>
-            <div class="child-ressourcen">
+            <!-- <div class="child-ressourcen">
                 <div><label for="WasserSparmassnahme">Sparma&szlig;nahme</label>
                     <select id="WasserSparmassnahme" name="WasserSparmassnahme">
-                        <!-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED -->
+                        -- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
                         <option value="Brauchwasserrueckfuehrung">Brauchwasserr&uuml;ckf&uuml;hrung</option>
                         <option value="Grundwassernutzung">Grundwassernutzung</option>
                         <option value="Regenwassernutzung">Regenwassernutzung</option>
@@ -69,12 +69,16 @@
                 </div>
                 <label for="WasserSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
                 <input id="WasserSparmassnahmeInbetriebnahme" name="WasserSparmassnahmeInbetriebnahme" type="date">
-            </div>
+            </div> -->
             <!-- Daten hochladen -->
             <div>
                 <input name="WasserSpeichern" type="submit" value="Speichern">
             </div>
         </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Wassersparma&szlig;nahmen erstellen</a>
+        </div>
     </div>
 
     <!-- Footer -->

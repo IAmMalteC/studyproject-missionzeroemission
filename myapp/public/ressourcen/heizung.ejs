@@ -42,10 +42,10 @@
                     <input name="FernwaermeEnddatum" type="date"></div>
             </div>
 
-            <div class="child-ressourcen">
+            <!-- <div class="child-ressourcen">
                 <div><label for="HeizoelSparmassnahme">Sparma&szlig;nahme</label>
                     <select id="HeizoelSparmassnahme" name="HeizoelSparmassnahme">
-                        <!-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED -->
+                        -- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
                         <option value="HeizoelDaemmung">D&auml;mmung</option>
                         <option value="HeizoelOption2">Option 2</option>
                     </select>
@@ -53,13 +53,17 @@
                 <div><label for="HeizoelSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
                     <input id="HeizoelSparmassnahmeInbetriebnahme" name="HeizoelSparmassnahmeInbetriebnahme"
                         type="date"></div>
-            </div>
+            </div> -->
 
             <!-- Daten hochladen -->
             <div>
                 <input name="HeizoelSpeichern" type="submit" value="Speichern">
             </div>
         </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Heizsparma&szlig;nahmen erstellen</a>
+        </div>
     </div>
 
 
