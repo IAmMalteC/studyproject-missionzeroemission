@@ -202,7 +202,8 @@ table {
 }
 tr {
     border: 2px solid #6a8e5b;
-    padding: 0 2px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 th {
     display: none;
