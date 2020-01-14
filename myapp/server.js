@@ -128,7 +128,7 @@ app.post("/" , function(req , res){
     const Datum = req.body.ZeitraumJahr;
 
     var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
-    getConnection().query(umsatzQuery, [JahresUmsatz , ZeitraumJahr], function(err, result) {if (err) {
+    getConnection().query(umsatzQuery, [JahresUmsatz , Datum], function(err, result) {if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
       return
