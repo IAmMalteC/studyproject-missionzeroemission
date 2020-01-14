@@ -96,6 +96,8 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
     res.sendStatus(500);
     return res.status(204).send();
   }} );
+
+  
   
   //res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
@@ -103,23 +105,7 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   res.end()
 })
 
-// app.get('/', (req , res) => {
-//   console.log("Trying to log in..")
-//   console.log("First name: " + req.body.VornameInput);
-//   const Vorname = req.body.VornameInput;
-//   const Nachname = req.body.NachnameInput;
 
-//   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
-//   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
-//     console.log ("Failed to update user data..." + err);
-//     res.sendStatus(500);
-//     return
-//   }} );
-  
-//   res.send('Data received:\n' + JSON.stringify(req.Vorname , req.Nachname));
-//   console.log("Inserted new user");
-//   res.end()
-// });
 
 function getConnection() {
   return mariadb.createConnection({

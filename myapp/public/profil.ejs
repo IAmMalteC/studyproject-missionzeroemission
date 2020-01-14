@@ -30,6 +30,9 @@
                 <div>
                     <label for="Firmenname">Firmenname</label>
                     <input id="Firmenname" name="FirmennameInput" type="text">
+                    <datalist id="FirmaName">
+                
+                    </datalist>
                 </div>
                 <!-- <div>
                     <label for="Position">Position</label>
@@ -50,7 +53,7 @@
                 <input name="PersoenlicheInformationSpeichern" type="submit" value="Speichern">
             </div>
         </form>
-        <form action="/profil" name="AccountInformation" method="POST">
+        <!-- <form action="/profil" name="AccountInformation" method="POST">
             <div>
                 <h1>Accountinformation</h1>
             </div>
@@ -62,9 +65,9 @@
                 <div>
                     <label for="Email">E-Mail-Adresse</label>
                     <input id="Email" name="EmailInput" type="email">
-                </div>
+                </div> -->
                 <!-- noch hinzufügen, dass wenn ein Passwort eingeben wird, dass beide Required sind und ähnlich sind-->
-                <div>
+                <!-- <div>
                     <label for="Passwort">Passwort</label>
                     <input id="Passwort" name="PasswortInput" type="password">
                 </div>
@@ -76,7 +79,7 @@
             <div>
                 <input name="AccountInformationSpeichernInput" type="submit" value="Speichern">
             </div>
-        </form>
+        </form> --> 
         <!-- Falls gewünscht Activitydiagram hinzufügen, als logdatei so würde das gehen:
         https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
         -->
@@ -87,7 +90,7 @@
     </footer>
     <%- include('./partials/script'); -%>
     <!-- Password Validation -- ggf auslagern! -->
-    <script>
+    <!-- <script>
         var password = document.getElementById("Passwort")
             , confirm_password = document.getElementById("PasswortWiederholen");
 
@@ -101,7 +104,7 @@
 
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
-    </script>
+    </script> -->
 </body>
 
 </html>
