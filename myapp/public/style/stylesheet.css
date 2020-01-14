@@ -197,6 +197,8 @@ textarea, input[type=text], input[type=password], input[type=email], input[type=
 /* table */
 table {
     margin: 1em 0;
+    border-collapse: collapse;
+    overflow: hidden;
 }
 tr {
     border: 2px solid #6a8e5b;
@@ -239,7 +241,7 @@ a:active{
 /*just added to show the content in a nice way on a phone*/
 @media only screen and (max-width: 688px){
     td:before {
-        content: attr(data-th)":%20";
+        content: attr(data-th)": ";
         font-weight: bold;
         width: auto;
         display: inline-block;
@@ -340,7 +342,7 @@ a:active{
     textarea, input[type=text], input[type=password], input[type=email], input[type=tel],input[type=number], input[type=date] {
         max-width: 370px;
     }
-     /* next step */
+     /* table */
     th, td {
         display: table-cell;
         padding: .25em .5em;
