@@ -29,8 +29,43 @@ app.get('/index', function(req, res) {
 });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function(req, res) {
-  res.render('massnahmen-katalog', {page:'Maßnahmen-Katalog', menuId:'massnahmen-katalog'});
+  const Vorname = req.body.VornameInput;
+  const Nachname = req.body.NachnameInput;
+  const Firma = req.body.FirmennameInput;
+  const Email = req.body.emailInput;
+  const Telephone = req.body.TelefonInput;
+  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
+
+  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
+  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) 
+  {if (err) {
+    console.log ("Failed to update user data..." + err);
+    res.sendStatus(500);
+    return res.status(204).send();
+  }} );
+  return res.render('massnahmen-katalog', {page:'Maßnahmenkatalog', menuId:'massnahmen-katalog'});
+//Where is the else part?
+  console.log("Got Massnahmentb Data");
+  res.end()
 });
+// app.get('????',function(req,res) {
+//   var dbClient = new db.Client(dbConnection);
+
+//   dbClient.connect(function(err){
+//       if(err)
+//           throw err;
+
+//       var query = "select * from Contacts";
+
+//       dbClient.query(query,function(err,result){
+//           if(err)
+//               throw err;
+//           else {
+//                res.render('contacts.ejs', { contacts: result });  
+//           }
+//       });
+//   });
+// });
 //Eingabenauswahl
 app.get('/eingabeauswahl', function(req, res) {
   res.render('eingabeauswahl', {page:'Eingabeauswahl', menuId:'eingabeauswahl'});
@@ -80,6 +115,7 @@ app.get('/ressourcen/umsatz', function(req, res) {
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
+// Input Data from Profil to DB
 app.post('http://141.45.92.87:3003/profil' , function(req , res){
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
@@ -101,7 +137,7 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   console.log("Inserted new user");
   
   res.end()
-})
+});
 
 // app.get('/', (req , res) => {
 //   console.log("Trying to log in..")
