@@ -5,6 +5,14 @@
     <%- include('./partials/head'); -%>
     <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+    <script src="javascripts/chart.js"></script>
+    <style>
+        canvas{
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,9 +29,9 @@
             </form>
         </div>
         <article>
-            <h1> CO<sub>2</sub> Ersparnis </h1>
+            <h1> CO<sub>2</sub>-Ersparnis </h1>
             <canvas id="myChart" width="400" height="400"></canvas>
-            <script src="javascripts/chart.js"></script>
+            <script src="javascripts/emissionchart.js"></script>
             <!--<form name="DiagrammErstellen" method="GET">
                 <div>
                     <img class="img-center" src="./pictures/diagrammemissionenbsp.png"
