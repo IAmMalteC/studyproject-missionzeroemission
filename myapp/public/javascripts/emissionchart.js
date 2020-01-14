@@ -1,3 +1,28 @@
+var emission = new Array();
+emission.push('100');
+emission.push('80');
+emission.push('70');
+emission.push('63');
+emission.push('60');
+emission.push('57');
+emission.push('55');
+var umsatz = new Array();
+umsatz.push('100');
+umsatz.push('95');
+umsatz.push('90');
+umsatz.push('85');
+umsatz.push('70');
+umsatz.push('80');
+umsatz.push('85');
+var emissionumsatz = new Array();
+var ergebnis;
+for (var i= 0; i < emission.length; i++)
+{
+    ergebnis = emission[i] / umsatz[i] * 100;
+    emissionumsatz.push(ergebnis)
+}
+
+
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'line',
@@ -5,7 +30,7 @@ var myChart = new Chart(ctx, {
         labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020'],
         datasets: [{
             label: 'CO2-Emissionen',
-            data: [100, 80, 70, 63, 60, 57, 55],
+            data: emission,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -25,7 +50,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 2
         }, {
             label: 'Umsatz',
-            data: [100, 75, 90, 85, 70, 80, 85],
+            data: umsatz,
             backgroundColor: [
                 'rgba(255, 206, 86, 0.2)'
             ],
@@ -34,8 +59,8 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 2
         }, {
-            label: 'CO2-Emissionen in Abhängigkeit zum Umsatz',
-            data: [100, 90, 75, 70, 60, 55, 50],
+            label: unescape('CO2-Emissionen in Abh%E4ngigkeit zum Umsatz'),
+            data: emissionumsatz,
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)'
             ],
@@ -62,7 +87,8 @@ var myChart = new Chart(ctx, {
                 },
                 ticks: {
                     beginAtZero: true,
-                    max: 100
+                    suggestedMax: 100,
+                    stepSize: 10
                 }
             }]
         }
