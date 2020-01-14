@@ -31,23 +31,19 @@ app.get('/', function (req, res) {
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT * FROM massnahmen_tb FULL OUTER JOIN ON massnahmen_tb.massnahmen_res_kategorie=ressourcen_tb.ressourcen"; // JOIN von maßnahme und firma
 
-  getConnection().query(queryString, function (err, result) {
+  getConnection().query(queryString, function(err, result) {
     if (err) {
       console.log("Failed to update user data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     }
-  });
-  var kategorie = req.query.ressourcen_kategorie; //TODO should be changed to ressourcen categorie later
-  var name = req.query.massnahmen_name;
-  var beschreibung = req.query.massnahmen_beschreibung;
-  var unternehmen = req.query.mn_firma_massnahmen_firma; //TODO join with firma
-  var datum = req.query.mn_firma_massnahmen_anfangsdatum;
+    else{
+      return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
+    }
 
-  var result = [kategorie, name, beschreibung, unternehmen, datum];
-  return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
+  });
   //Where is the else part?
-  console.log("Got Massnahmentb Data");
+  console.log("Got Massnahmen_tb Data");
   res.end()
 });
 // app.get('????',function(req,res) {

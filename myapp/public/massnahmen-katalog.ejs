@@ -29,11 +29,13 @@
                 <tbody>
                     <% for(var i = 0; i < massnahmen.length; i++) {%>
                         <tr>
-                            <td>massnahmen[i].kategorie</td>
-                            <td>massnahmen[i].name</td>
-                            <td>massnahmen[i].beschreibung</td>
-                            <!-- <td>massnahme[i].unternehmen</td> -->
-                            <!-- <td>massnahme[i].datum</td> -->
+                            <!-- TODO should be changed to ressourcen categorie later -->
+                            <td>massnahmen[i].ressourcen_kategorie</td> 
+                            <td>massnahmen[i].massnahmen_name</td>
+                            <td>massnahmen[i].massnahmen_beschreibung</td>
+                            <!-- TODO join with firma -->
+                            <!-- <td>massnahme[i].mn_firma_massnahmen_firma</td> -->
+                            <!-- <td>massnahme[i].mn_firma_massnahmen_anfangsdatum</td> -->
                         </tr>
                     <% } %>
                 </tbody>
