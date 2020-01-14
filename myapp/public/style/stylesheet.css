@@ -200,6 +200,7 @@ table {
 }
 tr {
     border: 2px solid #6a8e5b;
+    background-clip: padding-box;
 }
 th {
     display: none;
@@ -237,9 +238,9 @@ a:active{
 
 /* Desktop Styles */
 /*just added to show the content in a nice way on a phone*/
-@media only screen and (max-width: 689px){
+@media only screen and (max-width: 688px){
     td:before {
-        content: attr(data-th);
+        content: attr(data-th)":%20";
         font-weight: bold;
         width: auto;
         display: inline-block;
