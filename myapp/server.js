@@ -122,7 +122,7 @@ app.post('/' , function(req , res) {
   res.end()
 });
 
-app.post("/" , function(req , res){
+app.post("/umsatz" , function(req , res){
     console.log("Entering sales data..")
     const JahresUmsatz = req.body.UmsatzInput;
     const Datum = req.body.ZeitraumJahr;
