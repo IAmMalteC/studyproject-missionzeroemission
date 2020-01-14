@@ -15,13 +15,15 @@
     <!-- Main -->
     <div class="content">
         <div>
-            <h1>Ma&szlig;nahmenkatalog</h1>
+            <h1>Ma&szlig;nahmen&uuml;bersicht</h1>
             <table>
                 <thead>
                     <tr>
                         <th>Katagorie</th>
                         <th>Name</th>
                         <th>Beschreibung</th>
+                        <th>Unternehmen</th>
+                        <th>Datum</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +33,8 @@
                             <td><%= massnahmen[i].res_kategorie_name %></td> 
                             <td><%= massnahmen[i].massnahmen_name %></td>
                             <td><%= massnahmen[i].massnahmen_beschreibung %></td>
+                            <td><%= massnahmen[i].firma_name %></td>
+                            <td><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td>
                         </tr>
                     <% } %>
                 </tbody>
@@ -43,7 +47,7 @@
 
 
         <div>
-            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Ma&szlig;nahmen erstellen</a>
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Maßnahmen erstellen</a>
         </div>
     </div>
     <!-- Footer -->
