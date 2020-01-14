@@ -82,7 +82,7 @@ app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.end();
 });
 
-app.post('http://141.45.92.87:3003/profil' , function(req , res){
+app.get('http://141.45.92.87:3003/profil' , function(req , res){
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
@@ -97,7 +97,6 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
     res.sendStatus(500);
     return 
   }} );
-  
   console.log("Inserted new user");
   res.end()
 })
