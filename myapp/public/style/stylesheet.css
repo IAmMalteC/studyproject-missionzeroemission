@@ -198,6 +198,7 @@ textarea, input[type=text], input[type=password], input[type=email], input[type=
 table {
     margin: 1em 0;
     border-collapse: collapse;
+    text-align: left;
 }
 tr {
     border: 2px solid #6a8e5b;
@@ -207,11 +208,9 @@ th {
     border: 2px solid #6a8e5b;
     color: #fff;
     background-color: #6a8e5b;
-    text-align: center;
 }
 td {
     display: block;
-    text-align: left;
     padding-left:5px;
 }
 td:first-child {
@@ -349,17 +348,11 @@ a:active{
         display: table-cell;
         padding: .25em .5em;
     }
-    td{
+    th, td{
         padding-right:5px;
     }
-    td:first-child{
+    th:first-child, td:first-child{
         padding-left:5px;
         padding-right:0;
-    }
-    th:first-child{
-        padding-left: 0;
-    }
-    th:last-child {
-        padding-right: 0;
     }
 }
