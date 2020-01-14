@@ -198,12 +198,10 @@ textarea, input[type=text], input[type=password], input[type=email], input[type=
 table {
     margin: 1em 0;
     border-collapse: collapse;
-    /* overflow: hidden; */
 }
 tr {
     border: 2px solid #6a8e5b;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 0px 20px;
 }
 th {
     display: none;
