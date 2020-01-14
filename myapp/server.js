@@ -1,7 +1,7 @@
 //these are the dependence
 const express = require('express');
 const app = express();
-const mariadb = require('mariadb');
+const mariadb = require('mariadb/callback');
 const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
