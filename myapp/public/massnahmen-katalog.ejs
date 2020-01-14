@@ -22,18 +22,18 @@
                         <th>Katagorie</th>
                         <th>Name</th>
                         <th>Beschreibung</th>
-                        <th>Unternehmen</th>
-                        <th>Datum</th>
+                        <!-- <th>Unternehmen</th> -->
+                        <!-- <th>Datum</th> -->
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(var i = 0; i < massnahme.length; i++) {%>
+                    <% for(var i = 0; i < massnahmen.length; i++) {%>
                         <tr>
-                            <td>massnahme[i].kategorie</td>
-                            <td>massnahme[i].name</td>
-                            <td>massnahme[i].beschreibung</td>
-                            <td>massnahme[i].unternehmen</td>
-                            <td>massnahme[i].datum</td>
+                            <td>massnahmen[i].ressourcen_name</td>
+                            <td>massnahmen[i].massnahmen_name</td>
+                            <td>massnahmen[i].massnahmen_beschreibung</td>
+                            <!-- <td>massnahme[i].unternehmen</td> -->
+                            <!-- <td>massnahme[i].datum</td> -->
                         </tr>
                     <% } %>
                 </tbody>

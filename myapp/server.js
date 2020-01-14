@@ -29,22 +29,16 @@ app.get('/index', function(req, res) {
 });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function(req, res) {
-  const Vorname = req.body.VornameInput;
-  const Nachname = req.body.NachnameInput;
-  const Firma = req.body.FirmennameInput;
-  const Email = req.body.emailInput;
-  const Telephone = req.body.TelefonInput;
-  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
+  var queryString = "SELECT * FROM massnahmen_tb FULL OUTER JOIN ON massnahmen_tb.massnahmen_res_kategorie=ressourcen_tb.ressourcen"; // JOIN von maßnahme und firma
 
-  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
-  getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) 
+  getConnection().query(queryString ,function (err, result) 
   {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
     return res.status(204).send();
   }} );
-  return res.render('massnahmen-katalog', {page:'Maßnahmenkatalog', menuId:'massnahmen-katalog'});
-//Where is the else part?
+  return res.render('massnahmen-katalog', {page:'Maßnahmenkatalog', menuId:'massnahmen-katalog', massnahmen: result});
+  //Where is the else part?
   console.log("Got Massnahmentb Data");
   res.end()
 });
