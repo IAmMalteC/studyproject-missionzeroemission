@@ -27,7 +27,7 @@ function getConnection() {
   });
 }
 
-getConnection().createConnection((err) => {
+getConnection().connect((err) => {
   if(err) {
     console.log("Failed" + err);
   }
