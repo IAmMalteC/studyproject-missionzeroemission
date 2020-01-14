@@ -22,17 +22,17 @@
                 <input type="number" name="UmsatzInput" id="Umsatz"> &euro;
             </div>
             <div class="child-ressourcen">
-                <label for="DatumUmsatz">Jahr</label>
-                <select id="DatumUmsatz" name="DatumUmsatz">
-                    <%- include('../partials/dropdownyear'); -%>
-                </select>   
+                <label for="ZeitraumJahr">Jahr</label>
+                <!-- id and label is "ZeitraumJahr" -->
+                <%- include('../partials/dropdownyear'); -%>
             </div>
 
             <!-- Daten hochladen -->
             <div>
                 <input name="UmsatzSpeichern" type="submit" value="Abschicken">
             </div>
-            <p id="umsatz-text">Diese Daten werden nur zur Berechnung der relativen CO<sub>2</sub> Emissionen verwendet und auf keiner
+            <p id="umsatz-text">Diese Daten werden nur zur Berechnung der relativen CO<sub>2</sub> Emissionen verwendet
+                und auf keiner
                 Weise direkt ver&ouml;ffentlicht.</p>
         </form>
     </div>
