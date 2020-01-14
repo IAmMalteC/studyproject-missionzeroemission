@@ -6,9 +6,8 @@ const morgan = require ('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
 
-//shows what is happening on the server and post it on the terminal(Logger)
+  //shows what is happening on the server and post it on the terminal(Logger)
 app.use(morgan('short'))
-
 app.set('views', path.join(__dirname, 'public')); //changed from 'views' to 'public'
 app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
 
@@ -80,6 +79,7 @@ app.get('/ressourcen/umsatz', function(req, res) {
 app.get('/ressourcen/co2schaetzung', function(req, res) {
   res.render('./ressourcen/co2schaetzung', {page:'CO2 Schätzung', menuId:'co2schaetzung'});
 });
+
 app.post('http://141.45.92.87:3003/profil' , function(req , res){
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
