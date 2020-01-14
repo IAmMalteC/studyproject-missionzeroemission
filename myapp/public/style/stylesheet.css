@@ -199,6 +199,7 @@ table {
     margin: 1em 0;
     border-collapse: collapse;
     text-align: left;
+    overflow: hidden;
 }
 tr {
     border: 2px solid #6a8e5b;
@@ -211,6 +212,7 @@ th {
 }
 td {
     display: block;
+    position: relative;
     padding-left:5px;
 }
 td:first-child {
@@ -223,9 +225,19 @@ td:last-child {
 }
 /* table hover effect */
 tbody tr:hover{
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
-tbody td:hover, tbody td::before{
+td:hover::before{
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 0;
+    top: -5000px;
+    height: 10000px;
+    width: 100%;
+    z-index: -1;
+}
+/* tbody td:hover, tbody td::before{
     content: "";
 	position: absolute;
 	left: 0;
@@ -235,7 +247,7 @@ tbody td:hover, tbody td::before{
 	background-color: rgba(255,255,255,0.2);
 	z-index: -1;
 
-} 
+}  */
 /*links*/
 a{
     text-decoration: none;
@@ -256,12 +268,13 @@ a:active{
 /* Desktop Styles */
 /*just added to show the content in a nice way on a phone*/
 @media only screen and (max-width: 688px){
+    /* Is not working on hover, but hover never works on smartphones, so more a minor issue */
     td:before {
         content: attr(data-th)": ";
         font-weight: bold;
         width: auto;
         display: inline-block;
-    }   
+    }  
 }
 /* falls ein Handy gedreht wird gelten diese regeln */
 @media only screen and (orientation: landscape){
