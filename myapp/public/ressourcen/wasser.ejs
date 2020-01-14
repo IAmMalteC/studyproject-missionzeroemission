@@ -21,6 +21,7 @@
                 <label for="Ablesung">Ablesung</label>
                 <select id="Ablesung" name="Ablesung">
                     <option value="monatlich">monatlich</option>
+                    <option value="zweimonatlich">zweimonatlich</option>
                     <option value="jaehrlich">j&auml;hrlich</option>
                 </select>
             </div>
@@ -28,45 +29,30 @@
                 <div><label for="TrinkwasserMenge">Trinkwasser</label>
                     <input id="TrinkwasserMenge" name="TrinkwasserMenge" type="text"> L</div>
                 <div>
-                    <label for="TrinkwasserHaeufigkeit">H&auml;uigkeit</label>
-                    <select name="TrinkwasserHaeufigkeit">
-                        <option value="TrinkwasserMonatlich">monatlich</option>
-                        <option value="TrinkwasserZweimonatlich">zweimonatlich</option>
-                        <option value="TrinkwasserJaehrlich">j&auml;hrlich</option>
-                    </select>
-                </div>
-                <div>
                     <label for="ZeitraumMonat">Abrechnungszeitraum</label>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumMonat" name="ZeitraumMonat">
-                    <%- include('../partials/dropdownmonth'); -%>
+                        <%- include('../partials/dropdownmonth'); -%>
                     </select>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumJahr" name="ZeitraumJahr">
-                    <%- include('../partials/dropdownyear'); -%>
+                        <%- include('../partials/dropdownyear'); -%>
                     </select>
                 </div>
             </div>
             <div class="child-ressourcen">
                 <div><label for="AbwasserMenge">Abwasser</label>
-                    <input id="AbwasserMenge" name="AbwasserMenge" type="text"> L</div>
-                <div>
-                    <label for="AbwasserHaeufigkeit">H&auml;uigkeit</label>
-                    <select name="AbwasserHaeufigkeit">
-                        <option value="AbwasserMonatlich">monatlich</option>
-                        <option value="AbwasserZweimonatlich">zweimonatlich</option>
-                        <option value="AbwasserJaehrlich">j&auml;hrlich</option>
-                    </select>
+                    <input id="AbwasserMenge" name="AbwasserMenge" type="text"> L
                 </div>
                 <div>
                     <label for="ZeitraumMonat">Abrechnungszeitraum</label>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumMonat" name="ZeitraumMonat">
-                    <%- include('../partials/dropdownmonth'); -%>
+                        <%- include('../partials/dropdownmonth'); -%>
                     </select>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumJahr" name="ZeitraumJahr">
-                    <%- include('../partials/dropdownyear'); -%>
+                        <%- include('../partials/dropdownyear'); -%>
                     </select>
                 </div>
             </div>
@@ -84,11 +70,11 @@
                     <label for="ZeitraumMonat">Abrechnungszeitraum</label>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumMonat" name="ZeitraumMonat">
-                    <%- include('../partials/dropdownmonth'); -%>
+                        <%- include('../partials/dropdownmonth'); -%>
                     </select>
                     <!-- DONT CHANGE THE ID -->
                     <select id="ZeitraumJahr" name="ZeitraumJahr">
-                    <%- include('../partials/dropdownyear'); -%>
+                        <%- include('../partials/dropdownyear'); -%>
                     </select>
                 </div>
             </div>
