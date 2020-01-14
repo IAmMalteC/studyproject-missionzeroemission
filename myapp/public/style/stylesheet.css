@@ -242,6 +242,15 @@ a:active{
 }
 
 /* Desktop Styles */
+/*just added to show the content in a nice way on a phone*/
+@media only screen and (max-width: 689px){
+    td:before {
+        content: attr(data-th);
+        font-weight: bold;
+        width: auto;
+        display: inline-block;
+    }   
+}
 /* falls ein Handy gedreht wird gelten diese regeln */
 @media only screen and (orientation: landscape){
     /*header*/  
