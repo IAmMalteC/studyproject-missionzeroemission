@@ -37,10 +37,10 @@
             <div>
                 <label for="StromZeitraumMonat">Abrechnungszeitraum</label>
                 <select id="StromZeitraumMonat" name="StromZeitraumMonat">
-                    <%- include('./partials/dropdownmonth'); -%>
+                    <%- include('../partials/dropdownmonth'); -%>
                 </select>
                 <select id="StromZeitraumJahr" name="StromZeitraumJahr">
-                    <%- include('./partials/dropdownyear'); -%>
+                    <%- include('../partials/dropdownyear'); -%>
                 </select>            
             </div>
         </div>
@@ -72,6 +72,7 @@
         <%- include('../partials/footer'); -%>
     </footer>
     <%- include('../partials/script'); -%>
+    <script src="../javascripts/changeMonthOrYearView.js"></script>
 </body>
 
 </html>
