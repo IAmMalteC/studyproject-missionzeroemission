@@ -30,6 +30,7 @@ html, body {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 100%;
+    width: 100%;
 } 
 /* Header */
 header, .input-navigation {
@@ -185,13 +186,43 @@ textarea, input[type=text], input[type=password], input[type=email], input[type=
 }
 /*erbt vom .button im html verwenden mit class="button button-cancel"*/
 .button-cancel {
-    color: red          !important;
-    border: 4px solid red;
+    color: #f00          !important;
+    border: 4px solid #ff0000;
 }
 .button-cancel:hover {
-    background-color: red;
-    color: white        !important;
-    border: 4px solid red;
+    background-color: #ff0000;
+    color: #fff        !important;
+    border: 4px solid #ff0000;
+}
+/* table */
+table {
+    margin: 1em 0;
+}
+tr {
+    border: 2px solid #6a8e5b;
+}
+th {
+    display: none;
+    border: 2px solid #6a8e5b;
+    color: #fff;
+    background-color: #6a8e5b;
+    text-align: center;
+}
+td {
+    display: block;
+    text-align: left;
+}
+td:first-child {
+    padding-top: .5em;
+}
+td:last-child {
+    padding-bottom: .5em;
+}
+td:before {
+    content: attr(data-th)": ";
+    font-weight: bold;
+    width: auto;
+    display: inline-block;
 }
 /*links*/
 a{
@@ -277,7 +308,6 @@ a:active{
         padding: 15px 0px;
     }
     /*content*/
-    /*ja natürlich ist das so noch nicht richtig*/
     .content {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -307,4 +337,38 @@ a:active{
     textarea, input[type=text], input[type=password], input[type=email], input[type=tel],input[type=number], input[type=date] {
         max-width: 370px;
     }
-}
+     /* next step */
+    th, td {
+        display: table-cell;
+        padding: .25em .5em;
+    }
+    th:first-child, td:first-child {
+        padding-left: 0;
+    }
+      
+    th:last-child, td:last-child {
+        padding-right: 0;
+    }
+
+  }
+  
+  
+  
+  /* .wd-table {
+  background: #34495E;
+  color: #fff;
+  border-radius: .4em;
+  overflow: hidden;
+  tr {
+    border-color: lighten(#34495E, 10%);
+  }
+  th, td {
+    margin: .5em 1em;
+    @media (min-width: $breakpoint-alpha) { 
+      padding: 1em !important; 
+    }
+  }
+  th, td:before {
+    color: #dd5;
+  }
+} */

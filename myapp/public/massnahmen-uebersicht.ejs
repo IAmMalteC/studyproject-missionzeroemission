@@ -28,26 +28,22 @@
                 </thead>
                 <tbody>
                     <% for(var i = 0; i < massnahmen.length; i++) {%>
-                        <tr>
-                            <!-- TODO should be changed to ressourcen categorie later -->
-                            <td><%= massnahmen[i].res_kategorie_name %></td> 
-                            <td><%= massnahmen[i].massnahmen_name %></td>
-                            <td><%= massnahmen[i].massnahmen_beschreibung %></td>
-                            <td><%= massnahmen[i].firma_name %></td>
-                            <td><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td>
-                        </tr>
+                    <tr>
+                        <td data-th="Katagorie"><%= massnahmen[i].res_kategorie_name %></td>
+                        <td data-th="Name"><%= massnahmen[i].massnahmen_name %></td>
+                        <td data-th="Beschreibung"><%= massnahmen[i].firma_name %></td> data-th=""
+                        <td data-th="Unternehmen"><%= massnahmen[i].massnahmen_beschreibung %></td> data-th=""
+                        <td data-th="Datum"><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td data-th="">
+                    </tr>
                     <% } %>
                 </tbody>
             </table>
-            <!-- Hier wird die Tabelle angezeigt :
+            <!-- Quelle :
             https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
-            Sie ist Filterbar nach Unternehmen
-            -->    
-        </div>
-
-
-        <div>
-            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Maßnahmen erstellen</a>
+            -->
+            <div>
+                <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Maßnahmen erstellen</a>
+            </div>
         </div>
     </div>
     <!-- Footer -->
@@ -56,4 +52,5 @@
     </footer>
     <%- include('./partials/script'); -%>
 </body>
+
 </html>
