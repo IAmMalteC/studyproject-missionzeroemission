@@ -94,10 +94,10 @@ app.post('http://141.45.92.87:3003/profil' , function(req , res){
   getConnection().query(queryString, [Vorname , Nachname , Firma , Email , Telephone] ,function (err, result) {if (err) {
     console.log ("Failed to update user data..." + err);
     res.sendStatus(500);
-    return res.status(204).send();
+    return 
   }} );
 
-  
+
   
   //res.send('Data received:\n' + JSON.stringify(req.body));
   console.log("Inserted new user");
