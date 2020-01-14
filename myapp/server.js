@@ -18,6 +18,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+function getConnection() {
+  return mariadb.createConnection({
+    host: "141.45.92.87",
+    user: "phpmyadmin",
+    password: "Q2Jf6kY4aQuM",
+    database: "DoriDB"
+  });
+}
+
+getConnection().connect((err) => {
+  if(err) {
+    console.log("Failed" + err);
+  }
+  else
+  console.log("Database connected");
+});
+
+app.listen(3003, ()=>{
+  console.log("server is up and listening on port 3003...")
+});
+
 //Routing
 //It is messy and a crappy solution, but it works for now, until a new link is added, then it has to be implented here as well. Solution would be to understand express routing
 //index
@@ -119,26 +140,7 @@ app.post("/" , function(req , res){
 
 
 
-function getConnection() {
-  return mariadb.createConnection({
-    host: "141.45.92.87",
-    user: "phpmyadmin",
-    password: "Q2Jf6kY4aQuM",
-    database: "DoriDB"
-  });
-}
 
-getConnection().connect((err) => {
-  if(err) {
-    console.log("Failed" + err);
-  }
-  else
-  console.log("Database connected");
-});
-
-app.listen(3003, ()=>{
-  console.log("server is up and listening on port 3003...")
-});
 
 //app.post("/profil" , function (req , res) {
 //  console.log(req.body);
