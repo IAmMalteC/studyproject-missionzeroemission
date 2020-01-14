@@ -121,7 +121,7 @@ app.post('/' , function(req , res) {
   console.log("Inserted new user");
   res.end()
 });
-
+//post request 
 app.post("/umsatz" , function(req , res){
     console.log("Entering sales data..")
     const JahresUmsatz = req.body.UmsatzInput;
