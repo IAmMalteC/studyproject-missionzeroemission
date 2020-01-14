@@ -4,9 +4,9 @@ function showMonthOrYear() {
   var e  = document.getElementById("Ablesung");
   var zeitraum = e.options[e.selectedIndex].value;
   if (zeitraum == "jaehrlich") {
-    document.getElementById("ZeitraumMonat").style.display = "none";
+    document.getElementsByClassName("ZeitraumMonat").style.display = "none";
   }
   else {
-    document.getElementById("ZeitraumMonat").style.display = "inline";
+    document.getElementsByClassName("ZeitraumMonat").style.display = "inline";
   }
 }
