@@ -37,7 +37,7 @@ app.get('/massnahmen-katalog', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     }else{
-      return res.render('massnahmen-katalog', { massnahmen: result });// page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog',
+      return res.render('massnahmen-katalog', {massnahmen: result,  page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog' });
     }
 
   });
