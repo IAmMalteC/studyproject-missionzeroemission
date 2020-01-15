@@ -144,7 +144,7 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 });
 //Eingabenauswahl
 app.get('/eingabeauswahl', function (req, res) {
-  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl' });
+  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl' , Firma: 'Majdi' });
 });
 //profil
 app.get("/profil", function (req, res, next) {
@@ -168,7 +168,8 @@ app.post("/login" , function(req , res){
         res.redirect('/index')
       }
       else {
-        res.send("Incorrect username and/or password")
+        res.render('login',{title:"Login Here"});
+        //res.send("Incorrect username and/or password")
       }
       res.end();
     });
@@ -179,6 +180,17 @@ app.post("/login" , function(req , res){
 
   }
 });
+//logout
+app.get('/logout',function(req,res){    
+  req.session.destroy(function(err){  
+      if(err){  
+          console.log(err);  
+      }  
+      else  
+      {  
+          res.redirect('/');  
+      }  
+  });
 
 
 //Passwort-Vergessen
