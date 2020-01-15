@@ -23,10 +23,10 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //index
 app.get('/', function (req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index' })
-}),
-  app.get('/index', function (req, res) {
-    res.render('index', { page: 'Startseite', menuId: 'index' });
-  });
+});
+app.get('/index', function (req, res) {
+  res.render('index', { page: 'Startseite', menuId: 'index' });
+});
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
@@ -132,21 +132,23 @@ app.post('http://141.45.92.87:3003/profil', function (req, res) {
   res.end()
 });
 
-app.post('http://141.45.92.87:3003/ressourcen/umsatz' , function(req , res){
-    console.log("Entering sales data..")
-    const JahresUmsatz = req.body.UmsatzInput;
-    const Datum = req.body.DatumUmsatzInput;
+app.post('http://141.45.92.87:3003/ressourcen/umsatz', function (req, res) {
+  console.log("Entering sales data..")
+  const JahresUmsatz = req.body.UmsatzInput;
+  const Datum = req.body.DatumUmsatzInput;
 
-    var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
-    getConnection().query(umsatzQuery, [JahresUmsatz , Datum], function(err, result) {if (err) {
+  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
+  getConnection().query(umsatzQuery, [JahresUmsatz, Datum], function (err, result) {
+    if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
       return
-    }});
+    }
+  });
 
-    console.log("Inserted new umsatz Data");
-    res.end()
-  })
+  console.log("Inserted new umsatz Data");
+  res.end()
+})
 
 // app.get('/', (req , res) => {
 //   console.log("Trying to log in..")

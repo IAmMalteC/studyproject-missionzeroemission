@@ -366,7 +366,7 @@ a:active{
         width: 60%;       
     }
     .content .goal-tracker {
-        display: block;
+        display: none; /*Set to block to show it*/
     }
     textarea, input[type=text], input[type=password], input[type=email], input[type=tel],input[type=number], input[type=date] {
         max-width: 370px;

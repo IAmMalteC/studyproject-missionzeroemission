@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('../partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="../pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a id=""
+        <a id="logo" href="../index" rel="noopener noreferrer"><img src="../pictures/logoNemo.png" alt="NEMo Logo"></a>
+        <a id="index" href="../index" rel="noopener noreferrer">Startseite</a>
+        <a id="massnahmen-katalog" href="../massnahmen-katalog" rel="noopener noreferrer">Ma&szlig;nahmenkatalog</a>
+        <a id="massnahmen-uebersicht" href="../massnahmen-uebersicht"
+            rel="noopener noreferrer">Ma&szlig;nahmenübersicht</a>
+        <a id="eingabeauswahl" href="../eingabeauswahl" rel="noopener noreferrer">Firmenübersicht</a>
+        <!-- login muss noch mittels eines Scripts zu Logout umgewandelt werden -->
+        <!--<img class="profile-picture" src="./pictures/abstract-user-flat-blackbackground.png" alt="Profilbild">-->
+        <a id="profil" href="../profil" rel="noopener noreferrer">Mein Profil</a>
+        <a id="login" href="../login" rel="noopener noreferrer">Log-In</a>
+
+    </header>
+    <!-- Input Navigation Menu -->
+    <div class="input-navigation">
+        <a id="strom" href="../ressourcen/strom">Strom</a>
+        <a id="heizung" href="../ressourcen/heizung">Heizung</a>
+        <a id="erdgas" href="../ressourcen/erdgas">Gas</a>
+        <a id="wasser" href="../ressourcen/wasser">Wasser</a>
+        <a id="abfall" href="../ressourcen/abfall">Abfall</a>
+        <a id="neue-massnahme" href="../ressourcen/neue-massnahme">Kompensationsma&szlig;nahme</a>
+        <a id="umsatz" href="../ressourcen/umsatz">Umsatz</a>
+    </div>
+    <!--Main Content-->
+    <div class="content">
+        <form method="post" name="AbfallForm">
+            <div class="child-ressourcen">
+                <label for="Ablesung">Ablesung</label>
+                <select id="Ablesung" name="Ablesung">
+                    <option value="monatlich">monatlich</option>
+                    <option value="jaehrlich">j&auml;hrlich</option>
+                </select>
+            </div>
+            <!-- Restmull -->
+            <div class="child-ressourcen">
+                <div><label for="RestmuellMenge">Restm&uuml;ll</label>
+                    <input id="RestmuellMenge" name="RestmuellMenge" type="text"> L</div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                        <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumJahr" name="ZeitraumJahr">
+                        <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Wertstoff -->
+            <div class="child-ressourcen">
+                <div><label for="WertstoffMenge">Wertstoff</label>
+                    <input id="WertstoffMenge" name="WertstoffMenge" type="text"> L
+                </div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                        <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumJahr" name="ZeitraumJahr">
+                        <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Biogut -->
+            <div class="child-ressourcen">
+                <div><label for="BiogutMenge">Biogut</label>
+                    <input id="BiogutMenge" name="BiogutMenge" type="text"> L
+                </div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                        <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumJahr" name="ZeitraumJahr">
+                        <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
+            </div>
+
+            <!--Papier -->
+            <div class="child-ressourcen">
+                <div><label for="PapierMenge">Papier</label>
+                    <input id="PapierMenge" name="PapierMenge" type="text"> L
+                </div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                        <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumJahr" name="ZeitraumJahr">
+                        <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Glas -->
+            <div class="child-ressourcen">
+                <div><label for="GlasMenge">Glas</label>
+                    <input id="GlasMenge" name="GlasMenge" type="text"> L
+                </div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                        <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumJahr" name="ZeitraumJahr">
+                        <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sondermüll -->
+            <div class="child-ressourcen">
+                <div><label for="SondermuellMenge">Sonderm&uuml;ll</label>
+                    <input id="SondermuellMenge" name="SondermuellMenge" type="text"> L
+                </div>
+                <div>
+                    <label for="ZeitraumMonat">Abrechnungszeitraum</label>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                        <%- include('../partials/dropdownmonth'); -%>
+                    </select>
+                    <!-- DONT CHANGE THE ID -->
+                    <select class="ZeitraumJahr" name="ZeitraumJahr">
+                        <%- include('../partials/dropdownyear'); -%>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sparmaßnahmen -->
+            <!--<div class="child-ressourcen">
+                <div><label for="AbfallSparmassnahme">Sparmaßnahme</label>
+                    <select id="AbfallSparmassnahme" name="AbfallSparmassnahme">
+                        !-- dieses Dropdown muß aus dem Maßnahmenkatalog gespeist werden SCRIPT NEEDED --
+                        <option value="Mehrweg">Mehrwegverpackung</option>
+                        <option value="SingleUse">Single-Use Package</option>
+                    </select>
+                </div>
+                <div><label for="AbfallSparmassnahmeInbetriebnahme">Inbetriebnahme</label>
+                    <input id="AbfallSparmassnahmeInbetriebnahme" name="AbfallSparmassnahmeInbetriebnahme"
+                        type="date"></div>
+            </div> -->
+
+            <!-- Daten hochladen -->
+            <div>
+                <div><input name="AbfallSpeichern" type="submit" value="Speichern"></div>
+            </div>
+        </form>
+        <!-- Maßnahmespeichern -->
+        <div child="child-ressourcen">
+            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Abfallsparma&szlig;nahmen
+                erstellen</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <%- include('../partials/footer'); -%>
+    </footer>
+    <%- include('../partials/script'); -%>
+</body>
+
+</html>
