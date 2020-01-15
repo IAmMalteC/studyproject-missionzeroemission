@@ -21,6 +21,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
+//Gesamt Jahre
 function findYearsTotal(req, res, next) {
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
   getConnection().query(sqlquery, function (err, result) {
@@ -30,43 +31,45 @@ function findYearsTotal(req, res, next) {
       return res.status(204).send();
     } else {
       req.yearsTotal = result;
-      var yearsTotal = [];
-      for (var i in req.yearsTotal) {
-        yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
-      }
+      return next();
+    }
+  });
+}
+//Gesamt Umsatz
+function findRevenueTotal(req, res, next){
+  var yearsTotal = [];
+  for (var i in req.yearsTotal) {
+    yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
+  }
+  var sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
+  getConnection().query(sqlquery,[yearsTotal[i]], function(err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.revenueTotal = result;
       return next();
     }
   });
 }
 function renderIndexPage(req, res) {
-  // var yearsTotal = [];
-  // for (var i in req.yearsTotal) {
-  //   yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
-  // }
-  res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal });
+  var yearsTotal = [];
+  for (var i in req.yearsTotal) {
+    yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
+  }
+  var revenueTotal = [];
+  for (var i in req.revenueTotal) {
+    yearsTotal.push(req.revenueTotal[i].umsatz_umsatz);
+  }
+  res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
 }
 // app.get('/', function (req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
 // });
-app.get('/index', findYearsTotal, renderIndexPage);
-// {
-//   // ## Gesamtansicht ##
-//   // Jahr
-//   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
-//   var years = [];
-//   getConnection().query(sqlquery, function (err, result) {
-//     if (err) {
-//       console.log("Failed to get year data..." + err);
-//       res.sendStatus(500);
-//       return res.status(204).send();
-//     } else {
-//       for (var i in result) {
-//         years.push(result[i].umsatz_jahr);
-//       }
-//     }
-//   });
-//   return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
-
+app.get('/index', 
+findYearsTotal, findRevenueTotal,
+ renderIndexPage);
 //   // Umsatz
 //   // var revenue = new Array();
 //   // for (let i = 0; i < years.length; i++) {
@@ -124,7 +127,7 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 });
 //Eingabenauswahl
 app.get('/eingabeauswahl', function (req, res) {
-  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl' });
+  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', firmenname: 'Malte' });
 });
 //profil
 app.get("/profil", function (req, res, next) {
