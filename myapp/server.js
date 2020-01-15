@@ -169,6 +169,7 @@ app.post("/login" , function(req , res){
       }
       else {
         res.render('login',{title:"Login Here"});
+
         //res.send("Incorrect username and/or password")
       }
       res.end();
@@ -180,17 +181,7 @@ app.post("/login" , function(req , res){
 
   }
 });
-//logout
-app.get('/logout',function(req,res){    
-  req.session.destroy(function(err){  
-      if(err){  
-          console.log(err);  
-      }  
-      else  
-      {  
-          res.redirect('/');  
-      }  
-  });
+
 
 
 //Passwort-Vergessen
