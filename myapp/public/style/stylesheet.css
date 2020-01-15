@@ -74,54 +74,6 @@ header a:hover, header a:active, .input-navigation a:hover, .input-navigation a:
     border-bottom: 4px solid #466B52;
 }
 
-.Navbar__Items, .Navbar {
-    flex-direction: column;
-}
-
-.Navbar__Items {
-    display: none;
-}
-
-.Navbar__Items--right {
-    margin-left: 0;
-}
-
-.Navbar__ToggleShow {
-    display: flex;
-}
-
-.Navbar__Link-toggle {
-    align-self: flex-end;
-    display: initial;
-    position: absolute;
-    cursor: pointer;
-}
-
-/* .topnav a:not(:first-child) {
-    display: none;
-}
-
-.topnav a.icon {
-    display: block      !important;
-}
-
-.topnav.responsive {
-    position: relative;
-}
-
-.topnav.responsive a.icon {
-    align-self: flex-end;
-    display: initial;
-    position: absolute;
-    cursor: pointer;
-}
-
-.topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-} */
-
 /*active shows where the user is - navigation */
 
 .active {
