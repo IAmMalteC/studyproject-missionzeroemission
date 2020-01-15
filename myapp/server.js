@@ -184,7 +184,7 @@ app.post("/login" , function(req , res){
 });
 
 //logout
-const logout=function(req,res,next){
+var logout=function(req,res,next){
   req.session.loggedIn=false;
   res.redirect('/');
 };
@@ -291,13 +291,22 @@ app.post('/strom' , function(req , res){
   }
   const StromVerbrauch = req.body.Stromverbrauch;
   const AbrechnungZeitraum = req.body.ZeitraumJahr;
+  if (StromArt == "Photovoltaik"){
+    var sqlQuery = "INSERT INTO res_photov_tb VALUES (NULL,4,?,?,1,?,?)"
+    getConnection().query(sqlQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
+      console.log("Faild to Insert into database..."+ err); 
+      res.sendStatus(500);
+      return
+    }});
+  }else{
+    var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
+    getConnection().query(stromQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
+      console.log("Faild to Insert into database..."+ err); 
+      res.sendStatus(500);
+      return
+    }});
+  }
   
-  var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
-  getConnection().query(stromQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
-    console.log("Faild to Insert into database..."+ err); 
-    res.sendStatus(500);
-    return
-  }});
 
   console.log("Inserted new Strom Data!");
   res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
