@@ -42,16 +42,19 @@ function findRevenueTotal(req, res, next){
     yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
   }
   var sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
-  getConnection().query(sqlquery,[yearsTotal[i]], function(err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.revenueTotal = result;
-      return next();
-    }
-  });
+  for(let i = 0; i< yearsTotal.length; i++){
+    getConnection().query(sqlquery,[yearsTotal[i]], function(err, result) {
+      if (err) {
+        console.log("Failed to get year data..." + err);
+        res.sendStatus(500);
+        return res.status(204).send();
+      } else {
+        req.revenueTotal = result;
+      }
+    });
+  }
+  return next();
+  
 }
 function renderIndexPage(req, res) {
   var yearsTotal = [];
