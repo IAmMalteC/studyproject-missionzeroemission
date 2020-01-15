@@ -29,37 +29,33 @@ app.get('/index', function (req, res) {
   // Jahr
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
   var years = [];
-  years.push('2014')
-  years.push('2015')
-  years.push('2016')
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      //     // while (result.isValid) {
+      //     //   years.push(result.umsatz_jahr);
+      //     //   result.next();
+      //     // }
+      //     // var rows = JSON.parse(JSON.stringify(result[0]));
 
-  // getConnection().query(sqlquery, function (err, result) {
-  //   if (err) {
-  //     console.log("Failed to get year data..." + err);
-  //     res.sendStatus(500);
-  //     return res.status(204).send();
-  //   } else {
-  //     // while (result.isValid) {
-  //     //   years.push(result.umsatz_jahr);
-  //     //   result.next();
-  //     // }
-  //     // var rows = JSON.parse(JSON.stringify(result[0]));
-
-  //     // // here you can access rows
-  //     // console.log(rows);
-  //     // Object.keys(result).forEach(function (key) {
-  //     //   var row = result[key];
-  //     //   years.push(row.name)
-  //     // });
-  //     for (var i in result){
-  //       years.push(result[i].umsatz_jahr)
-  //     }
-  //     // for (let i = 0; i < result.length; i++) {
-  //     //   years.push(result[i].umsatz_jahr);
-  //     // }
-  //     // return years;
-  //   }
-  // });
+      //     // // here you can access rows
+      //     // console.log(rows);
+      //     // Object.keys(result).forEach(function (key) {
+      //     //   var row = result[key];
+      //     //   years.push(row.name)
+      //     // });
+      for (var i in result) {
+        years.push(result[i].umsatz_jahr)
+      }
+      //     // for (let i = 0; i < result.length; i++) {
+      //     //   years.push(result[i].umsatz_jahr);
+      //     // }
+      //     // return years;
+    }
+  });
   // Umsatz
   // var revenue = new Array();
   // for (let i = 0; i < years.length; i++) {
