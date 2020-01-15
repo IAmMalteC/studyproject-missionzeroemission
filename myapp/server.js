@@ -21,20 +21,20 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
-//Gesamt Jahre
-function findYearsTotal(req, res, next) {
-  var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.yearsTotal = result;
-      return next();
-    }
-  });
-}
+// //Gesamt Jahre
+// function findYearsTotal(req, res, next) {
+//   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
+//   getConnection().query(sqlquery, function (err, result) {
+//     if (err) {
+//       console.log("Failed to get year data..." + err);
+//       res.sendStatus(500);
+//       return res.status(204).send();
+//     } else {
+//       req.yearsTotal = result;
+//       return next();
+//     }
+//   });
+// }
 //Gesamt Umsatz
 function findRevenueTotal(req, res, next) {
   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
@@ -64,7 +64,7 @@ function renderIndexPage(req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
 // });
 app.get('/index',
-  findYearsTotal, findRevenueTotal,
+  findRevenueTotal,
   renderIndexPage);
 
 //   // }
