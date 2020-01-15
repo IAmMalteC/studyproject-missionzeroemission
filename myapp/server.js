@@ -36,16 +36,16 @@ function findYearsTotal(req, res, next) {
   });
 }
 //Gesamt Umsatz
-function findRevenueTotal(req, res, next){
+function findRevenueTotal(req2, res2, next){
   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) FROM umsatz_tb GROUP BY umsatz_jahr";
   for(let i = 0; i< yearsTotal.length; i++){
     getConnection().query(sqlquery, function(err, result) {
       if (err) {
         console.log("Failed to get year data..." + err);
-        res.sendStatus(500);
+        res2.sendStatus(500);
         return res.status(204).send();
       } else {
-        req.revenueTotal = result;
+        req2.revenueTotal = result;
         return next();
       }
     });
@@ -58,8 +58,8 @@ function renderIndexPage(req, res) {
     yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
   }
   var revenueTotal = [];
-  for (var i in req.revenueTotal) {
-    revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
+  for (var i in req2.revenueTotal) {
+    revenueTotal.push(req2.revenueTotal[i].umsatz_umsatz);
   }
   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
 }
