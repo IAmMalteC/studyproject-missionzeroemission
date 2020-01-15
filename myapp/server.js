@@ -38,6 +38,7 @@ app.get('/index', function (req, res) {
       for (let i = 0; i < result.length; i++) {
         years.push(result[i]);
       }
+      return years;
     }
   });
   // Umsatz
@@ -50,7 +51,7 @@ app.get('/index', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      revenue.push(result[i]);
+      return revenue.push(result[i]);
     }
   });
   }
