@@ -23,7 +23,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //index
 function findYearsTotal (req, res, next) {
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
-  var years = [];
+  // var years = [];
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
@@ -37,12 +37,12 @@ function findYearsTotal (req, res, next) {
     }
   });
 }
-function renderIndexPage (req, res){
+function renderIndexPage(req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index', jahre: req.years });
 }
-app.get('/', function (req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index' })
-});
+// app.get('/', function (req, res) {
+//   res.render('index', { page: 'Startseite', menuId: 'index' })
+// });
 app.get('/index', findYearsTotal, renderIndexPage);
 // {
 //   // ## Gesamtansicht ##
