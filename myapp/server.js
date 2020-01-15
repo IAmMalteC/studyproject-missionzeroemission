@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routing
-//It is messy and a crappy solution, but it works for now, until a new link is added, then it has to be implented here as well. Solution would be to understand express routing
+//It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
 app.get('/', function (req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index' })
@@ -57,24 +57,6 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 
   });
 });
-// app.get('????',function(req,res) {
-//   var dbClient = new db.Client(dbConnection);
-
-//   dbClient.connect(function(err){
-//       if(err)
-//           throw err;
-
-//       var query = "select * from Contacts";
-
-//       dbClient.query(query,function(err,result){
-//           if(err)
-//               throw err;
-//           else {
-//                res.render('contacts.ejs', { contacts: result });  
-//           }
-//       });
-//   });
-// });
 //Eingabenauswahl
 app.get('/eingabeauswahl', function (req, res) {
   res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl' });
