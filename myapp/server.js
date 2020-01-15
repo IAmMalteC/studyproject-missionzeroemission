@@ -6,7 +6,7 @@ const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
-var popup = require('popups');
+
 
 app.use(session({
 	secret: 'secret',
@@ -170,10 +170,7 @@ app.post("/login" , function(req , res){
       }
       else {
         res.render('login',{page:"Login Here" , menuId: "login"});
-        popup.alert({
-          content: 'Hello!'
-        });
-
+        
         //res.send("Incorrect username and/or password")
       }
       res.end();
