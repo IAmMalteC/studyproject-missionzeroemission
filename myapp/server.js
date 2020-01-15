@@ -21,12 +21,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
-app.get('/', function (req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index' })
-});
-app.get('/index', function (req, res) {
-  // ## Gesamtansicht ##
-  // Jahr
+function findYearsTotal (req, res, next) {
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
   var years = [];
   getConnection().query(sqlquery, function (err, result) {
@@ -36,38 +31,63 @@ app.get('/index', function (req, res) {
       return res.status(204).send();
     } else {
       for (var i in result) {
-        years.push(result[i].umsatz_jahr);
+        req.years.push(result[i].umsatz_jahr);
       }
+      return next();
     }
   });
-  return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
-
-  // Umsatz
-  // var revenue = new Array();
-  // for (let i = 0; i < years.length; i++) {
-  //   sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
-  //   getConnection().query(sqlquery,[years[i]], function(err, result) {
-  //   if (err) {
-  //     console.log("Failed to get year data..." + err);
-  //     res.sendStatus(500);
-  //     return res.status(204).send();
-  //   } else {
-  //     revenue.push(result[i]);
-  //   }
-  //   return revenue;
-  // });
-  // }
-  // return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
-  // var name = 'Amy';
-  // var adr = 'Mountain 21';
-  // var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
-  // con.query(sql, [name, adr], function (err, result) {
-  //   if (err) throw err;
-  //   console.log(result);
-  // });
-  // ## Firmenansicht ##
-  // var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb WHERE"; //FIRMA einfügen
+}
+function renderIndexPage (req, res){
+  res.render('index', { page: 'Startseite', menuId: 'index', jahre: req.years });
+}
+app.get('/', function (req, res) {
+  res.render('index', { page: 'Startseite', menuId: 'index' })
 });
+app.get('/index', findYearsTotal, renderIndexPage);
+// {
+//   // ## Gesamtansicht ##
+//   // Jahr
+//   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
+//   var years = [];
+//   getConnection().query(sqlquery, function (err, result) {
+//     if (err) {
+//       console.log("Failed to get year data..." + err);
+//       res.sendStatus(500);
+//       return res.status(204).send();
+//     } else {
+//       for (var i in result) {
+//         years.push(result[i].umsatz_jahr);
+//       }
+//     }
+//   });
+//   return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
+
+//   // Umsatz
+//   // var revenue = new Array();
+//   // for (let i = 0; i < years.length; i++) {
+//   //   sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
+//   //   getConnection().query(sqlquery,[years[i]], function(err, result) {
+//   //   if (err) {
+//   //     console.log("Failed to get year data..." + err);
+//   //     res.sendStatus(500);
+//   //     return res.status(204).send();
+//   //   } else {
+//   //     revenue.push(result[i]);
+//   //   }
+//   //   return revenue;
+//   // });
+//   // }
+//   // return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
+//   // var name = 'Amy';
+//   // var adr = 'Mountain 21';
+//   // var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
+//   // con.query(sql, [name, adr], function (err, result) {
+//   //   if (err) throw err;
+//   //   console.log(result);
+//   // });
+//   // ## Firmenansicht ##
+//   // var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb WHERE"; //FIRMA einfügen
+// });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
