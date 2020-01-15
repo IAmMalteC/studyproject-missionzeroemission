@@ -8,7 +8,7 @@ emission.push('57');
 emission.push('55');
 var umsatz = new Array();
 umsatz.push('100');
-umsatz.push('95');
+umsatz.push('120');
 umsatz.push('90');
 umsatz.push('85');
 umsatz.push('70');
@@ -30,6 +30,7 @@ var myChart = new Chart(ctx, {
         labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020'],
         datasets: [{
             label: 'CO2-Emissionen',
+            yAxisID: 'A',
             data: emission,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)'
@@ -40,6 +41,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 2
         }, {
             label: 'Umsatz',
+            yAxisID: 'B',
             data: umsatz,
             backgroundColor: [
                 'rgba(255, 206, 86, 0.2)'
@@ -50,6 +52,7 @@ var myChart = new Chart(ctx, {
             borderWidth: 2
         }, {
             label: unescape('CO2-Emissionen in Abh%E4ngigkeit zum Umsatz'),
+            yAxisID: 'A',
             data: emissionumsatz,
             backgroundColor: [
                 'rgba(54, 162, 235, 0.2)'
@@ -61,6 +64,15 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        responsive: true,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
         scales: {
             xAxes: [{
                 display: true,
@@ -70,10 +82,24 @@ var myChart = new Chart(ctx, {
                 }
             }],
             yAxes: [{
+                id: 'A',
                 display: true,
                 scaleLabel: {
                     display: true,
-                    labelString: 'Prozent'
+                    labelString: 'CO2-Emissionen in Prozent'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    suggestedMax: 100,
+                    stepSize: 10
+                }
+            }, {
+                id: 'B',
+                display: true,
+                position: 'right',
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Umsatz in Prozent'
                 },
                 ticks: {
                     beginAtZero: true,
