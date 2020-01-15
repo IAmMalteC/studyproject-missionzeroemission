@@ -35,29 +35,29 @@ app.get('/index', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-          while (result.isValid) {
-            years.push(result.umsatz_jahr);
-            result.next();
-            Console.log("while")
-          }
-          var rows = JSON.parse(JSON.stringify(result[0]));
+      //     while (result.isValid) {
+      //       years.push(result.umsatz_jahr);
+      //       result.next();
+      //       Console.log("while")
+      //     }
+      //     var rows = JSON.parse(JSON.stringify(result[0]));
 
-          // here you can access rows
-          console.log(rows + "Json Parse");
-          Object.keys(result).forEach(function (key) {
-            var row = result[key];
-            years.push(row.name)
-            Console.log("objekt methode")
-          });
-      for (var i in result) {
-        years.push(result[i].umsatz_jahr)
-        console.log("for with var")
-      }
-          for (let i = 0; i < result.length; i++) {
-            years.push(result[i].umsatz_jahr);
-            Console.log("langes for")
-          }
-      return years;
+      //     // here you can access rows
+      //     console.log(rows + "Json Parse");
+      //     Object.keys(result).forEach(function (key) {
+      //       var row = result[key];
+      //       years.push(row.name)
+      //       Console.log("objekt methode")
+      //     });
+      // for (var i in result) {
+      //   years.push(result[i].umsatz_jahr)
+      //   console.log("for with var")
+      // }
+      //     for (let i = 0; i < result.length; i++) {
+      //       years.push(result[i].umsatz_jahr);
+      //       Console.log("langes for")
+      //     }
+      // return years;
     }
   });
   // Umsatz
