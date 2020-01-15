@@ -75,7 +75,7 @@ app.get('/index', function (req, res) {
   //   return revenue;
   // });
   // }
-  res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
+  return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
   // var name = 'Amy';
   // var adr = 'Mountain 21';
   // var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
