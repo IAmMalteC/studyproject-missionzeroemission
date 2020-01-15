@@ -55,9 +55,17 @@ function renderIndexPage(req, res) {
     yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
   }
   var revenueTotal = [];
-  for (var i in req.revenueTotal) {
-    revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
-  }
+  revenueTotal.push('20000');
+  revenueTotal.push('20000');
+  revenueTotal.push('20000');
+  revenueTotal.push('20000');
+  revenueTotal.push('20000');
+  revenueTotal.push('20000');
+  revenueTotal.push('20000');
+
+  // for (var i in req.revenueTotal) {
+  //   revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
+  // }
   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
 }
 // app.get('/', function (req, res) {
