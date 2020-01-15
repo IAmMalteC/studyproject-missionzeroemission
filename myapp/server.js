@@ -35,10 +35,14 @@ app.get('/index', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      for (let i = 0; i < result.length; i++) {
-        years.push(result[i]);
-      }
-      return years;
+      Object.keys(result).forEach(function(key){
+        var row = result[key];
+        years.push(row.name)
+      });
+      // for (let i = 0; i < result.length; i++) {
+      //   years.push(result[i]);
+      // }
+      // return years;
     }
   });
   // Umsatz
