@@ -5,26 +5,11 @@ $(document).ready(function () {
 });
 
 //Makes the menu to an hamburger menu
-function makeHamburgerMenu() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
+function classToggle() {
+    const navs = document.querySelectorAll('.Navbar__Items')
+
+    navs.forEach(nav => nav.classList.toggle('Navbar__ToggleShow'));
 }
 
-// function showMonthOrYear() {
-//     var e = document.getElementById("Ablesung");
-//     var zeitraum = e.options[e.selectedIndex].value;
-
-//     var x = document.getElementsByClassName("ZeitraumMonat");
-//     var i;
-//     for (i = 0; i < x.length; i++) {
-//       if (zeitraum == "jaehrlich") {
-//         x[i].style.display = "none";
-//       } else {
-//         x[i].style.display = "inline";
-//       }
-//     }
-//   }
+document.querySelector('.Navbar__Link-toggle')
+        .addEventListener('click', classToggle);
