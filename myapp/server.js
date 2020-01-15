@@ -21,9 +21,8 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
-function findYearsTotal (req, res, next) {
+function findYearsTotal(req, res, next) {
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
-  // var years = [];
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
@@ -36,7 +35,11 @@ function findYearsTotal (req, res, next) {
   });
 }
 function renderIndexPage(req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index', jahre: req.years });
+  var years = [];
+  for (var i in req.years) {
+    years.push(req.years[i].umsatz_jahr);
+  }
+  res.render('index', { page: 'Startseite', menuId: 'index', jahre: years });
 }
 // app.get('/', function (req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
