@@ -35,27 +35,13 @@ app.get('/index', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      //     while (result.isValid) {
-      //       years.push(result.umsatz_jahr);
-      //       result.next();
-      //     }
-      //     var rows = JSON.parse(JSON.stringify(result[0]));
-
-      //     // here you can access rows
-      //     console.log(rows + "Json Parse");
-      //     Object.keys(result).forEach(function (key) {
-      //       var row = result[key];
-      //       years.push(row.name)
-      //     });
       for (var i in result) {
         years.push(result[i].umsatz_jahr);
       }
-      //     for (let i = 0; i < result.length; i++) {
-      //       years.push(result[i].umsatz_jahr);
-      //     }
-      return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
     }
   });
+  return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
+
   // Umsatz
   // var revenue = new Array();
   // for (let i = 0; i < years.length; i++) {
