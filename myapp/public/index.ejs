@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
     <script src="javascripts/chart.js"></script>
     <style>
-        canvas{
+        canvas {
             -moz-user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
@@ -29,6 +29,9 @@
             </form>
         </div>
         <article>
+            <% for(var i = 0; i < jahre.length; i++) {%>
+            <h1><%= jahre[i] %> = <%= umsatz[i] %></h1>
+            <% } %>
             <h1> CO<sub>2</sub>-Ersparnis </h1>
             <canvas id="myChart" width="400" height="400"></canvas>
             <script src="javascripts/emissionchart.js"></script>
@@ -62,4 +65,5 @@
     </footer>
     <%- include('./partials/script'); -%>
 </body>
+
 </html>

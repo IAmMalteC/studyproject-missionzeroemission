@@ -25,7 +25,45 @@ app.get('/', function (req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index' })
 });
 app.get('/index', function (req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index' });
+  // ## Gesamtansicht ##
+  // Jahr
+  var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
+  var years = new Array();
+  getConnection().query(sqlquery, function(err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      for (let i = 0; i < result.length; i++) {
+        years.push(result[i]);
+      }
+    }
+  });
+  // Umsatz
+  var revenue = new Array();
+  for (let i = 0; i < years.length; i++) {
+    sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
+    getConnection().query(sqlquery,[years[i]], function(err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      revenue.push(result[i]);
+    }
+  });
+  }
+  res.render('index', { page: 'Startseite', menuId: 'index',jahre: years, umsatz: revenue });
+  // var name = 'Amy';
+  // var adr = 'Mountain 21';
+  // var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
+  // con.query(sql, [name, adr], function (err, result) {
+  //   if (err) throw err;
+  //   console.log(result);
+  // });
+  // ## Firmenansicht ##
+  // var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb WHERE"; //FIRMA einfügen
 });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
@@ -39,7 +77,6 @@ app.get('/massnahmen-katalog', function (req, res) {
     } else {
       return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
     }
-
   });
 });
 //Maßnahmenübersicht --> Für die Firma
