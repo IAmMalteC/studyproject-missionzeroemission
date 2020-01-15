@@ -1,6 +1,6 @@
 /*
 Colorscheme
-nemo dark green #466b52
+nemo dark green #   
 nemo light green #6a8e5b
 light yellow #d9d787
 darker yellow #d2c055
@@ -68,13 +68,13 @@ header a:hover, header a:active, .input-navigation a:hover, .input-navigation a:
     color: #fff                 !important;
     background-color: #466B52   !important;
 }
-header #logo {
+header #logo, header #menuicon {
     border: none;
     background-color: none     !important;
     border-bottom: none;
     padding: 0;
 }
-header #logo:hover{
+header #logo:hover, header #menuicon{
     background-color: #fff;
     border-bottom: none;
 }
@@ -82,6 +82,11 @@ header #logo img{
     width: 130px;
     height: 116px;
     border:none;
+}
+header #menuicon img{
+    width: 50px;
+    height: 50px;
+    border: none;
 }
 /* footer */
 footer {
@@ -336,6 +341,9 @@ a:active{
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
+    }
+    #menuicon {
+        display: none;
     }
     /*footer*/
     footer {
