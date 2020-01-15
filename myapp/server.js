@@ -114,7 +114,8 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 });
 //Eingabenauswahl
 app.get('/eingabeauswahl', function (req, res) {
-  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', firmenname: 'Malte' });
+  var firma = 'Meine Firma'
+  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', firmenname: firma });
 });
 //profil
 app.get("/profil", function (req, res, next) {
