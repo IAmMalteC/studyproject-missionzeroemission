@@ -160,7 +160,7 @@ app.post("/login" , function(req , res){
   var passowrd = req.body.PasswortInput;
   loginQuery= "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
 
-  if ( username && passowrd){
+  if ( username && password){
     getConnection().query(loginQuery, [username , password] , function(err , result){
       if(result.length > 0){
         req.session.loggedin = true;
