@@ -43,17 +43,17 @@ app.get('/index', function (req, res) {
 
       //     // // here you can access rows
       //     // console.log(rows);
-      //     // Object.keys(result).forEach(function (key) {
-      //     //   var row = result[key];
-      //     //   years.push(row.name)
-      //     // });
-      for (var i in result) {
-        years.push(result[i].umsatz_jahr)
-      }
+          Object.keys(result).forEach(function (key) {
+            var row = result[key];
+            years.push(row.name)
+          });
+      // for (var i in result) {
+      //   years.push(result[i].umsatz_jahr)
+      // }
       //     // for (let i = 0; i < result.length; i++) {
       //     //   years.push(result[i].umsatz_jahr);
       //     // }
-      return years;
+      // return years;
     }
   });
   // Umsatz
