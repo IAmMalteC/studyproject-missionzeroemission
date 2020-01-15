@@ -37,13 +37,9 @@ function findYearsTotal(req, res, next) {
 }
 //Gesamt Umsatz
 function findRevenueTotal(req, res, next){
-  var yearsTotal = [];
-  for (var i in req.yearsTotal) {
-    yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
-  }
-  var sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
+  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) FROM umsatz_tb GROUP BY umsatz_jahr";
   for(let i = 0; i< yearsTotal.length; i++){
-    getConnection().query(sqlquery,[yearsTotal[i]], function(err, result) {
+    getConnection().query(sqlquery, function(err, result) {
       if (err) {
         console.log("Failed to get year data..." + err);
         res.sendStatus(500);
@@ -62,7 +58,7 @@ function renderIndexPage(req, res) {
   }
   var revenueTotal = [];
   for (var i in req.revenueTotal) {
-    yearsTotal.push(req.revenueTotal[i].umsatz_umsatz);
+    revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
   }
   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
 }
