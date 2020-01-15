@@ -183,7 +183,11 @@ app.post("/login" , function(req , res){
   }
 });
 
-
+//logout
+const logout=function(req,res,next){
+  req.session.loggedIn=false;
+  res.redirect('/');
+};
 
 //Passwort-Vergessen
 app.get('/passwort-vergessen', function (req, res) {
@@ -241,6 +245,7 @@ app.post('/', function (req, res) {
       return res.status(204).send();
     }
   });
+  res.render('login',{page:"Login Here" , menuId: "login"});
 
    console.log("Inserted new user");
 
@@ -248,18 +253,19 @@ app.post('/', function (req, res) {
 });
 
 app.post('/umsatz', function (req, res) {
-  console.log("Entering sales data..")
-  const JahresUmsatz = req.body.UmsatzInput;
-  const Datum = req.body.DatumUmsatzInput;
 
-  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
-  getConnection().query(umsatzQuery, [JahresUmsatz, Datum], function (err, result) {
+  const JahresUmsatz = req.body.UmsatzInput;
+  const Datum = req.body.ZeitraumJahr;
+
+  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,2,?,?,NULL)";
+  getConnection().query(umsatzQuery, [Datum, JahresUmsatz], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
       return
     }
   });
+  res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
 
   console.log("Inserted new umsatz Data");
   res.end()
@@ -267,20 +273,34 @@ app.post('/umsatz', function (req, res) {
 
 app.post('/strom' , function(req , res){
   console.log('Entering Strom Data..')
-  const StromArt = req.body.StromArtInput;
-  var Firma = "Märkische Kiste"
-  const Ablesung = req.body.AblesungInput;
-  const StromVerbrauch = req.body.StromverbrauchInput;
-  const AbrechnungZeitraum = req.body.ZeitraumMonat;
+
+  var StromArt = req.body.StromArt;
+  if (StromArt == "Photovoltaik"){
+    StromArt = 0
+  }
+  else {
+    StromArt = 365
+  }
+
+  var Ablesung =req.body.Ablesung;
+  if (Ablesung == "monatlich" ){
+    Ablesung = 1
+  }
+  else {
+    Ablesung = 2
+  }
+  const StromVerbrauch = req.body.Stromverbrauch;
+  const AbrechnungZeitraum = req.body.ZeitraumJahr;
   
-  var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,?,?,?,Strom,?,?)";
-  getConnection().query(stromQuery,[Firma,StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
+  var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
+  getConnection().query(stromQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
     console.log("Faild to Insert into database..."+ err); 
     res.sendStatus(500);
     return
   }});
 
   console.log("Inserted new Strom Data!");
+  res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   res.end()
 });
 
