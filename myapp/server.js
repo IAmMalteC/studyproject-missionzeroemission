@@ -37,8 +37,7 @@ function findYearsTotal(req, res, next) {
 }
 //Gesamt Umsatz
 function findRevenueTotal(req, res, next) {
-  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
-
+  var sqlquery = "SELECT SUM(umsatz_umsatz), umsatz_jahr FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
@@ -49,7 +48,6 @@ function findRevenueTotal(req, res, next) {
       return next();
     }
   });
-
 }
 function renderIndexPage(req, res) {
   var yearsTotal = [];
