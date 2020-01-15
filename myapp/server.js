@@ -28,13 +28,17 @@ app.get('/index', function (req, res) {
   // ## Gesamtansicht ##
   // Jahr
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
-  var years = new Array();
+  var years = [];
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
+      while (result.isValid) {
+        years.push(result.umsatz_jahr);
+        result.next();
+      }
       // var rows = JSON.parse(JSON.stringify(result[0]));
 
       // // here you can access rows
@@ -43,9 +47,9 @@ app.get('/index', function (req, res) {
       //   var row = result[key];
       //   years.push(row.name)
       // });
-      for (let i = 0; i < result.length; i++) {
-        years.push(result[i].umsatz_jahr);
-      }
+      // for (let i = 0; i < result.length; i++) {
+      //   years.push(result[i].umsatz_jahr);
+      // }
       // return years;
     }
   });
