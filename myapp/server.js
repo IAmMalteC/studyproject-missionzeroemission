@@ -38,7 +38,6 @@ app.get('/index', function (req, res) {
       //     while (result.isValid) {
       //       years.push(result.umsatz_jahr);
       //       result.next();
-      //       Console.log("while")
       //     }
       //     var rows = JSON.parse(JSON.stringify(result[0]));
 
@@ -47,15 +46,12 @@ app.get('/index', function (req, res) {
       //     Object.keys(result).forEach(function (key) {
       //       var row = result[key];
       //       years.push(row.name)
-      //       Console.log("objekt methode")
       //     });
       for (var i in result) {
-        years.push(result[i].umsatz_jahr)
-        console.log("for with var")
+        years.push(result[i].umsatz_jahr);
       }
       //     for (let i = 0; i < result.length; i++) {
       //       years.push(result[i].umsatz_jahr);
-      //       Console.log("langes for")
       //     }
       return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
     }
