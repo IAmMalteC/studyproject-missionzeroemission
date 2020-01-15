@@ -54,7 +54,6 @@ function findRevenueTotal(req, res, next){
     });
   }
   return next();
-  
 }
 function renderIndexPage(req, res) {
   var yearsTotal = [];
