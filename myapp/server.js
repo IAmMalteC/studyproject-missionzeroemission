@@ -94,6 +94,10 @@ app.get('/ressourcen/wasser', function (req, res) {
 app.get('/ressourcen/abfall', function (req, res) {
   res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
 });
+// TEST
+app.get('/ressourcen/abfallTestCss', function (req, res) {
+  res.render('./ressourcen/abfallTestCss', { page: 'Abfall', menuId: 'abfall' });
+});
 //Neue-Massnahme
 app.get('/ressourcen/neue-massnahme', function (req, res) {
   res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
