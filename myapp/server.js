@@ -169,6 +169,7 @@ app.post("/login" , function(req , res){
       }
       else {
         res.render('login',{page:"Login Here" , menuId: "login"});
+        res.alert("Please enter your username and password")
 
         //res.send("Incorrect username and/or password")
       }
