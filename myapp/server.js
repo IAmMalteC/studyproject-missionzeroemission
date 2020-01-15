@@ -29,23 +29,23 @@ app.get('/index', function (req, res) {
   // Jahr
   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
   var years = new Array();
-  getConnection().query(sqlquery, function (err, result, fields) {
+  getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      var rows = JSON.parse(JSON.stringify(result[0]));
+      // var rows = JSON.parse(JSON.stringify(result[0]));
 
-      // here you can access rows
-      console.log(rows);
+      // // here you can access rows
+      // console.log(rows);
       // Object.keys(result).forEach(function (key) {
       //   var row = result[key];
       //   years.push(row.name)
       // });
-      // for (let i = 0; i < result.length; i++) {
-      //   years.push(result[i]);
-      // }
+      for (let i = 0; i < result.length; i++) {
+        years.push(result[i].umsatz_jahr);
+      }
       // return years;
     }
   });
