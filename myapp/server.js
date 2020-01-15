@@ -157,7 +157,7 @@ app.get('/login', function (req, res) {
 
 app.post("/login" , function(req , res){
   var username = req.body.BenutzernameInput;
-  var passowrd = req.body.PasswortInput;
+  var password = req.body.PasswortInput;
   loginQuery= "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
 
   if ( username && password){
