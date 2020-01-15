@@ -154,6 +154,33 @@ app.get("/profil", function (req, res, next) {
 app.get('/login', function (req, res) {
   res.render('login', { page: 'Login', menuId: 'login' });
 });
+
+app.post("/login" , function(req , res){
+  var username = req.body.BenutzernameInput;
+  var passowrd = req.body.PasswortInput;
+  loginQuery= "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
+
+  if ( username && passowrd){
+    getConnection().query(loginQuery, [username , password] , function(err , result){
+      if(result.length > 0){
+        req.session.loggedin = true;
+        req.session.username = username;
+        res.redirect('/index')
+      }
+      else {
+        res.send("Incorrect username and/or password")
+      }
+      res.end();
+    });
+  }
+  else{
+    res.send("Please enter your Username and Password");
+    res.end();
+
+  }
+});
+
+
 //Passwort-Vergessen
 app.get('/passwort-vergessen', function (req, res) {
   res.render('passwort-vergessen', { page: 'Passwort vergessen', menuId: 'passwort-vergessen' });
