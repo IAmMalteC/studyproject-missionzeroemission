@@ -51,21 +51,13 @@ function findRevenueTotal(req, res, next) {
 }
 function renderIndexPage(req, res) {
   var yearsTotal = [];
-  for (var i in req.yearsTotal) {
-    yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
+  for (var i in req.revenueTotal) {
+    yearsTotal.push(req.revenueTotal[i].umsatz_jahr);
   }
   var revenueTotal = [];
-  revenueTotal.push('20000');
-  revenueTotal.push('20000');
-  revenueTotal.push('20000');
-  revenueTotal.push('20000');
-  revenueTotal.push('20000');
-  revenueTotal.push('20000');
-  revenueTotal.push('20000');
-
-  // for (var i in req.revenueTotal) {
-  //   revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
-  // }
+  for (var i in req.revenueTotal) {
+    revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
+  }
   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
 }
 // app.get('/', function (req, res) {
