@@ -51,8 +51,9 @@ app.get('/index', function (req, res) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      return revenue.push(result[i]);
+      revenue.push(result[i]);
     }
+    return revenue;
   });
   }
   res.render('index', { page: 'Startseite', menuId: 'index',jahre: years, umsatz: revenue });
