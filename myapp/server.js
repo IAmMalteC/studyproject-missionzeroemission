@@ -30,9 +30,7 @@ function findYearsTotal (req, res, next) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      for (var i in result) {
-        req.years.push(result[i].umsatz_jahr);
-      }
+      req.years = result;
       return next();
     }
   });
