@@ -39,10 +39,10 @@ function findYearsTotal(req, res, next) {
   });
 }
 function renderIndexPage(req, res) {
-  var yearsTotal = [];
-  for (var i in req.yearsTotal) {
-    yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
-  }
+  // var yearsTotal = [];
+  // for (var i in req.yearsTotal) {
+  //   yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
+  // }
   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal });
 }
 // app.get('/', function (req, res) {
