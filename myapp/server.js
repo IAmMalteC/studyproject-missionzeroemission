@@ -168,7 +168,7 @@ app.post("/login" , function(req , res){
         res.redirect('/index')
       }
       else {
-        res.render('login',{title:"Login Here"});
+        res.render('login',{page:"Login Here" , menuId: "login"});
 
         //res.send("Incorrect username and/or password")
       }
