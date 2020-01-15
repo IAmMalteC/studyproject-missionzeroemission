@@ -46,6 +46,7 @@ function findRevenueTotal(req, res, next){
         return res.status(204).send();
       } else {
         req.revenueTotal = result;
+        return next();
       }
     });
   }
