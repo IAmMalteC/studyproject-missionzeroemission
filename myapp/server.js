@@ -53,7 +53,7 @@ app.get('/index', function (req, res) {
       //     // for (let i = 0; i < result.length; i++) {
       //     //   years.push(result[i].umsatz_jahr);
       //     // }
-      //     // return years;
+      return years;
     }
   });
   // Umsatz
