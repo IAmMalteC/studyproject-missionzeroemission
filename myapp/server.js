@@ -49,15 +49,15 @@ app.get('/index', function (req, res) {
       //       years.push(row.name)
       //       Console.log("objekt methode")
       //     });
-      // for (var i in result) {
-      //   years.push(result[i].umsatz_jahr)
-      //   console.log("for with var")
-      // }
+      for (var i in result) {
+        years.push(result[i].umsatz_jahr)
+        console.log("for with var")
+      }
       //     for (let i = 0; i < result.length; i++) {
       //       years.push(result[i].umsatz_jahr);
       //       Console.log("langes for")
       //     }
-      // return years;
+      return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
     }
   });
   // Umsatz
