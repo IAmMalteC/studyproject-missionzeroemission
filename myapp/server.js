@@ -29,17 +29,21 @@ function findYearsTotal(req, res, next) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      req.years = result;
+      req.yearsTotal = result;
+      var yearsTotal = [];
+      for (var i in req.yearsTotal) {
+        yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
+      }
       return next();
     }
   });
 }
 function renderIndexPage(req, res) {
-  var years = [];
-  for (var i in req.years) {
-    years.push(req.years[i].umsatz_jahr);
+  var yearsTotal = [];
+  for (var i in req.yearsTotal) {
+    yearsTotal.push(req.yearsTotal[i].umsatz_jahr);
   }
-  res.render('index', { page: 'Startseite', menuId: 'index', jahre: years });
+  res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal });
 }
 // app.get('/', function (req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
