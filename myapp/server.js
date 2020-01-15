@@ -42,21 +42,21 @@ app.get('/index', function (req, res) {
     }
   });
   // Umsatz
-  var revenue = new Array();
-  for (let i = 0; i < years.length; i++) {
-    sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
-    getConnection().query(sqlquery,[years[i]], function(err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      revenue.push(result[i]);
-    }
-    return revenue;
-  });
-  }
-  res.render('index', { page: 'Startseite', menuId: 'index',jahre: years, umsatz: revenue });
+  // var revenue = new Array();
+  // for (let i = 0; i < years.length; i++) {
+  //   sqlquery = "SELECT SUM(umsatz_umsatz) FROM umsatz_tb WHERE umsatz_jahr = ?";
+  //   getConnection().query(sqlquery,[years[i]], function(err, result) {
+  //   if (err) {
+  //     console.log("Failed to get year data..." + err);
+  //     res.sendStatus(500);
+  //     return res.status(204).send();
+  //   } else {
+  //     revenue.push(result[i]);
+  //   }
+  //   return revenue;
+  // });
+  // }
+  res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
   // var name = 'Amy';
   // var adr = 'Mountain 21';
   // var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
