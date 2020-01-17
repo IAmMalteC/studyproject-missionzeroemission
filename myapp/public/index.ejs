@@ -22,6 +22,13 @@
             </form>
         </div>
         <article>
+            <h1>Testing</h1>
+            <% for(var i=0; i < umsatzAlle.length; i++) { %>
+                <div>
+                    <%= umsatzAlle[i].umsatz_jahr %> = 
+                    <%= umsatzAlle[i].umsatz_umsatz %>
+                </div>
+             <% } %>
             <h1> CO<sub>2</sub>-Ersparnis </h1>
             <canvas id="myChart"></canvas>
             <!-- <script src="javascripts/emissioncharttest.js"></script> -->
@@ -44,8 +51,8 @@
             var revenue = [];
 
             for (var i in data) {
-                years.push(data[i].key);
-                revenue.push(data[i].value);
+                years.push(data[i].umsatz_jahr);
+                revenue.push(data[i].umsatz_umsatz);
             }
 
             var chartdata = {
