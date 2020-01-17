@@ -1,4 +1,3 @@
-
 var emission = new Array();
 emission.push('100');
 emission.push('80');
