@@ -44,8 +44,8 @@
             var revenue = [];
 
             for (var i in data) {
-                years.push(data[i].umsatz_jahr);
-                revenue.push(data[i].umsatz_umsatz);
+                years.push(data[i].key);
+                revenue.push(data[i].value);
             }
 
             var chartdata = {
