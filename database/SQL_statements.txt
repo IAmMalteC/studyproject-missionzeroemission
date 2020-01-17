@@ -1,5 +1,6 @@
 UMSATZ:
  alle nach Jahren:
+ done: PHP
  SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
     ALLE DURCHSCHNITT:
         SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
@@ -12,6 +13,7 @@ UMSATZ:
 
     nach Firma nach Jahren (in das WHERE umsatz_firma = ? die firma_id einbauen):
     SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr
+
 STROMVERBRAUCHEMISSION in t CO2:
     STROM regulär Verbrauch alle Firmen:
 
