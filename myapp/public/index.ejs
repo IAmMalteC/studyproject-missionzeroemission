@@ -33,9 +33,10 @@
     </footer>
     <%- include('./partials/script'); -%>
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
+    <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Revenue All -->
     <script>
-        var data = <% JSON.stringify(umsatzAlle) %>;
+        var data = <%- JSON.stringify(umsatzAlle) %>;
     </script>
     <script>
         // define hear the needed datasets
