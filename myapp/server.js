@@ -21,8 +21,8 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index 
-app.get('/testinggraph', function(res){
-  res.render('testinggraph',{page:'Testinggraph', menuID:'NONE'})
+app.get('/testinggraph', function(req, res){
+  res.render('testinggraph',{page:'Testinggraph', menuID:'testinggraph'})
 });
 app.get('/', function (req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index' })
