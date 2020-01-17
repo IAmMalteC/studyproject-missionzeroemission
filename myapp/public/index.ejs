@@ -24,7 +24,7 @@
         <article>
             <h1> CO<sub>2</sub>-Ersparnis </h1>
             <canvas id="myChart"></canvas>
-            <script src="javascripts/emissioncharttest.js"></script>
+            <!-- <script src="javascripts/emissioncharttest.js"></script> -->
         </article>
     </div>
 
@@ -36,92 +36,90 @@
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- Revenue All -->
     <script>
-        $(document).ready(function () {
-            var data = [<%= umsatzAlle %>];
+        var data = [<%= umsatzAlle %>];
+        // define hear the needed datasets
+        var years = [];
+        var revenue = [];
 
-            var years = [];
-            var revenue = [];
+        for (var i in data) {
+            years.push(data[i].object);//umsatz_jahr);
+            revenue.push(data[i].Object);//umsatz_umsatz);
+        }
 
-            for (var i in data) {
-                years.push(data[i].umsatz_jahr);
-                revenue.push(data[i].umsatz_umsatz);
-            }
-
-            var chartdata = {
-                labels: years,
-                datasets: [
-                    {
-                        label: 'Revenue',
-                        backgroundColor: 'rgba(200, 200, 200, 0.75)',
-                        borderColor: 'rgba(200, 200, 200, 0.75)',
-                        hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
-                        hoverBorderColor: 'rgba(200, 200, 200, 1)',
-                        data: revenue
-                    }
-                ]
-            };
-
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: years,
-                    datasets: [{
-                        label: 'Umsatz',
-                        yAxisID: 'A',
-                        data: revenue,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    hover: {
-                        mode: 'nearest',
-                        intersect: true
-                    },
-                    // scales: {
-                    //     xAxes: [{
-                    //         display: true,
-                    //         scaleLabel: {
-                    //             display: true,
-                    //             labelString: 'Jahr'
-                    //         }
-                    //     }],
-                    //     yAxes: [{
-                    //         id: 'A',
-                    //         display: true,
-                    //         scaleLabel: {
-                    //             display: true,
-                    //             labelString: 'CO2-Emissionen in Prozent'
-                    //         },
-                    //         ticks: {
-                    //             beginAtZero: true,
-                    //             suggestedMax: 100,
-                    //             stepSize: 10
-                    //         }
-                    //     }, {
-                    //         id: 'B',
-                    //         display: true,
-                    //         position: 'right',
-                    //         scaleLabel: {
-                    //             display: true,
-                    //             labelString: 'Umsatz in Prozent'
-                    //         },
-                    //         ticks: {
-                    //             beginAtZero: true,
-                    //             suggestedMax: 100,
-                    //             stepSize: 10
-                    //         }
-                    //     }]
-                    // }
+        var chartdata = {
+            labels: years,
+            datasets: [
+                {
+                    label: 'Revenue',
+                    backgroundColor: 'rgba(200, 200, 200, 0.75)',
+                    borderColor: 'rgba(200, 200, 200, 0.75)',
+                    hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                    hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                    data: revenue
                 }
-            });
+            ]
+        };
+
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Umsatz',
+                    yAxisID: 'A',
+                    data: revenue,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                // scales: {
+                //     xAxes: [{
+                //         display: true,
+                //         scaleLabel: {
+                //             display: true,
+                //             labelString: 'Jahr'
+                //         }
+                //     }],
+                //     yAxes: [{
+                //         id: 'A',
+                //         display: true,
+                //         scaleLabel: {
+                //             display: true,
+                //             labelString: 'CO2-Emissionen in Prozent'
+                //         },
+                //         ticks: {
+                //             beginAtZero: true,
+                //             suggestedMax: 100,
+                //             stepSize: 10
+                //         }
+                //     }, {
+                //         id: 'B',
+                //         display: true,
+                //         position: 'right',
+                //         scaleLabel: {
+                //             display: true,
+                //             labelString: 'Umsatz in Prozent'
+                //         },
+                //         ticks: {
+                //             beginAtZero: true,
+                //             suggestedMax: 100,
+                //             stepSize: 10
+                //         }
+                //     }]
+                // }
+            }
         });
     </script>
 </body>
