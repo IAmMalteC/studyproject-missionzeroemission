@@ -52,8 +52,8 @@ function findRevenueTotal(req, res, next) {
   });
 }
 function renderIndexPage(req, res) {
-  revneueAll = req.revneueAll;
-  res.render('index', { page: 'Startseite', menuId: 'index', umsatzAlle: revenueAll });
+  //var revenueAll = req.revneueAll;
+  res.render('index', { page: 'Startseite', menuId: 'index', umsatzAlle: req.revenueAll });
 }
 // function renderIndexPage(req, res) {
 //   var yearsTotal = [];
