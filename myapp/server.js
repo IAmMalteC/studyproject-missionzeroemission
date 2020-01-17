@@ -55,36 +55,12 @@ function renderIndexPage(req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index', 
   umsatzAlle: req.revenueAll});
 }
-// function renderIndexPage(req, res) {
-//   var yearsTotal = [];
-//   for (var i in req.revenueTotal) {
-//     yearsTotal.push(req.revenueTotal[i].umsatz_jahr);
-//   }
-//   var revenueTotal = [];
-//   for (var i in req.revenueTotal) {
-//     revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
-//   }
-//   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
-// }
 // app.get('/', function (req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
 // });
 app.get('/index',
   findRevenueTotal,
   renderIndexPage);
-
-//   // }
-//   // return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
-//   // var name = 'Amy';
-//   // var adr = 'Mountain 21';
-//   // var sql = 'SELECT * FROM customers WHERE name = ? OR address = ?';
-//   // con.query(sql, [name, adr], function (err, result) {
-//   //   if (err) throw err;
-//   //   console.log(result);
-//   // });
-//   // ## Firmenansicht ##
-//   // var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb WHERE"; //FIRMA einfügen
-// });
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";

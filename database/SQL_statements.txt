@@ -1,7 +1,6 @@
 UMSATZ:
  alle nach Jahren:
- done: PHP
- SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
+ done - SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
     ALLE DURCHSCHNITT:
         SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
     BRANCHENUMSATZ nach Jahren:
