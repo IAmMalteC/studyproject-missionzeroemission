@@ -20,7 +20,17 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
-//index
+//index 
+app.get('testinggraph', function(res){
+  res.render('testinggraph',{page:'Testinggraph', menuID:'NONE'})
+});
+app.get('/', function (req, res) {
+  res.render('index', { page: 'Startseite', menuId: 'index' })
+});
+app.get('/index', function (req, res) {
+  res.render('index', { page: 'Startseite', menuId: 'index' })
+});
+//index with charts first try
 // //Gesamt Jahre
 // function findYearsTotal(req, res, next) {
 //   var sqlquery = "SELECT DISTINCT umsatz_jahr FROM umsatz_tb";
@@ -36,36 +46,36 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //   });
 // }
 //Gesamt Umsatz
-function findRevenueTotal(req, res, next) {
-  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.revenueTotal = result;
-      return next();
-    }
-  });
-}
-function renderIndexPage(req, res) {
-  var yearsTotal = [];
-  for (var i in req.revenueTotal) {
-    yearsTotal.push(req.revenueTotal[i].umsatz_jahr);
-  }
-  var revenueTotal = [];
-  for (var i in req.revenueTotal) {
-    revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
-  }
-  res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
-}
+// function findRevenueTotal(req, res, next) {
+//   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
+//   getConnection().query(sqlquery, function (err, result) {
+//     if (err) {
+//       console.log("Failed to get year data..." + err);
+//       res.sendStatus(500);
+//       return res.status(204).send();
+//     } else {
+//       req.revenueTotal = result;
+//       return next();
+//     }
+//   });
+// }
+// function renderIndexPage(req, res) {
+//   var yearsTotal = [];
+//   for (var i in req.revenueTotal) {
+//     yearsTotal.push(req.revenueTotal[i].umsatz_jahr);
+//   }
+//   var revenueTotal = [];
+//   for (var i in req.revenueTotal) {
+//     revenueTotal.push(req.revenueTotal[i].umsatz_umsatz);
+//   }
+//   res.render('index', { page: 'Startseite', menuId: 'index', jahreGesamt: yearsTotal, umsatzGesamt: revenueTotal });
+// }
 // app.get('/', function (req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
 // });
-app.get('/index',
-  findRevenueTotal,
-  renderIndexPage);
+// app.get('/index',
+//   findRevenueTotal,
+//   renderIndexPage);
 
 //   // }
 //   // return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
