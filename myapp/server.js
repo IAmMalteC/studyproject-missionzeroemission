@@ -21,7 +21,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
-/
+//
 //index with charts first try
 // //Gesamt Jahre
 // function findYearsTotal(req, res, next) {
