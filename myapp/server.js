@@ -20,16 +20,8 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
-//index 
-app.get('/testinggraph', function(req, res){
-  res.render('testinggraph',{page:'Testinggraph', menuID:'testinggraph'})
-});
-app.get('/', function (req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index' })
-});
-app.get('/index', function (req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index' })
-});
+//index
+/
 //index with charts first try
 // //Gesamt Jahre
 // function findYearsTotal(req, res, next) {
@@ -46,19 +38,23 @@ app.get('/index', function (req, res) {
 //   });
 // }
 //Gesamt Umsatz
-// function findRevenueTotal(req, res, next) {
-//   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
-//   getConnection().query(sqlquery, function (err, result) {
-//     if (err) {
-//       console.log("Failed to get year data..." + err);
-//       res.sendStatus(500);
-//       return res.status(204).send();
-//     } else {
-//       req.revenueTotal = result;
-//       return next();
-//     }
-//   });
-// }
+function findRevenueTotal(req, res, next) {
+  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.revenueAll = result;
+      return next();
+    }
+  });
+}
+function renderIndexPage(req, res) {
+  revneueAll = req.revneueAll;
+  res.render('index', { page: 'Startseite', menuId: 'index', umsatzAlle: revenueAll });
+}
 // function renderIndexPage(req, res) {
 //   var yearsTotal = [];
 //   for (var i in req.revenueTotal) {
@@ -73,9 +69,9 @@ app.get('/index', function (req, res) {
 // app.get('/', function (req, res) {
 //   res.render('index', { page: 'Startseite', menuId: 'index' })
 // });
-// app.get('/index',
-//   findRevenueTotal,
-//   renderIndexPage);
+app.get('/index',
+  findRevenueTotal,
+  renderIndexPage);
 
 //   // }
 //   // return res.render('index', { page: 'Startseite', menuId: 'index', jahre: years }); //, umsatz: revenue
