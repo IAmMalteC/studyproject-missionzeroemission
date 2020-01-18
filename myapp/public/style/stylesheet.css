@@ -447,13 +447,13 @@ a:active {
         justify-content: flex-start;
     }
     /*erbt von .content im html verwenden mit class="content index"*/
-    .index {
+    /* .index {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
         text-align: center;
-    }
+    } */
     /* .row {
         display: -webkit-box;
         display: -ms-flexbox;
