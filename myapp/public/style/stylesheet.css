@@ -368,6 +368,19 @@ a:active {
         -ms-flex-pack: center;
         justify-content: center;
     }
+    /*rows for the graphs*/
+    .row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
 }
 
 /* falls der screen gedreht wird oder größer ist als 689px, dann gelten zusätzlich folgende regeln */
