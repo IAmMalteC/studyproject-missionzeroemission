@@ -63,13 +63,27 @@ function findRevenueAllAverage(req, res, next) {
     }
   });
 }
+//Umsatz Branche
+function findRevenueBranch(req, res, next) {
+  var sqlquery = "SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY firma_tb.firma_branche, umsatz_tb.umsatz_jahr";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.revenueBranch = result;
+      return next();
+    }
+  });
+}
 function renderIndexPage(req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index', 
-  umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage});
+  umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage, umsatzBranche: req.revenueBranch});
 }
 var index_path = ['/', '/index'];
 app.get(index_path,
-  findRevenueAll, findRevenueAllAverage, 
+  findRevenueAll, findRevenueAllAverage, findRevenueBranch,
   renderIndexPage);
 
   
