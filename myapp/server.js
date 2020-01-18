@@ -122,9 +122,9 @@ function findRevenueCompany(req, res, next) {
 //Umsatz Firma Vergleich mit Branche
 function findRevenueCompanyCompareBranch(req, res, next) {
   // muss eigentlich über session angesprochen werden
-  firmenid = 12;
+  brancheid = 12;
   var sqlquery = "SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr";
-  getConnection().query(sqlquery,firmenid, function (err, result) {
+  getConnection().query(sqlquery,brancheid, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
