@@ -5,7 +5,7 @@ var revenue = [];
 var companies = [];
 
 //they have to have the same names as after select in the SQL query
-for (var i in data) {
+for (const i in data) {
     years.push(data[i].umsatz_jahr);
     revenue.push(data[i].umsatz_umsatz);
     companies.push(data[i].counts);
