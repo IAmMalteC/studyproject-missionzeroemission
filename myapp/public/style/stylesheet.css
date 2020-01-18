@@ -297,12 +297,6 @@ td:hover::before {
     align-items: flex-end;
     /* text-align: center; */
 }
-.chart-container {
-    /* position: relative; */
-    margin: auto;
-    height: 40%;
-    width: 40%;
-  }
 
 /*links*/
 
