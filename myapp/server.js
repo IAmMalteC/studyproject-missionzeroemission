@@ -30,7 +30,91 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
-//Index
+//index
+//Gesamt Strom
+function findElectricAll(req, res, next) {
+  var sqlquery = "";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.electricAll = result;
+      return next();
+    }
+  });
+}
+//Strom Alle Durchschnitt
+function findElectricAllAverage(req, res, next) {
+  var sqlquery = "";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.electricAllAverage = result;
+      return next();
+    }
+  });
+}
+//Gesamt Heizung
+function findHeatAll(req, res, next) {
+  var sqlquery = "";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.heatAll = result;
+      return next();
+    }
+  });
+}
+//Heizung Alle Durchschnitt
+function findHeatAllAverage(req, res, next) {
+  var sqlquery = "";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.heatAllAverage = result;
+      return next();
+    }
+  });
+}
+//Gesamt Gas
+function findGasAll(req, res, next) {
+  var sqlquery = "";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.gasAll = result;
+      return next();
+    }
+  });
+}
+//Gas Alle Durchschnitt
+function findGasAllAverage(req, res, next) {
+  var sqlquery = "";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.gasAllAverage = result;
+      return next();
+    }
+  });
+}
 //Gesamt Umsatz
 function findRevenueAll(req, res, next) {
   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
@@ -60,15 +144,23 @@ function findRevenueAllAverage(req, res, next) {
   });
 }
 function renderIndexPage(req, res) {
-  res.render('index', { page: 'Startseite', menuId: 'index', 
-  umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage});
+  res.render('index', {
+    page: 'Startseite', menuId: 'index',
+    stromAlle: req.electricAll, stromAlleDurchschnitt: req.electricAllAverage,
+    heizungAlle: req.heatAll, heizungAlleDurchschnitt: req.heatAllAverage,
+    gasAlle: req.gasAll, gasAlleDurchschnitt: req.gasAllAverage,
+    umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage
+  });
 }
 var index_path = ['/', '/index'];
 app.get(index_path,
+  findElectricAll, findElectricAllAverage,
+  findHeatAll, findHeatAllAverage,
+  findGasAll, findGasAllAverage,
   findRevenueAll, findRevenueAllAverage,
   renderIndexPage);
 
-  
+
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
@@ -99,12 +191,102 @@ app.get('/massnahmen-uebersicht', function (req, res) {
   });
 });
 //Eingabenauswahl mit Graphen
+//Strom Firma
+function findElectricCompany(req, res, next) {
+  firmenid = 12;
+  var sqlquery = "";
+  getConnection().query(sqlquery, firmenid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.electricCompany = result;
+      return next();
+    }
+  });
+}
+//Strom Firma Vergleich mit Branche
+function findElectricCompanyCompareBranch(req, res, next) {
+  branchid = 4;
+  var sqlquery = "";
+  getConnection().query(sqlquery, branchid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.electricCompanyBranch = result;
+      return next();
+    }
+  });
+}
+//Heizung Firma
+function findHeatCompany(req, res, next) {
+  firmenid = 12;
+  var sqlquery = "";
+  getConnection().query(sqlquery, firmenid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.heatCompany = result;
+      return next();
+    }
+  });
+}
+//Heizung Firma Vergleich mit Branche
+function findHeatCompanyCompareBranch(req, res, next) {
+  branchid = 4;
+  var sqlquery = "";
+  getConnection().query(sqlquery, branchid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.heatCompanyBranch = result;
+      return next();
+    }
+  });
+}
+//Gas Firma
+function findGasCompany(req, res, next) {
+  firmenid = 12;
+  var sqlquery = "";
+  getConnection().query(sqlquery, firmenid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.gasCompany = result;
+      return next();
+    }
+  });
+}
+//Gas Firma Vergleich mit Branche
+function findGasCompanyCompareBranch(req, res, next) {
+  branchid = 4;
+  var sqlquery = "";
+  getConnection().query(sqlquery, branchid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.gasCompanyBranch = result;
+      return next();
+    }
+  });
+}
 //Umsatz Firma
 function findRevenueCompany(req, res, next) {
   // muss eigentlich über session angesprochen werden
   firmenid = 12;
   var sqlquery = "SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr";
-  getConnection().query(sqlquery,firmenid, function (err, result) {
+  getConnection().query(sqlquery, firmenid, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
@@ -118,9 +300,9 @@ function findRevenueCompany(req, res, next) {
 //Umsatz Firma Vergleich mit Branche
 function findRevenueCompanyCompareBranch(req, res, next) {
   // muss eigentlich über session angesprochen werden
-  brancheid = 4;
+  branchid = 4;
   var sqlquery = "SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr";
-  getConnection().query(sqlquery,brancheid, function (err, result) {
+  getConnection().query(sqlquery, branchid, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
@@ -134,15 +316,21 @@ function findRevenueCompanyCompareBranch(req, res, next) {
 function renderEingabeauswahlPage(req, res) {
   //ggf. anpassen und das result der Query ansprechen über kolonnen name
   firma = "Hawe Inline Hydraulik GmbH"
-  firmenid = 12;
   branchenname = "Maschinenbau"
-  brancheid = 4;
   letzeAktualUmsatz = "30.04.2019"
-  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', 
-  firmenname: firma, branchenname: branchenname,
-  umsatzFirma: req.revenueCompany, umsatzFirmaVergleich: req.revenueCompanyBranch });
+  res.render('eingabeauswahl', {
+    page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
+    firmenname: firma, branchenname: branchenname,
+    stromFirma: req.electricCompany, stromFirmaVergleich: req.electricCompanyBranch,
+    heizungFirma: req.heatCompany, heizungFirmaVergleich: req.heatCompanyBranch,
+    gasFirma: req.gasCompany, gasFirmaVergleich: req.gasCompanyBranch,
+    umsatzFirma: req.revenueCompany, umsatzFirmaVergleich: req.revenueCompanyBranch
+  });
 }
 app.get('/eingabeauswahl',
+  findElectricCompany, findElectricCompanyCompareBranch,
+  findHeatCompany, findHeatCompanyCompareBranch,
+  findGasCompany, findGasCompanyCompareBranch,
   findRevenueCompany, findRevenueCompanyCompareBranch,
   renderEingabeauswahlPage);
 //profil
