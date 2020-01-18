@@ -45,15 +45,23 @@
             <!-- Die folgenden zwei haben keinen Balken-->
             <div class="eingabeauswahlmenu">
                 <span>
-                    Eigene Werte
-                    <canvas id="revenueCompany"></canvas>
+                    <div>
+                        Eigene Werte
+                    </div>
+                    <div>
+                        <canvas id="revenueCompany"></canvas>
+                    </div>
                 </span>
                 <span>
                     <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
                 </span>
                 <span>
-                    Vergleich mit der Branche: <%= branchenname %>
-                    <canvas id="revenueCompanyCompareBranch"></canvas>
+                    <div>
+                        Vergleich mit der Branche: <%= branchenname %>
+                    </div>
+                    <div>
+                        <canvas id="revenueCompanyCompareBranch"></canvas>
+                    </div>
                 </span>
             </div>
             <div>
@@ -73,7 +81,7 @@
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
     <!-- Revenue Company Compare with Branch-->
     <script>var data = <%- JSON.stringify(umsatzFirmaVergleich) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecomcomparebranch.js"></script>
 </body>
 
 </html>
