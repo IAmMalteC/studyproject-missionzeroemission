@@ -297,7 +297,7 @@ td:hover::before {
     text-align: center;
 }
 
-.row h1 {
+/* .row h1 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -308,7 +308,7 @@ td:hover::before {
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
-}
+} */
 
 /*links*/
 
