@@ -293,6 +293,8 @@ td:hover::before {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
     align-items: flex-end;
     /* text-align: center; */
 }
@@ -416,6 +418,9 @@ a:active {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
     }
     /*erbt von .content im html verwenden mit class="content index"*/
     /* .index {
