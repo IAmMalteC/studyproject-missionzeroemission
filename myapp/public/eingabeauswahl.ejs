@@ -15,10 +15,7 @@
     </header>
     <!-- Main-->
     <div class="content">
-        <form action="" name="FirmennameAnzeigen" method="get">
-            <!-- hier steht dann der Firmenname mit der Metode-->
-            <h1><%= firmenname %></h1>
-        </form>
+        <h1><%= firmenname %></h1>
         <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
             <!--
             Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
@@ -79,10 +76,10 @@
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Revenue Company -->
-    <script>var data = <%- JSON.stringify(umsatzFirma) %>;</script>
+    <script>var data = <% - JSON.stringify(umsatzFirma) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
     <!-- Revenue Company Compare with Branch-->
-    <script>var data = <%- JSON.stringify(umsatzFirmaVergleich) %>;</script>
+    <script>var data = <% - JSON.stringify(umsatzFirmaVergleich) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecomcomparebranch.js"></script>
 </body>
 

@@ -313,7 +313,7 @@ a:active {
 
 /*just added to show the content in a nice way on a phone*/
 
-@media only screen and (max-width: 688px) {
+@media only screen and (max-width: 768px) {
     /* Is not working on hover, but hover never works on smartphones, so more a minor issue */
     td:before {
         content: attr(data-th)": ";
@@ -366,7 +366,7 @@ a:active {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        
+
         align-items: flex-end;
         text-align: center;
     }
@@ -374,7 +374,7 @@ a:active {
 
 /* falls der screen gedreht wird oder größer ist als 689px, dann gelten zusätzlich folgende regeln */
 
-@media only screen and (min-width: 689px) {
+@media only screen and (min-width: 768px) {
     /*header*/
     header {
         display: -webkit-box;
