@@ -35,7 +35,7 @@ lineChartData = {}; //declare an object
 lineChartData.labels = []; //add 'labels' element to object (X axis)
 lineChartData.datasets = []; //add 'datasets' array element to object
 
-for (line = 0; line < amountOfBranches; line++) {
+for (line = 0; line < 2; line++) {
     y = [];
     lineChartData.datasets.push({}); //create a new line dataset
     dataset = lineChartData.datasets[line]
@@ -52,7 +52,7 @@ for (line = 0; line < amountOfBranches; line++) {
     lineChartData.datasets[line].data = y; //send new line data to dataset
 } //for line
 
-ctx = document.getElementById("revenueBranch").getContext("2d");
+ctx = document.getElementById("revenueBranch");
 myLineChart = new Chart(ctx).Line(lineChartData);
 
 // var chartdata = {
