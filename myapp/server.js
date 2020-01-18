@@ -63,27 +63,13 @@ function findRevenueAllAverage(req, res, next) {
     }
   });
 }
-//Umsatz Branche
-function findRevenueBranch(req, res, next) {
-  var sqlquery = "SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY firma_tb.firma_branche, umsatz_tb.umsatz_jahr";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.revenueBranch = result;
-      return next();
-    }
-  });
-}
 function renderIndexPage(req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index', 
-  umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage, umsatzBranche: req.revenueBranch});
+  umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage});
 }
 var index_path = ['/', '/index'];
 app.get(index_path,
-  findRevenueAll, findRevenueAllAverage, findRevenueBranch,
+  findRevenueAll, findRevenueAllAverage,
   renderIndexPage);
 
   
@@ -116,11 +102,36 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 
   });
 });
-//Eingabenauswahl
-app.get('/eingabeauswahl', function (req, res) {
-  var firma = 'Meine Firma'
-  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', firmenname: firma });
-});
+//Eingabenauswahl mit Graphen
+//Umsatz Firma
+function findRevenueCompany(req, res, next) {
+  // muss eigentlich über session angesprochen werden
+  firmenid = 12;
+  var sqlquery = "SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr";
+  getConnection().query(sqlquery,firmenid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.revenueCompany = result;
+      return next();
+    }
+  });
+}
+function renderEingabeauswahlPage(req, res) {
+  firma = "Hawe Inline Hydraulik GmbH"
+  firmenid = 12;
+  brancheid = 4;
+  letzeAktualUmsatz = "30.04.2019"
+  res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', 
+  //ggf. anpassen und das result der Query ansprechen über kolonnen name
+  firmenname: firma, firmenid: firmenid, brancheid: brancheid,
+  umsatzFirma: req.revenueCompany, aktualiseriungUmsatz: letzeAktualUmsatz  });
+}
+app.get('/eingabeauswahl',
+  findRevenueCompany,
+  renderEingabeauswahlPage);
 //profil
 app.get("/profil", function (req, res, next) {
   res.render('profil', { page: 'Profil', menuId: 'profil' });

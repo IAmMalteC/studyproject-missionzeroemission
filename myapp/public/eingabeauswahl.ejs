@@ -5,6 +5,7 @@
     <%- include('./partials/head'); -%>
     <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+    <script type="text/javascript" src="./chartjs/Chart.js"></script>
 </head>
 
 <body>
@@ -43,7 +44,13 @@
             </div>
             <!-- Die folgenden zwei haben keinen Balken-->
             <div>
-                <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
+                <span>
+                    <canvas id="revenueCompany"></canvas>
+                </span>
+                <span>
+                    <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
+                </span>
+                <span>Letzte Aktualiseriung: <%= aktualiseriungUmsatz %></span>
             </div>
             <div>
                 <a class="button" href="./ressourcen/co2schaetzung">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
@@ -55,6 +62,11 @@
         <%- include('./partials/footer'); -%>
     </footer>
     <%- include('./partials/script'); -%>
+    <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
+    <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
+    <!-- Revenue Company -->
+    <script>var data = <%- JSON.stringify(umsatzFirma) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
 </body>
 
 </html>
