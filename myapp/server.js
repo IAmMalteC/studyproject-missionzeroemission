@@ -195,7 +195,7 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
   res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
 });
 // Input Data from Profil to DB
-app.post('http://141.45.92.87:3003/profil', function (req, res) {
+app.post('/profil', function (req, res) {
   console.log("Trying to log in..")
   console.log("First name: " + req.body.VornameInput);
   const Vorname = req.body.VornameInput;
@@ -220,7 +220,7 @@ app.post('http://141.45.92.87:3003/profil', function (req, res) {
   res.end()
 });
 
-app.post('http://141.45.92.87:3003/ressourcen/umsatz', function (req, res) {
+app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
   const JahresUmsatz = req.body.UmsatzInput;
   const Datum = req.body.DatumUmsatzInput;
@@ -238,23 +238,33 @@ app.post('http://141.45.92.87:3003/ressourcen/umsatz', function (req, res) {
   res.end()
 })
 
-// app.get('/', (req , res) => {
-//   console.log("Trying to log in..")
-//   console.log("First name: " + req.body.VornameInput);
-//   const Vorname = req.body.VornameInput;
-//   const Nachname = req.body.NachnameInput;
+app.post("/login" , function(req , res){
+  var username = req.body.BenutzernameInput;
+  var password = req.body.PasswortInput;
+  loginQuery= "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
 
-//   const queryString = "INSERT INTO DoriDB.nutzer_tb (nutzer_nachname, nutzer_name) VALUES (default,?,?,?,?,?,?)";
-//   getConnection().query(queryString, [Vorname , Nachname] , (err, result , fields) => {if (err) {
-//     console.log ("Failed to update user data..." + err);
-//     res.sendStatus(500);
-//     return
-//   }} );
+  if ( username && password){
+    getConnection().query(loginQuery, [username , password] , function(err , result){
+      if(result.length > 0){
+        req.session.loggedIn = true;
+        req.session.username = username;
+        res.redirect('/index')
+      }
+      else {
+        res.render('login',{page:"Login Here" , menuId: "login"});
+        
+        //res.send("Incorrect username and/or password")
+      }
+      res.end();
+    });
+  }
+  else{
+    res.send("Please enter your Username and Password");
+    res.end();
 
-//   res.send('Data received:\n' + JSON.stringify(req.Vorname , req.Nachname));
-//   console.log("Inserted new user");
-//   res.end()
-// });
+  }
+});
+
 
 function getConnection() {
   return mariadb.createConnection({
@@ -277,16 +287,4 @@ app.listen(3003, () => {
   console.log("server is up and listening on port 3003...")
 });
 
-//app.post("/profil" , function (req , res) {
-//  console.log(req.body);
-//  let sql = "INSERT INTO nutzer_tb(profil_name, profil_vorname, profil_firma, profil_position, profil_fax, profil_tel, profil_email, profil_benutzername, profil_passwort) VALUES (null ,'" + req.body.NachnameInput + "' , '"+req.body.VornameInput+"' , '"+req.body.FirmennameInput+"', '"+req.body.PositionInput+"' ,'"+req.body.FaxInput+"' , '"+req.body.TelefonInput+"' , '"+req.body.EmailInput+"' , '"+ req.body.BenutzernameInput +"' , '"+req.body.PasswortInput+"')";
-//  connection.query(sql , function (err) {
-//    if (err) throw err;
-//    res.send("Data Is added to the database...")
-//  })
-//});
-//app.timeout = 0;
-//app.listen("3306");
-
-// comment being the name of the database
 
