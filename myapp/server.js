@@ -164,7 +164,7 @@ app.post("/login" , function(req , res){
   if ( username && password){
     getConnection().query(loginQuery, [username , password] , function(err , result){
       if(result.length > 0){
-        req.session.loggedin = true;
+        req.session.loggedIn = true;
         req.session.username = username;
         res.redirect('/index')
       }
@@ -274,9 +274,9 @@ app.post('/umsatz', function (req, res) {
 app.post('/strom' , function(req , res){
   console.log('Entering Strom Data..')
 
-  var StromArt = req.body.StromArt;
+  var StromArt = req.body.StromArt; // emissionwert
   if (StromArt == "Photovoltaik"){
-    StromArt = 0
+    StromArt = 0 // emissionwert
   }
   else {
     StromArt = 365
@@ -291,14 +291,16 @@ app.post('/strom' , function(req , res){
   }
   const StromVerbrauch = req.body.Stromverbrauch;
   const AbrechnungZeitraum = req.body.ZeitraumJahr;
-  if (StromArt == "Photovoltaik"){
-    var sqlQuery = "INSERT INTO res_photov_tb VALUES (NULL,4,?,?,1,?,?)"
+  if (StromArt == 0){
+    console.log("Entering Data into Photov table")
+    var sqlQuery = "INSERT INTO res_strom_photov_tb VALUES (NULL,4,?,?,1,?,?)"
     getConnection().query(sqlQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
       console.log("Faild to Insert into database..."+ err); 
       res.sendStatus(500);
       return
     }});
   }else{
+    console.log("Entering Data into regulaer table")
     var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
     getConnection().query(stromQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
       console.log("Faild to Insert into database..."+ err); 
