@@ -8,10 +8,10 @@ not used -  SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz) AS umsatz
     BRANCHENDURCHSCHNITTE nach Jahren:
 not used -     SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr
     für BRANCHENVERGLEICH (zusätzlich WHERE branche_tb.branche_id=? und ohne ORDER BY branche:
-bado    SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr
+done    SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr
 
     nach Firma nach Jahren (in das WHERE umsatz_firma = ? die firma_id einbauen):
-    SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr
+done - SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr
 
 STROMVERBRAUCHEMISSION in t CO2:
     STROM regulär Verbrauch alle Firmen:

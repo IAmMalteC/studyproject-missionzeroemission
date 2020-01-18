@@ -119,15 +119,32 @@ function findRevenueCompany(req, res, next) {
     }
   });
 }
+//Umsatz Firma Vergleich mit Branche
+function findRevenueCompany(req, res, next) {
+  // muss eigentlich über session angesprochen werden
+  firmenid = 12;
+  var sqlquery = "SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr";
+  getConnection().query(sqlquery,firmenid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.revenueCompanyBranch = result;
+      return next();
+    }
+  });
+}
 function renderEingabeauswahlPage(req, res) {
+  //ggf. anpassen und das result der Query ansprechen über kolonnen name
   firma = "Hawe Inline Hydraulik GmbH"
   firmenid = 12;
+  branchenname = "Maschinenbau"
   brancheid = 4;
   letzeAktualUmsatz = "30.04.2019"
   res.render('eingabeauswahl', { page: 'Eingabeauswahl', menuId: 'eingabeauswahl', 
-  //ggf. anpassen und das result der Query ansprechen über kolonnen name
-  firmenname: firma, firmenid: firmenid, brancheid: brancheid,
-  umsatzFirma: req.revenueCompany, aktualiseriungUmsatz: letzeAktualUmsatz  });
+  firmenname: firma, branchenname: branchenname,
+  umsatzFirma: req.revenueCompany, umsatzFirmaVergleich: req.revenueCompanyBranch });
 }
 app.get('/eingabeauswahl',
   findRevenueCompany,

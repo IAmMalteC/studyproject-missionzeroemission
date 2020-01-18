@@ -24,33 +24,37 @@
             Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
             Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
             -->
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/strom">Strom</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/heizung">Heizung</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/erdgas">Gas</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/wasser">Wasser</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/abfall">Abfall</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/neue-massnahme">Kompensationsma&szlig;nahme</a>
             </div>
             <!-- Die folgenden zwei haben keinen Balken-->
-            <div>
+            <div class="eingabeauswahlmenu">
                 <span>
+                    Eigene Werte
                     <canvas id="revenueCompany"></canvas>
                 </span>
                 <span>
                     <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
                 </span>
-                <span>Letzte Aktualiseriung: <%= aktualiseriungUmsatz %></span>
+                <span>
+                    Vergleich mit der Branche: <%= branchenname %>
+                    <canvas id="revenueCompanyCompareBranch"></canvas>
+                </span>
             </div>
             <div>
                 <a class="button" href="./ressourcen/co2schaetzung">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
@@ -66,6 +70,9 @@
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Revenue Company -->
     <script>var data = <%- JSON.stringify(umsatzFirma) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
+    <!-- Revenue Company Compare with Branch-->
+    <script>var data = <%- JSON.stringify(umsatzFirmaVergleich) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
 </body>
 
