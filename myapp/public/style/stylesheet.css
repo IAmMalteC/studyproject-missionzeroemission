@@ -25,10 +25,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-.content h1 {
-    text-align: center;
-}
-
 /* To center the grid */
 
 html, body {
@@ -177,15 +173,6 @@ footer {
     max-width: 300px;
 }
 
-/* centers images */
-
-.img-center {
-    display: block;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /*input fields*/
 
 textarea, input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], input[type=date] {
@@ -292,6 +279,23 @@ td:hover::before {
     width: 100%;
     z-index: -1;
 }
+/*rows for the graphs*/
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    align-items: flex-end;
+    text-align: center;
+}
+
 /*links*/
 a {
     text-decoration: none;
@@ -358,7 +362,7 @@ a:active {
         -ms-flex-pack: center;
         justify-content: center;
     }
-    /*rows for the graphs*/
+    /* rows for the graphs
     .row {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -373,7 +377,7 @@ a:active {
 
         align-items: flex-end;
         text-align: center;
-    }
+    } */
 }
 
 /* falls der screen gedreht wird oder größer ist als 689px, dann gelten zusätzlich folgende regeln */
@@ -435,9 +439,21 @@ a:active {
         flex-flow: row nowrap;
         text-align: center;
     }
-    .img-center {
-        width: 60%;
-    }
+    /* .row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+
+        align-items: flex-end;
+        text-align: center;
+    } */
     .content .goal-tracker {
         display: none;
         /*Set to block to show it*/
