@@ -288,21 +288,7 @@ td:hover::before {
     width: 100%;
     z-index: -1;
 }
-
-/* tbody td:hover, tbody td::before{
-    content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: -9999px;
-	bottom: -9999px;
-	background-color: rgba(255,255,255,0.2);
-	z-index: -1;
-
-}  */
-
 /*links*/
-
 a {
     text-decoration: none;
 }
@@ -380,6 +366,9 @@ a:active {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
+        
+        align-items: flex-end;
+        text-align: center;
     }
 }
 
