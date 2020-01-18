@@ -1,3 +1,4 @@
+// Part of SQL Statement: SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM ...
 // define hear the needed datasets
 var years = [];
 var revenue = [];

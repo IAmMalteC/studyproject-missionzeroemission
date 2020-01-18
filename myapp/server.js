@@ -36,7 +36,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //   });
 // }
 //Gesamt Umsatz
-function findRevenueTotal(req, res, next) {
+function findRevenueAll(req, res, next) {
   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
@@ -49,13 +49,27 @@ function findRevenueTotal(req, res, next) {
     }
   });
 }
+//Umsatz Alle Durchschnitt
+function findRevenueAllAverage(req, res, next) {
+  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
+  getConnection().query(sqlquery, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.revenueAllAverage = result;
+      return next();
+    }
+  });
+}
 function renderIndexPage(req, res) {
   res.render('index', { page: 'Startseite', menuId: 'index', 
-  umsatzAlle: req.revenueAll});
+  umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage});
 }
 var index_path = ['/', '/index'];
 app.get(index_path,
-  findRevenueTotal,
+  findRevenueAll, findRevenueAllAverage, 
   renderIndexPage);
 
   

@@ -24,6 +24,7 @@
         <article>
             <h1> CO<sub>2</sub>-Ersparnis </h1>
             <canvas id="revenueAll"></canvas>
+            <canvas id="revenueAllAverage"></canvas>
         </article>
     </div>
 
@@ -35,10 +36,11 @@
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Revenue All -->
-    <script>
-        var data = <%- JSON.stringify(umsatzAlle) %>;
-    </script>
+    <script>var data = <%- JSON.stringify(umsatzAlle) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenueall.js"></script>
+    <!-- Revenue All Average-->
+    <script>var data = <%- JSON.stringify(umsatzAlleDurchschnitt) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenueallaverage.js"></script>
 </body>
 
 </html>
