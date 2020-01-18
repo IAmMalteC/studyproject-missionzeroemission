@@ -289,7 +289,8 @@ td:hover::before {
     -webkit-box-direction: normal;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
-    align-items: center;
+    /* align-items: center; */
+    justify-content: center;
 }
 .row span {
     display: flex;
