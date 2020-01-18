@@ -28,7 +28,7 @@ var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdata,
     options: {
-        responsive: true,
+        responsive: false,
         tooltips: {
             mode: 'index',
             intersect: false,
