@@ -2,8 +2,7 @@
 # MissionZeroEmission
 A tool to visaulize the emissions of the "Unternehmensnetzwerk Motzenerstraße"
 
-## Hinweise für die Bearbeitung
-### Elemente einbinden
+## Elemente einbinden
 Text Elemente wie Footer und header können eingebunden werden, sodass sie nicht auf jeder einzelnen Seite bearbeitet werden muss. Ein bisschen wie bei Objekten.
 
 Eingebunden werden sie mit folgenden Schritten:
@@ -15,11 +14,11 @@ Eingebunden werden sie mit folgenden Schritten:
 ```
 
 3. Add this code on every page that you want to include the file.
-### CSS und JS
+## CSS und JS
 
 In den Dateien 00_css_from_motzener und 00_scripts_from_motzener sind die Scripte und Styles die auf der Motzener-Straße benutzt worden sind.
 
-### Charts
+## Charts
 Zu jedem Chart gibt es **ein** Script, das liegt unter ./chartjs/jsforcharts und folgt der Namenskovention. Als weiters Script wird Chart.js benötigt.
 CSS sollte am Ende im stylesheet definert werden.
 In ihnen wird die jeweilige chart per ID angesprochen. Die entpsrechend auf der HTML Seite zu finden ist.
@@ -36,3 +35,10 @@ Die Charts folgen einer selbst festgelegten **Namenskonvention**:
 ..*company
 4. which **can** be followed by specialty, like 
 ..*average
+
+## Tooltip
+add Tooltips by writing data-tooltip="YOUR TEXT" to the div/object which should get a tooltip
+Beispiel:
+```
+<h1 data-tooltip="Tooltip">&Uuml;berschrift</h1>
+```

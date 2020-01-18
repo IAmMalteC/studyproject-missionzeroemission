@@ -8,6 +8,23 @@ orange #b14f19
 
 We are just building for two sreens. Phones and Tables/Desktops(Bigger then 689px)
 */
+/*!!Global parameters!!*/
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: PTSansRegular, Arial, Helvetica, sans-serif;
+}
+
+/* text styling */
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}
+
+/*Tooltip uses by adding data-tooltip="YOUR TEXT" to the div/object which should get a tooltip*/
 [data-tooltip]:before {
     /* needed - do not touch */
     content: attr(data-tooltip);
@@ -30,22 +47,6 @@ We are just building for two sreens. Phones and Tables/Desktops(Bigger then 689p
     background: #6a8e5b;
     margin-top: -50px;
     margin-left: 20px;    
-}
-
-/*!!Global parameters!!*/
-
-* {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: PTSansRegular, Arial, Helvetica, sans-serif;
-}
-
-/* text styling */
-
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;
 }
 
 /* To center the grid */
