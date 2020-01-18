@@ -1,6 +1,7 @@
 //these are the dependence
 const express = require('express');
 const app = express();
+const flash = require('flash');
 const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
@@ -17,6 +18,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, 'public')));
+
+app.use(flash()); //should be after cookie and session
+
+//Flash is used to show succes and fail messages (uses with req.flash("Message Text","Catecory"))
+app.use(function(req, res, next){
+  res.locals.success_messages = req.flash('success_messages');
+  res.locals.error_messages = req.flash('error_messages');
+  next();
+});
 
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
