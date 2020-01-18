@@ -4,14 +4,10 @@ var years = [];
 var revenue = [];
 
 //they have to have the same names as after select in the SQL query
-array.forEach(e => {
-    years.push(data[e].umsatz_jahr);
-    revenue.push(data[e].umsatz_umsatz);
-});
-// for (var i in data) {
-//     years.push(data[i].umsatz_jahr);
-//     revenue.push(data[i].umsatz_umsatz);
-// }
+for (const i in data) {
+    years.push(data[i].umsatz_jahr);
+    revenue.push(data[i].umsatz_umsatz);
+}
 
 var chartdata = {
     labels: years,
