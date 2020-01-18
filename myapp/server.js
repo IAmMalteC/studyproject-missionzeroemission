@@ -147,6 +147,10 @@ app.get('/login', function (req, res) {
 app.get('/passwort-vergessen', function (req, res) {
   res.render('passwort-vergessen', { page: 'Passwort vergessen', menuId: 'passwort-vergessen' });
 });
+//FAQ
+app.get('/faq', function (req, res) {
+  res.render('faq', { page: 'FAQ', menuId: 'faq' });
+});
 //RESSOURCEN
 //Strom
 app.get('/ressourcen/strom', function (req, res) {
