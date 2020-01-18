@@ -25,6 +25,10 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+.content h1 {
+    text-align: center;
+}
+
 /* To center the grid */
 
 html, body {
