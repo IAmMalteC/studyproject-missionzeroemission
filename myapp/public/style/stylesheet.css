@@ -123,8 +123,6 @@ footer {
 /* Main content */
 
 .content {
-    background-color: #6a8e5b;
-
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
