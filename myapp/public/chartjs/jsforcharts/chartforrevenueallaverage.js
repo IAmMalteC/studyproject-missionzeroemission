@@ -16,21 +16,17 @@ var chartdata = {
     datasets: [
         {
             label: 'Durchschnittlicher Umsatz',
-            backgroundColor: 'rgba(200, 200, 200, 0.75)',
-            borderColor: 'rgba(200, 200, 200, 0.75)',
-            hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
-            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+            backgroundColor: 'rgba(181,158,133,0.75)',
+            borderColor: 'rgba(181,158,133,0.75)',
             data: revenue,
-            yAxisID:'A'
+            yAxisID: 'A'
         },
         {
             label: 'Anzahl Firmen',
-            backgroundColor: 'rgba(200, 200, 200, 0.75)',
-            borderColor: 'rgba(200, 200, 200, 0.75)',
-            hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
-            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+            backgroundColor: 'rgba( 37, 55, 61,0.75)',
+            borderColor: 'rgba( 37, 55, 61,0.75)',
             data: companies,
-            yAxisID:'B'
+            yAxisID: 'B'
         }
     ]
 };
@@ -47,17 +43,25 @@ var myChart = new Chart(ctx, {
         },
         hover: {
             mode: 'nearest',
-            intersect: true                
+            intersect: true
         },
         scales: {
             yAxes: [{
-              id: 'A',
-              type: 'linear',
-              position: 'left',
+                id: 'A',
+                type: 'linear',
+                position: 'left',
+                ticks: {
+                    min: 4,
+                    max: 6
+                }
             }, {
-              id: 'B',
-              type: 'linear',
-              position: 'right'
+                id: 'B',
+                type: 'linear',
+                position: 'right',
+                ticks: {
+                    min: 4,
+                    max: 6
+                }
             }]
         }
     }

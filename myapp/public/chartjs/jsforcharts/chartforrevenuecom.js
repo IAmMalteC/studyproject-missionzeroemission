@@ -14,10 +14,8 @@ var chartdata = {
     datasets: [
         {
             label: 'Umsatz',
-            backgroundColor: 'rgba(200, 200, 200, 0.75)',
-            borderColor: 'rgba(200, 200, 200, 0.75)',
-            hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
-            hoverBorderColor: 'rgba(200, 200, 200, 1)',
+            backgroundColor: 'rgba(181,158,133,0.75)',
+            borderColor: 'rgba(181,158,133,0.75)',
             data: revenue
         }
     ]
@@ -36,6 +34,14 @@ var myChart = new Chart(ctx, {
         hover: {
             mode: 'nearest',
             intersect: true                
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    min: 4,
+                    max: 6
+                }
+            }]
         }
     }
 });

@@ -1,6 +1,6 @@
 /*
 Colorscheme
-nemo dark green #   
+nemo dark green #466B52
 nemo light green #6a8e5b
 light yellow #d9d787
 darker yellow #d2c055
@@ -280,8 +280,7 @@ td:hover::before {
     z-index: -1;
 }
 
-/*rows for the graphs*/
-
+/*Graphs*/
 .row {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -298,6 +297,12 @@ td:hover::before {
     align-items: flex-end;
     /* text-align: center; */
 }
+.chart-container {
+    /* position: relative; */
+    margin: auto;
+    height: 40%;
+    width: 40%;
+  }
 
 /*links*/
 
