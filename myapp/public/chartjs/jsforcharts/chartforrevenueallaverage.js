@@ -49,19 +49,11 @@ var myChart = new Chart(ctx, {
             yAxes: [{
                 id: 'A',
                 type: 'linear',
-                position: 'left',
-                ticks: {
-                    min: 4,
-                    max: 6
-                }
+                position: 'left'
             }, {
                 id: 'B',
                 type: 'linear',
-                position: 'right',
-                ticks: {
-                    min: 4,
-                    max: 6
-                }
+                position: 'right'
             }]
         }
     }

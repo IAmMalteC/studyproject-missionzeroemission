@@ -34,14 +34,6 @@ var myChart = new Chart(ctx, {
         hover: {
             mode: 'nearest',
             intersect: true                
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    min: 4,
-                    max: 6
-                }
-            }]
         }
     }
 });
