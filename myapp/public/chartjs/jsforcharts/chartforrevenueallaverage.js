@@ -57,11 +57,7 @@ var myChart = new Chart(ctx, {
             }, {
               id: 'B',
               type: 'linear',
-              position: 'right',
-              ticks: {
-                max: 2,
-                min: 0
-              }
+              position: 'right'
             }]
         }
     }
