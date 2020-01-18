@@ -2,9 +2,9 @@ UMSATZ:
  alle nach Jahren:
  done - SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
     ALLE DURCHSCHNITT:
-        SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
+ done - SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
     BRANCHENUMSATZ nach Jahren:
-        SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY firma_tb.firma_branche, umsatz_tb.umsatz_jahr
+ working -  SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY firma_tb.firma_branche, umsatz_tb.umsatz_jahr
     BRANCHENDURCHSCHNITTE nach Jahren:
     SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr
     für BRANCHENVERGLEICH (zusätzlich WHERE branche_tb.branche_id=? und ohne ORDER BY branche:
