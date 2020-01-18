@@ -293,6 +293,9 @@ td:hover::before {
     -ms-flex-align: center;
     align-items: center;
 }
+.row span {
+    align-items: center;
+}
 
 /*links*/
 
