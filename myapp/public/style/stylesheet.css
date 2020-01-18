@@ -294,21 +294,8 @@ td:hover::before {
     -ms-flex-pack: center;
     justify-content: center;
     align-items: flex-end;
-    text-align: center;
+    /* text-align: center; */
 }
-
-/* .row h1 {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column nowrap;
-    flex-flow: column nowrap;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-} */
 
 /*links*/
 
@@ -377,22 +364,6 @@ a:active {
         -ms-flex-pack: center;
         justify-content: center;
     }
-    /* rows for the graphs
-    .row {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-
-        align-items: flex-end;
-        text-align: center;
-    } */
 }
 
 /* falls der screen gedreht wird oder größer ist als 689px, dann gelten zusätzlich folgende regeln */
@@ -442,9 +413,9 @@ a:active {
         -webkit-box-direction: normal;
         -ms-flex-flow: column nowrap;
         flex-flow: column nowrap;
-        -webkit-box-pack: start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
     }
     /*erbt von .content im html verwenden mit class="content index"*/
     /* .index {
@@ -452,21 +423,6 @@ a:active {
         -webkit-box-direction: normal;
         -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
-        text-align: center;
-    } */
-    /* .row {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-
-        align-items: flex-end;
         text-align: center;
     } */
     .content .goal-tracker {
