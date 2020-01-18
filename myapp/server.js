@@ -151,6 +151,7 @@ app.get("/profil", function (req, res, next) {
 });
 //Login
 app.get('/login', function (req, res) {
+  req.flash("Welcome","error");
   res.render('login', { page: 'Login', menuId: 'login' });
 });
 //Passwort-Vergessen
