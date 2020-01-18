@@ -420,6 +420,7 @@ a:active {
         -webkit-box-align: start;
         -ms-flex-align: start;
         align-items: flex-start;
+        height: 100%;
     }
     /*erbt von .content im html verwenden mit class="content index"*/
     /* .index {
