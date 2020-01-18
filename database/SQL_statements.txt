@@ -1,0 +1,29 @@
+UMSATZ:
+alle nach Jahren:
+done - SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
+    ALLE DURCHSCHNITT:
+done - SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr
+    BRANCHENUMSATZ nach Jahren:
+not used -  SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY firma_tb.firma_branche, umsatz_tb.umsatz_jahr
+    BRANCHENDURCHSCHNITTE nach Jahren:
+not used -     SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr
+    für BRANCHENVERGLEICH (zusätzlich WHERE branche_tb.branche_id=? und ohne ORDER BY branche:
+done    SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr
+
+    nach Firma nach Jahren (in das WHERE umsatz_firma = ? die firma_id einbauen):
+done - SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr
+
+STROMVERBRAUCHEMISSION in t CO2:
+    STROM regulär Verbrauch alle Firmen:
+
+    STROM regulär Verbrauch eine Firma (in das WHERE umsatz_firma = ? die firma_id einbauen):
+        SELECT res_strom_regulaer_firma, res_strom_regulaer_jahr, (res_strom_regulaer_emission * res_strom_regulaer_jahresverbrauch) FROM `res_strom_regulaer_tb` WHERE res_strom_regulaer_firma = ?
+
+    STROM regulär BRANCHENDURCHSCHNITTE nach JAHREN:
+        SELECT branche_tb.branche_name, res_strom_regulaer_tb.res_strom_regulaer_jahr, SUM(res_strom_regulaer_tb.res_strom_regulaer_emission * res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch/1000000) AS CO2_in_t FROM `res_strom_regulaer_tb` JOIN firma_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id GROUP BY res_strom_regulaer_tb.res_strom_regulaer_firma, res_strom_regulaer_tb.res_strom_regulaer_jahr
+    STROM regulär
+
+
+
+
+    SELECT branche_tb.branche_name, res_strom_regulaer_tb.res_strom_regulaer_jahr, SUM(res_strom_regulaer_tb.res_strom_regulaer_emission * res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch/1000000) AS CO2_in_t FROM `res_strom_regulaer_tb` JOIN firma_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id  WHERE res_strom_regulaer_tb.res_strom_regulaer_firma = 12 GROUP BY  res_strom_regulaer_tb.res_strom_regulaer_jahr

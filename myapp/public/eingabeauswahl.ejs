@@ -5,6 +5,7 @@
     <%- include('./partials/head'); -%>
     <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+    <script type="text/javascript" src="./chartjs/Chart.js"></script>
 </head>
 
 <body>
@@ -16,34 +17,52 @@
     <div class="content">
         <form action="" name="FirmennameAnzeigen" method="get">
             <!-- hier steht dann der Firmenname mit der Metode-->
-            <h1>Meine Firma</h1>
+            <h1><%= firmenname %></h1>
         </form>
         <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
             <!--
             Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
             Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
             -->
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/strom">Strom</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/heizung">Heizung</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/erdgas">Gas</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/wasser">Wasser</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/abfall">Abfall</a>
             </div>
-            <div>
+            <div class="eingabeauswahlmenu">
                 <a class="button" href="./ressourcen/neue-massnahme">Kompensationsma&szlig;nahme</a>
             </div>
             <!-- Die folgenden zwei haben keinen Balken-->
-            <div>
-                <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
+            <div class="eingabeauswahlmenu">
+                <span>
+                    <div>
+                        Eigene Werte
+                    </div>
+                    <div>
+                        <canvas id="revenueCompany"></canvas>
+                    </div>
+                </span>
+                <span>
+                    <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
+                </span>
+                <span>
+                    <div>
+                        Durchschnittlicher Umsatz der Branche: <%= branchenname %>
+                    </div>
+                    <div>
+                        <canvas id="revenueCompanyCompareBranch"></canvas>
+                    </div>
+                </span>
             </div>
             <div>
                 <a class="button" href="./ressourcen/co2schaetzung">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
@@ -55,6 +74,14 @@
         <%- include('./partials/footer'); -%>
     </footer>
     <%- include('./partials/script'); -%>
+    <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
+    <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
+    <!-- Revenue Company -->
+    <script>var data = <%- JSON.stringify(umsatzFirma) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
+    <!-- Revenue Company Compare with Branch-->
+    <script>var data = <%- JSON.stringify(umsatzFirmaVergleich) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecomcomparebranch.js"></script>
 </body>
 
 </html>
