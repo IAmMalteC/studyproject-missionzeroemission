@@ -294,6 +294,8 @@ td:hover::before {
     align-items: center;
 }
 .row span {
+    display: flex;
+    flex-flow: column;
     align-items: center;
 }
 
