@@ -305,9 +305,9 @@ td:hover::before {
 }
 
 /*Graphs*/
-canvas {
+/* canvas {
     width: 300px;
-}
+} */
 .row {
     display: -webkit-box;
     display: -ms-flexbox;
