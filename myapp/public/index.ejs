@@ -22,6 +22,42 @@
             </form>
         </div>
         <div>
+            <div>
+                <span>
+                    <div>
+                        Eigene Werte
+                    </div>
+                    <div>
+                        <canvas id="emissionCompany"></canvas>
+                    </div>
+                </span>
+                <span>
+                    <div>
+                        Umsatz pro Emission
+                    </div>
+                    <div>
+                        <canvas id="revenuePrEmissionCompany"></canvas>
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <div>
+                        Durchschnittliche Werte der Branche: <%= branchenname %>
+                    </div>
+                    <div>
+                        <canvas id="emissionCompanyCompareBranch"></canvas>
+                    </div>
+                </span>
+                <span>
+                    <div>
+                        Durchschnittlicher Umsatz pro Emission der Branche: <%= branchenname %>
+                    </div>
+                    <div>
+                        <canvas id="revenuePrEmisssionCompanyCompareBranch"></canvas>
+                    </div>
+                </span>
+            </div>
             <h1>&Uuml;bersicht der Gesamtwerte aller Firmen</h1>
             <div class="row">
                 <span>
@@ -33,6 +69,7 @@
                     </div>
                 </span>
             </div>
+            <p>Emissionen sind angeben in t/CO<sub>2</sub> und Umsatz in &euro;.</p>
         </div>
         <div>
             <h1>&Uuml;bersicht der Durchschnittswerte aller Firmen</h1>
@@ -57,11 +94,11 @@
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Revenue All -->
-    <script>var data = <%- JSON.stringify(umsatzAlle) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenueall.js"></script>
+    <script>var data = <%- JSON.stringify(emissionAlle) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforall.js"></script>
     <!-- Revenue All Average-->
-    <script>var data = <%- JSON.stringify(umsatzAlleDurchschnitt) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenueallaverage.js"></script>
+    <script>var data = <%- JSON.stringify(emissionAlleDurchschnitt) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforallaverage.js"></script>
 </body>
 
 </html>

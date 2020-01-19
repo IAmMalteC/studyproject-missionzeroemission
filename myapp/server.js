@@ -31,30 +31,30 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
-//Gesamt Umsatz
-function findRevenueAll(req, res, next) {
-  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
+//emission Umsatz
+function findEmissionAll(req, res, next) {
+  var sqlquery = "";
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      req.revenueAll = result;
+      req.emissionAll = result;
       return next();
     }
   });
 }
-//Umsatz Alle Durchschnitt
-function findRevenueAllAverage(req, res, next) {
-  var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
+//emission Alle Durchschnitt
+function findEmissionAllAverage(req, res, next) {
+  var sqlquery = "";
   getConnection().query(sqlquery, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      req.revenueAllAverage = result;
+      req.emissionAllAverage = result;
       return next();
     }
   });
@@ -62,12 +62,12 @@ function findRevenueAllAverage(req, res, next) {
 function renderIndexPage(req, res) {
   res.render('index', {
     page: 'Startseite', menuId: 'index',
-    umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage
+    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
   });
 }
 var index_path = ['/', '/index'];
 app.get(index_path,
-  findRevenueAll, findRevenueAllAverage,
+  findEmissionAll, findEmissionAllAverage,
   renderIndexPage);
 
 
