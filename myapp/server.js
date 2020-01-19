@@ -103,21 +103,21 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 //Emission Firma
 function findEmissionCompany(req, res, next) {
   const companyUsername = 'cfb'; //should we get via session
-  firmenid = 0;
   var sqlqueryComId = "SELECT firma_tb.firma_id FROM firma_tb WHERE firma_tb.firma_benutzername = ?"
   getConnection().query(sqlqueryComId, companyUsername, function (err, result) {
     if (err) {
-      console.log("Failed to get year data..." + err);
+      console.log("Failed to get data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      firmenid = 11;
+      test = result;
     }
   });
+  firmenid = result.firmen_id;
   var sqlquery = "SELECT res_strom_regulaer_id, res_strom_regulaer_firma, res_strom_regulaer_jahr, res_strom_regulaer_jahresverbrauch, res_strom_photov_tb.res_strom_photov_jahresverbrauch, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 AS strom_gesamtemission, (res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 AS strom_emissionseinsparung, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 AS strom_gesamtemission_theoretisch, umsatz_tb.umsatz_umsatz, umsatz_tb.umsatz_umsatz*1000000/((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission)) AS umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr WHERE res_strom_regulaer_firma = ?";
   getConnection().query(sqlquery, firmenid, function (err, result) {
     if (err) {
-      console.log("Failed to get year data..." + err);
+      console.log("Failed to get data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
@@ -132,7 +132,7 @@ function findEmissionCompanyCompareBranch(req, res, next) {
   var sqlquery = "SELECT res_strom_regulaer_jahr, SUM(res_strom_regulaer_jahresverbrauch) AS gesamt_strom_regulaer_jahresverbrauch, SUM(res_strom_photov_tb.res_strom_photov_jahresverbrauch) AS gesamt_photov_jahresverbrauch, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 ) AS branche_strom_gesamtemission, SUM((res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 ) AS branche_strom_emissionseinsparung, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 ) AS branche_strom_gesamtemission_theoretisch, SUM(umsatz_tb.umsatz_umsatz) AS branche_gesamtumsatz, branche_tb.branche_name, SUM(umsatz_tb.umsatz_umsatz*1000000)/SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))) AS branche_umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr JOIN firma_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = firma_tb.firma_id JOIN branche_tb ON branche_tb.branche_id = firma_tb.firma_branche WHERE branche_tb.branche_id=5 GROUP BY branche_tb.branche_name, res_strom_regulaer_tb.res_strom_regulaer_jahr";
   getConnection().query(sqlquery, branchid, function (err, result) {
     if (err) {
-      console.log("Failed to get year data..." + err);
+      console.log("Failed to get data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
