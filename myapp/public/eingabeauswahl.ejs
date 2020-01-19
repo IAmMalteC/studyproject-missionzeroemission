@@ -17,6 +17,24 @@
     <div class="content">
         <h1><%= firmenname %></h1>
         <div>Tragen Sie hinter diesen Links Ihre entsprechenden Verbr&auml;uche ein</div>
+        <div class="row">
+            <span>
+                <div>
+                    Eigene Werte
+                </div>
+                <div>
+                    <canvas id="emissionCompany"></canvas>
+                </div>
+            </span>
+            <span>
+                <div>
+                    Durchschnittlicher Umsatz der Branche: <%= branchenname %>
+                </div>
+                <div>
+                    <canvas id="revenueCompanyCompareBranch"></canvas>
+                </div>
+            </span>
+        </div>
         <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
             <!--
             Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
@@ -77,23 +95,8 @@
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Electric Company -->
-    <script>var data = <%- JSON.stringify(stromFirma) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforelectriccom.js"></script>
-    <!-- Electric Company Compare with Branch-->
-    <script>var data = <%- JSON.stringify(stromFirmaVergleich) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforelectriccomcomparebranch.js"></script>
-    <!-- Heat Company -->
-    <script>var data = <%- JSON.stringify(heizungFirma) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforheatcom.js"></script>
-    <!-- Heat Company Compare with Branch-->
-    <script>var data = <%- JSON.stringify(heizungFirmaVergleich) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforheatcomcomparebranch.js"></script>
-    <!-- Gas Company -->
-    <script>var data = <%- JSON.stringify(gasFirma) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforgascom.js"></script>
-    <!-- Gas Company Compare with Branch-->
-    <script>var data = <%- JSON.stringify(gasFirmaVergleich) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforgascomcomparebranch.js"></script>
+    <script>var data = <%- JSON.stringify(emissionenFirma) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforemissioncom.js"></script>
     <!-- Revenue Company -->
     <script>var data = <%- JSON.stringify(umsatzFirma) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>

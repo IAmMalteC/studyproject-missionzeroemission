@@ -31,90 +31,6 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
-//Gesamt Strom
-function findElectricAll(req, res, next) {
-  var sqlquery = "";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.electricAll = result;
-      return next();
-    }
-  });
-}
-//Strom Alle Durchschnitt
-function findElectricAllAverage(req, res, next) {
-  var sqlquery = "";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.electricAllAverage = result;
-      return next();
-    }
-  });
-}
-//Gesamt Heizung
-function findHeatAll(req, res, next) {
-  var sqlquery = "";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.heatAll = result;
-      return next();
-    }
-  });
-}
-//Heizung Alle Durchschnitt
-function findHeatAllAverage(req, res, next) {
-  var sqlquery = "";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.heatAllAverage = result;
-      return next();
-    }
-  });
-}
-//Gesamt Gas
-function findGasAll(req, res, next) {
-  var sqlquery = "";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.gasAll = result;
-      return next();
-    }
-  });
-}
-//Gas Alle Durchschnitt
-function findGasAllAverage(req, res, next) {
-  var sqlquery = "";
-  getConnection().query(sqlquery, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.gasAllAverage = result;
-      return next();
-    }
-  });
-}
 //Gesamt Umsatz
 function findRevenueAll(req, res, next) {
   var sqlquery = "SELECT umsatz_jahr, SUM(umsatz_umsatz) AS umsatz_umsatz FROM umsatz_tb GROUP BY umsatz_jahr ORDER BY umsatz_jahr";
@@ -146,9 +62,6 @@ function findRevenueAllAverage(req, res, next) {
 function renderIndexPage(req, res) {
   res.render('index', {
     page: 'Startseite', menuId: 'index',
-    stromAlle: req.electricAll, stromAlleDurchschnitt: req.electricAllAverage,
-    heizungAlle: req.heatAll, heizungAlleDurchschnitt: req.heatAllAverage,
-    gasAlle: req.gasAll, gasAlleDurchschnitt: req.gasAllAverage,
     umsatzAlle: req.revenueAll, umsatzAlleDurchschnitt: req.revenueAllAverage
   });
 }
@@ -191,22 +104,22 @@ app.get('/massnahmen-uebersicht', function (req, res) {
   });
 });
 //Eingabenauswahl mit Graphen
-//Strom Firma
+//Emission Firma
 function findElectricCompany(req, res, next) {
   firmenid = 12;
-  var sqlquery = "";
+  var sqlquery = "SELECT `res_strom_regulaer_id`, `res_strom_regulaer_firma`, `res_strom_regulaer_jahr`, `res_strom_regulaer_jahresverbrauch`, res_strom_photov_tb.res_strom_photov_jahresverbrauch, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 AS strom_gesamtemission, (res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 AS strom_emissionseinsparung, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 AS strom_gesamtemission_theoretisch, umsatz_tb.umsatz_umsatz, umsatz_tb.umsatz_umsatz*1000000/((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission)) AS umsatz_pro_emission FROM `res_strom_regulaer_tb` JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr WHERE `res_strom_regulaer_firma` = ?";
   getConnection().query(sqlquery, firmenid, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      req.electricCompany = result;
+      req.emissionCompany = result;
       return next();
     }
   });
 }
-//Strom Firma Vergleich mit Branche
+//Emission Firma Vergleich mit Branche
 function findElectricCompanyCompareBranch(req, res, next) {
   branchid = 4;
   var sqlquery = "";
@@ -216,67 +129,7 @@ function findElectricCompanyCompareBranch(req, res, next) {
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      req.electricCompanyBranch = result;
-      return next();
-    }
-  });
-}
-//Heizung Firma
-function findHeatCompany(req, res, next) {
-  firmenid = 12;
-  var sqlquery = "";
-  getConnection().query(sqlquery, firmenid, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.heatCompany = result;
-      return next();
-    }
-  });
-}
-//Heizung Firma Vergleich mit Branche
-function findHeatCompanyCompareBranch(req, res, next) {
-  branchid = 4;
-  var sqlquery = "";
-  getConnection().query(sqlquery, branchid, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.heatCompanyBranch = result;
-      return next();
-    }
-  });
-}
-//Gas Firma
-function findGasCompany(req, res, next) {
-  firmenid = 12;
-  var sqlquery = "";
-  getConnection().query(sqlquery, firmenid, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.gasCompany = result;
-      return next();
-    }
-  });
-}
-//Gas Firma Vergleich mit Branche
-function findGasCompanyCompareBranch(req, res, next) {
-  branchid = 4;
-  var sqlquery = "";
-  getConnection().query(sqlquery, branchid, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.gasCompanyBranch = result;
+      req.emissionCompanyBranch = result;
       return next();
     }
   });
@@ -321,9 +174,7 @@ function renderEingabeauswahlPage(req, res) {
   res.render('eingabeauswahl', {
     page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
     firmenname: firma, branchenname: branchenname,
-    stromFirma: req.electricCompany, stromFirmaVergleich: req.electricCompanyBranch,
-    heizungFirma: req.heatCompany, heizungFirmaVergleich: req.heatCompanyBranch,
-    gasFirma: req.gasCompany, gasFirmaVergleich: req.gasCompanyBranch,
+    emissionenFirma: req.emissionCompany, stromFirmaVergleich: req.electricCompanyBranch,
     umsatzFirma: req.revenueCompany, umsatzFirmaVergleich: req.revenueCompanyBranch
   });
 }
