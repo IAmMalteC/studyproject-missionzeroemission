@@ -78,7 +78,9 @@ var myChart = new Chart(ctx, {
               id: 'A',
               type: 'linear',
               position: 'left',
-              beginAtZero: 'true'
+              ticks: {
+                beginAtZero: true
+              }
             }, {
               id: 'B',
               type: 'linear',
