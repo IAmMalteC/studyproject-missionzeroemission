@@ -15,50 +15,29 @@
     <!-- Main -->
     <div class="content">
         <div>
-            <!-- Hier wird die Tabelle angezeigt :
-            https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
-            Sie ist Filterbar nach Unternehmen
-            -->    
-            <p>Ich bin nur ein ungen&uuml;gendes Beispiel</p>
-            <p>Hier w&auml;re dann ein Filter f&uuml;r verschiedene Unternehmen</p>
+            <h1>Ma&szlig;nahmenkatalog</h1>
             <table>
-            <!-- Main Row -->
-            <thead>
-                <tr>
-                <th>Katagorie</th>
-                <th>Jahr</th>
-                <th>Name</th>
-                <th>Unternehmen</th>
-                <th>Kennzahlen</th>
-                <th>Beschreibung</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- second Row -->
-            <tr>
-                <th>Strom</th>
-                <th>2016</th>
-                <th>PV Installiert</th>
-                <th>M&auml;rkische Kiste</th>
-                <th>350 kWh</th>
-                <th>Blah blah</th>
-            </tr>
-            <!-- 3rd Row -->
-            <tr>
-                <th>Katagorie</th>
-                <th>Jahr</th>
-                <th>Name</th>
-                <th>Unternehmen</th>
-                <th>Kennzahlen</th>
-                <th>Beschreibung</th>
-            </tr>
-            </tbody>
+                <thead>
+                    <tr>
+                        <th>Katagorie</th>
+                        <th>Name</th>
+                        <th>Beschreibung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < massnahmen.length; i++) {%>
+                    <tr>
+                        <td data-th="Katagorie"><%= massnahmen[i].res_kategorie_name %></td>
+                        <td data-th="Name"><%= massnahmen[i].massnahmen_name %></td>
+                        <td data-th="Beschreibung"><%= massnahmen[i].massnahmen_beschreibung %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
             </table>
-        </div>
-
-
-        <div>
-            <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Ma&szlig;nahmen erstellen</a>
+            <div>
+                <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Neue Ma&szlig;nahme
+                    erstellen</a>
+            </div>
         </div>
     </div>
     <!-- Footer -->
@@ -67,4 +46,5 @@
     </footer>
     <%- include('./partials/script'); -%>
 </body>
+
 </html>

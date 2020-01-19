@@ -17,7 +17,7 @@
 
     <!--Main Content-->
     <div class="content">
-        <form method="post" name="StromForm">
+        <form action="/strom" method="post" name="StromForm">
             <div class="child-ressourcen">
                 <div>
                     <label for="StromArt">Stromart</label>
@@ -30,7 +30,7 @@
                     <label for="Ablesung">Ablesung</label>
                     <select id="Ablesung" name="Ablesung">
                         <option value="monatlich">monatlich</option>
-                        <option value="jaehrlich">j&auml;hrlich</option>
+                        <option value="jaehrlich" selected>j&auml;hrlich</option>
                     </select>
                 </div>
                 <div>
@@ -44,7 +44,7 @@
                 <div>
                     <label for="ZeitraumMonat">Abrechnungszeitraum</label>
                     <!-- DONT CHANGE THE ID -->
-                    <select class="ZeitraumMonat" name="ZeitraumMonat">
+                    <select class="ZeitraumMonat" name="ZeitraumMonat" style="display: none;">
                         <%- include('../partials/dropdownmonth'); -%>
                     </select>
                     <!-- DONT CHANGE THE ID -->

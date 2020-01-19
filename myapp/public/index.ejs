@@ -5,14 +5,7 @@
     <%- include('./partials/head'); -%>
     <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
     <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
-    <script src="javascripts/chart.js"></script>
-    <style>
-        canvas{
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-        }
-    </style>
+    <script type="text/javascript" src="./chartjs/Chart.js"></script>
 </head>
 
 <body>
@@ -28,32 +21,46 @@
                 <p>Platzhalter</p>
             </form>
         </div>
-        <article>
-            <h1> CO<sub>2</sub>-Ersparnis </h1>
-            <canvas id="myChart" width="400" height="400"></canvas>
-            <script src="javascripts/emissionchart.js"></script>
-            <!--<form name="DiagrammErstellen" method="GET">
-                <div>
-                    <img class="img-center" src="./pictures/diagrammemissionenbsp.png"
-                        alt="Zeigt die CO2 Emissionen des Unternehmensnetzwerkes" width="30%" height="30%">
-                </div>
-                <p>Das Bild ist nur ein Platzhalter</p>
-
-                    Branche: 
-                    <select>
-                        <option>Umweltabteilung</option>
-                        <option>Wirtschaftabteilung</option>
-                        <option>Humanressourcen</option>
-                    </select>
-                     
-                        Würde die Anonymität verletzten
-        
-                    <input type="search" name="SucheInput" value="Suche bestimmte Firma">
-                     ggf über CSS BITTE :)
-                    <button type="submit"><img src="./pictures/suche.png" alt="Suchen Logo" width="15" height="15"></button>
-
-            </form>-->
-        </article>
+        <h1>&Uuml;bersicht der Emissionen</h1>
+        <div class="row">
+            <div>
+                <span>
+                    <div>
+                        Werte des Netzwerkes
+                    </div>
+                    <div>
+                        <canvas id="emissionAll"></canvas>
+                    </div>
+                </span>
+                <span>
+                    <div>
+                        Umsatz des Netzwerkes pro Emission
+                    </div>
+                    <div>
+                        <canvas id="emissionPrEmissionAll"></canvas>
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <div>
+                        Durchschnittliche Werte
+                    </div>
+                    <div>
+                        <canvas id="emissionAllAverage"></canvas>
+                    </div>
+                </span>
+                <span>
+                    <div>
+                        Durchschnittlicher Umsatz pro Emission
+                    </div>
+                    <div>
+                        <canvas id="emissionPrEmissionAllAverage"></canvas>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <p>Emissionen sind angeben in t/CO<sub>2</sub> und Umsatz in &euro;.</p>
     </div>
 
     <!-- Footer -->
@@ -61,5 +68,14 @@
         <%- include('./partials/footer'); -%>
     </footer>
     <%- include('./partials/script'); -%>
+    <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
+    <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
+    <!-- Revenue All -->
+    <script>var data = <%- JSON.stringify(emissionAlle) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforall.js"></script>
+    <!-- Revenue All Average-->
+    <script>var data = <%- JSON.stringify(emissionAlleDurchschnitt) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforallaverage.js"></script>
 </body>
+
 </html>

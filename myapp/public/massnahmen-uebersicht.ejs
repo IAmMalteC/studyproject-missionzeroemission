@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <%- include('./partials/head'); -%>
+    <link rel="stylesheet" type="text/css" href="./style/stylesheet.css">
+    <link rel="icon" type="image/x-icon" href="./pictures/favicon.ico">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <%- include('./partials/header'); -%>
+    </header>
+    <!-- Main -->
+    <div class="content">
+        <div>
+            <h1>Ma&szlig;nahmen&uuml;bersicht</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Katagorie</th>
+                        <th>Ma&szlig;nahme</th>
+                        <th>Unternehmen</th>
+                        <th>Beschreibung</th>
+                        <th>Datum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < massnahmen.length; i++) {%>
+                    <tr>
+                        <td data-th="Katagorie"><%= massnahmen[i].res_kategorie_name %></td>
+                        <td data-th="Ma&szlig;nahme"><%= massnahmen[i].massnahmen_name %></td>
+                        <td data-th="Unternehmen"><%= massnahmen[i].firma_name %></td> 
+                        <td data-th="Beschreibung"><%= massnahmen[i].massnahmen_beschreibung %></td> 
+                        <td data-th="Datum"><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <!-- Quelle :
+            https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+            -->
+            <div>
+                <a class="button" href="./ressourcen/neue-massnahme" rel="noopener noreferrer">Neue Ma&szlig;nahme erstellen</a>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <%- include('./partials/footer'); -%>
+    </footer>
+    <%- include('./partials/script'); -%>
+</body>
+
+</html>
