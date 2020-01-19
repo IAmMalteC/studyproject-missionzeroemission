@@ -352,7 +352,7 @@ a:active {
 
 /*just added to show the content in a nice way on a phone*/
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
     /* Is not working on hover, but hover never works on smartphones, so more a minor issue */
     td:before {
         content: attr(data-th)": ";

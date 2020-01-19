@@ -20,7 +20,7 @@ for (const i in data) {
     emElectronicReal.push(data[i].branche_strom_gesamtemission);
     //emElectronicTheory.push(data[i].strom_gesamtemission_theoretisch);
     revenue.push(data[i].branche_gesamtumsatz);
-    revenuePerEm.push(data[i].branche_gesamtumsatz/(data[i].branche_strom_gesamtemission*1000000));
+    revenuePerEm.push(data[i].branche_gesamtumsatz/data[i].branche_strom_gesamtemission);
 }
 
 var chartdata = {
