@@ -307,8 +307,8 @@ app.post("/login", function (req, res) {
   if (username && password) {
     getConnection().query(loginQuery, [username, password], function (err, result) {
       if (result.length > 0) {
-        req.session.loggedin = true;
-        req.session.username = username;
+        //req.session.logg = true;
+        //req.session.username = username;
         res.redirect('/index')
       }
       else {
