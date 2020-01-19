@@ -15,7 +15,6 @@ var emElectronicReal = [];
 var emElectronicTheory = [];
 var revenue = [];
 var revenuePerEm = [];
-var countCompany = [];
 
 //they have to have the same names as after select in the SQL query
 for (const i in data) {
@@ -24,19 +23,11 @@ for (const i in data) {
     emElectronicTheory.push(data[i].nemo_strom_gesamtemission_theoretisch);
     revenue.push(data[i].nemo_gesamtumsatz);
     revenuePerEm.push(data[i].nemo_umsatz_pro_emission);
-    countCompany.push(data[i].anzahl_firmen)
 }
 
 var chartdata = {
-    labels: [countCompany & "Firmen im Jahre " & years],
+    labels: years,
     datasets: [
-        {
-            label: 'Umsatz',
-            backgroundColor: 'rgba( 37, 55, 61,0.75)',
-            borderColor: 'rgba( 37, 55, 61,0.75)',
-            yAxisID: 'B',
-            data: revenue
-        },
         {
             label: 'Reale Emissionen',
             backgroundColor: 'rgba( 42, 72, 52,0.75)',
@@ -49,6 +40,12 @@ var chartdata = {
             borderColor: 'rgba(181,140,133,0.75)',
             yAxisID: 'A',
             data: emElectronicTheory
+        }, {
+            label: 'Umsatz',
+            backgroundColor: 'rgba( 37, 55, 61,0.75)',
+            borderColor: 'rgba( 37, 55, 61,0.75)',
+            yAxisID: 'B',
+            data: revenue
         }
     ]
 };
