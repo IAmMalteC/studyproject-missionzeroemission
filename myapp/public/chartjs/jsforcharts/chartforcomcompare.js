@@ -106,6 +106,12 @@ var myChart = new Chart(ctx, {
         hover: {
             mode: 'nearest',
             intersect: true                
+        }, scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
         }
     }
 });
