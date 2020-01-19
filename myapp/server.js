@@ -62,8 +62,7 @@ function findEmissionAllAverage(req, res, next) {
 function renderIndexPage(req, res) {
   res.render('index', {
     page: 'Startseite', menuId: 'index',
-    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage,
-    anzahlFirmen: req.emissionAllAverage.anzahl_firmen
+    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
   });
 }
 var index_path = ['/', '/index'];
