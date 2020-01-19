@@ -105,7 +105,7 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 });
 //Eingabenauswahl mit Graphen
 //Emission Firma
-function findElectricCompany(req, res, next) {
+function findEmissionCompany(req, res, next) {
   firmenid = 12;
   var sqlquery = "SELECT `res_strom_regulaer_id`, `res_strom_regulaer_firma`, `res_strom_regulaer_jahr`, `res_strom_regulaer_jahresverbrauch`, res_strom_photov_tb.res_strom_photov_jahresverbrauch, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 AS strom_gesamtemission, (res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 AS strom_emissionseinsparung, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 AS strom_gesamtemission_theoretisch, umsatz_tb.umsatz_umsatz, umsatz_tb.umsatz_umsatz*1000000/((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission)) AS umsatz_pro_emission FROM `res_strom_regulaer_tb` JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr WHERE `res_strom_regulaer_firma` = ?";
   getConnection().query(sqlquery, firmenid, function (err, result) {
@@ -179,9 +179,7 @@ function renderEingabeauswahlPage(req, res) {
   });
 }
 app.get('/eingabeauswahl',
-  findElectricCompany, findElectricCompanyCompareBranch,
-  findHeatCompany, findHeatCompanyCompareBranch,
-  findGasCompany, findGasCompanyCompareBranch,
+  findEmissionCompany, findElectricCompanyCompareBranch,
   findRevenueCompany, findRevenueCompanyCompareBranch,
   renderEingabeauswahlPage);
 //profil
