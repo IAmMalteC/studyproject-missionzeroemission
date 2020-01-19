@@ -322,7 +322,8 @@ td:hover::before {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 /*links*/
@@ -391,6 +392,13 @@ a:active {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
+    }
+    /* Graphs */
+    .row span {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        margin-left: 0px;
     }
 }
 
@@ -471,5 +479,11 @@ a:active {
         -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
         flex-flow: row wrap;
+    }
+    .row span {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        margin-left: 0px;
     }
 }
