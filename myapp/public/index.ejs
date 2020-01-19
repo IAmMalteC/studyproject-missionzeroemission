@@ -50,9 +50,8 @@
                         <canvas id="emissionAllAverage"></canvas>
                     </div>
                     <div id="showComPerYear">
-                        <%= anzahlFirmen.anzahl_firmen %>
                     </div>
-                    <!-- <script>var anzahl =  JSON.stringify(anzahlFirmen) ;</script> -->
+                    <script>var anzahl = <%- JSON.stringify(anzahlFirmen) %>;</script>
                     <!-- <script>
                         year = 2014;
                         for (const i in anzahl) {
