@@ -144,8 +144,7 @@ function findActionCompany(req,res,next){
       return next();
     }
   });
-
-});
+}
 function renderEingabeauswahlPage(req, res) {
   //ggf. anpassen und das result der Query ansprechen über kolonnen name
   firma = "CFB – CNC Feinmechanik Berlin e. K."
