@@ -1,8 +1,12 @@
-// Part of SQL Statement:  SELECT `res_strom_regulaer_id`, `res_strom_regulaer_firma`, 
-//`res_strom_regulaer_jahr`, `res_strom_regulaer_jahresverbrauch`, 
-//res_strom_photov_tb.res_strom_photov_jahresverbrauch,  AS strom_gesamtemission,  
-//AS strom_emissionseinsparung,  AS strom_gesamtemission_theoretisch, 
-//umsatz_tb.umsatz_umsatz,  AS umsatz_pro_emission FROM  ...
+// NEMO GESAMTÜBERSICHT mit
+//     res_strom_regulaer_jahr
+//     nemo_strom_regulaer_jahresverbrauch,
+//     gesamt_photov_jahresverbrauch,
+//     nemo_strom_gesamtemission,
+//     nemo_strom_emissionseinsparung,
+//     nemo_strom_gesamtemission_theoretisch,
+//     nemo_gesamtumsatz,
+//     nemo_umsatz_pro_emission
 //Siehe auch SQL_statements.txt
 // define hear the needed datasets
 var years = [];
@@ -14,10 +18,10 @@ var revenuePerEm = [];
 //they have to have the same names as after select in the SQL query
 for (const i in data) {
     years.push(data[i].res_strom_regulaer_jahr);
-    emElectronicReal.push(data[i].strom_gesamtemission);
-    emElectronicTheory.push(data[i].strom_gesamtemission_theoretisch);
-    revenue.push(data[i].umsatz_umsatz);
-    revenuePerEm.push(data[i].umsatz_pro_emission);
+    emElectronicReal.push(data[i].nemo_strom_gesamtemission);
+    emElectronicTheory.push(data[i].nemo_strom_gesamtemission_theoretisch);
+    revenue.push(data[i].nemo_gesamtumsatz);
+    revenuePerEm.push(data[i].nemo_umsatz_pro_emission);
 }
 
 var chartdata = {
@@ -56,7 +60,7 @@ var chartdataRevenuePrEmission = {
     ]
 };
 
-var ctx = document.getElementById('emissionCompany');
+var ctx = document.getElementById('emissionAll');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdata,
@@ -82,7 +86,7 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var ctx = document.getElementById('revenuePrEmissionCompany');
+var ctx = document.getElementById('emissionPrEmissionAll');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdataRevenuePrEmission,

@@ -21,69 +21,46 @@
                 <p>Platzhalter</p>
             </form>
         </div>
-        <div>
+        <h1>&Uuml;bersicht der Emissionen</h1>
+        <div class="row">
             <div>
                 <span>
                     <div>
-                        Eigene Werte
+                        Werte des Netzwerkes
                     </div>
                     <div>
-                        <canvas id="emissionCompany"></canvas>
+                        <canvas id="emissionAll"></canvas>
                     </div>
                 </span>
                 <span>
                     <div>
-                        Umsatz pro Emission
+                        Umsatz des Netzwerkes pro Emission
                     </div>
                     <div>
-                        <canvas id="revenuePrEmissionCompany"></canvas>
+                        <canvas id="emissionPrEmissionAll"></canvas>
                     </div>
                 </span>
             </div>
             <div>
                 <span>
                     <div>
-                        Durchschnittliche Werte der Branche: <%= branchenname %>
+                        Durchschnittliche Werte
                     </div>
                     <div>
-                        <canvas id="emissionCompanyCompareBranch"></canvas>
+                        <canvas id="emissionAllAverage"></canvas>
                     </div>
                 </span>
                 <span>
                     <div>
-                        Durchschnittlicher Umsatz pro Emission der Branche: <%= branchenname %>
+                        Durchschnittlicher Umsatz pro Emission
                     </div>
                     <div>
-                        <canvas id="revenuePrEmisssionCompanyCompareBranch"></canvas>
-                    </div>
-                </span>
-            </div>
-            <h1>&Uuml;bersicht der Gesamtwerte aller Firmen</h1>
-            <div class="row">
-                <span>
-                    <div>
-                        <h2>Umsatz</h2>
-                    </div>
-                    <div>
-                        <canvas id="revenueAll"></canvas>
-                    </div>
-                </span>
-            </div>
-            <p>Emissionen sind angeben in t/CO<sub>2</sub> und Umsatz in &euro;.</p>
-        </div>
-        <div>
-            <h1>&Uuml;bersicht der Durchschnittswerte aller Firmen</h1>
-            <div class="row">
-                <span>
-                    <div>
-                        <h2>Umsatz</h2>
-                    </div>
-                    <div>
-                        <canvas id="revenueAllAverage"></canvas>
+                        <canvas id="emissionPrEmissionAllAverage"></canvas>
                     </div>
                 </span>
             </div>
         </div>
+        <p>Emissionen sind angeben in t/CO<sub>2</sub> und Umsatz in &euro;.</p>
     </div>
 
     <!-- Footer -->
