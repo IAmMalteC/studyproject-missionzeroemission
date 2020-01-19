@@ -77,10 +77,16 @@ var myChart = new Chart(ctx, {
               id: 'A',
               type: 'linear',
               position: 'left',
+              ticks: {
+                beginAtZero: true
+              }
             }, {
               id: 'B',
               type: 'linear',
               position: 'right',
+              ticks: {
+                beginAtZero: true
+              }
             }]
         }
     }
@@ -99,6 +105,12 @@ var myChart = new Chart(ctx, {
         hover: {
             mode: 'nearest',
             intersect: true                
+        }, scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
         }
     }
 });

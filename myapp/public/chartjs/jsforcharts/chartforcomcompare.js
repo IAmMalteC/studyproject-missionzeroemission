@@ -78,10 +78,16 @@ var myChart = new Chart(ctx, {
               id: 'A',
               type: 'linear',
               position: 'left',
+              ticks: {
+                beginAtZero: true
+              }
             }, {
               id: 'B',
               type: 'linear',
               position: 'right',
+              ticks: {
+                beginAtZero: true
+              }
             }]
         }
     }
