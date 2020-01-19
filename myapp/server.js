@@ -84,7 +84,7 @@ app.get('/massnahmen-katalog', function (req, res) {
     }
   });
 });
-//Maßnahmenübersicht --> Für die Firma
+//Maßnahmenübersicht --> Nach Firma
 app.get('/massnahmen-uebersicht', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id ORDER BY firma_tb.firma_name ";
 
@@ -102,7 +102,7 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 //Eingabenauswahl mit Graphen
 //Emission Firma
 function findEmissionCompany(req, res, next) {
-  firmenid = 12;
+  firmenid = 11;
   var sqlquery = "SELECT res_strom_regulaer_id, res_strom_regulaer_firma, res_strom_regulaer_jahr, res_strom_regulaer_jahresverbrauch, res_strom_photov_tb.res_strom_photov_jahresverbrauch, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 AS strom_gesamtemission, (res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 AS strom_emissionseinsparung, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 AS strom_gesamtemission_theoretisch, umsatz_tb.umsatz_umsatz, umsatz_tb.umsatz_umsatz*1000000/((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission)) AS umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr WHERE res_strom_regulaer_firma = ?";
   getConnection().query(sqlquery, firmenid, function (err, result) {
     if (err) {
@@ -130,18 +130,36 @@ function findEmissionCompanyCompareBranch(req, res, next) {
     }
   });
 }
+// Maßnahmen der Firma = 
+function findActionCompany(req,res,next){
+  firmenid = 11; //else testing with 12
+  var sqlquery = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id WHERE firma_tb.firma_id = ? ORDER BY mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum";
+  getConnection().query(sqlquery, firmenid, function (err, result) {
+    if (err) {
+      console.log("Failed to get year data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    } else {
+      req.actionCom = result;
+      return next();
+    }
+  });
+
+});
 function renderEingabeauswahlPage(req, res) {
   //ggf. anpassen und das result der Query ansprechen über kolonnen name
-  firma = "Hawe Inline Hydraulik GmbH"
+  firma = "CFB – CNC Feinmechanik Berlin e. K."
   branchenname = "Maschinenbau"
   res.render('eingabeauswahl', {
     page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
     firmenname: firma, branchenname: branchenname,
     emissionenFirma: req.emissionCompany, emissionFirmaVergleich: req.emissionCompanyBranch,
+    massnahmen: req.actionCom
   });
 }
 app.get('/eingabeauswahl',
   findEmissionCompany, findEmissionCompanyCompareBranch,
+  findActionCompany,
   renderEingabeauswahlPage);
 //profil
 app.get("/profil", function (req, res, next) {

@@ -87,6 +87,30 @@
                 <a class="button" href="./ressourcen/co2schaetzung">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
             </div>
         </div>
+        <h1>Ma&szlig;nahmen&uuml;bersicht</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Katagorie</th>
+                    <th>Ma&szlig;nahme</th>
+                    <th>Beschreibung</th>
+                    <th>Datum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i = 0; i < massnahmen.length; i++) {%>
+                <tr>
+                    <td data-th="Katagorie"><%= massnahmen[i].res_kategorie_name %></td>
+                    <td data-th="Ma&szlig;nahme"><%= massnahmen[i].massnahmen_name %></td>
+                    <td data-th="Beschreibung"><%= massnahmen[i].massnahmen_beschreibung %></td>
+                    <td data-th="Datum"><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <!-- Quelle :
+            https://stackoverflow.com/questions/46632181/how-to-create-html-table-dynamically-from-database-with-node-js-and-express
+            -->
     </div>
     <!-- Footer -->
     <footer>
