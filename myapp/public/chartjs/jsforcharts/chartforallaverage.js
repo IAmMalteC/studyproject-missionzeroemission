@@ -28,7 +28,7 @@ for (const i in data) {
 }
 
 var chartdata = {
-    labels: anzahl_firmen "Firmen im Jahre" years,
+    labels: years,
     datasets: [
         {
             label: 'Reale Emissionen',
