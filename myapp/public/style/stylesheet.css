@@ -105,14 +105,14 @@ header a:hover, header a:active, .input-navigation a:hover, .input-navigation a:
     background-color: #466B52 !important;
 }
 
-header #logo, header #menuicon {
+header #logo {
     border: none;
     background-color: none !important;
     border-bottom: none;
     padding: 0;
 }
 
-header #logo:hover, header #menuicon {
+header #logo:hover{
     background-color: #fff;
     border-bottom: none;
 }
@@ -120,12 +120,6 @@ header #logo:hover, header #menuicon {
 header #logo img {
     width: 130px;
     height: 116px;
-    border: none;
-}
-
-header #menuicon img {
-    width: 50px;
-    height: 50px;
     border: none;
 }
 
@@ -309,12 +303,12 @@ td:hover::before {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
+    -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -ms-flex-pack: distribute;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .row span {
@@ -430,10 +424,12 @@ a:active {
         -ms-flex-pack: center;
         justify-content: center;
     }
-    #menuicon {
-        display: none;
+    /* Eingabeauswahl */
+    .eingabeauswahlmenu {
+        margin-left: 5px;
+        margin-right: 5px;
     }
-    /*footer*/
+    /* footer */
     footer {
         padding: 15px 0px;
     }
@@ -468,5 +464,11 @@ a:active {
     /* Graphs */
     canvas {
         width: 380px;
+    }
+    .row {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
     }
 }
