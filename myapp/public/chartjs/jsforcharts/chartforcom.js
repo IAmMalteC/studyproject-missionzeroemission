@@ -7,7 +7,6 @@
 var years = [];
 var emElectronicReal = [];
 var emElectronicTheory = [];
-var emElectronicSaved = [];
 var revenue = [];
 var revenuePerEm = [];
 
@@ -16,7 +15,6 @@ for (const i in data) {
     years.push(data[i].res_strom_regulaer_jahr);
     emElectronicReal.push(data[i].strom_gesamtemission);
     emElectronicTheory.push(data[i].strom_gesamtemission_theoretisch);
-    emElectronicSaved.push(data[i].strom_emissionseinsparung);
     revenue.push(data[i].umsatz_umsatz);
     revenuePerEm.push(data[i].umsatz_pro_emission);
 }
@@ -28,23 +26,27 @@ var chartdata = {
             label: 'Reale Emissionen',
             backgroundColor: 'rgba( 42, 72, 52,0.75)',
             borderColor: 'rgba( 42, 72, 52,0.75)',
+            yAxisID: 'A',
             data: emElectronicReal
         }, {
             label: 'Emissionen ohne Einsparung',
-            backgroundColor: 'rgba( 22, 48, 57,0.75)',
-            borderColor: 'rgba( 22, 48, 57,0.75)',
+            backgroundColor: 'rgba(181,140,133,0.75)',
+            borderColor: 'rgba(181,140,133,0.75)',
+            yAxisID: 'A',
             data: emElectronicTheory
         }, {
-            label: 'Gesparte Emissionen',
-            backgroundColor: 'rgba( 98, 64, 58,0.75)',
-            borderColor: 'rgba( 98, 64, 58,0.75)',
-            data: emElectronicSaved
-        }, {
             label: 'Umsatz',
-            backgroundColor: 'rgba(181,158,133,0.75)',
-            borderColor: 'rgba(181,158,133,0.75)',
+            backgroundColor: 'rgba( 37, 55, 61,0.75)',
+            borderColor: 'rgba( 37, 55, 61,0.75)',
+            yAxisID: 'B',
             data: revenue
-        }, {
+        }
+    ]
+};
+var chartdataRevenuePrEmission = {
+    labels: years,
+    datasets: [
+        {
             label: 'Umsatz pro Emission',
             backgroundColor: 'rgba( 37, 55, 61,0.75)',
             borderColor: 'rgba( 37, 55, 61,0.75)',
@@ -57,6 +59,32 @@ var ctx = document.getElementById('emissionCompany');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdata,
+    options: {
+        responsive: false,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        }, hover: {
+            mode: 'nearest',
+            intersect: true                
+        }, scales: {
+            yAxes: [{
+              id: 'A',
+              type: 'linear',
+              position: 'left',
+            }, {
+              id: 'B',
+              type: 'linear',
+              position: 'right',
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById('revenuePrEmissionCompany');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: chartdataRevenuePrEmission,
     options: {
         responsive: false,
         tooltips: {

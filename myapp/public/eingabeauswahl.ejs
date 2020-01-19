@@ -16,7 +16,6 @@
     <!-- Main-->
     <div class="content">
         <h1><%= firmenname %></h1>
-        <div>Tragen Sie hinter diesen Links Ihre entsprechenden Verbr&auml;uche ein</div>
         <div class="row">
             <span>
                 <div>
@@ -28,14 +27,31 @@
             </span>
             <span>
                 <div>
-                    Durchschnittlicher Umsatz der Branche: <%= branchenname %>
+                    Durchschnittliche Werte der Branche: <%= branchenname %>
                 </div>
                 <div>
-                    <canvas id="revenueCompanyCompareBranch"></canvas>
+                    <canvas id="emissionCompanyCompareBranch"></canvas>
+                </div>
+            </span>
+            <span>
+                <div>
+                    Umsatz pro Emission
+                </div>
+                <div>
+                    <canvas id="revenuePrEmissionCompany"></canvas>
+                </div>
+            </span>
+            <span>
+                <div>
+                    Durchschnittlicher Umsatz pro Emission der Branche: <%= branchenname %>
+                </div>
+                <div>
+                    <canvas id="revenuePrEmisssionCompanyCompareBranch"></canvas>
                 </div>
             </span>
         </div>
-        <form action="" name="co2UndletzteAktualisierungBerechnen" method="get">
+        <h2>Tragen Sie hier ihre aktuellen Werte ein</h2>
+        <div class="row">
             <!--
             Vor dem Link ist die grafische Anzeige, von den CO2 Emissionen in diesem und letztem Jahr
             Nach dem Link ist eine Zahl/Anzeige der lezten Aktualiseriung
@@ -60,49 +76,23 @@
             </div>
             <!-- Die folgenden zwei haben keinen Balken-->
             <div class="eingabeauswahlmenu">
-                <span>
-                    <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
-                </span>
-                <div class="row">
-                    <span>
-                        <div>
-                            Eigene Werte
-                        </div>
-                        <div>
-                            <canvas id="revenueCompany"></canvas>
-                        </div>
-                    </span>
-                    <span>
-                        <div>
-                            Durchschnittlicher Umsatz der Branche: <%= branchenname %>
-                        </div>
-                        <div>
-                            <canvas id="revenueCompanyCompareBranch"></canvas>
-                        </div>
-                    </span>
-                </div>
+                <a class="button" href="./ressourcen/umsatz">Umsatz eintragen</a>
             </div>
             <div>
                 <a class="button" href="./ressourcen/co2schaetzung">CO<sub>2</sub> Sch&auml;tzung eintragen</a>
             </div>
-        </form>
+        </div>
     </div>
     <!-- Footer -->
     <footer>
         <%- include('./partials/footer'); -%>
     </footer>
     <%- include('./partials/script'); -%>
-    <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
-    <!-- Electric Company -->
+    <!-- Emission Company -->
     <script>var data = <%- JSON.stringify(emissionenFirma) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforemissioncom.js"></script>
-    <!-- Revenue Company -->
-    <script>var data = <%- JSON.stringify(umsatzFirma) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecom.js"></script>
-    <!-- Revenue Company Compare with Branch-->
-    <script>var data = <%- JSON.stringify(umsatzFirmaVergleich) %>;</script>
-    <script type="text/javascript" src="./chartjs/jsforcharts/chartforrevenuecomcomparebranch.js"></script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforcom.js"></script>
+    <!-- Emission compared with branch-->
 </body>
 
 </html>
