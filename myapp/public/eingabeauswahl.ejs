@@ -93,11 +93,14 @@
         <%- include('./partials/footer'); -%>
     </footer>
     <%- include('./partials/script'); -%>
+    <!-- Scripts for the charts-->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Emission Company -->
     <script>var data = <%- JSON.stringify(emissionenFirma) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforcom.js"></script>
     <!-- Emission compared with branch-->
+    <script>var data = <%- JSON.stringify(emissionFirmaVergleich) %>;</script>
+    <script type="text/javascript" src="./chartjs/jsforcharts/chartforcomcompare.js"></script>
 </body>
 
 </html>

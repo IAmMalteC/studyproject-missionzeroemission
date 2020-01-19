@@ -116,49 +116,17 @@ function findEmissionCompany(req, res, next) {
     }
   });
 }
-// //Emission Firma Vergleich mit Branche
-// function findElectricCompanyCompareBranch(req, res, next) {
-//   branchid = 4;
-//   var sqlquery = "";
-//   getConnection().query(sqlquery, branchid, function (err, result) {
-//     if (err) {
-//       console.log("Failed to get year data..." + err);
-//       res.sendStatus(500);
-//       return res.status(204).send();
-//     } else {
-//       req.emissionCompanyBranch = result;
-//       return next();
-//     }
-//   });
-// }
-//Umsatz Firma
-function findRevenueCompany(req, res, next) {
-  // muss eigentlich über session angesprochen werden
-  firmenid = 12;
-  var sqlquery = "SELECT umsatz_jahr, umsatz_umsatz FROM umsatz_tb WHERE umsatz_firma = ? ORDER BY umsatz_jahr";
-  getConnection().query(sqlquery, firmenid, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.revenueCompany = result;
-      return next();
-    }
-  });
-}
-//Umsatz Firma Vergleich mit Branche
-function findRevenueCompanyCompareBranch(req, res, next) {
-  // muss eigentlich über session angesprochen werden
+//Emission Firma Vergleich mit Branche
+function findEmissionCompanyCompareBranch(req, res, next) {
   branchid = 4;
-  var sqlquery = "SELECT umsatz_tb.umsatz_jahr, SUM(umsatz_tb.umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, branche_tb.branche_name FROM umsatz_tb join firma_tb ON umsatz_tb.umsatz_firma = firma_tb.firma_id join branche_tb ON firma_tb.firma_branche = branche_tb.branche_id WHERE branche_tb.branche_id = ?  GROUP BY umsatz_tb.umsatz_jahr, branche_tb.branche_name ORDER BY  umsatz_tb.umsatz_jahr";
+  var sqlquery = "SELECT res_strom_regulaer_jahr, SUM(res_strom_regulaer_jahresverbrauch) AS gesamt_strom_regulaer_jahresverbrauch, SUM(res_strom_photov_tb.res_strom_photov_jahresverbrauch) AS gesamt_photov_jahresverbrauch, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 ) AS branche_strom_gesamtemission, SUM((res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 ) AS branche_strom_emissionseinsparung, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 ) AS branche_strom_gesamtemission_theoretisch, SUM(umsatz_tb.umsatz_umsatz) AS branche_gesamtumsatz, branche_tb.branche_name, SUM(umsatz_tb.umsatz_umsatz*1000000)/SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))) AS branche_umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr JOIN firma_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = firma_tb.firma_id JOIN branche_tb ON branche_tb.branche_id = firma_tb.firma_branche WHERE branche_tb.branche_id=5 GROUP BY branche_tb.branche_name, res_strom_regulaer_tb.res_strom_regulaer_jahr";
   getConnection().query(sqlquery, branchid, function (err, result) {
     if (err) {
       console.log("Failed to get year data..." + err);
       res.sendStatus(500);
       return res.status(204).send();
     } else {
-      req.revenueCompanyBranch = result;
+      req.emissionCompanyBranch = result;
       return next();
     }
   });
@@ -167,17 +135,14 @@ function renderEingabeauswahlPage(req, res) {
   //ggf. anpassen und das result der Query ansprechen über kolonnen name
   firma = "Hawe Inline Hydraulik GmbH"
   branchenname = "Maschinenbau"
-  letzeAktualUmsatz = "30.04.2019"
   res.render('eingabeauswahl', {
     page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
     firmenname: firma, branchenname: branchenname,
-    emissionenFirma: req.emissionCompany, //stromFirmaVergleich: req.electricCompanyBranch,
-    umsatzFirma: req.revenueCompany, umsatzFirmaVergleich: req.revenueCompanyBranch
+    emissionenFirma: req.emissionCompany, emissionFirmaVergleich: req.emissionCompanyBranch,
   });
 }
 app.get('/eingabeauswahl',
-  findEmissionCompany, //findElectricCompanyCompareBranch,
-  findRevenueCompany, findRevenueCompanyCompareBranch,
+  findEmissionCompany, findEmissionCompanyCompareBranch,
   renderEingabeauswahlPage);
 //profil
 app.get("/profil", function (req, res, next) {
@@ -229,19 +194,19 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
   res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
 });
 
-app.post('/strom' , function(req , res){
+app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
 
   var StromArt = req.body.StromArt; // emissionwert
-  if (StromArt == "Photovoltaik"){
+  if (StromArt == "Photovoltaik") {
     StromArt = 0 // emissionwert
   }
   else {
     StromArt = 365
   }
 
-  var Ablesung =req.body.Ablesung;
-  if (Ablesung == "monatlich" ){
+  var Ablesung = req.body.Ablesung;
+  if (Ablesung == "monatlich") {
     Ablesung = 1
   }
   else {
@@ -249,24 +214,29 @@ app.post('/strom' , function(req , res){
   }
   const StromVerbrauch = req.body.Stromverbrauch;
   const AbrechnungZeitraum = req.body.ZeitraumJahr;
-  if (StromArt == 0){
+  if (StromArt == 0) {
     console.log("Entering Data into Photov table")
     var sqlQuery = "INSERT INTO res_strom_photov_tb VALUES (NULL,4,?,?,1,?,?)"
-    getConnection().query(sqlQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
-      console.log("Faild to Insert into database..."+ err); 
-      res.sendStatus(500);
-      return
-    }});
+    getConnection().query(sqlQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
+      if (err) {
+        console.log("Faild to Insert into database..." + err);
+        res.sendStatus(500);
+        return
+      }
+    });
   }
-  else{
+  else {
     console.log("Entering Data into regulaer table")
     var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
-    getConnection().query(stromQuery,[StromArt,Ablesung,AbrechnungZeitraum,StromVerbrauch], function(err , result){if (err){
-      console.log("Faild to Insert into database..."+ err); 
-      res.sendStatus(500);
-      return
-    }});
-  }});
+    getConnection().query(stromQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
+      if (err) {
+        console.log("Faild to Insert into database..." + err);
+        res.sendStatus(500);
+        return
+      }
+    });
+  }
+});
 
 
 
@@ -314,27 +284,27 @@ app.post('/umsatz', function (req, res) {
   res.end()
 })
 
-app.post("/login" , function(req , res){
+app.post("/login", function (req, res) {
   var username = req.body.BenutzernameInput;
   var password = req.body.PasswortInput;
-  loginQuery= "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
+  loginQuery = "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
 
-  if ( username && password){
-    getConnection().query(loginQuery, [username , password] , function(err , result){
-      if(result.length > 0){
+  if (username && password) {
+    getConnection().query(loginQuery, [username, password], function (err, result) {
+      if (result.length > 0) {
         req.session.loggedIn = true;
         req.session.username = username;
         res.redirect('/index')
       }
       else {
-        res.render('login',{page:"Login Here" , menuId: "login"});
-        
+        res.render('login', { page: "Login Here", menuId: "login" });
+
         //res.send("Incorrect username and/or password")
       }
       res.end();
     });
   }
-  else{
+  else {
     res.send("Please enter your Username and Password");
     res.end();
 

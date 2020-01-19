@@ -1,23 +1,26 @@
-// Part of SQL Statement:  SELECT `res_strom_regulaer_id`, `res_strom_regulaer_firma`, 
-//`res_strom_regulaer_jahr`, `res_strom_regulaer_jahresverbrauch`, 
-//res_strom_photov_tb.res_strom_photov_jahresverbrauch,  AS strom_gesamtemission,  
-//AS strom_emissionseinsparung,  AS strom_gesamtemission_theoretisch, 
-//umsatz_tb.umsatz_umsatz,  AS umsatz_pro_emission FROM  ...
+// GESAMT BRANCHENÜBERSICHT, also Gesamtverbrauch/ -emission pro Branche und Jahr.
+// Namen der Spalten
+// Jahr: `res_strom_regulaer_jahr`,
+// gesamt_strom_regulaer_jahresverbrauch,
+// gesamt_photov_jahresverbrauch,
+// branche_strom_gesamtemission,
+// branche_gesamtumsatz,
+// branche_tb.branche_name,
 //Siehe auch SQL_statements.txt
 // define hear the needed datasets
 var years = [];
 var emElectronicReal = [];
-var emElectronicTheory = [];
+//var emElectronicTheory = [];
 var revenue = [];
 var revenuePerEm = [];
 
 //they have to have the same names as after select in the SQL query
 for (const i in data) {
     years.push(data[i].res_strom_regulaer_jahr);
-    emElectronicReal.push(data[i].strom_gesamtemission);
-    emElectronicTheory.push(data[i].strom_gesamtemission_theoretisch);
-    revenue.push(data[i].umsatz_umsatz);
-    revenuePerEm.push(data[i].umsatz_pro_emission);
+    emElectronicReal.push(data[i].branche_strom_gesamtemission);
+    //emElectronicTheory.push(data[i].strom_gesamtemission_theoretisch);
+    revenue.push(data[i].branche_gesamtumsatz);
+    revenuePerEm.push(data[i].branche_strom_gesamtemission/data[i].branche_gesamtumsatz);
 }
 
 var chartdata = {
@@ -29,13 +32,15 @@ var chartdata = {
             borderColor: 'rgba( 42, 72, 52,0.75)',
             yAxisID: 'A',
             data: emElectronicReal
-        }, {
-            label: 'Emissionen ohne Einsparung',
-            backgroundColor: 'rgba(181,140,133,0.75)',
-            borderColor: 'rgba(181,140,133,0.75)',
-            yAxisID: 'A',
-            data: emElectronicTheory
-        }, {
+        }, 
+        // {
+        //     label: 'Emissionen ohne Einsparung',
+        //     backgroundColor: 'rgba(181,140,133,0.75)',
+        //     borderColor: 'rgba(181,140,133,0.75)',
+        //     yAxisID: 'A',
+        //     data: emElectronicTheory
+        // },
+         {
             label: 'Umsatz',
             backgroundColor: 'rgba( 37, 55, 61,0.75)',
             borderColor: 'rgba( 37, 55, 61,0.75)',
@@ -56,7 +61,7 @@ var chartdataRevenuePrEmission = {
     ]
 };
 
-var ctx = document.getElementById('emissionCompany');
+var ctx = document.getElementById('emissionCompanyCompareBranch');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdata,
@@ -82,7 +87,7 @@ var myChart = new Chart(ctx, {
     }
 });
 
-var ctx = document.getElementById('revenuePrEmissionCompany');
+var ctx = document.getElementById('revenuePrEmisssionCompanyCompareBranch');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdataRevenuePrEmission,
