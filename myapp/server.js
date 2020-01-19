@@ -67,9 +67,6 @@ function renderIndexPage(req, res) {
 }
 var index_path = ['/', '/index'];
 app.get(index_path,
-  findElectricAll, findElectricAllAverage,
-  findHeatAll, findHeatAllAverage,
-  findGasAll, findGasAllAverage,
   findRevenueAll, findRevenueAllAverage,
   renderIndexPage);
 
