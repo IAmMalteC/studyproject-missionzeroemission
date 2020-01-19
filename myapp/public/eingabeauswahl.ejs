@@ -100,10 +100,10 @@
             <tbody>
                 <% for(var i = 0; i < massnahmen.length; i++) {%>
                 <tr>
+                    <td data-th="Datum"><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td>
                     <td data-th="Katagorie"><%= massnahmen[i].res_kategorie_name %></td>
                     <td data-th="Ma&szlig;nahme"><%= massnahmen[i].massnahmen_name %></td>
                     <td data-th="Beschreibung"><%= massnahmen[i].massnahmen_beschreibung %></td>
-                    <td data-th="Datum"><%= massnahmen[i].mn_firma_massnahmen_anfangsdatum %></td>
                 </tr>
                 <% } %>
             </tbody>
