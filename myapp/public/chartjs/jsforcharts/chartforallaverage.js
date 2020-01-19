@@ -28,8 +28,15 @@ for (const i in data) {
 }
 
 var chartdata = {
-    labels: [countCompany, years],
+    labels: [countCompany & "Firmen im Jahre " & years],
     datasets: [
+        {
+            label: 'Umsatz',
+            backgroundColor: 'rgba( 37, 55, 61,0.75)',
+            borderColor: 'rgba( 37, 55, 61,0.75)',
+            yAxisID: 'B',
+            data: revenue
+        },
         {
             label: 'Reale Emissionen',
             backgroundColor: 'rgba( 42, 72, 52,0.75)',
@@ -42,12 +49,6 @@ var chartdata = {
             borderColor: 'rgba(181,140,133,0.75)',
             yAxisID: 'A',
             data: emElectronicTheory
-        }, {
-            label: 'Umsatz',
-            backgroundColor: 'rgba( 37, 55, 61,0.75)',
-            borderColor: 'rgba( 37, 55, 61,0.75)',
-            yAxisID: 'B',
-            data: revenue
         }
     ]
 };
