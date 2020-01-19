@@ -116,21 +116,21 @@ function findEmissionCompany(req, res, next) {
     }
   });
 }
-//Emission Firma Vergleich mit Branche
-function findElectricCompanyCompareBranch(req, res, next) {
-  branchid = 4;
-  var sqlquery = "";
-  getConnection().query(sqlquery, branchid, function (err, result) {
-    if (err) {
-      console.log("Failed to get year data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    } else {
-      req.emissionCompanyBranch = result;
-      return next();
-    }
-  });
-}
+// //Emission Firma Vergleich mit Branche
+// function findElectricCompanyCompareBranch(req, res, next) {
+//   branchid = 4;
+//   var sqlquery = "";
+//   getConnection().query(sqlquery, branchid, function (err, result) {
+//     if (err) {
+//       console.log("Failed to get year data..." + err);
+//       res.sendStatus(500);
+//       return res.status(204).send();
+//     } else {
+//       req.emissionCompanyBranch = result;
+//       return next();
+//     }
+//   });
+// }
 //Umsatz Firma
 function findRevenueCompany(req, res, next) {
   // muss eigentlich über session angesprochen werden
@@ -171,12 +171,12 @@ function renderEingabeauswahlPage(req, res) {
   res.render('eingabeauswahl', {
     page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
     firmenname: firma, branchenname: branchenname,
-    emissionenFirma: req.emissionCompany, stromFirmaVergleich: req.electricCompanyBranch,
+    emissionenFirma: req.emissionCompany, //stromFirmaVergleich: req.electricCompanyBranch,
     umsatzFirma: req.revenueCompany, umsatzFirmaVergleich: req.revenueCompanyBranch
   });
 }
 app.get('/eingabeauswahl',
-  findEmissionCompany, findElectricCompanyCompareBranch,
+  findEmissionCompany, //findElectricCompanyCompareBranch,
   findRevenueCompany, findRevenueCompanyCompareBranch,
   renderEingabeauswahlPage);
 //profil
