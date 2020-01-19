@@ -113,7 +113,7 @@ function findEmissionCompany(req, res, next) {
     } else {
       firmenid = result;
       firmenid = firmenid.firmen_id;
-      print(firmenid);
+      console.log(firmenid);
     }
   });
   var sqlquery = "SELECT res_strom_regulaer_id, res_strom_regulaer_firma, res_strom_regulaer_jahr, res_strom_regulaer_jahresverbrauch, res_strom_photov_tb.res_strom_photov_jahresverbrauch, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 AS strom_gesamtemission, (res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 AS strom_emissionseinsparung, ((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 AS strom_gesamtemission_theoretisch, umsatz_tb.umsatz_umsatz, umsatz_tb.umsatz_umsatz*1000000/((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission)) AS umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr WHERE res_strom_regulaer_firma = ?";
