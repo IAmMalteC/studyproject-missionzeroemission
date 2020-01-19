@@ -102,7 +102,7 @@ app.get('/massnahmen-uebersicht', function (req, res) {
 //Eingabenauswahl mit Graphen
 //Emission Firma
 function findEmissionCompany(req, res, next) {
-  const companyUsername = 'cfba'; //should we get via session
+  const companyUsername = "\'cfb\'"; //should we get via session
   var sqlqueryComId = "SELECT firma_tb.firma_id FROM firma_tb WHERE firma_tb.firma_benutzername = ?"
   getConnection().query(sqlqueryComId, companyUsername, function (err, result) {
     if (err) {
