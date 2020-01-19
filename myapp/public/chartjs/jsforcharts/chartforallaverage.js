@@ -1,60 +1,107 @@
-// Part of SQL Statement: SELECT umsatz_jahr, SUM(umsatz_umsatz)/COUNT(umsatz_firma) AS umsatz_umsatz, COUNT(umsatz_firma) AS counts FROM ...
+// NEMO Gesamt Durchschnit mit
+// res_strom_regulaer_jahr
+// nemo_strom_regulaer_jahresverbrauch,
+// gesamt_photov_jahresverbrauch,
+// nemo_strom_gesamtemission,
+// nemo_strom_emissionseinsparung,
+// nemo_strom_gesamtemission_theoretisch,
+// nemo_gesamtumsatz,
+// nemo_umsatz_pro_emission
+// anzahl_firmen
+//Siehe auch SQL_statements.txt
 // define hear the needed datasets
 var years = [];
+var emElectronicReal = [];
+var emElectronicTheory = [];
 var revenue = [];
-var companies = [];
+var revenuePerEm = [];
+var countCompany = [];
 
 //they have to have the same names as after select in the SQL query
 for (const i in data) {
-    years.push(data[i].umsatz_jahr);
-    revenue.push(data[i].umsatz_umsatz);
-    companies.push(data[i].counts);
+    years.push(data[i].res_strom_regulaer_jahr);
+    emElectronicReal.push(data[i].nemo_strom_gesamtemission);
+    emElectronicTheory.push(data[i].nemo_strom_gesamtemission_theoretisch);
+    revenue.push(data[i].nemo_gesamtumsatz);
+    revenuePerEm.push(data[i].nemo_umsatz_pro_emission);
+    countCompany.push(data[i].anzahl_firmen)
 }
 
 var chartdata = {
+    labels: anzahl_firmen "Firmen im Jahre" years,
+    datasets: [
+        {
+            label: 'Reale Emissionen',
+            backgroundColor: 'rgba( 42, 72, 52,0.75)',
+            borderColor: 'rgba( 42, 72, 52,0.75)',
+            yAxisID: 'A',
+            data: emElectronicReal
+        }, {
+            label: 'Emissionen ohne Einsparung',
+            backgroundColor: 'rgba(181,140,133,0.75)',
+            borderColor: 'rgba(181,140,133,0.75)',
+            yAxisID: 'A',
+            data: emElectronicTheory
+        }, {
+            label: 'Umsatz',
+            backgroundColor: 'rgba( 37, 55, 61,0.75)',
+            borderColor: 'rgba( 37, 55, 61,0.75)',
+            yAxisID: 'B',
+            data: revenue
+        }
+    ]
+};
+var chartdataRevenuePrEmission = {
     labels: years,
     datasets: [
         {
-            label: 'Durchschnittlicher Umsatz',
-            backgroundColor: 'rgba(181,158,133,0.75)',
-            borderColor: 'rgba(181,158,133,0.75)',
-            data: revenue,
-            yAxisID: 'A'
-        },
-        {
-            label: 'Anzahl Firmen',
+            label: 'Umsatz pro Emission',
             backgroundColor: 'rgba( 37, 55, 61,0.75)',
             borderColor: 'rgba( 37, 55, 61,0.75)',
-            data: companies,
-            yAxisID: 'B'
+            data: revenuePerEm
         }
     ]
 };
 
-var ctx = document.getElementById('revenueAllAverage');
+var ctx = document.getElementById('emissionAllAverage');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: chartdata,
     options: {
-        responsive: true,
+        responsive: false,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+        }, hover: {
+            mode: 'nearest',
+            intersect: true                
+        }, scales: {
+            yAxes: [{
+              id: 'A',
+              type: 'linear',
+              position: 'left',
+            }, {
+              id: 'B',
+              type: 'linear',
+              position: 'right',
+            }]
+        }
+    }
+});
+
+var ctx = document.getElementById('emissionPrEmissionAllAverage');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: chartdataRevenuePrEmission,
+    options: {
+        responsive: false,
         tooltips: {
             mode: 'index',
             intersect: false,
         },
         hover: {
             mode: 'nearest',
-            intersect: true
-        },
-        scales: {
-            yAxes: [{
-                id: 'A',
-                type: 'linear',
-                position: 'left'
-            }, {
-                id: 'B',
-                type: 'linear',
-                position: 'right'
-            }]
+            intersect: true                
         }
     }
 });
