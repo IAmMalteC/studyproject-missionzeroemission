@@ -285,10 +285,10 @@ app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
   const JahresUmsatz = req.body.UmsatzInput;
   const Datum = req.body.DatumUmsatzInput;
-  firmenid = 12 //should be gotten via session
+  // ADD firmenid = 11 //should be gotten via session
 
-  var umsatzQuery = "INSERT INTO umsatz_tb VALUE ('',?,?,?,NULL)";
-  getConnection().query(umsatzQuery, [firmenid, JahresUmsatz, Datum], function (err, result) {
+  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
+  getConnection().query(umsatzQuery, [JahresUmsatz, Datum], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
