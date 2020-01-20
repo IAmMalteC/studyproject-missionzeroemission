@@ -19,14 +19,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-//app.use(flash()); //should be after cookie and session
+app.use(flash()); //should be after cookie and session
 
 //Flash is used to show succes and fail messages (uses with req.flash("Message Text","Catecory"))
-// app.use(function(req, res, next){
-//   res.locals.success_messages = req.flash('success_messages');
-//   res.locals.error_messages = req.flash('error_messages');
-//   next();
-// });
+app.use(function(req, res, next){
+  res.locals.success_messages = req.flash('success_messages');
+  res.locals.error_messages = req.flash('error_messages');
+  next();
+});
 
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
@@ -303,13 +303,15 @@ app.post('/umsatz', function (req, res) {
 app.post("/login", function (req, res) {
   var username = req.body.BenutzernameInput;
   var password = req.body.PasswortInput;
-  loginQuery = "SELECT firma_benutzername, firma_passwort FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
+  loginQuery = "SELECT firma_benutzername, firma_passwort, firma_id FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
 
   if (username && password) {
     getConnection().query(loginQuery, [username, password], function (err, result) {
       if (result.length > 0) {
         req.session.loggedIn = true;
         req.session.username = username;
+        req.session.userid = result.firma_id;
+        flash("Welcome", "success_messages")
         res.redirect('/index')
       }
       else {
