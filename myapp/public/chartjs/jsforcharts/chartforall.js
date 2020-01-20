@@ -34,17 +34,17 @@ var chartdata = {
             yAxisID: 'A',
             data: emElectronicReal
         }, {
-            label: 'Emissionen ohne Einsparung',
-            backgroundColor: 'rgba(181,140,133,0.75)',
-            borderColor: 'rgba(181,140,133,0.75)',
-            yAxisID: 'A',
-            data: emElectronicTheory
-        }, {
             label: 'Umsatz',
             backgroundColor: 'rgba( 37, 55, 61,0.75)',
             borderColor: 'rgba( 37, 55, 61,0.75)',
             yAxisID: 'B',
             data: revenue
+        }, {
+            label: 'Emissionen ohne Einsparung',
+            backgroundColor: 'rgba(181,140,133,0.75)',
+            borderColor: 'rgba(181,140,133,0.75)',
+            yAxisID: 'A',
+            data: emElectronicTheory
         }
     ]
 };
