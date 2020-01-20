@@ -112,6 +112,8 @@ var myChart = new Chart(ctx, {
                 beginAtZero: true
               }
             }]
+        }, legend: {
+            display: false
         }
     }
 });
