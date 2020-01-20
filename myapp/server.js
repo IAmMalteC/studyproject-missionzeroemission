@@ -7,9 +7,8 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
 
-//shows what is happening on the server and post it on the terminal(Logger)
+  //shows what is happening on the server and post it on the terminal(Logger)
 app.use(morgan('short'))
-
 app.set('views', path.join(__dirname, 'public')); //changed from 'views' to 'public'
 app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
 
@@ -19,14 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-app.use(flash()); //should be after cookie and session
+// app.use(flash()); //should be after cookie and session
 
-//Flash is used to show succes and fail messages (uses with req.flash("Message Text","Catecory"))
-app.use(function(req, res, next){
-  res.locals.success_messages = req.flash('success_messages');
-  res.locals.error_messages = req.flash('error_messages');
-  next();
-});
+// //Flash is used to show succes and fail messages (uses with req.flash("Message Text","Catecory"))
+// app.use(function(req, res, next){
+//   res.locals.success_messages = req.flash('success_messages');
+//   res.locals.error_messages = req.flash('error_messages');
+//   next();
+// });
 
 //Routing
 //It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
@@ -308,10 +307,8 @@ app.post("/login", function (req, res) {
   if (username && password) {
     getConnection().query(loginQuery, [username, password], function (err, result) {
       if (result.length > 0) {
-        req.session.loggedIn = true;
-        req.session.username = username;
-        req.session.userid = result.firma_id;
-        flash("Welcome", "success_messages")
+        //req.session.logg = true;
+        //req.session.username = username;
         res.redirect('/index')
       }
       else {
