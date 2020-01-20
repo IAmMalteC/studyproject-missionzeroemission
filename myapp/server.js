@@ -287,7 +287,7 @@ app.post('/umsatz', function (req, res) {
   const Datum = req.body.DatumUmsatzInput;
   firmenid = 12 //should be gotten via session
 
-  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (?,?,?,NULL)";
+  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,?,NULL)";
   getConnection().query(umsatzQuery, [firmenid, JahresUmsatz, Datum], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
