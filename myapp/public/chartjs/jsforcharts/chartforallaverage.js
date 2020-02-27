@@ -9,7 +9,7 @@
 // nemo_umsatz_pro_emission
 // anzahl_firmen
 //Siehe auch SQL_statements.txt
-// define hear the needed datasets
+// define here the needed datasets
 var years = [];
 var emElectronicReal = [];
 var emElectronicTheory = [];

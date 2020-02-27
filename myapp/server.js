@@ -1,13 +1,12 @@
-//these are the dependence
+//these are the dependencies
 const express = require('express');
 const app = express();
-//const flash = require('flash');
 const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
 
-  //shows what is happening on the server and post it on the terminal(Logger)
+//shows what is happening on the server and post it on the terminal(Logger)
 app.use(morgan('short'))
 app.set('views', path.join(__dirname, 'public')); //changed from 'views' to 'public'
 app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
@@ -18,17 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-// app.use(flash()); //should be after cookie and session
-
-// //Flash is used to show succes and fail messages (uses with req.flash("Message Text","Catecory"))
-// app.use(function(req, res, next){
-//   res.locals.success_messages = req.flash('success_messages');
-//   res.locals.error_messages = req.flash('error_messages');
-//   next();
-// });
-
 //Routing
-//It is a messy solution, but it works for now, until a new link is added, then it has to be implented here as well.
 //index
 //emission Umsatz
 function findEmissionAll(req, res, next) {
@@ -83,7 +72,7 @@ app.get('/massnahmen-katalog', function (req, res) {
     }
   });
 });
-//Maßnahmenübersicht --> Nach Firma
+//Maßnahmenübersicht
 app.get('/massnahmen-uebersicht', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id ORDER BY firma_tb.firma_name ";
 
@@ -116,7 +105,7 @@ function findEmissionCompany(req, res, next) {
 }
 //Emission Firma Vergleich mit Branche
 function findEmissionCompanyCompareBranch(req, res, next) {
-  branchid = 4;
+  branchid = 4; //get from session 
   var sqlquery = "SELECT res_strom_regulaer_jahr, SUM(res_strom_regulaer_jahresverbrauch) AS gesamt_strom_regulaer_jahresverbrauch, SUM(res_strom_photov_tb.res_strom_photov_jahresverbrauch) AS gesamt_photov_jahresverbrauch, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 ) AS branche_strom_gesamtemission, SUM((res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 ) AS branche_strom_emissionseinsparung, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 ) AS branche_strom_gesamtemission_theoretisch, SUM(umsatz_tb.umsatz_umsatz) AS branche_gesamtumsatz, branche_tb.branche_name, SUM(umsatz_tb.umsatz_umsatz*1000000)/SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))) AS branche_umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr JOIN firma_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = firma_tb.firma_id JOIN branche_tb ON branche_tb.branche_id = firma_tb.firma_branche WHERE branche_tb.branche_id=5 GROUP BY branche_tb.branche_name, res_strom_regulaer_tb.res_strom_regulaer_jahr";
   getConnection().query(sqlquery, branchid, function (err, result) {
     if (err) {
@@ -131,7 +120,7 @@ function findEmissionCompanyCompareBranch(req, res, next) {
 }
 // Maßnahmen der Firma = 
 function findActionCompany(req,res,next){
-  firmenid = 11; //else testing with 12
+  firmenid = 11; //get from session 
   var sqlquery = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id WHERE firma_tb.firma_id = ? ORDER BY mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum";
   getConnection().query(sqlquery, firmenid, function (err, result) {
     if (err) {
@@ -145,7 +134,7 @@ function findActionCompany(req,res,next){
   });
 }
 function renderEingabeauswahlPage(req, res) {
-  //ggf. anpassen und das result der Query ansprechen über kolonnen name
+  //ggf. anpassen und das result der Query ansprechen über kolonnen name, müsste eigentlich in einer Session gespeichert sein und dort abgerufen werden.
   firma = "CFB – CNC Feinmechanik Berlin e. K."
   branchenname = "Maschinenbau"
   res.render('eingabeauswahl', {
@@ -163,9 +152,60 @@ app.get('/eingabeauswahl',
 app.get("/profil", function (req, res, next) {
   res.render('profil', { page: 'Profil', menuId: 'profil' });
 });
+// Input Data from Profil to DB
+app.post('/profil', function (req, res) {
+  console.log("Trying to log in..")
+  console.log("First name: " + req.body.VornameInput);
+  const Vorname = req.body.VornameInput;
+  const Nachname = req.body.NachnameInput;
+  const Firma = req.body.FirmennameInput;
+  const Email = req.body.emailInput;
+  const Telephone = req.body.TelefonInput;
+
+
+  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
+  getConnection().query(queryString, [Vorname, Nachname, Firma, Email, Telephone], function (err, result) {
+    if (err) {
+      console.log("Failed to update user data..." + err);
+      res.sendStatus(500);
+      return res.status(204).send();
+    }
+  });
+
+  //res.send('Data received:\n' + JSON.stringify(req.body));
+  console.log("Inserted new user");
+
+  res.end()
+});
 //Login
 app.get('/login', function (req, res) {
   res.render('login', { page: 'Login', menuId: 'login' });
+});
+app.post("/login", function (req, res) {
+  var username = req.body.BenutzernameInput;
+  var password = req.body.PasswortInput;
+  loginQuery = "SELECT firma_benutzername, firma_passwort, firma_id FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
+
+  if (username && password) {
+    getConnection().query(loginQuery, [username, password], function (err, result) {
+      if (result.length > 0) {
+        //req.session.logg = true;
+        //req.session.username = username;
+        res.redirect('/index')
+      }
+      else {
+        res.render('login', { page: "Login Here", menuId: "login" });
+
+        //res.send("Incorrect username and/or password")
+      }
+      res.end();
+    });
+  }
+  else {
+    res.send("Please enter your Username and Password");
+    res.end();
+
+  }
 });
 //Passwort-Vergessen
 app.get('/passwort-vergessen', function (req, res) {
@@ -180,35 +220,6 @@ app.get('/faq', function (req, res) {
 app.get('/ressourcen/strom', function (req, res) {
   res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
 });
-//Heizung
-app.get('/ressourcen/heizung', function (req, res) {
-  res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
-});
-//Erdgas
-app.get('/ressourcen/erdgas', function (req, res) {
-  res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
-});
-//Wasser
-app.get('/ressourcen/wasser', function (req, res) {
-  res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
-});
-//Abfall
-app.get('/ressourcen/abfall', function (req, res) {
-  res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
-});
-//Neue-Massnahme
-app.get('/ressourcen/neue-massnahme', function (req, res) {
-  res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
-});
-//Umsatz
-app.get('/ressourcen/umsatz', function (req, res) {
-  res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
-});
-//CO2Schaetzung
-app.get('/ressourcen/co2schaetzung', function (req, res) {
-  res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
-});
-
 app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
 
@@ -252,35 +263,30 @@ app.post('/strom', function (req, res) {
     });
   }
 });
-
-
-
-// Input Data from Profil to DB
-app.post('/profil', function (req, res) {
-  console.log("Trying to log in..")
-  console.log("First name: " + req.body.VornameInput);
-  const Vorname = req.body.VornameInput;
-  const Nachname = req.body.NachnameInput;
-  const Firma = req.body.FirmennameInput;
-  const Email = req.body.emailInput;
-  const Telephone = req.body.TelefonInput;
-
-
-  var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
-  getConnection().query(queryString, [Vorname, Nachname, Firma, Email, Telephone], function (err, result) {
-    if (err) {
-      console.log("Failed to update user data..." + err);
-      res.sendStatus(500);
-      return res.status(204).send();
-    }
-  });
-
-  //res.send('Data received:\n' + JSON.stringify(req.body));
-  console.log("Inserted new user");
-
-  res.end()
+//Heizung
+app.get('/ressourcen/heizung', function (req, res) {
+  res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
 });
-
+//Erdgas
+app.get('/ressourcen/erdgas', function (req, res) {
+  res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
+});
+//Wasser
+app.get('/ressourcen/wasser', function (req, res) {
+  res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
+});
+//Abfall
+app.get('/ressourcen/abfall', function (req, res) {
+  res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
+});
+//Neue-Massnahme
+app.get('/ressourcen/neue-massnahme', function (req, res) {
+  res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
+});
+//Umsatz
+app.get('/ressourcen/umsatz', function (req, res) {
+  res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
+});
 app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
   const JahresUmsatz = req.body.UmsatzInput;
@@ -299,37 +305,12 @@ app.post('/umsatz', function (req, res) {
   console.log("Inserted new umsatz Data");
   res.end()
 })
-
-app.post("/login", function (req, res) {
-  var username = req.body.BenutzernameInput;
-  var password = req.body.PasswortInput;
-  loginQuery = "SELECT firma_benutzername, firma_passwort, firma_id FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
-
-  if (username && password) {
-    getConnection().query(loginQuery, [username, password], function (err, result) {
-      if (result.length > 0) {
-        //req.session.logg = true;
-        //req.session.username = username;
-        res.redirect('/index')
-      }
-      else {
-        res.render('login', { page: "Login Here", menuId: "login" });
-
-        //res.send("Incorrect username and/or password")
-      }
-      res.end();
-    });
-  }
-  else {
-    res.send("Please enter your Username and Password");
-    res.end();
-
-  }
+//CO2Schaetzung
+app.get('/ressourcen/co2schaetzung', function (req, res) {
+  res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
 });
 
-
-
-
+// Get Connection
 function getConnection() {
   return mariadb.createConnection({
     host: "141.45.92.87",
@@ -350,5 +331,3 @@ getConnection().connect((err) => {
 app.listen(3003, () => {
   console.log("server is up and listening on port 3003...")
 });
-
-

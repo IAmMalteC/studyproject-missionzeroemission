@@ -8,7 +8,7 @@
 //     nemo_gesamtumsatz,
 //     nemo_umsatz_pro_emission
 //Siehe auch SQL_statements.txt
-// define hear the needed datasets
+// define here the needed datasets
 var years = [];
 var emElectronicReal = [];
 var emElectronicTheory = [];

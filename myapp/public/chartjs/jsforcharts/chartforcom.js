@@ -4,7 +4,7 @@
 //AS strom_emissionseinsparung,  AS strom_gesamtemission_theoretisch, 
 //umsatz_tb.umsatz_umsatz,  AS umsatz_pro_emission FROM  ...
 //Siehe auch SQL_statements.txt
-// define hear the needed datasets
+// define here the needed datasets
 var years = [];
 var emElectronicReal = [];
 var emElectronicTheory = [];

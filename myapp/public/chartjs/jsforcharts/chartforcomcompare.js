@@ -7,10 +7,9 @@
 // branche_gesamtumsatz,
 // branche_tb.branche_name,
 //Siehe auch SQL_statements.txt
-// define hear the needed datasets
+// define here the needed datasets
 var years = [];
 var emElectronicReal = [];
-//var emElectronicTheory = [];
 var revenue = [];
 var revenuePerEm = [];
 
@@ -18,9 +17,8 @@ var revenuePerEm = [];
 for (const i in data) {
     years.push(data[i].res_strom_regulaer_jahr);
     emElectronicReal.push(data[i].branche_strom_gesamtemission);
-    //emElectronicTheory.push(data[i].strom_gesamtemission_theoretisch);
     revenue.push(data[i].branche_gesamtumsatz);
-    revenuePerEm.push(data[i].branche_gesamtumsatz/data[i].branche_strom_gesamtemission);
+    revenuePerEm.push(data[i].branche_gesamtumsatz / data[i].branche_strom_gesamtemission);
 }
 
 var chartdata = {
@@ -32,15 +30,8 @@ var chartdata = {
             borderColor: 'rgba( 42, 72, 52,0.75)',
             yAxisID: 'A',
             data: emElectronicReal
-        }, 
-        // {
-        //     label: 'Emissionen ohne Einsparung',
-        //     backgroundColor: 'rgba(181,140,133,0.75)',
-        //     borderColor: 'rgba(181,140,133,0.75)',
-        //     yAxisID: 'A',
-        //     data: emElectronicTheory
-        // },
-         {
+        },
+        {
             label: 'Umsatz',
             backgroundColor: 'rgba( 37, 55, 61,0.75)',
             borderColor: 'rgba( 37, 55, 61,0.75)',
@@ -72,22 +63,22 @@ var myChart = new Chart(ctx, {
             intersect: false,
         }, hover: {
             mode: 'nearest',
-            intersect: true                
+            intersect: true
         }, scales: {
             yAxes: [{
-              id: 'A',
-              type: 'linear',
-              position: 'left',
-              ticks: {
-                beginAtZero: true
-              }
+                id: 'A',
+                type: 'linear',
+                position: 'left',
+                ticks: {
+                    beginAtZero: true
+                }
             }, {
-              id: 'B',
-              type: 'linear',
-              position: 'right',
-              ticks: {
-                beginAtZero: true
-              }
+                id: 'B',
+                type: 'linear',
+                position: 'right',
+                ticks: {
+                    beginAtZero: true
+                }
             }]
         }
     }
@@ -105,12 +96,12 @@ var myChart = new Chart(ctx, {
         },
         hover: {
             mode: 'nearest',
-            intersect: true                
+            intersect: true
         }, scales: {
             yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
+                ticks: {
+                    beginAtZero: true
+                }
             }]
         }, legend: {
             display: false

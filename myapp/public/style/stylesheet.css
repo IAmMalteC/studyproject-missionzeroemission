@@ -6,7 +6,7 @@ light yellow #d9d787
 darker yellow #d2c055
 orange #b14f19
 
-We are just building for two sreens. Phones and Tables/Desktops(Bigger then 689px)
+We are just building for two sreens. Phones and Tables/Desktops(Bigger then 768px)
 */
 /*!!Global parameters!!*/
 
@@ -232,7 +232,7 @@ textarea, input[type=text], input[type=password], input[type=email], input[type=
     border-radius: 25px;
 }
 
-/*erbt vom .button im html verwenden mit class="button button-cancel"*/
+/* erbt vom .button im html verwenden mit class="button button-cancel" */
 
 .button-cancel {
     color: #f00 !important;
@@ -349,8 +349,7 @@ a:active {
 }
 
 /* Desktop Styles */
-
-/*just added to show the content in a nice way on a phone*/
+/* Added to show the content of a table on a phone*/
 
 @media only screen and (max-width: 767px) {
     /* Is not working on hover, but hover never works on smartphones, so more a minor issue */
@@ -443,14 +442,6 @@ a:active {
         padding: 15px 0px;
     }
     /*content*/
-    /*erbt von .content im html verwenden mit class="content index"*/
-    /* .index {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
-        text-align: center;
-    } */
     .goal-tracker {
         display: none;
         /*Set to block to show it*/

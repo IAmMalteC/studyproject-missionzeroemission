@@ -1,3 +1,5 @@
+-- ToDo Colja/Emmanuelle is this file still needed? If not please delete
+
 -- phpMyAdmin SQL Dump
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
