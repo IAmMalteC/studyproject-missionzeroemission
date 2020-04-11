@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Erstellungszeit: 19. Jan 2020 um 10:33
+-- Erstellungszeit: 11. Apr 2020 um 20:48
 -- Server-Version: 10.1.43-MariaDB-0ubuntu0.18.04.1
 -- PHP-Version: 7.2.24-0ubuntu0.18.04.2
 
@@ -78,7 +78,29 @@ CREATE TABLE `emission_einheit_tb` (
 INSERT INTO `emission_einheit_tb` (`emission_einheit_id`, `emission_einheit_name`) VALUES
 (1, 'g/kWh'),
 (2, 'g/m3'),
-(3, 'g/L');
+(3, 'g/L'),
+(4, 'g/lfm'),
+(5, 'g absolut');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `firma_emissionen_tb`
+--
+
+DROP TABLE IF EXISTS `firma_emissionen_tb`;
+CREATE TABLE `firma_emissionen_tb` (
+                                       `firma_emissionen_id` int(11) NOT NULL,
+                                       `firma_emissionen_firma` int(11) NOT NULL,
+                                       `firma_emissionen_emissionen` int(11) NOT NULL COMMENT 'hier müssen die berechneten Emissionen in t CO2 rein',
+                                       `firma_emissionen_jahr` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- RELATIONEN DER TABELLE `firma_emissionen_tb`:
+--   `firma_emissionen_firma`
+--       `firma_tb` -> `firma_id`
+--
 
 -- --------------------------------------------------------
 
@@ -220,26 +242,6 @@ INSERT INTO `massnahmen_tb` (`massnahmen_id`, `massnahmen_res_kategorie`, `massn
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `mn_firma_emissionen_tb`
---
-
-DROP TABLE IF EXISTS `mn_firma_emissionen_tb`;
-CREATE TABLE `mn_firma_emissionen_tb` (
-                                          `mn_firma_emissionen_id` int(11) NOT NULL,
-                                          `mn_firma_emissionen_firma` int(11) NOT NULL,
-                                          `mn_firma_emissionen_emissionen` int(11) NOT NULL COMMENT 'hier müssen die berechneten Emissionen in t CO2 rein',
-                                          `mn_firma_emissionen_jahr` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- RELATIONEN DER TABELLE `mn_firma_emissionen_tb`:
---   `mn_firma_emissionen_firma`
---       `firma_tb` -> `firma_id`
---
-
--- --------------------------------------------------------
-
---
 -- Tabellenstruktur für Tabelle `mn_firma_massnahmen_tb`
 --
 
@@ -265,7 +267,21 @@ CREATE TABLE `mn_firma_massnahmen_tb` (
 --
 
 INSERT INTO `mn_firma_massnahmen_tb` (`mn_firma_massnahmen_id`, `mn_firma_massnahmen_firma`, `mn_firma_massnahmen_massnahme`, `mn_firma_massnahme_beschreibung`, `mn_firma_massnahmen_anfangsdatum`) VALUES
-(1, 3, 1, 'Schöner Arbeitseinsatz mit unseren Mitarbeitern', '2019-04-01');
+(1, 3, 1, 'Schöner Arbeitseinsatz mit unseren Mitarbeitern', '2019-04-01'),
+(2, 11, 2, '', '2014-05-14'),
+(3, 11, 3, '', '2015-07-07'),
+(6, 11, 4, '', '2016-09-07'),
+(7, 11, 1, '', '2017-07-07'),
+(8, 11, 6, '', '2019-07-07'),
+(9, 12, 1, '', '2015-10-07'),
+(10, 12, 3, '', '2017-07-07'),
+(12, 31, 0, '', '2014-07-07'),
+(13, 31, 6, '', '2016-07-07'),
+(14, 31, 4, '', '2018-11-07'),
+(15, 31, 2, '', '2019-01-07'),
+(16, 33, 2, '', '2015-07-07'),
+(17, 33, 3, '', '2016-02-05'),
+(18, 33, 5, '', '2018-06-06');
 
 -- --------------------------------------------------------
 
@@ -374,34 +390,30 @@ CREATE TABLE `res_gas_tb` (
 --
 
 INSERT INTO `res_gas_tb` (`res_gas_id`, `res_gas_firma`, `res_gas_emission`, `res_gas_abrechnungsintervall`, `res_gas_kategorie`, `res_gas_jahr`, `res_gas_jahresverbrauch`) VALUES
-(1, 31, 2750, 1, 2, 2014, 0),
 (2, 33, 2750, 1, 2, 2014, 12000),
-(3, 31, 2750, 1, 2, 2015, 0),
 (4, 33, 2750, 1, 2, 2015, 10000),
-(5, 31, 2750, 1, 2, 2016, 0),
 (6, 33, 2750, 1, 2, 2016, 11111),
-(7, 31, 2750, 1, 2, 2017, 0),
 (8, 33, 2750, 1, 2, 2017, 13978),
 (9, 12, 2750, 1, 2, 2018, 68000),
 (10, 33, 2750, 1, 2, 2018, 15678),
 (11, 12, 2750, 1, 2, 2019, 87999),
 (12, 33, 2750, 1, 2, 2019, 15678),
-(13, 12, 2750, 1, 2, 2020, 80456),
-(14, 33, 2750, 1, 2, 2020, 14567),
 (15, 11, 2750, 1, 2, 2014, 88888),
-(16, 31, 2750, 1, 2, 2018, 0),
 (17, 11, 2750, 1, 2, 2015, 93456),
-(18, 31, 2750, 1, 2, 2019, 0),
 (19, 11, 2750, 1, 2, 2016, 78903),
-(20, 31, 2750, 1, 2, 2020, 0),
 (21, 11, 2750, 1, 2, 2017, 96783),
 (23, 11, 2750, 1, 2, 2018, 68000),
 (25, 11, 2750, 1, 2, 2019, 87999),
-(27, 11, 2750, 1, 2, 2020, 80456),
-(22, 12, 2750, 1, 2, 2014, 0),
-(22, 12, 2750, 1, 2, 2015, 0),
-(24, 12, 2750, 1, 2, 2016, 0),
-(26, 12, 2750, 1, 2, 2017, 0);
+(28, 31, 2750, 1, 2, 2014, 0),
+(29, 31, 2750, 1, 2, 2015, 0),
+(30, 31, 2750, 1, 2, 2016, 0),
+(31, 31, 2750, 1, 2, 2017, 0),
+(32, 31, 2750, 1, 2, 2018, 0),
+(33, 31, 2750, 1, 2, 2019, 0),
+(35, 12, 2750, 1, 2, 2014, 0),
+(36, 12, 2750, 1, 2, 2015, 0),
+(37, 12, 2750, 1, 2, 2016, 0),
+(38, 12, 2750, 1, 2, 2017, 0);
 
 -- --------------------------------------------------------
 
@@ -433,34 +445,32 @@ CREATE TABLE `res_heizoel_tb` (
 --
 
 INSERT INTO `res_heizoel_tb` (`res_heizoel_id`, `res_heizoel_firma`, `res_heizoel_emission`, `res_heizoel_abrechnungsintervall`, `res_heizoel_kategorie`, `res_heizoel_jahr`, `res_heizoel_jahresverbrauch`) VALUES
-('', 12, 2567, 1, 2, 2014, 88888),
-('', 33, 2567, 1, 2, 2014, 12000),
-('', 12, 2567, 1, 2, 2015, 93456),
-('', 33, 2567, 1, 2, 2015, 10000),
-('', 12, 2567, 1, 2, 2016, 78903),
-('', 33, 2567, 1, 2, 2016, 11111),
-('', 12, 2567, 1, 2, 2017, 96783),
-('', 33, 2567, 1, 2, 2017, 13978),
-('', 12, 2567, 1, 2, 2018, 97777),
-('', 33, 2567, 1, 2, 2018, 15678),
-('', 12, 2567, 1, 2, 2019, 87999),
-('', 12, 2567, 1, 2, 2020, 0),
-('', 33, 2567, 1, 2, 2019, 13444),
-('', 33, 2567, 1, 2, 2020, 14567),
-('', 31, 2567, 1, 2, 2014, 12000),
-('', 31, 2567, 1, 2, 2015, 10000),
-('', 31, 2567, 1, 2, 2016, 11111),
-('', 31, 2567, 1, 2, 2017, 13978),
-('', 31, 2567, 1, 2, 2018, 15678),
-('', 31, 2567, 1, 2, 2019, 15678),
-('', 31, 2567, 1, 2, 2020, 14567),
-('', 11, 2567, 1, 2, 2014, 0),
-('', 11, 2567, 1, 2, 2015, 0),
-('', 11, 2567, 1, 2, 2016, 0),
-('', 11, 2567, 1, 2, 2017, 0),
-('', 11, 2567, 1, 2, 2018, 0),
-('', 11, 2567, 1, 2, 2019, 0),
-('', 11, 2567, 1, 2, 2020, 0);
+(29, 12, 2567, 1, 2, 2014, 88888),
+(30, 33, 2567, 1, 2, 2014, 12000),
+(31, 12, 2567, 1, 2, 2015, 93456),
+(32, 33, 2567, 1, 2, 2015, 10000),
+(33, 12, 2567, 1, 2, 2016, 78903),
+(34, 33, 2567, 1, 2, 2016, 11111),
+(35, 12, 2567, 1, 2, 2017, 96783),
+(36, 33, 2567, 1, 2, 2017, 13978),
+(37, 12, 2567, 1, 2, 2018, 97777),
+(38, 33, 2567, 1, 2, 2018, 15678),
+(39, 12, 2567, 1, 2, 2019, 87999),
+(40, 12, 2567, 1, 2, 2020, 0),
+(41, 33, 2567, 1, 2, 2019, 13444),
+(42, 33, 2567, 1, 2, 2020, 14567),
+(43, 31, 2567, 1, 2, 2014, 12000),
+(44, 31, 2567, 1, 2, 2015, 10000),
+(45, 31, 2567, 1, 2, 2016, 11111),
+(46, 31, 2567, 1, 2, 2017, 13978),
+(47, 31, 2567, 1, 2, 2018, 15678),
+(48, 31, 2567, 1, 2, 2019, 15678),
+(50, 11, 2567, 1, 2, 2014, 0),
+(51, 11, 2567, 1, 2, 2015, 0),
+(52, 11, 2567, 1, 2, 2016, 0),
+(53, 11, 2567, 1, 2, 2017, 0),
+(54, 11, 2567, 1, 2, 2018, 0),
+(55, 11, 2567, 1, 2, 2019, 0);
 
 -- --------------------------------------------------------
 
@@ -479,6 +489,8 @@ CREATE TABLE `res_kategorie_tb` (
 
 --
 -- RELATIONEN DER TABELLE `res_kategorie_tb`:
+--   `res_kategorie_einheit`
+--       `ressourcen_einheit_tb` -> `ressourcen_einheit_id`
 --
 
 --
@@ -486,7 +498,6 @@ CREATE TABLE `res_kategorie_tb` (
 --
 
 INSERT INTO `res_kategorie_tb` (`res_kategorie_id`, `res_kategorie_name`, `res_kategorie_beschreibung`, `res_kategorie_vergleichswert`, `res_kategorie_einheit`) VALUES
-(0, 'Müll', 'Müll ist zielich schwer einzuordnen....', 444, 0),
 (1, 'Strom', 'Hierunter fallen alle Stromverträge und die interne Stromerzeugung.', 322, 1),
 (2, 'Heizung', 'Alle Energieträger, die zur Wärmeerzeugung verwendet ewerden.', 521, 1),
 (3, 'Wasser', 'Im Allgemeinen wird das Abwasser durch das Trinkwasser errechnet.', 5, 3),
@@ -522,35 +533,34 @@ CREATE TABLE `res_strom_photov_tb` (
 --
 
 INSERT INTO `res_strom_photov_tb` (`res_strom_photov_id`, `res_strom_photov_firma`, `res_strom_photov_emission`, `res_strom_photov_abrechnungsintervall`, `res_strom_photov_kategorie`, `res_strom_photov_jahr`, `res_strom_photov_jahresverbrauch`) VALUES
-(1, 12, 0, 1, 1, 2014, 88888),
-(2, 33, 0, 1, 1, 2014, 12000),
-(3, 12, 0, 1, 1, 2015, 93456),
-(4, 33, 0, 1, 1, 2015, 10000),
-(5, 12, 0, 1, 1, 2016, 78903),
-(6, 33, 0, 1, 1, 2016, 11111),
-(7, 12, 0, 1, 1, 2017, 96783),
-(8, 33, 0, 1, 1, 2017, 13978),
-(9, 12, 0, 1, 1, 2018, 68000),
-(10, 33, 0, 1, 1, 2018, 15678),
-(11, 12, 0, 1, 1, 2019, 87999),
-(12, 33, 0, 1, 1, 2019, 15678),
-(13, 12, 0, 1, 1, 2020, 80456),
-(14, 33, 0, 1, 1, 2020, 14567),
-(15, 11, 0, 1, 1, 2014, 88888),
-(16, 31, 0, 1, 1, 2014, 12000),
-(17, 11, 0, 1, 1, 2015, 93456),
-(18, 31, 0, 1, 1, 2015, 10000),
-(19, 11, 0, 1, 1, 2016, 78903),
-(20, 31, 0, 1, 1, 2016, 11111),
-(21, 11, 0, 1, 1, 2017, 96783),
-(22, 31, 0, 1, 1, 2017, 13978),
-(23, 11, 0, 1, 1, 2018, 68000),
-(24, 31, 0, 1, 1, 2018, 15678),
-(25, 11, 0, 1, 1, 2019, 87999),
+(1, 12, 0, 1, 1, 2014, 888880),
+(2, 33, 0, 1, 1, 2014, 120000),
+(3, 12, 0, 1, 1, 2015, 934560),
+(4, 33, 0, 1, 1, 2015, 100000),
+(5, 12, 0, 1, 1, 2016, 789030),
+(6, 33, 0, 1, 1, 2016, 111110),
+(7, 12, 0, 1, 1, 2017, 967830),
+(8, 33, 0, 1, 1, 2017, 139780),
+(9, 12, 0, 1, 1, 2018, 680000),
+(10, 33, 0, 1, 1, 2018, 156780),
+(11, 12, 0, 1, 1, 2019, 879990),
+(12, 33, 0, 1, 1, 2019, 156780),
+(15, 11, 0, 1, 1, 2014, 888880),
+(16, 31, 0, 1, 1, 2014, 120000),
+(17, 11, 0, 1, 1, 2015, 934560),
+(18, 31, 0, 1, 1, 2015, 100000),
+(19, 11, 0, 1, 1, 2016, 789030),
+(20, 31, 0, 1, 1, 2016, 111110),
+(21, 11, 0, 1, 1, 2017, 967830),
+(22, 31, 0, 1, 1, 2017, 139780),
+(23, 11, 0, 1, 1, 2018, 680000),
+(24, 31, 0, 1, 1, 2018, 156780),
+(25, 11, 0, 1, 1, 2019, 879990),
 (26, 31, 0, 1, 1, 2019, 15678),
-(27, 11, 0, 1, 1, 2020, 80456),
-(28, 31, 0, 1, 1, 2020, 14567),
-(29, 4, 0, 2, 1, 2014, 213123);
+(30, 12, 0, 1, 1, 2020, 80456),
+(31, 33, 0, 1, 1, 2020, 14567),
+(32, 31, 0, 1, 1, 2020, 14567),
+(33, 11, 0, 1, 1, 2020, 900000);
 
 -- --------------------------------------------------------
 
@@ -595,30 +605,31 @@ INSERT INTO `res_strom_regulaer_tb` (`res_strom_regulaer_id`, `res_strom_regulae
 (11, 12, 474, 1, 1, 2019, 3201450),
 (12, 33, 474, 1, 1, 2019, 7145800),
 (13, 12, 474, 1, 1, 2020, 3201980),
-(14, 33, 474, 1, 1, 2020, 17150024),
-(15, 11, 557, 1, 1, 2014, 13200785),
-(16, 31, 557, 1, 1, 2014, 17145545),
-(17, 11, 527, 1, 1, 2015, 13200885),
-(18, 31, 527, 1, 1, 2015, 17145645),
-(19, 11, 523, 1, 1, 2016, 13200985),
-(20, 31, 523, 1, 1, 2016, 17145845),
-(21, 11, 486, 1, 1, 2017, 13201185),
-(22, 31, 486, 1, 1, 2017, 17146045),
-(23, 11, 474, 1, 1, 2018, 13201400),
-(24, 31, 474, 1, 1, 2018, 17145845),
-(25, 11, 474, 1, 1, 2019, 13201450),
-(26, 31, 474, 1, 1, 2019, 17145800),
-(27, 11, 474, 1, 1, 2020, 13201980),
-(28, 31, 474, 1, 1, 2020, 17150024),
+(14, 33, 474, 1, 1, 2020, 1150024),
+(15, 11, 557, 1, 1, 2014, 1200785),
+(16, 31, 557, 1, 1, 2014, 1145545),
+(17, 11, 527, 1, 1, 2015, 1200885),
+(18, 31, 527, 1, 1, 2015, 1145645),
+(19, 11, 523, 1, 1, 2016, 1200985),
+(20, 31, 523, 1, 1, 2016, 1145845),
+(21, 11, 486, 1, 1, 2017, 1201185),
+(22, 31, 486, 1, 1, 2017, 1146045),
+(24, 31, 474, 1, 1, 2018, 1145845),
+(25, 11, 474, 1, 1, 2019, 1201450),
+(26, 31, 474, 1, 1, 2019, 1145800),
+(28, 31, 474, 1, 1, 2020, 1150024),
 (29, 4, 365, 1, 1, 2018, 27392),
 (30, 4, 365, 2, 1, 2018, 123123),
 (31, 4, 365, 2, 1, 2019, 123123),
 (32, 4, 365, 2, 1, 2017, 0),
 (33, 4, 365, 2, 1, 2019, 123123),
 (34, 4, 365, 2, 1, 2016, 22222),
-(35, 4, 365, 2, 1, 2030, 123123),
-(36, 4, 365, 2, 1, 2021, 2222),
-(37, 4, 365, 2, 1, 2019, 123213);
+(37, 4, 365, 2, 1, 2019, 123213),
+(39, 4, 365, 2, 1, 2020, 1300000),
+(40, 11, 557, 1, 1, 2020, 1300000),
+(41, 4, 365, 2, 1, 2020, 12345678),
+(42, 4, 365, 1, 1, 2014, 123),
+(43, 4, 365, 1, 1, 2014, 222);
 
 -- --------------------------------------------------------
 
@@ -689,6 +700,8 @@ CREATE TABLE `umsatz_tb` (
 
 --
 -- RELATIONEN DER TABELLE `umsatz_tb`:
+--   `umsatz_firma`
+--       `firma_tb` -> `firma_id`
 --
 
 --
@@ -702,7 +715,6 @@ INSERT INTO `umsatz_tb` (`umsatz_id`, `umsatz_firma`, `umsatz_jahr`, `umsatz_ums
 (4, 12, 2017, 373000, ''),
 (5, 12, 2018, 433000, ''),
 (6, 12, 2019, 403000, ''),
-(7, 12, 2020, 443000, ''),
 (8, 33, 2015, 1333000, ''),
 (9, 33, 2016, 1290000, ''),
 (10, 33, 2017, 1373000, ''),
@@ -721,9 +733,7 @@ INSERT INTO `umsatz_tb` (`umsatz_id`, `umsatz_firma`, `umsatz_jahr`, `umsatz_ums
 (23, 11, 2018, 1320140, ''),
 (24, 31, 2018, 1714584, ''),
 (25, 11, 2019, 1320145, ''),
-(26, 31, 2019, 1714580, ''),
-(27, 11, 2020, 1320198, ''),
-(28, 31, 2020, 1715002, '');
+(26, 31, 2019, 1714580, '');
 
 --
 -- Indizes der exportierten Tabellen
@@ -740,6 +750,13 @@ ALTER TABLE `branche_tb`
 --
 ALTER TABLE `emission_einheit_tb`
     ADD PRIMARY KEY (`emission_einheit_id`);
+
+--
+-- Indizes für die Tabelle `firma_emissionen_tb`
+--
+ALTER TABLE `firma_emissionen_tb`
+    ADD PRIMARY KEY (`firma_emissionen_id`),
+    ADD KEY `firma_emissionen_firma` (`firma_emissionen_firma`);
 
 --
 -- Indizes für die Tabelle `firma_tb`
@@ -763,13 +780,6 @@ ALTER TABLE `login_track_tb`
 ALTER TABLE `massnahmen_tb`
     ADD PRIMARY KEY (`massnahmen_id`),
     ADD KEY `massnahmen_res_kategorie` (`massnahmen_res_kategorie`) USING BTREE;
-
---
--- Indizes für die Tabelle `mn_firma_emissionen_tb`
---
-ALTER TABLE `mn_firma_emissionen_tb`
-    ADD PRIMARY KEY (`mn_firma_emissionen_id`),
-    ADD KEY `mn_firma_emissionen_firma` (`mn_firma_emissionen_firma`);
 
 --
 -- Indizes für die Tabelle `mn_firma_massnahmen_tb`
@@ -852,8 +862,7 @@ ALTER TABLE `standardwerte_tb`
 --
 ALTER TABLE `umsatz_tb`
     ADD PRIMARY KEY (`umsatz_id`),
-    ADD KEY `umsatz_firma` (`umsatz_firma`),
-    ADD KEY `umsatz_jahr` (`umsatz_jahr`) USING BTREE;
+    ADD KEY `umsatz_firma` (`umsatz_firma`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -868,7 +877,12 @@ ALTER TABLE `branche_tb`
 -- AUTO_INCREMENT für Tabelle `emission_einheit_tb`
 --
 ALTER TABLE `emission_einheit_tb`
-    MODIFY `emission_einheit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `emission_einheit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT für Tabelle `firma_emissionen_tb`
+--
+ALTER TABLE `firma_emissionen_tb`
+    MODIFY `firma_emissionen_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `firma_tb`
 --
@@ -885,15 +899,10 @@ ALTER TABLE `login_track_tb`
 ALTER TABLE `massnahmen_tb`
     MODIFY `massnahmen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT für Tabelle `mn_firma_emissionen_tb`
---
-ALTER TABLE `mn_firma_emissionen_tb`
-    MODIFY `mn_firma_emissionen_id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT für Tabelle `mn_firma_massnahmen_tb`
 --
 ALTER TABLE `mn_firma_massnahmen_tb`
-    MODIFY `mn_firma_massnahmen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+    MODIFY `mn_firma_massnahmen_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT für Tabelle `nutzer_tb`
 --
@@ -913,30 +922,36 @@ ALTER TABLE `ressourcen_tb`
 -- AUTO_INCREMENT für Tabelle `res_gas_tb`
 --
 ALTER TABLE `res_gas_tb`
-    MODIFY `res_gas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+    MODIFY `res_gas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT für Tabelle `res_heizoel_tb`
 --
 ALTER TABLE `res_heizoel_tb`
-    MODIFY `res_heizoel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+    MODIFY `res_heizoel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT für Tabelle `res_strom_photov_tb`
 --
 ALTER TABLE `res_strom_photov_tb`
-    MODIFY `res_strom_photov_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+    MODIFY `res_strom_photov_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT für Tabelle `res_strom_regulaer_tb`
 --
 ALTER TABLE `res_strom_regulaer_tb`
-    MODIFY `res_strom_regulaer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+    MODIFY `res_strom_regulaer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT für Tabelle `umsatz_tb`
 --
 ALTER TABLE `umsatz_tb`
-    MODIFY `umsatz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+    MODIFY `umsatz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- Constraints der exportierten Tabellen
 --
+
+--
+-- Constraints der Tabelle `firma_emissionen_tb`
+--
+ALTER TABLE `firma_emissionen_tb`
+    ADD CONSTRAINT `firma_emissionen_tb_ibfk_1` FOREIGN KEY (`firma_emissionen_firma`) REFERENCES `firma_tb` (`firma_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `firma_tb`
@@ -956,12 +971,6 @@ ALTER TABLE `login_track_tb`
 --
 ALTER TABLE `massnahmen_tb`
     ADD CONSTRAINT `massnahmen_tb_ibfk_1` FOREIGN KEY (`massnahmen_res_kategorie`) REFERENCES `res_kategorie_tb` (`res_kategorie_id`) ON UPDATE CASCADE;
-
---
--- Constraints der Tabelle `mn_firma_emissionen_tb`
---
-ALTER TABLE `mn_firma_emissionen_tb`
-    ADD CONSTRAINT `mn_firma_emissionen_tb_ibfk_1` FOREIGN KEY (`mn_firma_emissionen_firma`) REFERENCES `firma_tb` (`firma_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `mn_firma_massnahmen_tb`
@@ -992,6 +1001,12 @@ ALTER TABLE `res_heizoel_tb`
     ADD CONSTRAINT `res_heizoel_tb_ibfk_2` FOREIGN KEY (`res_heizoel_firma`) REFERENCES `firma_tb` (`firma_id`) ON UPDATE CASCADE;
 
 --
+-- Constraints der Tabelle `res_kategorie_tb`
+--
+ALTER TABLE `res_kategorie_tb`
+    ADD CONSTRAINT `res_kategorie_tb_ibfk_1` FOREIGN KEY (`res_kategorie_einheit`) REFERENCES `ressourcen_einheit_tb` (`ressourcen_einheit_id`);
+
+--
 -- Constraints der Tabelle `res_strom_photov_tb`
 --
 ALTER TABLE `res_strom_photov_tb`
@@ -1011,6 +1026,12 @@ ALTER TABLE `res_strom_regulaer_tb`
 ALTER TABLE `standardwerte_tb`
     ADD CONSTRAINT `standardwerte_tb_ibfk_1` FOREIGN KEY (`standardwerte_kategorie`) REFERENCES `res_kategorie_tb` (`res_kategorie_id`),
     ADD CONSTRAINT `standardwerte_tb_ibfk_2` FOREIGN KEY (`standardwerte_einheit`) REFERENCES `emission_einheit_tb` (`emission_einheit_id`);
+
+--
+-- Constraints der Tabelle `umsatz_tb`
+--
+ALTER TABLE `umsatz_tb`
+    ADD CONSTRAINT `umsatz_tb_ibfk_1` FOREIGN KEY (`umsatz_firma`) REFERENCES `firma_tb` (`firma_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
