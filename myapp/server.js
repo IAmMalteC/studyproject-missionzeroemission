@@ -6,10 +6,11 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
 
-//shows what is happening on the server and post it on the terminal(Logger)
+//shows what is happening on the server(Logger)
 app.use(morgan('short'))
-app.set('views', path.join(__dirname, 'public')); //changed from 'views' to 'public'
-app.set('view engine', 'ejs'); //changed from 'jade' to 'ejs'
+
+app.set('views', path.join(__dirname, 'public')); 
+app.set('view engine', 'ejs'); 
 
 //body Parser is a middleware
 app.use(bodyParser.json());
@@ -177,10 +178,12 @@ app.post('/profil', function (req, res) {
 
   res.end()
 });
+
 //Login
 app.get('/login', function (req, res) {
   res.render('login', { page: 'Login', menuId: 'login' });
 });
+
 app.post("/login", function (req, res) {
   var username = req.body.BenutzernameInput;
   var password = req.body.PasswortInput;
@@ -293,7 +296,7 @@ app.post('/umsatz', function (req, res) {
   const Datum = req.body.DatumUmsatzInput;
   // ADD firmenid = 11 //should be gotten via session
 
-  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,?,?,NULL)";
+  var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,12,?,?,NULL)";
   getConnection().query(umsatzQuery, [JahresUmsatz, Datum], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
