@@ -297,7 +297,7 @@ app.post('/umsatz', function (req, res) {
   // ADD firmenid = 11 //should be gotten via session
 
   var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,12,?,?,NULL)";
-  getConnection().query(umsatzQuery, [JahresUmsatz, Datum], function (err, result) {
+  getConnection().query(umsatzQuery, [Datum, JahresUmsatz], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
