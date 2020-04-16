@@ -292,8 +292,8 @@ app.get('/ressourcen/umsatz', function (req, res) {
 });
 app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
-  const JahresUmsatz = req.body.UmsatzInput;
-  const Datum = req.body.DatumUmsatzInput;
+  var JahresUmsatz = req.body.UmsatzInput;
+  var Datum = req.body.DatumUmsatzInput;
   // ADD firmenid = 11 //should be gotten via session
 
   var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,12,?,?,NULL)";
