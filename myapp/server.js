@@ -12,6 +12,12 @@ app.use(morgan('short'))
 app.set('views', path.join(__dirname, 'public')); 
 app.set('view engine', 'ejs'); 
 
+//session
+app.use(session({
+	secret: 'So0usiQJUS")Jlasihf8Yaisnd$$"($/§HFSIsd',
+	resave: true,
+	saveUninitialized: true
+}));
 //body Parser is a middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -163,7 +169,6 @@ app.post('/profil', function (req, res) {
   const Email = req.body.emailInput;
   const Telephone = req.body.TelefonInput;
 
-
   var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
   getConnection().query(queryString, [Vorname, Nachname, Firma, Email, Telephone], function (err, result) {
     if (err) {
@@ -179,8 +184,9 @@ app.post('/profil', function (req, res) {
   res.end()
 });
 
+
 //Login
-app.get('/login', function (req, res) {
+app.get('/', function (req, res) {
   res.render('login', { page: 'Login', menuId: 'login' });
 });
 
@@ -192,8 +198,8 @@ app.post("/login", function (req, res) {
   if (username && password) {
     getConnection().query(loginQuery, [username, password], function (err, result) {
       if (result.length > 0) {
-        //req.session.logg = true;
-        //req.session.username = username;
+        req.session.loggedIn = true;
+        req.session.username = username;
         res.redirect('/index')
       }
       else {
@@ -294,7 +300,7 @@ app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
   var JahresUmsatz = req.body.UmsatzInput;
   var Datum = req.body.DatumUmsatzInput;
-  // ADD firmenid = 11 //should be gotten via session
+  // ADD firmenid = 11 //should be retrieved from a session
 
   var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,12,?,?,NULL)";
   getConnection().query(umsatzQuery, [Datum, JahresUmsatz], function (err, result) {
