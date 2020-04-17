@@ -67,7 +67,7 @@ var index_path = ['/index'];
 app.get(index_path,
   function(request, response){
     if (request.session.loggedIn){
-      response.send('Welcome back' + request.session.username + '!')
+      response.redirect('/index')
     } else {
       response.send('Please login to view this page!');
     }
