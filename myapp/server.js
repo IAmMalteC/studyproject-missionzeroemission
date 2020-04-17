@@ -61,7 +61,9 @@ function renderIndexPage(req, res) {
     emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
   });
 }
-var index_path = ['/', '/index'];
+
+//index routing
+var index_path = ['/index'];
 app.get(index_path,
   findEmissionAll, findEmissionAllAverage,
   renderIndexPage);
