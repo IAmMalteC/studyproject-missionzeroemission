@@ -66,14 +66,14 @@ function renderIndexPage(req, res) {
 var index_path = ['/index'];
 app.get(index_path,
   findEmissionAll, findEmissionAllAverage,
-  renderIndexPage),function(request, response){
+  renderIndexPage,function(request, response){
     if (request.session.loggedIn){
       response.send('Welcome back' + request.session.username + '!')
     } else {
       response.send('Please login to view this page!');
     }
     response.end();
-  };
+  });
 
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
