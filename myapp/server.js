@@ -1,6 +1,7 @@
 //these are the dependencies
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
