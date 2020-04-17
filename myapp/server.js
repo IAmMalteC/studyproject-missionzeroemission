@@ -64,7 +64,8 @@ function renderIndexPage(req, res) {
 
 //index routing
 var index_path = ['/index'];
-app.get(index_path,
+app.get(index_path,findEmissionAll, findEmissionAllAverage,
+  renderIndexPage,
   function(request, response){
     if (request.session.loggedIn){
       response.redirect('/index')
@@ -72,8 +73,7 @@ app.get(index_path,
       response.send('Please login to view this page!');
     }
     response.end();
-  },findEmissionAll, findEmissionAllAverage,
-  renderIndexPage);
+  });
 
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
