@@ -215,7 +215,7 @@ app.post("/login", function (req, res) {
       else {
         res.render('login', { page: "Login Here", menuId: "login" });
 
-        //res.send("Incorrect username and/or password")
+        res.send("Incorrect username and/or password")
       }
       res.end();
     });
