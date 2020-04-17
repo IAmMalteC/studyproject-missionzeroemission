@@ -64,11 +64,12 @@ function renderIndexPage(req, res) {
 
 //index routing
 var index_path = ['/index'];
-app.get(index_path,findEmissionAll, findEmissionAllAverage,
-  renderIndexPage,
+app.get(index_path,
   function(request, response){
     if (request.session.loggedIn){
-      response.redirect('/index')
+      findEmissionAll, findEmissionAllAverage,
+      renderIndexPage
+      
     } else {
       response.send('Please login to view this page!');
     }
