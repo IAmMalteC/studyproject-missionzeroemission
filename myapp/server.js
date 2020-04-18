@@ -6,6 +6,8 @@ const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path')
+const flash = require('connect-flash');
+const cookieParser = require('cookie-parser')
 
 //shows what is happening on the server(Logger)
 app.use(morgan('short'))
@@ -14,14 +16,20 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs'); 
 
 //session
+app.use(cookieParser('So0usiQJUS")Jlasihf8Yaisnd$$"($/§HFSIsd'))
+
 app.use(session({
-	secret: 'So0usiQJUS")Jlasihf8Yaisnd$$"($/§HFSIsd',
-	resave: true,
-	saveUninitialized: true
+	cookie: {maxAge : 50000}
 }));
+
+app.use(flash())
+
+
+
 //body Parser is a middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
@@ -71,7 +79,9 @@ app.get(index_path,
       renderIndexPage
       
     } else {
-      response.send('Please login to view this page!');
+      response.redirect('/login')
+      request.flash('error', 'Please login to view this page!');
+      response.locals.message = request.flash();
     }
     response.end();
   });

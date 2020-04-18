@@ -11,6 +11,11 @@
     <!-- Header -->
     <header>
         <%- include('./partials/topnavigation'); -%>
+        <% if(locals.message){ %>
+            <div class="alert alert-error" role="alert">
+                <strong>Well done!</strong> <%=message.error%>
+            </div>
+        <% } %>
     </header>
     <!-- Main -->
     <div class="content">
