@@ -11,15 +11,16 @@
     <!-- Header -->
     <header>
         <%- include('./partials/topnavigation'); -%>
-        <% if(locals.message){ %>
-            <div class="alert alert-error" role="alert">
-                <strong>Well done!</strong> <%=message.error%>
-            </div>
-        <% } %>
+        
     </header>
     <!-- Main -->
     <div class="content">
         <form action="/login" name="login" method="POST">
+            <% if(locals.message){ %>
+            <div class="alert alert-error" role="alert">
+                <strong>Well done!</strong> <%=message.error%>
+            </div>
+            <% } %>
             <div>
                 <label for="Benutzername">Benutzername</label>
                 <input name="BenutzernameInput" id="Benutzername" type="text" placeholder="E-Mail Adresse" required autofocus>
