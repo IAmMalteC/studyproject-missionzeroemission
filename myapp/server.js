@@ -72,8 +72,7 @@ var index_path = ['/index'];
 app.get(index_path,
   function(request, response){
     if (request.session.loggedIn){
-      functions.findEmissionAll, functions.findEmissionAllAverage,
-      functions.renderIndexPage
+      functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
       
     } else {
       request.flash('error', 'Please login to view this page!');
