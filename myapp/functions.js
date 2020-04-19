@@ -9,6 +9,14 @@ function getConnection() {
   });
 }
 
+functions.getConnection().connect((err) => {
+  if (err) {
+    console.log("Failed" + err);
+  }
+  else
+    console.log("Database connected");
+});
+
 function findEmissionAll(req, res, next) {
     var sqlquery = "SELECT res_strom_regulaer_jahr, SUM(res_strom_regulaer_jahresverbrauch) AS nemo_strom_regulaer_jahresverbrauch, SUM(res_strom_photov_tb.res_strom_photov_jahresverbrauch) AS gesamt_photov_jahresverbrauch, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 ) AS nemo_strom_gesamtemission, SUM((res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 ) AS nemo_strom_emissionseinsparung, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 ) AS nemo_strom_gesamtemission_theoretisch, SUM(umsatz_tb.umsatz_umsatz) AS nemo_gesamtumsatz, SUM(umsatz_tb.umsatz_umsatz*1000000)/SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))) AS nemo_umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr GROUP BY res_strom_regulaer_tb.res_strom_regulaer_jahr";
     getConnection().query(sqlquery, function (err, result) {
@@ -36,7 +44,7 @@ function findEmissionAll(req, res, next) {
       }
     });
   }
-  
+
   function renderIndexPage(req, res) {
     res.render('index', {
       page: 'Startseite', menuId: 'index',
