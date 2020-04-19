@@ -63,28 +63,16 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //     }
 //   });
 // }
-function renderIndexPage(req, res) {
-  res.render('index', {
-    page: 'Startseite', menuId: 'index',
-    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
-  });
-}
+// function renderIndexPage(req, res) {
+//   res.render('index', {
+//     page: 'Startseite', menuId: 'index',
+//     emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
+//   });
+// }
 
 //index routing
-app.get('/index',
-  function(request, response){
-    if (request.session.loggedIn){
-      functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
-      
-    } else {
-      
-      request.flash('message', 'Please login to view this page!');
-      response.redirect('/')
-      //response.locals.message = request.flash();
-      
-    }
-    response.end();
-  });
+app.get('/index',functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
+  );
 
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
