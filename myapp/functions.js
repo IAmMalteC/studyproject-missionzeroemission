@@ -1,3 +1,14 @@
+const mariadb = require('mariadb/callback');
+
+function getConnection() {
+  return mariadb.createConnection({
+    host: "141.45.92.87",
+    user: "phpmyadmin",
+    password: "Q2Jf6kY4aQuM",
+    database: "DoriDB"
+  });
+}
+
 function findEmissionAll(req, res, next) {
     var sqlquery = "SELECT res_strom_regulaer_jahr, SUM(res_strom_regulaer_jahresverbrauch) AS nemo_strom_regulaer_jahresverbrauch, SUM(res_strom_photov_tb.res_strom_photov_jahresverbrauch) AS gesamt_photov_jahresverbrauch, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))/1000000 ) AS nemo_strom_gesamtemission, SUM((res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)/1000000 ) AS nemo_strom_emissionseinsparung, SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission))/1000000 ) AS nemo_strom_gesamtemission_theoretisch, SUM(umsatz_tb.umsatz_umsatz) AS nemo_gesamtumsatz, SUM(umsatz_tb.umsatz_umsatz*1000000)/SUM(((res_strom_regulaer_tb.res_strom_regulaer_jahresverbrauch * res_strom_regulaer_tb.res_strom_regulaer_emission)+(res_strom_photov_tb.res_strom_photov_jahresverbrauch * res_strom_photov_tb.res_strom_photov_emission))) AS nemo_umsatz_pro_emission FROM res_strom_regulaer_tb JOIN res_strom_photov_tb ON res_strom_regulaer_tb.res_strom_regulaer_firma = res_strom_photov_tb.res_strom_photov_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = res_strom_photov_tb.res_strom_photov_jahr JOIN umsatz_tb ON umsatz_tb.umsatz_firma = res_strom_regulaer_tb.res_strom_regulaer_firma AND res_strom_regulaer_tb.res_strom_regulaer_jahr = umsatz_tb.umsatz_jahr GROUP BY res_strom_regulaer_tb.res_strom_regulaer_jahr";
     getConnection().query(sqlquery, function (err, result) {
@@ -93,7 +104,7 @@ function findEmissionCompany(req, res, next) {
 
 //exporting functions
 module.exports = {findEmissionAll, findEmissionAllAverage, renderIndexPage, findEmissionCompany ,
-                     findEmissionCompanyCompareBranch, findActionCompany, renderEingabeauswahlPage }
+                     findEmissionCompanyCompareBranch, findActionCompany, renderEingabeauswahlPage, getConnection }
 
 
 

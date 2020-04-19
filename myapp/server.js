@@ -60,12 +60,12 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //     }
 //   });
 // }
-function renderIndexPage(req, res) {
-  res.render('index', {
-    page: 'Startseite', menuId: 'index',
-    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
-  });
-}
+// function renderIndexPage(req, res) {
+//   res.render('index', {
+//     page: 'Startseite', menuId: 'index',
+//     emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
+//   });
+// }
 
 //index routing
 var index_path = ['/index'];
@@ -88,7 +88,7 @@ app.get(index_path,
 app.get('/massnahmen-katalog', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
 
-  getConnection().query(queryString, function (err, result) {
+  functions.getConnection().query(queryString, function (err, result) {
     if (err) {
       console.log("Failed to get massnahmen_tb data..." + err);
       res.sendStatus(500);
@@ -102,7 +102,7 @@ app.get('/massnahmen-katalog', function (req, res) {
 app.get('/massnahmen-uebersicht', function (req, res) {
   var queryString = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id ORDER BY firma_tb.firma_name ";
 
-  getConnection().query(queryString, function (err, result) {
+  functions.getConnection().query(queryString, function (err, result) {
     if (err) {
       console.log("Failed to get massnahmen_tb data..." + err);
       res.sendStatus(500);
@@ -189,7 +189,7 @@ app.post('/profil', function (req, res) {
   const Telephone = req.body.TelefonInput;
 
   var queryString = "INSERT INTO nutzer_tb VALUE (NULL,?,?,?,?,?,CURRENT_TIMESTAMP)";
-  getConnection().query(queryString, [Vorname, Nachname, Firma, Email, Telephone], function (err, result) {
+  functions.getConnection().query(queryString, [Vorname, Nachname, Firma, Email, Telephone], function (err, result) {
     if (err) {
       console.log("Failed to update user data..." + err);
       res.sendStatus(500);
@@ -215,7 +215,7 @@ app.post("/login", function (req, res) {
   loginQuery = "SELECT firma_benutzername, firma_passwort, firma_id FROM firma_tb WHERE firma_benutzername = ? AND firma_passwort = ?";
 
   if (username && password) {
-    getConnection().query(loginQuery, [username, password], function (err, result) {
+    functions.getConnection().query(loginQuery, [username, password], function (err, result) {
       if (result.length > 0) {
         req.session.loggedIn = true;
         req.session.username = username;
@@ -271,7 +271,7 @@ app.post('/strom', function (req, res) {
   if (StromArt == 0) {
     console.log("Entering Data into Photov table")
     var sqlQuery = "INSERT INTO res_strom_photov_tb VALUES (NULL,4,?,?,1,?,?)"
-    getConnection().query(sqlQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
+    functions.getConnection().query(sqlQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
       if (err) {
         console.log("Faild to Insert into database..." + err);
         res.sendStatus(500);
@@ -282,7 +282,7 @@ app.post('/strom', function (req, res) {
   else {
     console.log("Entering Data into regulaer table")
     var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
-    getConnection().query(stromQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
+    functions.getConnection().query(stromQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
       if (err) {
         console.log("Faild to Insert into database..." + err);
         res.sendStatus(500);
@@ -322,7 +322,7 @@ app.post('/umsatz', function (req, res) {
   // ADD firmenid = 11 //should be retrieved from a session
 
   var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,12,?,?,NULL)";
-  getConnection().query(umsatzQuery, [Datum, JahresUmsatz], function (err, result) {
+  functions.getConnection().query(umsatzQuery, [Datum, JahresUmsatz], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
       res.sendStatus(500);
@@ -339,16 +339,16 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
 });
 
 // Get Connection
-function getConnection() {
-  return mariadb.createConnection({
-    host: "141.45.92.87",
-    user: "phpmyadmin",
-    password: "Q2Jf6kY4aQuM",
-    database: "DoriDB"
-  });
-}
+// function getConnection() {
+//   return mariadb.createConnection({
+//     host: "141.45.92.87",
+//     user: "phpmyadmin",
+//     password: "Q2Jf6kY4aQuM",
+//     database: "DoriDB"
+//   });
+// }
 
-getConnection().connect((err) => {
+functions.getConnection().connect((err) => {
   if (err) {
     console.log("Failed" + err);
   }
