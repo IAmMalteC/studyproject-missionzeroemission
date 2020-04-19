@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const mariadb = require('mariadb/callback');
+//const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -18,8 +18,11 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs'); 
 
 //session
-app.use(cookieParser('So0usiQJUS")Jlasihf8Yaisnd$$"($/§HFSIsd'))
+app.use(cookieParser())
 app.use(session({
+  secret: 'So0usiQJUS")Jlasihf8Yaisnd$$"($/§HFSIsd',
+  resave: false,
+  saveUninitialized: true,
 	cookie: {maxAge : 50000}
 }));
 app.use(flash())
@@ -74,9 +77,9 @@ app.get('/index',
       functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
       
     } else {
-      request.flash('error', 'Please login to view this page!');
-      response.locals.message = request.flash();
+      //response.locals.message = request.flash();
       response.redirect('/')
+      request.flash('error', 'Please login to view this page!');
       
     }
     response.end();
