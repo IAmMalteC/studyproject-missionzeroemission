@@ -336,17 +336,17 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
   res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
 });
 
-// Get Connection
-// function getConnection() {
-//   return mariadb.createConnection({
-//     host: "141.45.92.87",
-//     user: "phpmyadmin",
-//     password: "Q2Jf6kY4aQuM",
-//     database: "DoriDB"
-//   });
-// }
+//Get Connection
+function getConnection() {
+  return mariadb.createConnection({
+    host: "141.45.92.87",
+    user: "phpmyadmin",
+    password: "Q2Jf6kY4aQuM",
+    database: "DoriDB"
+  });
+}
 
-functions.getConnection().connect((err) => {
+getConnection().connect((err) => {
   if (err) {
     console.log("Failed" + err);
   }
