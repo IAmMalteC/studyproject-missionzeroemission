@@ -79,7 +79,7 @@ app.get('/index',
       response.redirect('/')
       
     }
-    response.end();M
+    response.end();
   });
 
 //Maßnahmenkatalog
@@ -337,16 +337,16 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
 });
 
 //Get Connection
-function getConnection() {
-  return mariadb.createConnection({
-    host: "141.45.92.87",
-    user: "phpmyadmin",
-    password: "Q2Jf6kY4aQuM",
-    database: "DoriDB"
-  });
-}
+// function getConnection() {
+//   return mariadb.createConnection({
+//     host: "141.45.92.87",
+//     user: "phpmyadmin",
+//     password: "Q2Jf6kY4aQuM",
+//     database: "DoriDB"
+//   });
+// }
 
-getConnection().connect((err) => {
+functions.getConnection().connect((err) => {
   if (err) {
     console.log("Failed" + err);
   }
