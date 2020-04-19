@@ -194,13 +194,9 @@ app.post('/profil', function (req, res) {
       return res.status(204).send();
     }
   });
-
-  
   console.log("Inserted new user");
-
   res.end()
 });
-
 
 //Login
 app.get('/', function (req, res) {
@@ -230,7 +226,6 @@ app.post("/login", function (req, res) {
   else {
     res.send("Please enter your Username and Password");
     res.end();
-
   }
 });
 //Passwort-Vergessen
@@ -288,6 +283,7 @@ app.post('/strom', function (req, res) {
       }
     });
   }
+  res.end();
 });
  //Heizung
  app.get('/ressourcen/heizung', function (req, res) {

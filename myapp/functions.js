@@ -36,6 +36,7 @@ function findEmissionAll(req, res, next) {
       }
     });
   }
+  
   function renderIndexPage(req, res) {
     res.render('index', {
       page: 'Startseite', menuId: 'index',
