@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const mariadb = require('mariadb/callback');
+//const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -68,8 +68,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 // }
 
 //index routing
-var index_path = ['/index'];
-app.get(index_path,
+app.get('/index',
   function(request, response){
     if (request.session.loggedIn){
       functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
@@ -80,7 +79,7 @@ app.get(index_path,
       response.redirect('/')
       
     }
-    response.end();
+    response.end();M
   });
 
 //Maßnahmenkatalog
