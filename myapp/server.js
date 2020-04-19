@@ -71,7 +71,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 // }
 
 //index routing
-app.get('/index',functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
+app.get('/index',functions.findEmissionAll,functions.findEmissionAllAverage,functions.renderIndexPage
   );
 
 //Maßnahmenkatalog
