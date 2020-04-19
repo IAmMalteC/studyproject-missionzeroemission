@@ -231,8 +231,13 @@ app.get('/faq', function (req, res) {
 //RESSOURCEN
 //Strom
 app.get('/ressourcen/strom', function (req, res) {
-  res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
-});
+  if (req.session.loggedIn){
+
+    res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
+  }else{
+    res.redirect('index')
+  }
+  });
 app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
 
