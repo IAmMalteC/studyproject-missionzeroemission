@@ -78,7 +78,7 @@ app.get('/index',
       
     } else {
       
-      request.flash('error', 'Please login to view this page!');
+      request.flash('message', 'Please login to view this page!');
       response.redirect('/')
       //response.locals.message = request.flash();
       
