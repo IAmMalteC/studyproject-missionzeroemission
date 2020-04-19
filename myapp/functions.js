@@ -75,6 +75,7 @@ function findEmissionCompany(req, res, next) {
       }
     });
   }
+  
   // Maßnahmen der Firma = 
   function findActionCompany(req,res,next){
     firmenid = 11; //get from session 
