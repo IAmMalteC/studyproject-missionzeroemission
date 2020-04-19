@@ -63,12 +63,12 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 //     }
 //   });
 // }
-// function renderIndexPage(req, res) {
-//   res.render('index', {
-//     page: 'Startseite', menuId: 'index',
-//     emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
-//   });
-// }
+function renderIndexPage(req, res) {
+  res.render('index', {
+    page: 'Startseite', menuId: 'index',
+    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
+  });
+}
 
 //index routing
 app.get('/index',
