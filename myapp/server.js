@@ -204,7 +204,7 @@ app.post('/profil', function (req, res) {
 
 //Login
 app.get('/', function (req, res) {
-  res.render('login', { page: 'Login', menuId: 'login' }, message : req.flash('error'));
+  res.render('login', { page: 'Login', menuId: 'login' },{ message : req.flash('error')});
 });
 
 app.post("/login", function (req, res) {
