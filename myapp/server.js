@@ -283,7 +283,7 @@ app.post('/strom', function (req, res) {
       }
     });
   }
-  res.redirect('/strom');
+  res.redirect('/ressourcen/strom');
 });
  //Heizung
  app.get('/ressourcen/heizung', function (req, res) {
