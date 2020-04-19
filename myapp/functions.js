@@ -103,56 +103,56 @@ module.exports = {findEmissionAll, findEmissionAllAverage, renderIndexPage, find
 
 
 
-//profil
-app.get("/profil", function (req, res, next) {
-    res.render('profil', { page: 'Profil', menuId: 'profil' });
-  });
-//Login
-app.get('/', function (req, res) {
-    res.render('login', { page: 'Login', menuId: 'login' });
-  });
-app.get('/ressourcen/strom', function (req, res) {
-  res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
-});
-//Heizung
-app.get('/ressourcen/heizung', function (req, res) {
-    res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
-  });
+// //profil
+// app.get("/profil", function (req, res, next) {
+//     res.render('profil', { page: 'Profil', menuId: 'profil' });
+//   });
+// //Login
+// app.get('/', function (req, res) {
+//     res.render('login', { page: 'Login', menuId: 'login' });
+//   });
+// app.get('/ressourcen/strom', function (req, res) {
+//   res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
+// });
+// //Heizung
+// app.get('/ressourcen/heizung', function (req, res) {
+//     res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
+//   });
 
-//Erdgas
-app.get('/ressourcen/erdgas', function (req, res) {
-    res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
-  });
+// //Erdgas
+// app.get('/ressourcen/erdgas', function (req, res) {
+//     res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
+//   });
 
-//Wasser
-app.get('/ressourcen/wasser', function (req, res) {
-    res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
-  });
+// //Wasser
+// app.get('/ressourcen/wasser', function (req, res) {
+//     res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
+//   });
 
-//Abfall
-app.get('/ressourcen/abfall', function (req, res) {
-    res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
-  });
+// //Abfall
+// app.get('/ressourcen/abfall', function (req, res) {
+//     res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
+//   });
 
-//Neue-Massnahme
-app.get('/ressourcen/neue-massnahme', function (req, res) {
-    res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
-  });
+// //Neue-Massnahme
+// app.get('/ressourcen/neue-massnahme', function (req, res) {
+//     res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
+//   });
 
-//Umsatz
-app.get('/ressourcen/umsatz', function (req, res) {
-    res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
-  });
+// //Umsatz
+// app.get('/ressourcen/umsatz', function (req, res) {
+//     res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
+//   });
 
-app.get('/ressourcen/co2schaetzung', function (req, res) {
-    res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
-  });
-//Passwort-Vergessen
-app.get('/passwort-vergessen', function (req, res) {
-    res.render('passwort-vergessen', { page: 'Passwort vergessen', menuId: 'passwort-vergessen' });
-  });
+// app.get('/ressourcen/co2schaetzung', function (req, res) {
+//     res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
+//   });
+// //Passwort-Vergessen
+// app.get('/passwort-vergessen', function (req, res) {
+//     res.render('passwort-vergessen', { page: 'Passwort vergessen', menuId: 'passwort-vergessen' });
+//   });
 
-//FAQ
-app.get('/faq', function (req, res) {
-    res.render('faq', { page: 'FAQ', menuId: 'faq' });
-  });
+// //FAQ
+// app.get('/faq', function (req, res) {
+//     res.render('faq', { page: 'FAQ', menuId: 'faq' });
+//   });
