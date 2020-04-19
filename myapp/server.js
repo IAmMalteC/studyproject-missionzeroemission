@@ -236,7 +236,7 @@ app.get('/ressourcen/strom', function (req, res) {
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
     req.flash('error', 'please login first to see the other pages')
-    res.send(500, 'ShowAlert')
+    //res.send(500, 'ShowAlert')
   }
   });
 app.post('/strom', function (req, res) {
