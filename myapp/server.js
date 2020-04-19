@@ -235,7 +235,7 @@ app.get('/ressourcen/strom', function (req, res) {
 
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
-    res.redirect('/index')
+    //sres.redirect('/index')
     res.send(500, 'ShowAlert')
   }
   });
