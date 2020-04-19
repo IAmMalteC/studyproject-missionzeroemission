@@ -77,8 +77,9 @@ app.get('/index',
       functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
       
     } else {
-      //response.locals.message = request.flash();
+     
       response.redirect('/')
+      response.locals.message = request.flash();
       request.flash('error', 'Please login to view this page!');
       
     }

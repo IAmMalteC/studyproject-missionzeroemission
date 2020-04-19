@@ -17,7 +17,7 @@
     <div class="content">
         <form action="/login" name="login" method="POST">
             <div>
-                <% message.error %>
+                <% locals.message.error %>
             </div>
             <% if(locals.message){ %>
             <div class="alert alert-error" role="alert">
