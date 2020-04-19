@@ -77,11 +77,10 @@ app.get('/index',
       functions.renderIndexPage,functions.findEmissionAll,functions.findEmissionAllAverage
       
     } else {
-     
-      response.redirect('/')
-      request.flash('error', 'Please login to view this page!');
-      response.locals.message = request.flash();
       
+      request.flash('error', 'Please login to view this page!');
+      response.redirect('/')
+      //response.locals.message = request.flash();
       
     }
     response.end();
@@ -205,7 +204,7 @@ app.post('/profil', function (req, res) {
 
 //Login
 app.get('/', function (req, res) {
-  res.render('login', { page: 'Login', menuId: 'login' });
+  res.render('login', { page: 'Login', menuId: 'login' }, message : req.flash('error'));
 });
 
 app.post("/login", function (req, res) {
