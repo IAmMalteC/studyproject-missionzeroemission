@@ -9,7 +9,7 @@ function getConnection() {
   });
 }
 
-functions.getConnection().connect((err) => {
+getConnection().connect((err) => {
   if (err) {
     console.log("Failed" + err);
   }
