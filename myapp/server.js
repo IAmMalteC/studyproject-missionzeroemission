@@ -204,7 +204,7 @@ app.post('/profil', function (req, res) {
 
 //Login
 app.get('/', function (req, res) {
-  res.render('login', { page: 'Login', menuId: 'login' },{ message : req.flash('error')});
+  res.render('login', { page: 'Login', menuId: 'login' });
 });
 
 app.post("/login", function (req, res) {
@@ -220,7 +220,7 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        res.render('login', { page: "Login Here", menuId: "login" }, { message : req.flash('error')});
+        res.render('login', { page: "Login Here", menuId: "login" });
 
         res.send("Incorrect username and/or password")
       }
