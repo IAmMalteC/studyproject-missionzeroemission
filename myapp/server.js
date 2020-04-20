@@ -265,7 +265,7 @@ app.post('/strom', function (req, res) {
     StromArt = 0 // emissionwert
   }
   else {
-    StromArt = "SELECT standardwerte_wert FROM `standardwerte_tb` WHERE standardwerte_jahr = 2018 AND standardwerte_kategorie = 1"
+    StromArt = functions.getConnection().query("SELECT standardwerte_wert FROM `standardwerte_tb` WHERE standardwerte_jahr = 2018 AND standardwerte_kategorie = 1")
   }
   var Ablesung = req.body.Ablesung;
   if (Ablesung == "monatlich") {
