@@ -255,7 +255,7 @@ app.get('/faq', function (req, res) {
 //     res.redirect('/')
 //   }
 
-  });
+  // });
 app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
 
