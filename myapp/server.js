@@ -6,7 +6,7 @@ const session = require('express-session');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path');
-const flash = require('req-flash');
+const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const functions = require('./functions');
 
@@ -23,7 +23,7 @@ app.use(session({
   secret: 'So0usiQJUS")Jlasihf8Yaisnd$$"($/§HFSIsd',
   resave: false,
   saveUninitialized: true,
-	cookie: {maxAge : 50000000000}
+	cookie: {maxAge : 5000000000000000}
 }));
 app.use(flash())
 
@@ -121,7 +121,7 @@ app.get('/logout', function(req, res){
 
 //Login
 app.get('/', function (req, res) {
-  res.render('login', { page: 'Login', menuId: 'login' });
+  res.render('login', { page: 'Login', menuId: 'login', message: req.flash('message') });
 });
 
 app.post("/login", function (req, res) {
@@ -137,8 +137,8 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        console.log('wrong passsword or username')
-        res.render('login', { page: "Login Here", menuId: "login" });
+        req.flash('message', 'You are successfully using req-flash');
+        res.redirect('/')
         // res.send("Incorrect username and/or password")
       }
       
