@@ -238,18 +238,14 @@ app.get('/faq', function (req, res) {
 //RESSOURCEN
 //Strom
 app.get('/ressourcen/strom', function (req, res) {
-
-  if (req.session.loggedIn){
+  if(req.session.loggedIn){
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }
   else{
-    // message = 'Please log in to view this page.';
-    console.log("Please log in first to access this page")
+    console.log("please log in first");
     res.redirect('/')
-    
-    // req.flash('error','please login first to see the other pages')
-    // res.redirect(301, '/index')
   }
+
   });
 app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
@@ -297,11 +293,23 @@ app.post('/strom', function (req, res) {
 });
  //Heizung
  app.get('/ressourcen/heizung', function (req, res) {
-   res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
  });
  //Erdgas
  app.get('/ressourcen/erdgas', function (req, res) {
-   res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
  });
 
  app.post('/gas', function(req, res){
@@ -328,19 +336,44 @@ app.post('/strom', function (req, res) {
  })
  //Wasser
  app.get('/ressourcen/wasser', function (req, res) {
-   res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
  });
  //Abfall
  app.get('/ressourcen/abfall', function (req, res) {
-   res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
+   
  });
  //Neue-Massnahme
  app.get('/ressourcen/neue-massnahme', function (req, res) {
-   res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
  });
  //Umsatz
  app.get('/ressourcen/umsatz', function (req, res) {
-   res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
  });
 app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
@@ -360,7 +393,13 @@ app.post('/umsatz', function (req, res) {
 })
 //CO2Schaetzung
 app.get('/ressourcen/co2schaetzung', function (req, res) {
-  res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
+  if(req.session.loggedIn){
+    res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
 });
 
 
