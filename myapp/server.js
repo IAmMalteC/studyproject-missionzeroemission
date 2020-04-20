@@ -312,7 +312,7 @@ app.post('/strom', function (req, res) {
 app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
   var JahresUmsatz = req.body.UmsatzInput;
-  var Datum = req.body.DatumUmsatzInput;
+  var Datum = req.body.ZeitraumJahr;
   // ADD firmenid = 11 //should be retrieved from a session
 
   var umsatzQuery = "INSERT INTO umsatz_tb VALUE (NULL,12,?,?,NULL)";
