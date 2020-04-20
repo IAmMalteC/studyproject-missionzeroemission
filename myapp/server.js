@@ -249,6 +249,7 @@ app.get('/faq', function (req, res) {
 app.get('/ressourcen/strom', function (req, res) {
   res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   });
+
 app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
 
@@ -391,7 +392,7 @@ app.post('/umsatz', function (req, res) {
   });
 
   console.log("Inserted new umsatz Data");
-  res.end()
+  res.redirect('umsatz')
 })
 //CO2Schaetzung
 app.get('/ressourcen/co2schaetzung', function (req, res) {
@@ -403,8 +404,6 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
     res.redirect('/')
   }
 });
-
-
 
 app.listen(3003, () => {
   console.log("server is up and listening on port 3003...")
