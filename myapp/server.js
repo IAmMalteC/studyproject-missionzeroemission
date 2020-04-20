@@ -297,7 +297,7 @@ app.post('/strom', function (req, res) {
  //Umsatz
  app.get('/ressourcen/umsatz', function (req, res) {
   if(req.session.loggedIn){
-    res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
+    res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz', message: req.flash('message')});
   }
   else{
     req.flash('message', 'Please log in first!')
@@ -317,7 +317,7 @@ app.post('/umsatz', function (req, res) {
     }
   });
 
-  console.log("Inserted new umsatz Data");
+  req.flash('message', 'Data is successfully added to the database')
   res.redirect('/ressourcen/umsatz')
 })
 //CO2Schaetzung
