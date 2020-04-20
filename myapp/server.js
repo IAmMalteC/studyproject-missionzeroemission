@@ -224,6 +224,7 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
+        console.log('wrong passsword or username')
         res.render('login', { page: "Login Here", menuId: "login" });
 
         // res.send("Incorrect username and/or password")
