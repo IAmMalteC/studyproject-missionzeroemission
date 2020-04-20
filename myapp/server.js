@@ -117,7 +117,6 @@ app.post('/profil', function (req, res) {
 app.get('/logout', function(req, res){
   if (req.session.loggedIn){
     req.session.destroy()
-    req.flash('message', 'you have successfully loged out!')
     res.redirect('/');
   }
   else
