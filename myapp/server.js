@@ -392,7 +392,7 @@ app.post('/umsatz', function (req, res) {
   });
 
   console.log("Inserted new umsatz Data");
-  res.redirect('umsatz')
+  res.redirect('/umsatz')
 })
 //CO2Schaetzung
 app.get('/ressourcen/co2schaetzung', function (req, res) {
