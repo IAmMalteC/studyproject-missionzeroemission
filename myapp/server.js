@@ -71,7 +71,7 @@ function renderIndexPage(req, res) {
 }
 
 //index routing
-app.get('/index',functions.findEmissionAll,functions.findEmissionAllAverage,renderIndexPage
+app.get('/index',functions.findEmissionAll,functions.findEmissionAllAverage,function.renderIndexPage
   );
 
 //Maßnahmenkatalog
@@ -205,6 +205,11 @@ app.post('/profil', function (req, res) {
   console.log("Inserted new user");
   res.end()
 });
+//Logout
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 //Login
 app.get('/', function (req, res) {
@@ -265,7 +270,7 @@ app.post('/strom', function (req, res) {
     StromArt = 0 // emissionwert
   }
   else {
-    StromArt = functions.getConnection().query("SELECT standardwerte_wert FROM `standardwerte_tb` WHERE standardwerte_jahr = 2018 AND standardwerte_kategorie = 1")
+    StromArt = 474
   }
   var Ablesung = req.body.Ablesung;
   if (Ablesung == "monatlich") {
