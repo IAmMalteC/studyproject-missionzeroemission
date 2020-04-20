@@ -84,7 +84,7 @@ functions.renderEingabeauswahlPage);
 //profil
 app.get("/profil", function (req, res, next) {
   if(req.session.loggedIn){
-    res.render('profil', { page: 'Profil', menuId: 'profil' });
+    res.render('profil', { page: 'Profil', menuId: 'profil', message: req.flash('message') });
   }
   else{
     req.flash('message', 'Please login first!')
@@ -167,7 +167,7 @@ app.get('/faq', function (req, res) {
 //Strom
 app.get('/ressourcen/strom', function (req, res) {
   if(req.session.loggedIn){
-    res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
+    res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom', message: req.flash('message')  });
   }
   else{
     req.flash('message', 'Please log in first!')
