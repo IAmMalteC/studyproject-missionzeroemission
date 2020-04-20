@@ -6,7 +6,7 @@ const session = require('express-session');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path');
-const flash = require('connect-flash');
+const flash = require('req-flash');
 const cookieParser = require('cookie-parser');
 const functions = require('./functions');
 
