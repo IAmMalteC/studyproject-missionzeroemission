@@ -207,7 +207,7 @@ app.post('/profil', function (req, res) {
 });
 //Logout
 app.get('/logout', function(req, res){
-  req.logout();
+  req.session.destroy()
   res.redirect('/');
 });
 
