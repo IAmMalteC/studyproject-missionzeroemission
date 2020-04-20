@@ -166,7 +166,14 @@ functions.findActionCompany,
 functions.renderEingabeauswahlPage);
 //profil
 app.get("/profil", function (req, res, next) {
-  res.render('profil', { page: 'Profil', menuId: 'profil' });
+  if(req.session.loggedIn){
+    res.render('profil', { page: 'Profil', menuId: 'profil' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
+  
 });
 // Input Data from Profil to DB
 app.post('/profil', function (req, res) {
@@ -332,7 +339,7 @@ app.post('/strom', function (req, res) {
  //Umsatz
  app.get('/ressourcen/umsatz', function (req, res) {
    res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
- });''
+ });
 app.post('/umsatz', function (req, res) {
   console.log("Entering sales data..")
   var JahresUmsatz = req.body.UmsatzInput;
