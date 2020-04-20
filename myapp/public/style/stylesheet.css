@@ -33,7 +33,7 @@ We are just building for two sreens. Phones and Tables/Desktops(Bigger then 768p
 
   .alert-success {
     padding: 7px;
-    background-color: rgba(95, 255, 47, 0.514); /* Red */
+    background-color:green; /* Red */
     color: white;
     margin-bottom: 10px;
     text-align: center;
