@@ -66,7 +66,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 function renderIndexPage(req, res) {
   res.render('index', {
     page: 'Startseite', menuId: 'index',
-    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, 
+    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, message: req.flash('error', 'please log in to view this page')
   });
 }
 
@@ -237,8 +237,8 @@ app.get('/ressourcen/strom', function (req, res) {
 
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
-    message = 'Please log in to view this page.';
-    res.render('login', { page: 'Login', menuId: 'login' }, { message: message});
+    // message = 'Please log in to view this page.';
+    res.render('login', { page: 'Login', menuId: 'login' });
     // req.flash('error','please login first to see the other pages')
     // res.redirect(301, '/index')
   }
