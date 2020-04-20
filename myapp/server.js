@@ -224,11 +224,11 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        res.render('login', { page: "Login Here", menuId: "login" });
+        res.render('login', { page: "Login Here", menuId: "login" }, {message: req.flash('error', 'please log in first')});
 
-        res.send("Incorrect username and/or password")
+        // res.send("Incorrect username and/or password")
       }
-      res.end();
+      
     });
   }
   else {
