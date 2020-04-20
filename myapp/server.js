@@ -239,7 +239,7 @@ app.get('/ressourcen/strom', function (req, res) {
   }else{
     var message = '';
     message = 'Wrong Credentials.';
-    res.render('login', { page: 'Login', menuId: 'login' }, { messages: message});
+    res.render('login', { page: 'Login', menuId: 'login' }, { messages: req.message});
     // req.flash('error','please login first to see the other pages')
     // res.redirect(301, '/index')
   }
