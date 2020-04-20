@@ -221,7 +221,7 @@ app.post("/login", function (req, res) {
       if (result.length > 0) {
         req.session.loggedIn = true;
         req.session.username = username;
-        res.redirect('/index')
+        // res.redirect('/index')
       }
       else {
         res.render('login', { page: "Login Here", menuId: "login" });
@@ -246,60 +246,60 @@ app.get('/faq', function (req, res) {
 });
 //RESSOURCEN
 //Strom
-// app.get('/ressourcen/strom', function (req, res) {
-//   if(req.session.loggedIn){
-//     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
-//   }
-//   else{
-//     console.log("please log in first");
-//     res.redirect('/')
-//   }
+app.get('/ressourcen/strom', function (req, res) {
+  if(req.session.loggedIn){
+    res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
+  }
+  else{
+    console.log("please log in first");
+    res.redirect('/')
+  }
 
-  // });
-// app.post('/strom', function (req, res) {
-//   console.log('Entering Strom Data..')
+  });
+app.post('/strom', function (req, res) {
+  console.log('Entering Strom Data..')
 
-//   var StromArt = req.body.StromArt; // emissionwert
-//   if (StromArt == "Photovoltaik") {
-//     StromArt = 0 // emissionwert
-//   }
-//   else {
-//     StromArt = 365
-//   }
+  var StromArt = req.body.StromArt; // emissionwert
+  if (StromArt == "Photovoltaik") {
+    StromArt = 0 // emissionwert
+  }
+  else {
+    StromArt = 365
+  }
 
-//   var Ablesung = req.body.Ablesung;
-//   if (Ablesung == "monatlich") {
-//     Ablesung = 1
-//   }
-//   else {
-//     Ablesung = 2
-//   }
-//   const StromVerbrauch = req.body.Stromverbrauch;
-//   const AbrechnungZeitraum = req.body.ZeitraumJahr;
-//   if (StromArt == 0) {
-//     console.log("Entering Data into Photov table")
-//     var sqlQuery = "INSERT INTO res_strom_photov_tb VALUES (NULL,4,?,?,1,?,?)"
-//     functions.getConnection().query(sqlQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
-//       if (err) {
-//         console.log("Faild to Insert into database..." + err);
-//         res.sendStatus(500);
-//         return
-//       }
-//     });
-//   }
-//   else {
-//     console.log("Entering Data into regulaer table")
-//     var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
-//     functions.getConnection().query(stromQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
-//       if (err) {
-//         console.log("Faild to Insert into database..." + err);
-//         res.sendStatus(500);
-//         return
-//       }
-//     });
-//   }
-//   res.redirect('/ressourcen/strom');
-// });
+  var Ablesung = req.body.Ablesung;
+  if (Ablesung == "monatlich") {
+    Ablesung = 1
+  }
+  else {
+    Ablesung = 2
+  }
+  const StromVerbrauch = req.body.Stromverbrauch;
+  const AbrechnungZeitraum = req.body.ZeitraumJahr;
+  if (StromArt == 0) {
+    console.log("Entering Data into Photov table")
+    var sqlQuery = "INSERT INTO res_strom_photov_tb VALUES (NULL,4,?,?,1,?,?)"
+    functions.getConnection().query(sqlQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
+      if (err) {
+        console.log("Faild to Insert into database..." + err);
+        res.sendStatus(500);
+        return
+      }
+    });
+  }
+  else {
+    console.log("Entering Data into regulaer table")
+    var stromQuery = "INSERT INTO res_strom_regulaer_tb VALUE (NULL,4,?,?,1,?,?)";
+    functions.getConnection().query(stromQuery, [StromArt, Ablesung, AbrechnungZeitraum, StromVerbrauch], function (err, result) {
+      if (err) {
+        console.log("Faild to Insert into database..." + err);
+        res.sendStatus(500);
+        return
+      }
+    });
+  }
+  res.redirect('/ressourcen/strom');
+});
  //Heizung
  app.get('/ressourcen/heizung', function (req, res) {
   if(req.session.loggedIn){
