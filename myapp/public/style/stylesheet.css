@@ -24,6 +24,9 @@ We are just building for two sreens. Phones and Tables/Desktops(Bigger then 768p
     background-color: #f44336; /* Red */
     color: white;
     margin-bottom: 10px;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
 /* text styling */
