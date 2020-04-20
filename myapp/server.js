@@ -232,11 +232,11 @@ app.get('/faq', function (req, res) {
 //Strom
 app.get('/ressourcen/strom', function (req, res) {
   if (req.session.loggedIn){
-
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
     // message = 'Please log in to view this page.';
     renderIndexPage
+    console.log("Please log in first to access this page")
     // req.flash('error','please login first to see the other pages')
     // res.redirect(301, '/index')
   }
