@@ -66,7 +66,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 function renderIndexPage(req, res) {
   res.render('index', {
     page: 'Startseite', menuId: 'index',
-    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, messages: req.flash('error', "please log in to view the other pages")
+    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, 
   });
 }
 
@@ -192,7 +192,7 @@ app.post('/profil', function (req, res) {
 
 //Login
 app.get('/', function (req, res) {
-  res.render('login', { page: 'Login', menuId: 'login' });
+  res.render('login', { page: 'Login', menuId: 'login' }, {messages: req.flash('error', "please log in to view the other pages")});
 });
 
 app.post("/login", function (req, res) {
