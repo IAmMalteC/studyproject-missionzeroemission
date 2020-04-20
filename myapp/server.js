@@ -303,7 +303,7 @@ app.post('/strom', function (req, res) {
     Ablesung = 2
   }
   const AbrechnungZeitraum = req.body.ZeitraumJahr; 
-  const GasVerbrauchMenge = req.body.GasVerbrauchMenge;
+  const GasVerbrauchMenge = req.body.GasverbrauchMenge;
   console.log('Entering data into gas table')
   var gasQuary = "INSERT INTO res_gas_tb VALUE (NULL,1,2750,?,2,?,?)";
   functions.getConnection().query(gasQuary, [Ablesung, AbrechnungZeitraum, GasVerbrauchMenge]), function(err, result){
