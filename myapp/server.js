@@ -115,9 +115,17 @@ app.post('/profil', function (req, res) {
 });
 //Logout
 app.get('/logout', function(req, res){
-  req.session.destroy()
-  req.flash('message', 'you have successfully loged out!')
-  res.redirect('/');
+  if (req.session.loggedIn){
+    req.session.destroy()
+    req.flash('message', 'you have successfully loged out!')
+    res.redirect('/');
+  }
+  else
+  {
+    req.flash('message', 'Please login first!')
+    res.redirect('/');
+  }
+  
 });
 
 //Login
