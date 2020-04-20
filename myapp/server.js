@@ -306,7 +306,7 @@ app.post('/strom', function (req, res) {
   const GasVerbrauchMenge = req.body.GasVerbrauchMenge;
   console.log('Entering data into gas table')
   var gasQuary = "INSERT INTO res_gas_tb VALUE (NULL,1,2750,?,2,?,?)";
-  functions.getConnection.query(gasQuary, [Ablesung, AbrechnungZeitraum, GasVerbrauchMenge]), function(err, result){
+  functions.getConnection().query(gasQuary, [Ablesung, AbrechnungZeitraum, GasVerbrauchMenge]), function(err, result){
     if (err){
       console.log('Failed to insert data'+ err);
       res.sendStatus(500);
