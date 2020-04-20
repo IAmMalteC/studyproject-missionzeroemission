@@ -110,7 +110,7 @@ app.post('/profil', function (req, res) {
       return res.status(204).send();
     }
   });
-  console.log("Inserted new user");
+  req.flash('message', 'Data has been sent!')
   res.end()
 });
 //Logout
@@ -148,13 +148,10 @@ app.post("/login", function (req, res) {
       else {
         req.flash('message', 'Username or Password is wrong');
         res.redirect('/')
-        // res.send("Incorrect username and/or password")
-      }
-      
+      }     
     });
   }
   else {
-    // res.send("Please enter your Username and Password");
     res.end();
   }
 });
@@ -220,6 +217,7 @@ app.post('/strom', function (req, res) {
       }
     });
   }
+  req.flash('message', 'Data has been sent to database!')
   res.redirect('/ressourcen/strom');
 });
  //Heizung

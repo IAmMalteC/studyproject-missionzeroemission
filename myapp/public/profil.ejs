@@ -12,6 +12,12 @@
     <header>
         <%- include('./partials/topnavigation'); -%>
     </header>
+    <% if(message.length > 0){ %>
+        <div class="alert-success">
+            <%= message %>
+        </div>
+    
+    <%}%>
     <!-- Main -->
     <div class="content">
         <form action="/profil" name="PersoenlicheInformation" method="POST">
