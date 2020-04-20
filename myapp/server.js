@@ -1,8 +1,6 @@
-//these are the dependencies
 const express = require('express');
 const app = express();
 const session = require('express-session');
-//const mariadb = require('mariadb/callback');
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -60,11 +58,10 @@ app.get('/massnahmen-katalog', function (req, res) {
   }
   
 });
+
 //Maßnahmenübersicht
 app.get('/massnahmen-uebersicht', function (req, res) {
-  
   var queryString = "SELECT res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_id, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung, firma_tb.firma_name, mn_firma_massnahmen_tb.mn_firma_massnahmen_anfangsdatum FROM mn_firma_massnahmen_tb INNER JOIN firma_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_firma = firma_tb.firma_id INNER JOIN massnahmen_tb ON mn_firma_massnahmen_tb.mn_firma_massnahmen_massnahme = massnahmen_tb.massnahmen_id INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie= res_kategorie_tb.res_kategorie_id ORDER BY firma_tb.firma_name ";
-
   functions.getConnection().query(queryString, function (err, result) {
     if (err) {
       console.log("Failed to get massnahmen_tb data..." + err);
@@ -73,7 +70,6 @@ app.get('/massnahmen-uebersicht', function (req, res) {
     } else {
       return res.render('massnahmen-uebersicht', { page: 'Maßnahmen Übersicht', menuId: 'massnahmen-uebersicht', massnahmen: result });
     }
-
   });
 });
 
@@ -124,7 +120,6 @@ app.get('/logout', function(req, res){
     req.flash('message', 'Please login first!')
     res.redirect('/');
   }
-  
 });
 
 //Login
@@ -217,7 +212,7 @@ app.post('/strom', function (req, res) {
       }
     });
   }
-  req.flash('message', 'Data has been sent to database!')
+  req.flash('message', 'Data is sent to database!')
   res.redirect('/ressourcen/strom');
 });
  //Heizung
@@ -294,6 +289,22 @@ app.post('/strom', function (req, res) {
     res.redirect('/')
   }
  });
+//NOT FUNCTIONAL IN THIS VERSION
+//  app.post('/massnahme', function(req,res){
+//   let MassnahmeName = req.body.MassnahmeName;
+//   let MassnahmeEinsparung = req.body.MassnahmeEinsparung;
+//   let Beschriebung = req.body.MassnahmeBeschreibung;
+//   let datum = req.body.MassnahmeDatum;
+//   var MassnahmeQuary = "INSERT INTO 'mn_firma_massnahmen_tb' VALUES (NULL,11,?,?,?)";
+//   functions.getConnection().query(MassnahmeQuary, [Ablesung, AbrechnungZeitraum, GasVerbrauchMenge]), function(err, result){
+//     if (err){
+//       console.log('Failed to insert data'+ err);
+//       res.sendStatus(500);
+//       return
+//     }
+//   }
+
+//  });
  //Umsatz
  app.get('/ressourcen/umsatz', function (req, res) {
   if(req.session.loggedIn){
