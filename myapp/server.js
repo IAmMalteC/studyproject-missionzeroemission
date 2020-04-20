@@ -111,7 +111,7 @@ app.post('/profil', function (req, res) {
     }
   });
   req.flash('message', 'Data has been sent!')
-  res.end()
+  req.redirect('/profil')
 });
 //Logout
 app.get('/logout', function(req, res){
