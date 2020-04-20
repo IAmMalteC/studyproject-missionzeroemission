@@ -289,22 +289,6 @@ app.post('/strom', function (req, res) {
     res.redirect('/')
   }
  });
-//NOT FUNCTIONAL IN THIS VERSION
-//  app.post('/massnahme', function(req,res){
-//   let MassnahmeName = req.body.MassnahmeName;
-//   let MassnahmeEinsparung = req.body.MassnahmeEinsparung;
-//   let Beschriebung = req.body.MassnahmeBeschreibung;
-//   let datum = req.body.MassnahmeDatum;
-//   var MassnahmeQuary = "INSERT INTO 'mn_firma_massnahmen_tb' VALUES (NULL,11,?,?,?)";
-//   functions.getConnection().query(MassnahmeQuary, [Ablesung, AbrechnungZeitraum, GasVerbrauchMenge]), function(err, result){
-//     if (err){
-//       console.log('Failed to insert data'+ err);
-//       res.sendStatus(500);
-//       return
-//     }
-//   }
-
-//  });
  //Umsatz
  app.get('/ressourcen/umsatz', function (req, res) {
   if(req.session.loggedIn){
