@@ -20,10 +20,10 @@ We are just building for two sreens. Phones and Tables/Desktops(Bigger then 768p
 
 /* The alert message box */
 .alert {
-    padding: 20px;
+    padding: 10px;
     background-color: #f44336; /* Red */
     color: white;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
 /* text styling */
