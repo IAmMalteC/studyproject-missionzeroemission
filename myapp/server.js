@@ -87,7 +87,7 @@ app.get("/profil", function (req, res, next) {
     res.render('profil', { page: 'Profil', menuId: 'profil' });
   }
   else{
-    console.log("please log in first");
+    req.flash('message', 'please log in first!')
     res.redirect('/')
   }
   
