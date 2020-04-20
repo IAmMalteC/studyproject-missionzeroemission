@@ -237,9 +237,8 @@ app.get('/ressourcen/strom', function (req, res) {
 
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
-    var message = '';
-    message = 'Wrong Credentials.';
-    res.render('login', { page: 'Login', menuId: 'login' }, { messages: req.message});
+    message = 'Please log in to view this page.';
+    res.render('login', { page: 'Login', menuId: 'login' }, { message: message});
     // req.flash('error','please login first to see the other pages')
     // res.redirect(301, '/index')
   }
