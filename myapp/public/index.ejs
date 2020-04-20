@@ -74,13 +74,13 @@
     <!-- Ab hier kommen die messy chart scripte, und nein erstmal nicht auslagern -->
     <!-- If it isn't working. maybe because of refactoring. Check if it ejs things are together and not apart -->
     <!-- Revenue All -->
-    <%-
-    <script>var data = JSON.stringify(emissionAlle) </script>
+  
+    <script>var data = <%- JSON.stringify(emissionAlle) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforall.js"></script>
     <!-- Revenue All Average-->
-    <script>var data = JSON.stringify(emissionAlleDurchschnitt)</script>
+    <script>var data = <%- JSON.stringify(emissionAlleDurchschnitt) %>;</script>
     <script type="text/javascript" src="./chartjs/jsforcharts/chartforallaverage.js"></script>
-    -%>
+
 </body>
 
 </html>
