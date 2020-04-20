@@ -293,6 +293,28 @@ app.post('/strom', function (req, res) {
  app.get('/ressourcen/erdgas', function (req, res) {
    res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
  });
+
+ app.post('/gas', function(req, res){
+  var Ablesung = req.body.Ablesung;
+  if (Ablesung == "monatlich") {
+    Ablesung = 1
+  }
+  else {
+    Ablesung = 2
+  }
+  const AbrechnungZeitraum = req.body.ZeitraumJahr; 
+  const GasVerbrauchMenge = req.body.GasVerbrauchMenge;
+  console.log('Entering data into gas table')
+  var gasQuary = "INSERT INTO res_gas_tb VALUE (NULL,1,2750,?,2,?,?)";
+  functions.getConnection.query(gasQuary, [Ablesung, AbrechnungZeitraum, GasVerbrauchMenge]), function(err, result){
+    if (err){
+      console.log('Failed to insert data'+ err);
+      res.sendStatus(500);
+      return
+    }
+  }
+  res.redirect('/ressourcen/erdgas');
+ })
  //Wasser
  app.get('/ressourcen/wasser', function (req, res) {
    res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
@@ -319,8 +341,6 @@ app.post('/umsatz', function (req, res) {
   functions.getConnection().query(umsatzQuery, [Datum, JahresUmsatz], function (err, result) {
     if (err) {
       console.log("Failed to Insert into the database..." + err);
-      res.sendStatus(500);
-      return
     }
   });
 
