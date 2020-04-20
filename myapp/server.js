@@ -224,7 +224,7 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        res.render('login', { page: "Login Here", menuId: "login" }, {message: req.flash('error', 'please log in first')});
+        res.render('login', { page: "Login Here", menuId: "login" });
 
         // res.send("Incorrect username and/or password")
       }
