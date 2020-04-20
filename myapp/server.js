@@ -66,7 +66,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 function renderIndexPage(req, res) {
   res.render('index', {
     page: 'Startseite', menuId: 'index',
-    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, messages: req.flash('error')
+    emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, messages: req.flash('error', "please log in to view the other pages")
   });
 }
 
