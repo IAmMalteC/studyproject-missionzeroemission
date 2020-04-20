@@ -38,8 +38,8 @@ app.get('/index',functions.findEmissionAll,functions.findEmissionAllAverage,func
 
 //Maßnahmenkatalog
 app.get('/massnahmen-katalog', function (req, res) {
-  if(req.session.loggedIn){
-    var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
+  
+  var queryString = "SELECT res_kategorie_tb.res_kategorie_id, res_kategorie_tb.res_kategorie_name, massnahmen_tb.massnahmen_name, massnahmen_tb.massnahmen_beschreibung FROM massnahmen_tb INNER JOIN res_kategorie_tb ON massnahmen_tb.massnahmen_res_kategorie = res_kategorie_tb.res_kategorie_id ORDER BY res_kategorie_tb.res_kategorie_id";
 
   functions.getConnection().query(queryString, function (err, result) {
     if (err) {
@@ -50,12 +50,6 @@ app.get('/massnahmen-katalog', function (req, res) {
       return res.render('massnahmen-katalog', { page: 'Maßnahmenkatalog', menuId: 'massnahmen-katalog', massnahmen: result });
     }
   });
-  }
-  else
-  {
-    req.flash('message', 'please log in first!')
-    res.redirect('/')
-  }
   
 });
 
