@@ -192,9 +192,7 @@ app.post('/profil', function (req, res) {
 
 //Login
 app.get('/', function (req, res) {
-  var message = '';
-  message = 'Wrong Credentials.';
-  res.render('login', { page: 'Login', menuId: 'login' }, { messages: message});
+  res.render('login', { page: 'Login', menuId: 'login' });
 });
 
 app.post("/login", function (req, res) {
