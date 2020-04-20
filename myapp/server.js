@@ -116,7 +116,7 @@ app.post('/profil', function (req, res) {
 //Logout
 app.get('/logout', function(req, res){
   req.session.destroy()
-  res.redirect('/');
+  res.render('login', { page: 'Login', menuId: 'login', message: req.flash('message','you have loged out successfully!') });
 });
 
 //Login
@@ -137,7 +137,7 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        req.flash('message', 'You are successfully using req-flash');
+        req.flash('message', 'Username or Password is wrong');
         res.redirect('/')
         // res.send("Incorrect username and/or password")
       }
