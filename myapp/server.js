@@ -192,7 +192,9 @@ app.post('/profil', function (req, res) {
 
 //Login
 app.get('/', function (req, res) {
-  res.render('login', { page: 'Login', menuId: 'login' }, {messages: req.flash('error', "please log in to view the other pages")});
+  var message = '';
+  message = 'Wrong Credentials.';
+  res.render('login', { page: 'Login', menuId: 'login' }, { messages: message});
 });
 
 app.post("/login", function (req, res) {
@@ -208,7 +210,7 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        res.render('login', { page: "Login Here", menuId: "login" },{messages: req.flash('error', "please log in to view the other pages")});
+        res.render('login', { page: "Login Here", menuId: "login" });
 
         res.send("Incorrect username and/or password")
       }
@@ -235,8 +237,11 @@ app.get('/ressourcen/strom', function (req, res) {
 
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
-    req.flash('error','please login first to see the other pages')
-    res.redirect(301, '/index')
+    var message = '';
+    message = 'Wrong Credentials.';
+    res.render('login', { page: 'Login', menuId: 'login' }, { messages: message});
+    // req.flash('error','please login first to see the other pages')
+    // res.redirect(301, '/index')
   }
   });
 app.post('/strom', function (req, res) {
