@@ -116,7 +116,7 @@ app.post('/profil', function (req, res) {
 //Logout
 app.get('/logout', function(req, res){
   req.session.destroy()
-  res.render('login', { page: 'Login', menuId: 'login', message: req.flash('message','you have loged out successfully!') });
+  res.redirect('/');
 });
 
 //Login
@@ -134,6 +134,7 @@ app.post("/login", function (req, res) {
       if (result.length > 0) {
         req.session.loggedIn = true;
         req.session.username = username;
+        req.flash('message', 'You have successfully logged in!');
         res.redirect('/index')
       }
       else {

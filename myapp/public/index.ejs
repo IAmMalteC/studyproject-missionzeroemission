@@ -13,7 +13,12 @@
     <header>
         <%- include('./partials/topnavigation'); -%>
     </header>
+    <% if(message.length > 0){ %>
+        <div class="alert">
+            <%= message %>
+        </div>
     
+    <%}%>
     <!-- Main -->
     <div class="content index">
         <div class="goal-tracker">

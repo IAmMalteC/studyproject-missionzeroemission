@@ -48,7 +48,7 @@ function findEmissionAll(req, res, next) {
   function renderIndexPage(req, res) {
     res.render('index', {
       page: 'Startseite', menuId: 'index',
-      emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
+      emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, message: req.flash('message')
     });
   }
 
