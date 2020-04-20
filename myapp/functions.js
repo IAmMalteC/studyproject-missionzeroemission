@@ -48,7 +48,7 @@ function findEmissionAll(req, res, next) {
   function renderIndexPage(req, res) {
     res.render('index', {
       page: 'Startseite', menuId: 'index',
-      emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage, messages: req.flash('error')
+      emissionAlle: req.emissionAll, emissionAlleDurchschnitt: req.emissionAllAverage
     });
   }
 
@@ -101,15 +101,22 @@ function findEmissionCompany(req, res, next) {
     });
   }
   function renderEingabeauswahlPage(req, res) {
+    if(req.session.loggedIn){
+      firma = "CFB – CNC Feinmechanik Berlin e. K."
+      branchenname = "Maschinenbau"
+      res.render('eingabeauswahl', {
+        page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
+        firmenname: firma, branchenname: branchenname,
+        emissionenFirma: req.emissionCompany, emissionFirmaVergleich: req.emissionCompanyBranch,
+        massnahmen: req.actionCom
+      });    
+    }
+    else{
+      console.log("please log in first");
+      res.redirect('/')
+    }
     //ggf. anpassen und das result der Query ansprechen über kolonnen name, müsste eigentlich in einer Session gespeichert sein und dort abgerufen werden.
-    firma = "CFB – CNC Feinmechanik Berlin e. K."
-    branchenname = "Maschinenbau"
-    res.render('eingabeauswahl', {
-      page: 'Eingabeauswahl', menuId: 'eingabeauswahl',
-      firmenname: firma, branchenname: branchenname,
-      emissionenFirma: req.emissionCompany, emissionFirmaVergleich: req.emissionCompanyBranch,
-      massnahmen: req.actionCom
-    });
+    
   }
 
 //exporting functions
