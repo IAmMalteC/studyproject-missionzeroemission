@@ -71,7 +71,7 @@ function renderIndexPage(req, res) {
 }
 
 //index routing
-app.get('/index',functions.findEmissionAll,functions.findEmissionAllAverage,function.renderIndexPage
+app.get('/index',functions.findEmissionAll,functions.findEmissionAllAverage,functions.renderIndexPage
   );
 
 //Maßnahmenkatalog
