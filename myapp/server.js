@@ -87,7 +87,7 @@ app.get("/profil", function (req, res, next) {
     res.render('profil', { page: 'Profil', menuId: 'profil' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please login first!')
     res.redirect('/')
   }
   
@@ -173,7 +173,7 @@ app.get('/ressourcen/strom', function (req, res) {
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
   
@@ -228,7 +228,7 @@ app.post('/strom', function (req, res) {
     res.render('./ressourcen/heizung', { page: 'Heizung', menuId: 'heizung' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
  });
@@ -238,7 +238,7 @@ app.post('/strom', function (req, res) {
     res.render('./ressourcen/erdgas', { page: 'Gas', menuId: 'erdgas' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
  });
@@ -271,7 +271,7 @@ app.post('/strom', function (req, res) {
     res.render('./ressourcen/wasser', { page: 'Wasser', menuId: 'wasser' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
  });
@@ -281,7 +281,7 @@ app.post('/strom', function (req, res) {
     res.render('./ressourcen/abfall', { page: 'Abfall', menuId: 'abfall' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
    
@@ -292,7 +292,7 @@ app.post('/strom', function (req, res) {
     res.render('./ressourcen/neue-massnahme', { page: 'Neue Maßnahme', menuId: 'neue-massnahme' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
  });
@@ -302,7 +302,7 @@ app.post('/strom', function (req, res) {
     res.render('./ressourcen/umsatz', { page: 'Umsatz', menuId: 'umsatz' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
  });
@@ -328,7 +328,7 @@ app.get('/ressourcen/co2schaetzung', function (req, res) {
     res.render('./ressourcen/co2schaetzung', { page: 'CO2 Schätzung', menuId: 'co2schaetzung' });
   }
   else{
-    req.flash('message', 'please log in first!')
+    req.flash('message', 'Please log in first!')
     res.redirect('/')
   }
 });
