@@ -236,7 +236,7 @@ app.get('/ressourcen/strom', function (req, res) {
     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   }else{
     // message = 'Please log in to view this page.';
-    res.render('login', { page: 'Login', menuId: 'login' });
+    renderIndexPage
     // req.flash('error','please login first to see the other pages')
     // res.redirect(301, '/index')
   }
