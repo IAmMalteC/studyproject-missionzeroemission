@@ -246,14 +246,14 @@ app.get('/faq', function (req, res) {
 });
 //RESSOURCEN
 //Strom
-app.get('/ressourcen/strom', function (req, res) {
-  if(req.session.loggedIn){
-    res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
-  }
-  else{
-    console.log("please log in first");
-    res.redirect('/')
-  }
+// app.get('/ressourcen/strom', function (req, res) {
+//   if(req.session.loggedIn){
+//     res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
+//   }
+//   else{
+//     console.log("please log in first");
+//     res.redirect('/')
+//   }
 
   });
 app.post('/strom', function (req, res) {
