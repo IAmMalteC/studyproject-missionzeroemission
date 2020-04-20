@@ -221,7 +221,7 @@ app.post("/login", function (req, res) {
       if (result.length > 0) {
         req.session.loggedIn = true;
         req.session.username = username;
-        // res.redirect('/index')
+        res.redirect('/index')
       }
       else {
         res.render('login', { page: "Login Here", menuId: "login" });
@@ -247,14 +247,7 @@ app.get('/faq', function (req, res) {
 //RESSOURCEN
 //Strom
 app.get('/ressourcen/strom', function (req, res) {
-  if(req.session.loggedIn){
-    res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
-  }
-  else{
-    console.log("please log in first");
-    res.redirect('/')
-  }
-
+  res.render('./ressourcen/strom', { page: 'Strom', menuId: 'strom' });
   });
 app.post('/strom', function (req, res) {
   console.log('Entering Strom Data..')
