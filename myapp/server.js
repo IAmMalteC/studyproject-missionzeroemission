@@ -208,7 +208,7 @@ app.post("/login", function (req, res) {
         res.redirect('/index')
       }
       else {
-        res.render('login', { page: "Login Here", menuId: "login" });
+        res.render('login', { page: "Login Here", menuId: "login" },{messages: req.flash('error', "please log in to view the other pages")});
 
         res.send("Incorrect username and/or password")
       }
@@ -216,7 +216,7 @@ app.post("/login", function (req, res) {
     });
   }
   else {
-    res.send("Please enter your Username and Password");
+    // res.send("Please enter your Username and Password");
     res.end();
   }
 });
