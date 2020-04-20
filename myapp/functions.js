@@ -112,7 +112,7 @@ function findEmissionCompany(req, res, next) {
       });    
     }
     else{
-      console.log("please log in first");
+      req.flash('message', 'please log in first!')
       res.redirect('/')
     }
     //ggf. anpassen und das result der Query ansprechen über kolonnen name, müsste eigentlich in einer Session gespeichert sein und dort abgerufen werden.

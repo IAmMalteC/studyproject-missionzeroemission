@@ -55,7 +55,7 @@ app.get('/massnahmen-katalog', function (req, res) {
   }
   else
   {
-    console.log("please log in first");
+    req.flash('message', 'please log in first!')
     res.redirect('/')
   }
   
