@@ -18,6 +18,14 @@ We are just building for two sreens. Phones and Tables/Desktops(Bigger then 768p
     font-family: PTSansRegular, Arial, Helvetica, sans-serif;
 }
 
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+  }
+
 /* text styling */
 
 h1, h2, h3, h4, h5, h6 {
