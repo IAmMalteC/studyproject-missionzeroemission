@@ -1,7 +1,9 @@
 
 # MissionZeroEmission
-A tool to visaulize the emissions of the "Unternehmensnetzwerk Motzenerstraße"
+Was a studentproject at our university in the year 2019/2020 and is not longer under development.
+The aim was to develop a tool to visaulize the emissions of the "Unternehmensnetzwerk Motzenerstraße". 
 
+# Dev notes
 ## Elemente einbinden
 Text Elemente wie Footer und header können eingebunden werden, sodass sie nicht auf jeder einzelnen Seite bearbeitet werden muss. Ein bisschen wie bei Objekten.
 
